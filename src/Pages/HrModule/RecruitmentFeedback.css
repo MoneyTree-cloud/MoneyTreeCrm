@@ -1,0 +1,381 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Recruitment Feedback — styles
+   Colors use teal primary (#005B52) and gold (#B8862B); adjust to match your
+   defaultTheme if those change.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+    --rf-primary: #005B52;
+    --rf-primary-dark: #007A6E;
+    --rf-gold: #B8862B;
+}
+
+/* ── Modal backdrop blur ─────────────────────────────────────────────────── */
+.modal-backdrop.show {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(15, 23, 42, 0.55);
+    opacity: 1 !important;
+}
+
+/* ── Page wrapper ────────────────────────────────────────────────────────── */
+.rf-page {
+    padding-bottom: 24px;
+}
+
+/* ── Card shell ──────────────────────────────────────────────────────────── */
+.rf-card {
+    background: #fff;
+    border: 1px solid #E8ECF2;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.rf-card-head {
+    background: linear-gradient(135deg, var(--rf-primary), var(--rf-primary-dark));
+    padding: 14px 22px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.rf-card-head-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.rf-card-body {
+    padding: 16px 22px;
+}
+
+/* ── Form labels and inputs ──────────────────────────────────────────────── */
+.rf-field-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.rf-input,
+.rf-search-input {
+    width: 100%;
+    border: 1.5px solid #050505;
+    border-radius: 9px;
+    padding: 9px 12px;
+    font-size: 13.5px;
+    color: #0F172A;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    background: #fff;
+    font-family: inherit;
+}
+
+.rf-search-input {
+    padding: 9px 12px 9px 36px;
+}
+
+.rf-input:focus,
+.rf-search-input:focus {
+    border-color: var(--rf-primary);
+    box-shadow: 0 0 0 3px rgba(0, 91, 82, 0.1);
+}
+
+/* ── Search wrapper with icon ────────────────────────────────────────────── */
+.rf-search-wrap {
+    position: relative;
+}
+
+.rf-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94A3B8;
+    pointer-events: none;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.rf-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--rf-primary), var(--rf-primary-dark));
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 9px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 91, 82, 0.22);
+    transition: opacity 0.15s, transform 0.1s;
+}
+
+.rf-primary-btn:hover:not(:disabled) {
+    opacity: 0.92;
+}
+
+.rf-primary-btn:disabled {
+    background: #94A3B8;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.rf-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    background: rgba(0, 91, 82, 0.1);
+    color: var(--rf-primary);
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+
+.rf-action-btn:hover {
+    background: rgba(0, 91, 82, 0.2);
+}
+
+/* ── Tabs (Active / Inactive pill switcher) ──────────────────────────────── */
+.rf-tabs {
+    display: inline-flex;
+    background: #F1F5F9;
+    border-radius: 11px;
+    padding: 4px;
+    gap: 4px;
+}
+
+.rf-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #64748B;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+
+.rf-tab:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.7);
+    color: #334155;
+}
+
+.rf-tab.active {
+    background: #fff;
+    color: var(--rf-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.rf-tab.active.inactive {
+    color: #1fc98e;
+}
+
+.rf-tab-count {
+    font-size: 10.5px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.85);
+    color: #475569;
+}
+
+.rf-tab.active .rf-tab-count {
+    background: rgba(0, 91, 82, 0.1);
+    color: var(--rf-primary);
+}
+
+.rf-tab.active.inactive .rf-tab-count {
+    background: #56dc44;
+    color: #033b0b;
+}
+
+/* ── Remarks count pill (in the table cell) ──────────────────────────────── */
+.rf-count-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 11px;
+    font-size: 11px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.rf-count-pill.zero {
+    background: #F1F5F9;
+    color: #94A3B8;
+}
+
+.rf-count-pill.one {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+.rf-count-pill.two {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.rf-count-pill.three {
+    background: #DCFCE7;
+    color: #166534;
+}
+
+/* ── Remark cards inside the modal ───────────────────────────────────────── */
+.rf-remark-card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+}
+
+.rf-remark-card.locked {
+    background: #F0FDF9;
+    border-color: rgba(0, 91, 82, 0.25);
+    border-left: 4px solid var(--rf-primary);
+}
+
+.rf-remark-card.active {
+    background: #FFFBEB;
+    border-color: #FDE68A;
+    border-left: 4px solid var(--rf-gold);
+}
+
+.rf-remark-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.rf-remark-num {
+    color: var(--rf-primary);
+}
+
+.rf-remark-time {
+    text-transform: none;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #94A3B8;
+    letter-spacing: 0;
+}
+
+.rf-remark-text {
+    font-size: 13px;
+    color: #0F172A;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.rf-remark-empty {
+    font-size: 11.5px;
+    color: #94A3B8;
+    font-style: italic;
+}
+
+.rf-remark-textarea {
+    width: 100%;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 9px 11px;
+    font-size: 13px;
+    color: #0F172A;
+    outline: none;
+    resize: vertical;
+    min-height: 70px;
+    font-family: inherit;
+    background: #fff;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.rf-remark-textarea:focus {
+    border-color: var(--rf-primary);
+    box-shadow: 0 0 0 3px rgba(0, 91, 82, 0.1);
+}
+
+.rf-locked-banner {
+    background: #F0FDF9;
+    border: 1px solid rgba(0, 91, 82, 0.25);
+    color: var(--rf-primary);
+    padding: 9px 13px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* ── Modal employee summary strip ────────────────────────────────────────── */
+.rf-emp-strip {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 9px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+.rf-emp-strip-label {
+    font-size: 10.5px;
+    color: #94A3B8;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.rf-emp-strip-value {
+    font-weight: 700;
+    color: #0F172A;
+    margin-top: 2px;
+}
+
+/* ── Two-line cell helper (name on top + meta below) ─────────────────────── */
+.rf-cell-primary {
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.rf-cell-meta {
+    font-size: 10.5px;
+    color: #94A3B8;
+    margin-top: 2px;
+}
+
+/* ── Mobile responsive ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .rf-card-body {
+        padding: 14px;
+    }
+}

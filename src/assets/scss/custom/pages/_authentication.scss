@@ -1,0 +1,32 @@
+$assetImageBaseUrl: "https://assetstorage.moneytreerealty.com/media/loginBg.png";
+
+/* Fullscreen background image */
+.bg-pattern {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url($assetImageBaseUrl);
+    background-repeat: no-repeat;
+    background-size: cover; // Ensures the image covers the screen
+    background-position: center; // Centers the image
+    background-attachment: fixed; // Optional: keeps image fixed on scroll
+    background-color: #005b52; // Fallback color
+}
+
+.auth-logo {
+    &.logo-light {
+        display: $display-none !important;
+    }
+
+    &.logo-dark {
+        display: $display-block !important;
+    }
+}
+
+
+/* Disable image on smaller devices */
+@media only screen and (max-width: 1024px) {
+    .bg-pattern {
+        background-image: none !important;
+        background-color: #005b52 !important;
+    }
+}

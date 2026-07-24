@@ -1,0 +1,78 @@
+.tic-tac-toe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    background: #f2f2f2;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.status {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 10px;
+    position: relative;
+}
+
+.square {
+    background: #fff;
+    border: 2px solid #333;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s;
+    color: black;
+}
+
+.square:hover {
+    background: #f0f0f0;
+}
+
+.reset-btn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.reset-btn:hover {
+    background-color: #45a049;
+}
+
+/* Winning line animation */
+.winning-line {
+    position: absolute;
+    background-color: red;
+    border-radius: 2px;
+    transform-origin: center;
+    animation: drawLine 0.5s ease forwards;
+}
+
+@keyframes drawLine {
+    0% { transform: scaleX(0) scaleY(0); }
+    100% { transform: scaleX(1) scaleY(1); }
+}

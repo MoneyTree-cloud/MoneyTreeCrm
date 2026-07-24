@@ -1,0 +1,84 @@
+/* SuccessCard.css */
+
+.success-container {
+  background-color: #f5f9fa;
+}
+
+.success-card {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 91, 82, 0.1);
+}
+
+.confirmation-header {
+  background-color: #005b52;
+  text-align: center;
+}
+
+.confirmation-header img {
+  max-height: 60px;
+  width: auto;
+}
+
+.confirmation-body {
+  background-color: #ffffff;
+}
+
+.check-icon-container {
+    display: flex;
+    justify-content: center;
+}
+
+.check-icon {
+    color: #22c55e;
+    animation: drawCheck 0.8s ease-in-out forwards, pulse 1.5s infinite ease-in-out;
+    transform-origin: center;
+}
+
+.confirmation-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #005b52;
+}
+
+.user-name {
+  font-weight: 700;
+  color: #005b52;
+}
+
+.confirmation-subtitle {
+  font-size: 20px;
+  color: #0f5e16;
+  font-weight: 500;
+}
+
+.confirmation-message {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+}
+
+.confirmation-footer {
+  padding: 20px;
+  font-size: 14px;
+  color: #666666;
+  background-color: #f5f9fa;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.footer-logo {
+  color: #005b52;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.disclaimer {
+  font-size: 12px;
+  color: #999999;
+  margin-top: 15px;
+  line-height: 1.5;
+}

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>MoneyTree Realty - Meeting Invitation</title>
+
+    <style>
+        * html,
+        html,
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #08164a;
+            font-family: Georgia, serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 680px;
+            padding: 30px 40px;
+            background: linear-gradient(135deg, #005b52, #c7903e);
+            border: 2px solid #d9a441;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .35);
+            position: relative;
+        }
+
+        .top-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .top-decoration .square {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 208, 112, .7);
+            flex-shrink: 0;
+        }
+
+        .top-decoration .dots {
+            flex: 1;
+            text-align: center;
+            color: #d9a441;
+            letter-spacing: 8px;
+            font-size: 12px;
+            line-height: 1;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .dots {
+            text-align: center;
+            color: #d9a441;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+
+        .bottom-squares {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .square-box {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 208, 112, .7);
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo img {
+            width: 200px;
+            display: block;
+        }
+
+        .heading {
+            text-align: center;
+        }
+
+        .heading h1 {
+            color: #ffd17b;
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
+
+        .heading h2 {
+            color: #ffffff;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .token {
+            width: 100%;
+            max-width: 270px;
+            margin: 20px auto;
+            border: 2px dashed #ffd17b;
+            padding: 15px;
+        }
+
+        .token-title {
+            color: #ffd17b;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .token-number {
+            color: #ffd17b;
+            font-size: 42px;
+            font-weight: bold;
+            margin-top: 8px;
+            letter-spacing: 3px;
+        }
+
+        .highlight {
+            color: #ffd17b;
+            font-weight: bold;
+        }
+
+        .white {
+            color: #fff;
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .footer b {
+            color: #ffd17b;
+        }
+
+        .bottom {
+            margin-top: 18px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 209, 123, .35);
+            text-align: center;
+            color: #ffd17b;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .bottom2 {
+            margin-top: 18px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 209, 123, .35);
+            text-align: center;
+            color: #ffd17b;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .heading-location {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            color: #ffd17b;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .location-icon {
+            font-size: 20px;
+        }
+
+        /* Auto-download loading overlay */
+        #autoDownloadOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(8, 22, 74, 0.95);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #ffd17b;
+            font-family: Georgia, serif;
+        }
+
+        #autoDownloadOverlay.active {
+            display: flex;
+        }
+
+        #autoDownloadOverlay .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 209, 123, 0.2);
+            border-top-color: #ffd17b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #autoDownloadOverlay .message {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #autoDownloadOverlay .submessage {
+            font-size: 14px;
+            margin-top: 10px;
+            color: #fff;
+            opacity: 0.7;
+        }
+
+        @media (max-width:768px) {
+            body {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 20px 15px;
+            }
+
+            .logo img {
+                width: 140px;
+            }
+
+            .heading h1 {
+                font-size: 28px;
+            }
+
+            .heading h2 {
+                font-size: 18px;
+            }
+
+            .content {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+
+            .token {
+                max-width: 220px;
+            }
+
+            .token-title {
+                font-size: 18px;
+            }
+
+            .token-number {
+                font-size: 30px;
+                letter-spacing: 2px;
+            }
+
+            .footer {
+                font-size: 16px;
+            }
+
+            .bottom {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width:480px) {
+            body {
+                padding: 10px;
+            }
+
+            .card {
+                padding: 15px 12px;
+            }
+
+            .logo img {
+                width: 120px;
+            }
+
+            .heading h1 {
+                font-size: 22px;
+            }
+
+            .heading h2 {
+                font-size: 15px;
+            }
+
+            .content {
+                font-size: 14px;
+            }
+
+            .token {
+                max-width: 180px;
+            }
+
+            .token-number {
+                font-size: 24px;
+            }
+
+            .footer {
+                font-size: 15px;
+            }
+
+            .bottom {
+                font-size: 13px;
+            }
+        }
+    </style>
+
+    <!-- ★ html-to-image library -->
+    <script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Loading overlay for auto-download -->
+    <div id="autoDownloadOverlay">
+        <div class="spinner"></div>
+        <div class="message">Preparing your invitation…</div>
+        <div class="submessage">The download will start automatically</div>
+    </div>
+
+    <div class="card">
+
+        <div class="top-decoration">
+            <div class="square"></div>
+            <div class="dots">● ● ● ● ● ● ● ● ● ● ● ●</div>
+            <div class="square"></div>
+        </div>
+
+        <div class="logo">
+            <img src="https://assetstorage.moneytreerealty.com/media/logo.png" alt="MoneyTree Realty Logo"
+                crossorigin="anonymous" loading="eager" />
+        </div>
+
+        <div class="heading">
+            <div id="titleSection">
+                <h1 id="title">MEETING INVITATION</h1>
+            </div>
+            <div id="eventSection">
+                <h2 id="eventName">FINANCIAL FREEDOM FESTIVAL 2026</h2>
+            </div>
+            <div class="heading-location" id="locationSection">
+                <span class="location-icon">📍</span>
+                <span id="locationName">Radisson Blu, MBD Hotel, Noida</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <p id="greeting">Good Morning,</p>
+            <p>Thank You for Your Valuable Time.</p>
+
+            <div class="token" id="tokenSection">
+                <div class="token-title">Invitation Code</div>
+                <div class="token-number" id="token">123456</div>
+            </div>
+
+            <p class="highlight" id="tokenDate">
+                This code is valid for
+                <span class="white" id="validDate">22-Jul-26</span> only.
+            </p>
+
+            <br>
+
+            <p>Kindly present the invitation code at the reception upon arrival.</p>
+            <p>We look forward to welcoming you to <span class="highlight">MoneyTree Realty.</span></p>
+            <p>Thank you for choosing India's Most Trusted Brand.</p>
+        </div>
+
+        <div class="footer">
+            <div>Warm Regards,</div>
+            <div id="userSection">
+                <b id="userName">Somesh Singh</b>
+            </div>
+            <div>MoneyTree Realty</div>
+        </div>
+
+        <div class="bottom2">
+            GROW YOUR MONEY<br />
+        </div>
+
+        <div class="bottom-squares">
+            <div class="square-box"></div>
+            <div class="square-box"></div>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        function showOrHide(sectionId, elementId, value) {
+            const section = document.getElementById(sectionId);
+            const element = document.getElementById(elementId);
+            if (!section || !element) return;
+            if (value && value.trim() !== "") {
+                element.textContent = value;
+            } else {
+                section.style.display = "none";
+            }
+        }
+
+        // Greeting based on time
+        const hour = new Date().getHours();
+        let greeting = "Good Evening";
+        if (hour < 12) greeting = "Good Morning";
+        else if (hour < 17) greeting = "Good Afternoon";
+        document.getElementById("greeting").textContent = greeting + ",";
+
+        // Default date if not passed
+        document.getElementById("validDate").textContent =
+            new Date().toLocaleDateString("en-GB", {
+                day: "2-digit", month: "short", year: "2-digit"
+            });
+
+        // Populate from URL params
+        showOrHide("titleSection", "title", params.get("title"));
+        showOrHide("eventSection", "eventName", params.get("event"));
+        showOrHide("tokenSection", "token", params.get("token"));
+        showOrHide("tokenDate", "validDate", params.get("tokenDate"));
+        showOrHide("userSection", "userName", params.get("user"));
+        showOrHide("locationSection", "locationName", params.get("location"));
+
+        // ★ AUTO-DOWNLOAD if download=1 param is present
+        if (params.get("download") === "1") {
+            const overlay = document.getElementById("autoDownloadOverlay");
+            overlay.classList.add("active");
+
+            window.addEventListener("load", async () => {
+                try {
+                    // Extra wait for full render
+                    await new Promise(r => setTimeout(r, 500));
+
+                    // Wait for logo to load
+                    const imgs = document.querySelectorAll("img");
+                    await Promise.all(
+                        Array.from(imgs).map(img => {
+                            if (img.complete && img.naturalHeight !== 0) return Promise.resolve();
+                            return new Promise(resolve => {
+                                img.onload = resolve;
+                                img.onerror = resolve;
+                                setTimeout(resolve, 3000);
+                            });
+                        })
+                    );
+
+                    // Hide overlay temporarily for clean capture
+                    overlay.classList.remove("active");
+                    await new Promise(r => setTimeout(r, 100));
+
+                    // Capture the card
+                    const card = document.querySelector(".card");
+                    const blob = await htmlToImage.toBlob(card, {
+                        cacheBust: true,
+                        pixelRatio: 2,
+                        backgroundColor: "#08164a",
+                        skipFonts: true,
+                        fontEmbedCSS: "",
+                    });
+
+                    if (!blob) throw new Error("Failed to generate image");
+
+                    // Trigger download
+                    const token = params.get("token") || "invitation";
+                    const link = document.createElement("a");
+                    link.href = URL.createObjectURL(blob);
+                    link.download = "MeetingInvitation_" + token + ".png";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+
+                    // Show success message and close tab
+                    overlay.classList.add("active");
+                    overlay.querySelector(".spinner").style.display = "none";
+                    overlay.querySelector(".message").textContent = "✓ Downloaded successfully";
+                    overlay.querySelector(".submessage").textContent = "Closing tab…";
+
+                    setTimeout(() => {
+                        window.close();
+                    }, 1500);
+                } catch (err) {
+                    console.error(err);
+                    overlay.classList.add("active");
+                    overlay.querySelector(".spinner").style.display = "none";
+                    overlay.querySelector(".message").textContent = "✗ Download failed";
+                    overlay.querySelector(".submessage").textContent = err.message;
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

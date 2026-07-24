@@ -1,0 +1,30 @@
+.puzzle-container {
+  text-align: center;
+  padding: 20px;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 118px); /* 3 columns, each 118px wide */
+  grid-template-rows: repeat(3, 118px);    /* 3 rows, each 118px tall */
+  gap: 2px;                                /* Space between the tiles */
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile {
+  width: 100%;          /* Ensure the tile fills the cell */
+  height: 100%;         /* Ensure the tile fills the cell */
+  object-fit: cover;    /* Ensure the image covers the tile area properly */
+  cursor: pointer;
+  border: 1px solid #0c67ae;
+}
+
+h1 {
+  color: #0c67ae;
+}
+
+h2 {
+  color: #333;
+}

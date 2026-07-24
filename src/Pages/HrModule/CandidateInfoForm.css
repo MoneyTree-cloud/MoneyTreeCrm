@@ -1,0 +1,120 @@
+.candidate-form-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  background: #fff;
+}
+
+.candidate-form-card h5,
+.candidate-form-card h6 {
+  color: #2a3042;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.candidate-form-card .form-group {
+  margin-bottom: 0.75rem !important;
+}
+
+.candidate-form-card .form-control-sm,
+.candidate-form-card .react-select-sm .react-select__control {
+  height: 32px;
+  font-size: 0.875rem;
+  border-radius: 6px;
+}
+
+.candidate-form-card .react-select-sm .react-select__control {
+  min-height: 32px;
+}
+
+.candidate-form-card .react-select-sm .react-select__value-container {
+  padding: 2px 8px;
+}
+
+.candidate-form-card .react-select-sm .react-select__indicators {
+  height: 32px;
+}
+
+.candidate-form-card .font-size-12 {
+  font-size: 0.75rem !important;
+  color: #495057;
+}
+
+.candidate-form-card .font-size-11 {
+  font-size: 0.6875rem !important;
+  color: #dc3545;
+}
+
+.candidate-form-card .btn-primary {
+  background-color: #556ee6;
+  border-color: #556ee6;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.candidate-form-card .btn-primary:hover {
+  background-color: #485ec4;
+  border-color: #485ec4;
+  transform: translateY(-1px);
+}
+
+.candidate-form-card .btn-outline-info {
+  border-color: #34c38f;
+  color: #34c38f;
+  font-size: 0.875rem;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.candidate-form-card .btn-outline-info:hover {
+  background-color: #34c38f;
+  color: #fff;
+}
+
+.candidate-form-card .section-divider {
+  border-top: 1px solid #e9ecef;
+  margin: 1rem 0;
+}
+
+.candidate-form-card .radio-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.candidate-form-card .form-check-label {
+  font-size: 0.875rem;
+  color: #495057;
+}
+
+.candidate-form-card .qualification-row {
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.candidate-form-card .remove-qualification {
+  cursor: pointer;
+  color: #dc3545;
+  font-size: 1rem;
+  transition: color 0.2s;
+  margin-left: 0.5rem;
+  margin-top: 0;
+}
+
+.candidate-form-card .remove-qualification:hover {
+  color: #b02a37;
+}
+
+.candidate-form-card .last-companies-row {
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}

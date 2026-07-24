@@ -1,0 +1,449 @@
+  /* ///Support CSS */
+
+  .chat-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .chat-app {
+      height: 100vh; /* Full viewport height */
+    }
+    
+    .chat-area {
+      height: 100%;
+    }
+  
+  .chat-body {
+      flex: 1;
+      overflow-y: auto; /* Enable scrolling */
+    }
+  
+  .message-container {
+    max-height: 300px;
+    overflow-y: auto; /* Enable scrolling */
+  }
+  
+  .message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    clear: both; /* Ensure messages don't overlap */
+    width: fit-content; /* Makes sure the message box fits the text */
+    max-width: 70%; /* Max width to prevent overflow */
+  }
+  
+  .message.user {
+    background-color: #005b52; /* User messages in blue */
+    color: white;
+    text-align: left; /* Align text to the left for user */
+    float: right; /* Float user messages to the right */
+    margin-left: auto; /* Push user messages to the right */
+  }
+  
+  .message.support {
+    background-color: #c38c42; /* Support messages in light grey */
+    color: white;
+    text-align: left; /* Align text to the left for support */
+    float: left; /* Float support messages to the left */
+    margin-right: auto; /* Push support messages to the left */
+  }
+  
+
+  .message {
+      margin: 10px 0;
+    }
+    
+    .message.user {
+      text-align: left; /* User messages align to the left */
+    }
+    
+    .message.support {
+      text-align: right; /* Support messages align to the right */
+    }
+  
+    .text-truncate {
+      overflow: hidden;       /* Hide overflow content */
+      white-space: nowrap;    /* Prevent line breaks */
+      text-overflow: ellipsis; /* Use ellipsis for overflowing text */
+    }
+    
+    
+    /* Side bar.js */
+
+    @media only screen and (min-width: 320px) and (max-width: 768px) {
+      /* For small mobile devices (phones) */
+    
+    .css-1wvake5.ps-collapsed {
+      width: 100% !important;
+      min-width: 80px;
+    }
+      
+    }
+    
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+   
+    .css-1wvake5.ps-collapsed {
+      width: 100% !important;
+      min-width: 80px;
+  }
+  }
+
+  /* NotificationViewScreen.css */
+
+/* Container */
+.page-content {
+  padding: 20px;
+}
+
+/* Card */
+.card-custom {
+  /* box-shadow: 0 2px 4px var(--primary-color); */
+  word-wrap: break-word;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card body */
+.card-body-custom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+/* Container for the chat app */
+.chat-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* General card styling for chat */
+.chat-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat body (where messages are displayed) */
+.chat-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Container for all messages */
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+/* Empty chat message when there are no messages */
+.empty-chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7; /* Light background color */
+  border-radius: 8px; /* Rounded corners */
+  border: 2px dashed #ccc; /* Dashed border for a clean, light style */
+  color: #005b52; /* Light grey text color */
+  font-size: 16px; /* Font size */
+  font-family: 'Arial', sans-serif; /* Simple font */
+  text-align: center; /* Center the text */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  font-weight: bold;
+}
+
+.empty-chat:hover {
+  background-color: #eaeaea; /* Slightly darker background on hover */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Styling for individual messages */
+.message {
+  display: inline-block;
+  max-width: 70%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  word-wrap: break-word;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* For messages from the user (right side) */
+.message-right {
+  background-color: #005b52; /* Light green background for user messages */
+  align-self: flex-end;
+  text-align: right;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+/* For messages from support (left side) */
+.message-left {
+  background-color: #c38c42; /* Light gray background for support messages */
+  align-self: flex-start;
+  text-align: left;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  color: #ffffff;
+}
+
+/* Timestamp for each message */
+.message-timestamp {
+  font-size: 12px;
+  color: #aaa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* File icon styling */
+.file-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+/* Input field for typing messages */
+.chat-footer .input {
+  flex-grow: 1;
+}
+
+/* Attach button for file input */
+.chat-footer button {
+  padding: 0 8px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Styling for the file input (hidden by default) */
+input[type="file"] {
+  display: block;
+}
+
+/* File preview icon styling */
+.chat-footer .file-preview {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/* Modal to display image (for attachments) */
+.modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollbar styling */
+.chat-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 8px;
+}
+
+.chat-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Loader while data is fetching */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* File icon styling (for PDF) */
+.file-preview-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.file-preview-icon:hover {
+  opacity: 0.7;
+}
+
+.file-preview-icon svg {
+  margin-right: 5px;
+}
+
+/* Button styling */
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Chat Container */
+.chat-app {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat Row */
+.chat-row {
+  flex-grow: 1;
+}
+
+.chat-area {
+  overflow-y: auto;
+  height: 70%; /* Adjust height for the chat area */
+}
+
+.chat-card {
+  margin: 0;
+  border-radius: 8px;
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.message-container {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+/* Message Styles */
+.message {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-right {
+  align-items: flex-end;
+}
+
+.message-left {
+  align-items: flex-start;
+}
+
+.message-text {
+  padding: 3px 3px;
+  border-radius: 5px;
+}
+
+.message-timestamp {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Footer */
+.chat-footer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  position: sticky;
+  bottom: 0;
+  /* background-color: #005b52; */
+
+  z-index: 1;
+  margin-top: 10px;
+}
+
+textarea {
+  flex-grow: 1;
+  resize: none;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .chat-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  textarea {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .chat-area {
+    height: 60%;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .message-container {
+    max-height: 600px;
+  }
+  textarea {
+      width: 100%;
+      height: 49px;
+  }
+  .chat-footer button {
+    margin-left: 5px;
+    width: 15%;
+    height: 40px;
+  }
+  .chat-footer {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .message-container {
+    max-height: 350px;
+  }
+}
