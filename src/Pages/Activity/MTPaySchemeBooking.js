@@ -155,12 +155,16 @@ export default function MTPaySchemeBooking() {
             selector: (row) => row.schemeName,
             cell: (row) => <WordWrapCell>{row.schemeName}</WordWrapCell>,
         },
-        {
-            name: <span className="font-weight-bold fs-13">First Payout</span>,
-            sortable: true,
-            selector: (row) => row.firstPayout,
-            cell: (row) => <WordWrapCell>{formatINR(row.firstPayout)}</WordWrapCell>,
-        },
+        ...(empCode !== '3615'
+            ? [
+                {
+                    name: <span className="font-weight-bold fs-13">First Payout</span>,
+                    sortable: true,
+                    selector: (row) => row.firstPayout,
+                    cell: (row) => <WordWrapCell>{formatINR(row.firstPayout)}</WordWrapCell>,
+                },
+            ]
+            : []),
         {
             name: <span className="font-weight-bold fs-13">VB Status</span>,
             sortable: true,

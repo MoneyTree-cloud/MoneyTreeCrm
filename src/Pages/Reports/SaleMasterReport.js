@@ -154,9 +154,9 @@ export default function SaleMasterReport() {
     },
     {
       name: <span className="font-weight-bold fs-13">Unique ID</span>,
-      selector: (row) => row.MTRS_ID,
+      selector: (row) => row.Unique_ID,
       sortable: true,
-      cell: (row) => <WordWrapCell>{row.MTRS_ID}</WordWrapCell>
+      cell: (row) => <WordWrapCell>{row.Unique_ID}</WordWrapCell>
     },
     {
       name: <span className="font-weight-bold fs-13">Main Team</span>,

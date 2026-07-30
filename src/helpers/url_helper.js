@@ -151,6 +151,7 @@ export const MARK_PROSPECT_FAVOURITE = "lead/user/mark/favourite";
 //Token
 export const GENERATE_TOKEN = "lead/user/generate/token";
 export const GET_USER_BY_TOKEN = "lead/user/get/token";
+export const STATUS_CHANGE_TOKEN = "lead/user/token/status";
 
 export const PROSPECT_BULK_UPDATE = "lead/prospect/bulk/update";
 export const GET_UNIT_BY_BUILDER_PROJECT = "user/management/admin/getProjectUnitByBuilderNameAndProjectName?builderName=";
@@ -310,6 +311,7 @@ export const GET_ALL_MT_PAY_SCHEME_DATA = "user/management/wednesday-scheme/get/
 export const DROPDOWN_MT_PAY_SCHEME_DATA = "user/management/wednesday-scheme/dropdown";
 export const GET_ALL_MT_PAY_SCHEME_BOOKING_DATA = "user/management/wednesday-scheme/get/booking/v2";
 export const MARK_PAYOUT_MT_PAY_SCHEME_BOOKING_DATA = "user/management/wednesday-scheme/update/payout";
+export const CREATE_MT_PAY_SCHEME_BOOKING= "user/management/wednesday-scheme/create";
 
 //Sale Master Excel Upload
 export const UPLOAD_SALE_MASTER_EXCEL = "user/management/sale/upload";

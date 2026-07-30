@@ -224,31 +224,6 @@ export default function SalesEntryNew() {
       width: "4%",
       cell: renderIconCell("/sales-entry-new/create-edit-sales-entry", 'Manage Sale Entry'),
     },
-    //   ...((empCode !== '1585' && empCode !== '2099' && empCode !== '20006' && empCode !== '2956' && empCode !== '20019') ? [
-    //     {
-    //       name: <span className="font-weight-bold fs-13">Receive/Pay</span>,
-    //       width: "4%",
-    //       cell: renderIconCell("/sales-entry-new/receive-pay-sale", 'Receive/Pay'),
-    //     },
-    //   ] : []),
-    //   ...((empCode !== '2099' && empCode !== '20006' && empCode !== '2956' && empCode !== '20019') ? [
-    //     {
-    //       name: <span className="font-weight-bold fs-13">File Upload</span>,
-    //       width: "3%",
-    //       cell: renderIconCell("/sales-entry-new/file-upload", 'File Upload'),
-    //     },
-    //   ] : [])
-    // ] : []),
-    // ...((empCode !== '20006' && empCode !== '20019') ? [
-    //   {
-    //     name: <span className="font-weight-bold fs-13">File Status</span>,
-    //     selector: (row) => row.saleId,
-    //     cell: (row) => (
-    //       <WordWrapCell>
-    //         {row?.hasFileDetails ? <FaCheck color={defaultTheme.primary} size={16} title="File Uploaded" /> : '-'}
-    //       </WordWrapCell>
-    //     ),
-    //   },
     {
       name: <span className="font-weight-bold fs-13">Unique ID</span>,
       selector: (row) => row.uniqueId,
@@ -262,12 +237,6 @@ export default function SalesEntryNew() {
       cell: (row) => <WordWrapCell>{formatActionType(row.bookingStatusName)}</WordWrapCell>,
     },
     {
-      name: <span className="font-weight-bold fs-13">Sale Status</span>,
-      selector: (row) => row.saleStatusName,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.saleStatusName}</WordWrapCell>,
-    },
-    {
       name: <span className="font-weight-bold fs-13">Associate Name</span>,
       selector: (row) => row.associateName,
       sortable: true,
@@ -278,13 +247,6 @@ export default function SalesEntryNew() {
       selector: (row) => row.mainTeam,
       sortable: true,
       cell: (row) => <WordWrapCell>{row.mainTeam + '/' + row.subTeam}</WordWrapCell>,
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Prospect Name</span>,
-      selector: (row) => row.prospectName,
-      sortable: true,
-      width: "10%",
-      cell: (row) => <WordWrapCell>{row.prospectName}</WordWrapCell>,
     },
     {
       name: <span className="font-weight-bold fs-13">Booking Type</span>,
@@ -347,12 +309,6 @@ export default function SalesEntryNew() {
       cell: (row) => <WordWrapCell>{row.clientName}</WordWrapCell>,
     },
     {
-      name: <span className="font-weight-bold fs-13">Tower/Block</span>,
-      selector: (row) => row.projectUnitMaster?.towerBlock,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.projectUnitMaster?.towerBlock || '-'}</WordWrapCell>,
-    },
-    {
       name: <span className="font-weight-bold fs-13">Unit Name</span>,
       selector: (row) => row.unitName,
       sortable: true,
@@ -363,14 +319,7 @@ export default function SalesEntryNew() {
       selector: (row) => row.bbavalue,
       sortable: true,
       cell: (row) => <WordWrapCell>{row.bbavalue || '-'}</WordWrapCell>,
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Remarks</span>,
-      selector: (row) => row.remarks,
-      sortable: true,
-      width: "30%",
-      cell: (row) => <WordWrapCell>{row.remarks}</WordWrapCell>,
-    },
+    }
   ];
 
   useEffect(() => {

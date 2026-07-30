@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Card, CardBody, Col, Container, Row } from "reactstrap";
+import { Card, CardBody, Col, Container, Row, Modal, ModalHeader, ModalBody, ModalFooter, Button, Label, Input } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
 import { toast } from "react-toastify";
@@ -10,7 +10,10 @@ import { useUserStore } from "../../store/useUserStore";
 import PageContent from "../../components/Common/PageContent";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
-import { GET_ALL_MT_PAY_SCHEME_DATA, UPLOAD_MT_PAY_SCHEME_DATA } from "../../helpers/url_helper";
+import { ALL_LOCATION_DROPDOWN, CREATE_MT_PAY_SCHEME_BOOKING, GET_ALL_MT_PAY_SCHEME_DATA, UPLOAD_MT_PAY_SCHEME_DATA } from "../../helpers/url_helper";
+import { FaPlus } from "react-icons/fa";
+import Select from "react-select";
+import { defaultTheme } from "../../helpers/defaultTheme";
 
 export default function MTPayScheme() {
     const userId = useUserStore((state) => state.user.userId);
@@ -18,7 +21,19 @@ export default function MTPayScheme() {
     const fileInputRef = useRef(null);
     const [accessGranted, setAccessGranted] = useState(null);
 
+    const [addModal, setAddModal] = useState(false);
+
+    const [schemeForm, setSchemeForm] = useState({
+        branch: "",
+        totalIncentive: "",
+        firstPayout: "",
+        secondPayout: "",
+        schemeName: ""
+    });
+
     const { data: schemeData, isLoading, refetch: refetchSchemes } = useGet(GET_ALL_MT_PAY_SCHEME_DATA, { enabled: Boolean(accessGranted) });
+    const { data: locationList } = useGet(ALL_LOCATION_DROPDOWN, { enabled: Boolean(accessGranted) })
+
 
     const columns = [
         {
@@ -63,6 +78,15 @@ export default function MTPayScheme() {
             cell: (row) => <WordWrapCell>{formatDateTime(row.createdDate)}</WordWrapCell>,
         }
     ];
+
+    const handleSchemeChange = (e) => {
+        const { name, value } = e.target;
+
+        setSchemeForm((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
     const { isPending: uploadLoading, mutate: mutateUpload } = usePost(
         UPLOAD_MT_PAY_SCHEME_DATA,
@@ -118,6 +142,66 @@ export default function MTPayScheme() {
         mutateUpload(formData);
     };
 
+    const { mutate: createScheme, isPending: createLoading } = usePost(
+        CREATE_MT_PAY_SCHEME_BOOKING,
+        {
+            onSuccess: (res) => {
+                if (res?.data?.status === 1) {
+                    toast.success(res.data.message);
+                    setAddModal(false);
+                    clearForm()
+                    refetchSchemes();
+                } else {
+                    toast.error(res.data.message);
+                }
+            },
+            onError: (err) => {
+                toast.error(err.message);
+            },
+        }
+    );
+
+    const clearForm = () => {
+        setAddModal(false)
+        setSchemeForm({
+            branch: "",
+            totalIncentive: "",
+            firstPayout: "",
+            secondPayout: "",
+            schemeName: ""
+        });
+    }
+
+    const handleCreateScheme = () => {
+        const {
+            branch,
+            totalIncentive,
+            firstPayout,
+            secondPayout,
+            schemeName
+        } = schemeForm;
+
+        if (
+            !branch ||
+            !totalIncentive ||
+            !firstPayout ||
+            !secondPayout ||
+            !schemeName
+        ) {
+            toast.error("All fields are mandatory.");
+            return;
+        }
+
+        let params = {
+            branch,
+            totalIncentive,
+            firstPayout,
+            secondPayout,
+            schemeName
+        }
+        createScheme(params);
+    };
+
     useEffect(() => {
         const checkAccess = async () => {
             const hasAccess = await CheckUserAccess(userId, 'mt-pay-scheme');
@@ -141,9 +225,11 @@ export default function MTPayScheme() {
             <Container fluid={true}>
                 <Card>
                     <CardBody>
-                        <Row>
+                        <Row className="align-items-end">
                             <Col lg="4">
-                                <h6 className="font-size-11 mt-1">Choose File <RequiredStar /></h6>
+                                <h6 className="font-size-11 mt-1">
+                                    Choose File <RequiredStar />
+                                </h6>
                                 <input
                                     className="form-control"
                                     id="fileUpload"
@@ -153,16 +239,28 @@ export default function MTPayScheme() {
                                     ref={fileInputRef}
                                 />
                             </Col>
-                            <Col
-                                lg="4"
-                                className="d-flex align-items-end"
-                            >
+
+                            <Col lg="4">
                                 <button
                                     type="button"
                                     className="btn btn-primary"
                                     onClick={handleUploadData}
                                 >
                                     Upload
+                                </button>
+                            </Col>
+
+                            <Col
+                                lg="4"
+                                className="d-flex justify-content-end"
+                            >
+                                <button
+                                    type="button"
+                                    className="btn btn-success d-flex align-items-center gap-2"
+                                    onClick={() => setAddModal(true)}
+                                >
+                                    <FaPlus />
+                                    Add Scheme
                                 </button>
                             </Col>
                         </Row>
@@ -176,6 +274,115 @@ export default function MTPayScheme() {
                     pagination
                 />
             </Container>
+
+            <Modal
+                isOpen={addModal}
+                toggle={() => clearForm()}
+                centered
+            >
+                <ModalHeader toggle={() => clearForm()}>
+                    Add MTpay Scheme
+                </ModalHeader>
+
+                <ModalBody>
+
+                    <div className="mb-3">
+                        <Label>
+                            Scheme Name <RequiredStar />
+                        </Label>
+
+                        <Input
+                            type="text"
+                            name="schemeName"
+                            value={schemeForm.schemeName}
+                            onChange={handleSchemeChange}
+                            placeholder="Enter Scheme Name"
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <Label>
+                            Branch <RequiredStar />
+                        </Label>
+
+                        <Select
+                            options={Array.isArray(locationList?.data?.data) ? locationList?.data?.data : []}
+                            placeholder="Select Branch"
+                            value={locationList?.data?.data?.find(
+                                (option) => option.value === schemeForm.branch
+                            )}
+                            onChange={(selectedOption) =>
+                                setSchemeForm((prev) => ({
+                                    ...prev,
+                                    branch: selectedOption?.value || "",
+                                }))
+                            }
+                            isClearable
+                        />
+                    </div>
+
+                    <div className="mb-3">
+                        <Label>
+                            Total Incentive <RequiredStar />
+                        </Label>
+
+                        <Input
+                            type="number"
+                            name="totalIncentive"
+                            value={schemeForm.totalIncentive}
+                            onChange={handleSchemeChange}
+                            placeholder="Enter Total Incentive"
+                        />
+                    </div>
+
+                    <div className="mb-3">
+                        <Label>
+                            First Payout <RequiredStar />
+                        </Label>
+
+                        <Input
+                            type="number"
+                            name="firstPayout"
+                            value={schemeForm.firstPayout}
+                            onChange={handleSchemeChange}
+                            placeholder="Enter First Payout"
+                        />
+                    </div>
+
+                    <div className="mb-3">
+                        <Label>
+                            Second Payout <RequiredStar />
+                        </Label>
+
+                        <Input
+                            type="number"
+                            name="secondPayout"
+                            value={schemeForm.secondPayout}
+                            onChange={handleSchemeChange}
+                            placeholder="Enter Second Payout"
+                        />
+                    </div>
+
+                </ModalBody>
+
+                <ModalFooter>
+                    <Button
+                        color="secondary"
+                        style={{ backgroundColor: defaultTheme.goldColorLogo }}
+                        onClick={() => clearForm()}
+                    >
+                        Cancel
+                    </Button>
+
+                    <Button
+                        color="primary"
+                        onClick={handleCreateScheme}
+                        style={{ backgroundColor: defaultTheme.primary }}
+                        disabled={createLoading}
+                    >
+                        {createLoading ? "Saving..." : "Save"}
+                    </Button>
+                </ModalFooter>
+            </Modal>
         </PageContent>
     );
 }

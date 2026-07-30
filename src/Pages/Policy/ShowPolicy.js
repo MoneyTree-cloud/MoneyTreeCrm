@@ -16,6 +16,10 @@ import LEAVE_NOIDA from '../../assets/docs/Leave Policy. - Noida.docx';
 import LEAVE_MUMBAI from '../../assets/docs/Leave Policy Mumbai.docx';
 import LEAVE_GURUGRAM from '../../assets/docs/Leave Policy. - Gurugram.docx';
 
+import ZERO_TOLERANCE_POLICY_DOC from '../../assets/docs/Zero Tolerance Policy.docx';
+import PIP_POLICY_DOC from '../../assets/docs/PIP Policy.docx';
+import EXIT_POLICY_DOC from '../../assets/docs/Exit Policy.docx';
+
 const LEAVE_POLICY_BY_LOCATION = {
     Ghaziabad: LEAVE_GZB,
     Pune: LEAVE_PUNE,
@@ -270,23 +274,52 @@ export default function ShowPolicy() {
         const list = [
             {
                 id: 'coc',
-                title: 'Code of Conduct',
+                title: 'Code of Conduct (COC)',
+                subtitle: 'Moneytree Realty Services Limited',
                 icon: FaShieldAlt,
                 accent: '#005B52',
                 fileUrl: COC_DOC,
             },
+            {
+                id: 'zero-tolerance',
+                title: 'Zero Tolerance Policy (ZTP)',
+                subtitle: 'Moneytree Realty Services Limited',
+                icon: FaShieldAlt,
+                accent: '#DC2626',
+                fileUrl: ZERO_TOLERANCE_POLICY_DOC,
+            },
+            {
+                id: 'pip',
+                title: 'Performance Improvement Plan Policy (PIP)',
+                subtitle: 'Moneytree Realty Services Limited',
+                icon: FaRegFolderOpen,
+                accent: '#2563EB',
+                fileUrl: PIP_POLICY_DOC,
+            },
+            {
+                id: 'exit',
+                title: 'Exit On Seperation Policy',
+                subtitle: 'Moneytree Realty Services Limited',
+                icon: FaRegFolderOpen,
+                accent: '#7C3AED',
+                fileUrl: EXIT_POLICY_DOC,
+            },
         ];
+
         if (leavePolicyFile) {
             list.push({
                 id: 'leave',
                 title: 'Leave Policy',
+                subtitle: `${locationName} Leave Policy`,
                 icon: FaUmbrellaBeach,
                 accent: '#B8862B',
                 fileUrl: leavePolicyFile,
             });
         }
+
         return list;
-    }, [leavePolicyFile]);
+    }, [leavePolicyFile, locationName]);
+
 
     const [activeId, setActiveId] = useState(null);
     const activePolicy = policies.find((p) => p.id === activeId) || null;
@@ -357,9 +390,9 @@ export default function ShowPolicy() {
                         >
                             Company Policies
                         </div>
-                        <h2 style={{ fontSize: 24, fontWeight: 800, margin: '0 0 10px', color: '#fff' }}>
+                        {/* <h2 style={{ fontSize: 24, fontWeight: 800, margin: '0 0 10px', color: '#fff' }}>
                             Policies &amp; Code of Conduct
-                        </h2>
+                        </h2> */}
                         <div
                             style={{
                                 display: 'inline-flex',

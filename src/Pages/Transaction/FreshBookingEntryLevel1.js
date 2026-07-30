@@ -427,8 +427,8 @@ const FreshBookingEntryLevel1 = () => {
             mtrsScheme: formStateTab3?.mtScheme?.label || null,
             builderSchemeRemark: formStateTab3?.builderSchemeRemark || "",
             tokenMoney: formData?.tokenMoney || "",
-            mtPayScheme: formStateTab3?.mtPayScheme?.label || null,
-            firstPayout: formStateTab3?.mtPayScheme?.value || 0,
+            mtPayScheme: formStateTab3?.mtScheme?.label === 'MTpay' ? formStateTab3?.mtPayScheme?.label : null,
+            firstPayout: formStateTab3?.mtScheme?.label === 'MTpay' ? formStateTab3?.mtPayScheme?.value : 0,
             applicationFormStatus: formData?.applicationFormStatus || null
         }
         if (Object.keys(rowData).length === 0) addFreshBooking(params)
@@ -447,7 +447,7 @@ const FreshBookingEntryLevel1 = () => {
                 freshBookingType: rowData?.freshBookingType,
                 rewardPoints: rowData?.rewardPoint || 0,
                 tokenMoney: rowData?.tokenMoney || "",
-                applicationFormStatus:rowData?.applicationFormStatus||null
+                applicationFormStatus: rowData?.applicationFormStatus || null
             }));
 
             setFormStateTab1(prev => ({

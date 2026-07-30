@@ -67,7 +67,7 @@ export default function OtpDetails() {
       name: <span className="font-weight-bold fs-13">Send By</span>,
       selector: (row) => row.clientName,
       sortable: true,
-      cell: (row) => <WordWrapCell>{row.sentByName + " (" + row.sendBy + ")"}</WordWrapCell>
+      cell: (row) => <WordWrapCell>{row.sentByName}</WordWrapCell>
     },
     {
       name: <span className="font-weight-bold fs-13">OTP</span>,

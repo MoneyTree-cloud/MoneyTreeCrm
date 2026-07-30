@@ -27,7 +27,7 @@ import { useUserStore } from "../../store/useUserStore";
 import { RegexFile } from "../../helpers/RegexFile";
 import ScreenLoader from "../../constants/ScreenLoader";
 import PageContent from "../../components/Common/PageContent";
-import { formatDate, formatDateTime, getDaysAgo, maskEmail, maskLastFour, maskValue, RequiredStar, roundToTwoDecimals } from "../../helpers/function_helper";
+import {  formatDateTime, RequiredStar, roundToTwoDecimals } from "../../helpers/function_helper";
 import { formStageOptions } from "../../constants/global";
 import { decryptData } from "../../components/Common/CryptoUtils";
 
@@ -44,7 +44,6 @@ const CreateEditSalesEntry = () => {
   const { data: paymentPlanList } = useGet(PAYMENT_PLAN_DROPDOWN);
   const [errors, setErrors] = useState({});
   // const { data: connectList } = useGet(ALL_CONNECT_DROPDOWN);
-  const [activeField, setActiveField] = useState("");
   const [prospectData, setProspectData] = useState({})
 
   const [formData, setFormData] = useState({
@@ -392,37 +391,6 @@ const CreateEditSalesEntry = () => {
         setPassedStepsWiz(modifiedSteps);
       }
     }
-  };
-
-  const MASK_FIELD_MAP = {
-    // Contact Numbers
-    contactNum1: maskLastFour,
-    contactNum2: maskLastFour,
-    coApplicantContactNum1: maskLastFour,
-    coApplicantContactNum2: maskLastFour,
-
-    // Aadhaar
-    aadhar: maskLastFour,
-    coApplicantAadhar: maskLastFour,
-
-    // PAN
-    pan: maskLastFour,
-    coApplicantPan: maskLastFour,
-
-    // Email
-    emailId: maskEmail,
-    coApplicantEmailId: maskEmail,
-
-    // Address
-    applicantAddress: maskValue,
-    coApplicantAddress: maskValue,
-  };
-
-  const getDisplayValue = (name, value) => {
-    if (activeField === name) return value || "";
-
-    const masker = MASK_FIELD_MAP[name];
-    return masker ? masker(value || "") : value || "";
   };
 
   const validateFields = () => {
@@ -899,10 +867,6 @@ const CreateEditSalesEntry = () => {
     }
   }, [prospectList?.data?.data, rowData?.prospectId, prosOptions]);
 
-  const days = prospectData?.createdDate
-    ? getDaysAgo(prospectData?.createdDate)
-    : null;
-
   return (
     <PageContent>
       <Container fluid={true}>
@@ -1031,7 +995,7 @@ const CreateEditSalesEntry = () => {
                   )}
                 </Col>
 
-                <Col lg="3">
+                {/* <Col lg="3">
                   <h6 className="font-size-10" htmlFor="selectedProspect">
                     Select Prospect <RequiredStar />
                   </h6>
@@ -1088,7 +1052,7 @@ const CreateEditSalesEntry = () => {
                     style={inputStyle}
                     disabled
                   />
-                </Col>
+                </Col> */}
 
                 <Col lg="3">
                   <h6 className="font-size-10" htmlFor="selectedBookingType">Booking Type <RequiredStar /></h6>
@@ -1106,7 +1070,7 @@ const CreateEditSalesEntry = () => {
                     </div>
                   )}
                 </Col>
-                <Col lg="3">
+                {/* <Col lg="3">
                   <h6 className="font-size-10">Reward Points</h6>
                   <input
                     placeholder="Reward Points"
@@ -1115,7 +1079,7 @@ const CreateEditSalesEntry = () => {
                     type="text"
                     onChange={(option) => setFormData((prev) => ({ ...prev, rewardPoints: option.target.value }))}
                   />
-                </Col>
+                </Col> */}
               </Row>
             </Form>
             <div id="progrss-wizard" className="twitter-bs-wizard mt-4">
@@ -1208,7 +1172,7 @@ const CreateEditSalesEntry = () => {
                           </div>
                         )}
                       </Col>
-
+{/* 
                       <Col lg="3">
                         <h6 className="font-size-10" htmlFor="contactNum1">
                           Contact Number 1{" "}
@@ -1229,10 +1193,10 @@ const CreateEditSalesEntry = () => {
                             {errors.contactNum1}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
 
                       {/* Second Column (3 inputs) */}
-                      <Col lg="3">
+                      {/* <Col lg="3">
                         <h6 className="font-size-10" htmlFor="contactNum2">
                           Contact Number 2{" "}
                         </h6>
@@ -1251,8 +1215,8 @@ const CreateEditSalesEntry = () => {
                             {errors.contactNum2}
                           </div>
                         )}
-                      </Col>
-                      <Col lg="3">
+                      </Col> */}
+                      {/* <Col lg="3">
                         <h6 className="font-size-10" htmlFor="emailId">
                           Email ID
                         </h6>
@@ -1271,8 +1235,8 @@ const CreateEditSalesEntry = () => {
                             {errors.emailId}
                           </div>
                         )}
-                      </Col>
-                      <Col lg="3">
+                      </Col> */}
+                      {/* <Col lg="3">
                         <h6 className="font-size-10" htmlFor="dob">
                           Date of Birth{" "}
                           <RequiredStar />
@@ -1289,10 +1253,10 @@ const CreateEditSalesEntry = () => {
                             {errors.dob}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
 
                       {/* Third Column (3 inputs) */}
-                      <Col lg="3">
+                      {/* <Col lg="3">
                         <h6 className="font-size-10" htmlFor="aadhar">
                           Aadhar Number{" "}
                           <RequiredStar />
@@ -1334,8 +1298,8 @@ const CreateEditSalesEntry = () => {
                             {errors.pan}
                           </div>
                         )}
-                      </Col>
-                      <Col lg="3">
+                      </Col> */}
+                      {/* <Col lg="3">
                         <h6
                           className="font-size-10"
                           htmlFor="applicantAddress"
@@ -1359,7 +1323,7 @@ const CreateEditSalesEntry = () => {
                             {errors.applicantAddress}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
 
                       <Col lg="3">
                         <h6
@@ -1383,7 +1347,7 @@ const CreateEditSalesEntry = () => {
                         )}
                       </Col>
                       {/* Fifth Column (3 inputs - Co-applicant) */}
-                      <Col lg="3">
+                      {/* <Col lg="3">
                         <h6
                           className="font-size-10"
                           htmlFor="coApplicantContactNum1"
@@ -1409,8 +1373,8 @@ const CreateEditSalesEntry = () => {
                             {errors.coApplicantContactNum1}
                           </div>
                         )}
-                      </Col>
-                      <Col lg="3">
+                      </Col> */}
+                      {/* <Col lg="3">
                         <h6
                           className="font-size-10"
                           htmlFor="coApplicantContactNum2"
@@ -1436,8 +1400,8 @@ const CreateEditSalesEntry = () => {
                             {errors.coApplicantContactNum2}
                           </div>
                         )}
-                      </Col>
-                      <Col lg="3">
+                      </Col> */}
+                      {/* <Col lg="3">
                         <h6
                           className="font-size-10"
                           htmlFor="coApplicantEmailId"
@@ -1463,9 +1427,9 @@ const CreateEditSalesEntry = () => {
                             {errors.coApplicantEmailId}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
 
-                      <Col lg="3">
+                      {/* <Col lg="3">
                         <h6
                           className="font-size-10"
                           htmlFor="coApplicantDob"
@@ -1567,7 +1531,7 @@ const CreateEditSalesEntry = () => {
                             {errors.coApplicantAddress}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
                     </Row>
                   </Form>
                 </TabPane>
@@ -2299,7 +2263,7 @@ const CreateEditSalesEntry = () => {
                         )}
                       </Col>
 
-                      <Col lg={3}>
+                      {/* <Col lg={3}>
                         <h6 className="font-size-10" htmlFor="saleStatus">Sale Status{" "}<RequiredStar />
                         </h6>
                         <Select
@@ -2318,9 +2282,9 @@ const CreateEditSalesEntry = () => {
                             {errors.saleStatus}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
 
-                      <Col lg={3}>
+                      {/* <Col lg={3}>
                         <h6
                           className="font-size-10"
                           htmlFor="schemeIncentive"
@@ -2369,7 +2333,7 @@ const CreateEditSalesEntry = () => {
                             {errors.incentiveId}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
 
                       <Col lg={3}>
                         <h6 className="font-size-10" htmlFor="formStage">
@@ -2420,7 +2384,7 @@ const CreateEditSalesEntry = () => {
                         )}
                       </Col>
 
-                      <Col lg={3}>
+                      {/* <Col lg={3}>
                         <h6 className="font-size-10" htmlFor="kycStatus">
                           KYC Status <RequiredStar />
                         </h6>
@@ -2437,9 +2401,9 @@ const CreateEditSalesEntry = () => {
                             {errors.kycStatus}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
 
-                      <Col lg={3}>
+                      {/* <Col lg={3}>
                         <h6
                           className="font-size-10"
                           htmlFor="kycCompletionDate"
@@ -2454,9 +2418,9 @@ const CreateEditSalesEntry = () => {
                           placeholder="KYC Completion Date"
                           className={`form-control`}
                         />
-                      </Col>
+                      </Col> */}
 
-                      <Col lg={3}>
+                      {/* <Col lg={3}>
                         <h6
                           className="font-size-10"
                           htmlFor="soReceiveDate"
@@ -2471,7 +2435,7 @@ const CreateEditSalesEntry = () => {
                           placeholder="SO Receive Date"
                           className={`form-control`}
                         />
-                      </Col>
+                      </Col> */}
 
                       <Col lg={3}>
                         <h6
@@ -2489,7 +2453,7 @@ const CreateEditSalesEntry = () => {
                           className={`form-control`}
                         />
                       </Col>
-                      <Col lg={3}>
+                      {/* <Col lg={3}>
                         <h6
                           className="font-size-10"
                           htmlFor="acceptanceDateByBuilder"
@@ -2504,9 +2468,9 @@ const CreateEditSalesEntry = () => {
                           placeholder="Acceptance Date"
                           className={`form-control`}
                         />
-                      </Col>
+                      </Col> */}
 
-                      <Col lg={3}>
+                      {/* <Col lg={3}>
                         <h6
                           className="font-size-10"
                           htmlFor="clientBBAStatus"
@@ -2521,11 +2485,11 @@ const CreateEditSalesEntry = () => {
                           placeholder="Client BBA Status"
                           className={`form-control`}
                         />
-                      </Col>
+                      </Col> */}
                       <Col lg={3}>
                         <h6
                           className="font-size-10"
-                          htmlFor="clientBBAStatus"
+                          htmlFor="bdScheme"
                         >
                           BD Scheme
                         </h6>
@@ -2540,7 +2504,7 @@ const CreateEditSalesEntry = () => {
                       <Col lg={3}>
                         <h6
                           className="font-size-10"
-                          htmlFor="clientBBAStatus"
+                          htmlFor="mtScheme"
                         >
                           MT Scheme
                         </h6>
@@ -2556,13 +2520,13 @@ const CreateEditSalesEntry = () => {
                       <Col lg={3}>
                         <h6
                           className="font-size-10"
-                          htmlFor="clientBBAStatus"
+                          htmlFor="mtPayScheme"
                         >
                           MT Pay Scheme
                         </h6>
                         <input
                           value={rowData.mtPayScheme || ""}
-                          placeholder="MT Pay Scheme"
+                          placeholder="-"
                           className={`form-control`}
                           style={inputStyle}
                           disabled
@@ -2621,7 +2585,7 @@ const CreateEditSalesEntry = () => {
                             </Col>
                           } */}
 
-                      <Col md={6}>
+                      {/* <Col md={6}>
                         <h6 className="font-size-10" htmlFor="remarks">
                           Remarks <RequiredStar />
                         </h6>
@@ -2638,7 +2602,7 @@ const CreateEditSalesEntry = () => {
                             {errors.remarks}
                           </div>
                         )}
-                      </Col>
+                      </Col> */}
 
                     </Row>
                   </Form>
