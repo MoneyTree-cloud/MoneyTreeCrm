@@ -273,6 +273,12 @@ import FloatingChatWidgetRights from "../Pages/Activity/FloatingChatWidgetRights
 import CandidateHistory from "../Pages/HrModule/CandidateHistory";
 import BookingDocuments from "../Pages/Transaction/BookingDocuments";
 import UploadBookingDocs from "../Pages/Transaction/Uploadbookingdocs";
+import BMAssignedCandidate from "../Pages/HrModule/BMAssignedCandidate";
+import ReferalCandidateStatus from "../Pages/HrModule/ReferalCandidateStatus";
+import BHFreshBooking from "../Pages/Transaction/BHFreshBooking";
+import BookingDetails from "../Pages/Transaction/BookingDetails";
+import BookingDetailsUpload from "../Pages/Transaction/BookingDetailsUpload";
+import BookingDetailsForm from "../Pages/Transaction/BookingDetailsForm";
 
 // Lazy loading componentsfAss
 const Dashboard = lazy(() => import("../Pages/Dashboard"));
@@ -312,6 +318,7 @@ const ProjectTypeMaster = lazy(() =>
 );
 const ProspectList = lazy(() => import("../Pages/Dashboard/ProspectsList"));
 const SalesEntryNew = lazy(() => import("../Pages/Transaction/SalesEntryNew"));
+const BHSalesEntryNew = lazy(() => import("../Pages/Transaction/BHSalesEntryNew"));
 const CreateEditSalesEntry = lazy(() =>
   import("../Pages/Transaction/CreateEditSalesEntry")
 );
@@ -505,6 +512,8 @@ const authProtectedRoutes = [
   //Transaction
   { path: "/sales-entry-new", component: <SalesEntryNew /> },
   { path: "/sales-entry-new/create-edit-sales-entry", component: <CreateEditSalesEntry />, },
+  { path: "/bm-sales-entry-new", component: <BHSalesEntryNew /> },
+  { path: "/bm-fresh-booking", component: <BHFreshBooking /> },
   { path: "/fresh-booking", component: <FreshBooking /> },
   { path: "/fresh-booking/fresh-booking-entry", component: <FreshBookingEntry />, },
   { path: "/sales-entry-new/file-upload", component: <FileUpload /> },
@@ -530,6 +539,11 @@ const authProtectedRoutes = [
   //Booking Docs
   { path: "/booking-docs", component: <BookingDocuments /> },
   { path: "/upload-booking-docs", component: <UploadBookingDocs /> },
+
+  //Booking Annexure
+  { path: "/booking-details", component: <BookingDetails /> },
+  { path: "/booking-details/booking-details-form", component: <BookingDetailsForm /> },
+  { path: "/booking-annexure-upload", component: <BookingDetailsUpload /> },
 
   //KYC
   { path: "/kyc-team", component: <KycTeamScreen /> },
@@ -812,6 +826,8 @@ const authProtectedRoutes = [
   { path: "/hr-data-transfer", component: <HrDataTransfer /> },
   { path: "/recruitment-feedback", component: <RecruitmentFeedback /> },
   { path: "/all-candidate-history/candidate-logs", component: <CandidateHistory /> },
+  { path: "/bm-assigned-candidate", component: <BMAssignedCandidate /> },
+  { path: "/referral-candidate-status", component: <ReferalCandidateStatus /> },
 
   //IVR Menu
   { path: "/ivr-agent-list", component: <IvrAgentList /> },

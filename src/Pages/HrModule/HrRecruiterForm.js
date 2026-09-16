@@ -8,13 +8,44 @@ import { FaEye, FaFilePdf, FaArrowLeft, FaCheck } from 'react-icons/fa';
 import { defaultTheme } from '../../helpers/defaultTheme';
 import { useUserStore } from "../../store/useUserStore";
 import { useGet, usePost } from '../../Hooks/useApi';
-import { ALL_DEPARTMENT_DROPDOWN, HR_LOCATION_DROPDOWN, CREATE_CANDIDATE_FORM, GET_ALL_USERS_DROPDOWN, JOB_TITLE_DROPDOWN, UPDATE_CANDIDATE_FORM, CHECK_MOBILE_EXISTS, CHECK_EMAIL_EXISTS } from '../../helpers/url_helper';
+import { ALL_DEPARTMENT_DROPDOWN, HR_LOCATION_DROPDOWN, CREATE_CANDIDATE_FORM, GET_ALL_USERS_DROPDOWN, JOB_TITLE_DROPDOWN, UPDATE_CANDIDATE_FORM, CHECK_MOBILE_EXISTS, CHECK_EMAIL_EXISTS, GET_MY_TEAM } from '../../helpers/url_helper';
 import { toast } from 'react-toastify';
 import ScreenLoader from '../../constants/ScreenLoader';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ApiClient, { hrImageBaseUrl } from '../../helpers/api_helper';
 import { RequiredStar } from '../../helpers/function_helper';
-import { sourceOptions } from '../../constants/global';
+
+export const sourceOptions = [
+    { value: 'Apna', label: 'Apna' },
+    { value: 'Campus', label: 'Campus' },
+    { value: 'Co. Number', label: 'Co. Number' },
+    { value: 'Co. Website', label: 'Co. Website' },
+    { value: 'Freshersworld', label: 'Freshersworld' },
+    { value: 'Indeed', label: 'Indeed' },
+    { value: 'LinkedIn', label: 'LinkedIn' },
+    { value: 'SocialMedia', label: 'Social Media' },
+    { value: 'Naukri', label: 'Naukri' },
+    { value: 'Referral', label: 'Referral' },
+    { value: 'Shine.com', label: 'Shine.com' },
+    { value: 'Work India', label: 'Work India' },
+    { value: 'Job Hai App', label: 'Job Hai App' },
+    { value: "100959", label: "Team ASGZ" },
+    { value: "100251", label: "Team SP" },
+    { value: "1015", label: "Team PK" },
+    { value: "1002", label: "Team YM" },
+    { value: "1004", label: "Team VT" },
+    { value: "1035", label: "Team Sahani" },
+    { value: "1045", label: "Team RS" },
+    { value: "1009", label: "Team RH" },
+    { value: "1019", label: "Team AM" },
+    { value: "1086", label: "Team AR" },
+    { value: "1003", label: "Team AS" },
+    { value: "1011", label: "Team ASS" },
+    { value: "1006", label: "Team CK" },
+    { value: "1008", label: "Team DK" },
+    { value: "1001", label: "Team JR" },
+    { value: "1013", label: "Team KK" }
+];
 
 // ── Styles ────────────────────────────────────────────────────────────────────
 if (document.getElementById("hrf-s")) document.getElementById("hrf-s").remove()
@@ -142,6 +173,7 @@ export default function HrRecruiterForm() {
     const [remainingTime, setRemainingTime] = useState(0)
 
     const locationOptions = branchList?.data?.data?.map(l => ({ value: l.key, label: l.value })) || []
+
     const filteredDepartments = departmentList?.data?.data?.filter(d => d?.value !== "Sales")
 
     const [formData, setFormData] = useState({
@@ -152,21 +184,26 @@ export default function HrRecruiterForm() {
         interested: '', interviewDate: '', interviewTimeFrom: '', interviewTimeTo: '', remarks: ''
     })
 
+    const { data: teamList, isLoading } = useGet(
+        `${GET_MY_TEAM}${formData.source?.value}`,
+        {
+            enabled: !!formData.source?.label?.startsWith('Team'),
+        }
+    );
+
     useEffect(() => {
         if (!rowData || !jobTitleList?.data?.data || !usersList?.data?.data || !locationOptions.length) return
         const matchedJobTitle = jobTitleList.data.data.find(j => j.label === rowData.jobTitle)
-        const matchedSource = sourceOptions.find(s => s.value === rowData.sources?.[0]?.sourceName)
-        const matchedIvwForLoc = locationOptions.find(l => l.label === rowData.preferredLocationName)
-        const matchedBranch = locationOptions.find(l => l.label === rowData.interviewLocationBranch)
-        const matchedReferral = matchedSource?.value === 'Referral' ? usersList.data.data.find(u => u.label === rowData.sources?.[0]?.sourceDetails) : null
+        const matchedSource = sourceOptions.find(s => s.label === rowData.sources?.[0]?.sourceName)
+        const matchedIvwForLoc = locationOptions?.find(l => l.label === rowData.preferredLocationName)
+        const matchedBranch = locationOptions?.find(l => l.label === rowData.interviewLocationBranch)
         const matchedDept = rowData.department ? filteredDepartments?.find(d => d.label === rowData.department) : null
         const resumeDoc = rowData.documents?.find(d => d.documentType === 'RESUME')
         if (resumeDoc) setCvFile({ name: resumeDoc.filePath, url: `${process.env.REACT_APP_BASE_URL}/uploads/${resumeDoc.filePath}`, isServerFile: true })
-
         setFormData(p => ({
             ...p,
             applicantName: rowData.firstName || '', mobile: rowData.phone || '', email: rowData.email || '',
-            source: matchedSource || null, referral: matchedReferral || null,
+            source: matchedSource || null,
             jobTitle: matchedJobTitle || null, branch: matchedBranch || null,
             interviewForLocation: matchedIvwForLoc || null,
             division: rowData.department === 'Sales' ? 'Sales' : 'Non-Sales',
@@ -180,6 +217,45 @@ export default function HrRecruiterForm() {
             remarks: rowData?.createRemarks || '',
         }))
     }, [rowData, jobTitleList?.data?.data, usersList?.data?.data, locationOptions.length, filteredDepartments?.length])
+
+    useEffect(() => {
+        if (!rowData?.sources?.length) return;
+
+        // Referral source
+        if (
+            formData.source?.label === "Referral" &&
+            usersList?.data?.data
+        ) {
+            const matchedReferral = usersList.data.data.find(
+                user => user.label === rowData.sources[0]?.sourceDetails
+            );
+
+            setFormData(prev => ({
+                ...prev,
+                referral: matchedReferral || null,
+            }));
+        }
+
+        // Team source
+        if (
+            formData.source?.label?.startsWith("Team") &&
+            teamList?.data?.data
+        ) {
+            const matchedReferral = teamList.data.data.find(
+                member => member.label === rowData.sources[0]?.sourceDetails
+            );
+
+            setFormData(prev => ({
+                ...prev,
+                referral: matchedReferral || null,
+            }));
+        }
+    }, [
+        formData.source,
+        usersList?.data?.data,
+        teamList?.data?.data,
+        rowData,
+    ]);
 
     useEffect(() => {
         const until = localStorage.getItem("disableUntil")
@@ -229,7 +305,13 @@ export default function HrRecruiterForm() {
     const validate = () => {
         const e = {}
         if (!formData.source) e.source = 'Source is required'
-        if (formData.source?.value === 'Referral' && !formData.referral) e.referral = 'Referral is required'
+        if (
+            (formData.source?.label === 'Referral' ||
+                formData.source?.label?.startsWith('Team')) &&
+            !formData.referral
+        ) {
+            e.referral = 'Referral is required';
+        }
         if (!formData.applicantName.trim()) e.applicantName = 'Applicant name is required'
         if (!formData.mobile.trim()) e.mobile = 'Mobile is required'
         else if (!/^\d{10}$/.test(formData.mobile.trim())) e.mobile = 'Must be 10 digits'
@@ -264,8 +346,8 @@ export default function HrRecruiterForm() {
         fd.append("firstName", formData.applicantName)
         fd.append("email", formData.email)
         fd.append("phone", formData.mobile)
-        fd.append("sourceType", formData.source?.value === 'Referral' ? 'REFERRAL' : 'JOB_PORTAL')
-        fd.append("sourceName", formData.source?.value)
+        fd.append("sourceType", formData.source?.label === 'Referral' ? 'REFERRAL' : 'JOB_PORTAL')
+        fd.append("sourceName", formData.source?.label)
         fd.append("candidateStatus", finalSt)
         fd.append("hrId", userId)
         fd.append("interviewDate", formData.interviewDate)
@@ -278,7 +360,7 @@ export default function HrRecruiterForm() {
         fd.append("isWorking", formData.working === 'Yes' ? true : false)
         fd.append("jobTitle", formData?.jobTitle?.label)
         fd.append("jobDescription", formData?.jobTitle?.value)
-        fd.append("sourceDetails", formData.source?.value === 'Referral' ? formData?.referral?.label : null)
+        fd.append("sourceDetails", (formData.source?.label === 'Referral' || formData.source?.label?.startsWith('Team')) ? formData?.referral?.label : null)
         fd.append("interviewLocation", formData?.branch?.value)
         fd.append("remarks", formData?.remarks)
         if (rowData?.id) { fd.append("candidateId", rowData.id); updateCandidateForm(fd) }
@@ -303,7 +385,7 @@ export default function HrRecruiterForm() {
     return (
         <PageContent>
             <Breadcrumbs title="HR Module" breadcrumbItem={rowData?.id ? "Update Candidate" : "Add Candidate"} />
-            {(addLoading || updateLoading) && <ScreenLoader />}
+            {(addLoading || updateLoading || isLoading) && <ScreenLoader />}
             <Container>
                 <div className="hrf-card">
 
@@ -356,17 +438,28 @@ export default function HrRecruiterForm() {
                                         </div>
                                     </Field>
                                 </Col>
-                                {formData.source?.value === 'Referral' && (
-                                    <Col md={3}>
-                                        <Field label="Select Referral" required error={errors.referral}>
-                                            <div className={`hrf-select-wrap${errors.referral ? " is-invalid" : ""}`}>
-                                                <Select options={usersList?.data?.data || []} value={formData.referral} isClearable
-                                                    onChange={val => handleChange('referral', val)}
-                                                    styles={SELECT_STYLES} menuPortalTarget={document.body} />
-                                            </div>
-                                        </Field>
-                                    </Col>
-                                )}
+                                {(
+                                    formData.source?.label === 'Referral' ||
+                                    formData.source?.label?.startsWith('Team')
+                                ) && (
+                                        <Col md={3}>
+                                            <Field label="Select Referral" required error={errors.referral}>
+                                                <div className={`hrf-select-wrap${errors.referral ? " is-invalid" : ""}`}>
+                                                    <Select
+                                                        // options={formData.source?.label?.startsWith('Team') ? teamList?.data?.data : usersList?.data?.data || []}
+                                                        options={
+                                                            (formData.source?.label?.startsWith('Team') ? teamList?.data?.data : usersList?.data?.data) || []
+                                                        }
+                                                        value={formData.referral}
+                                                        isClearable
+                                                        onChange={val => handleChange('referral', val)}
+                                                        styles={SELECT_STYLES}
+                                                        menuPortalTarget={document.body}
+                                                    />
+                                                </div>
+                                            </Field>
+                                        </Col>
+                                    )}
                                 <Col md={3}>
                                     <Field label="CV Attachment" required error={errors.cv}>
                                         <div className="hrf-cv-wrap">
@@ -544,6 +637,7 @@ export default function HrRecruiterForm() {
                                     <FaArrowLeft size={12} /> Back
                                 </button>
                                 <button type="submit" className="hrf-btn hrf-btn-primary" disabled={disabled}>
+                                    {/* Test */}
                                     {disabled ? `⏳ Wait ${remainingTime}s…` : rowData?.id ? "✓ Update" : "✓ Submit"}
                                 </button>
                             </div>

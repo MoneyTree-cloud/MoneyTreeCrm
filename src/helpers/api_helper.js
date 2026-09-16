@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useUserStore } from "../store/useUserStore";
 import { decryptLocalStorageItem } from "../components/Common/CryptoUtils";
-// axios.defaults.headers.common["ngrok-skip-browser-warning"] ="skip-browser-warning";
 
 export const getLoggedinUser = () => {
   const user = localStorage.getItem("accessToken");
@@ -13,61 +12,26 @@ export const getLoggedinUser = () => {
 };
 
 // *************UAT***************
-// export const imageBaseUrl = "https://frontenduat.moneytreerealty.com/attachment/";
+export const imageBaseUrl = "https://frontendcrmuat.moneytreerealty.com/attachment/";
 
-// export const hrImageBaseUrl = 'https://frontenduat.moneytreerealty.com/hrattachment/';
+export const hrImageBaseUrl = 'https://frontendcrmuat.moneytreerealty.com/hrattachment/';
 
-// const baseURL = "https://backenduat.moneytreerealty.com/";
+const baseURL = "https://backendcrmuat.moneytreerealty.com/";
 
-// export const htmlBaseURL = "https://frontenduat.moneytreerealty.com/events";
+export const htmlBaseURL = "https://frontendcrmuat.moneytreerealty.com/events";
+
 
 // *************LIVE***************
-// export const imageBaseUrl = "https://sap.moneytreerealty.com/attachment/";
+// export const imageBaseUrl = "https://assetstorage.moneytreerealty.com/media/";
 
-// export const hrImageBaseUrl = 'https://sap.moneytreerealty.com/hrattachment/';
+// export const hrImageBaseUrl = 'https://assetstorage.moneytreerealty.com/hrfiles/';
 
-// const baseURL = "https://backend.moneytreerealty.com/";
-
-// export const htmlBaseURL = "https://sap.moneytreerealty.com/events";
-
-//CRM
-// export const imageBaseUrl = "https://crm.moneytreerealty.com/attachment/";
-
-// export const hrImageBaseUrl = 'https://crm.moneytreerealty.com/hrattachment/';
-
-const baseURL = "https://backendcrm.moneytreerealty.com/";
-
-export const htmlBaseURL = "https://crm.moneytreerealty.com/events";
-
-// *************LIVE 2025***************
-// export const imageBaseUrl = "https://sap2025.moneytreerealty.com/attachment/";
-
-// export const hrImageBaseUrl = 'https://sap2025.moneytreerealty.com/hrattachment/';
-
-// const baseURL = "https://backend2025.moneytreerealty.com/";
-
-//LOCAL
-// export const imageBaseUrl = "https://lsap.moneytreerealty.com/attachment/";
-
-// export const hrImageBaseUrl = 'https://lsap.moneytreerealty.com/hrattachment/';
-
-// const baseURL = "https://lsapbackend.moneytreerealty.com/";
-
-//AWS
-export const imageBaseUrl = "https://assetstorage.moneytreerealty.com/media/";
-
-export const hrImageBaseUrl = 'https://assetstorage.moneytreerealty.com/hrfiles/';
-
-// const baseURL = "https://backend.moneytreerealty.com/";
+// const baseURL = "https://backendcrm.moneytreerealty.com/";
 
 // export const htmlBaseURL = "https://assetstorage.moneytreerealty.com/media";
 
 export const assetImageBaseUrl = 'https://assetstorage.moneytreerealty.com/media/';
 
-// export const assetImageBaseUrl = 'https://asset.moneytreerealty.com/';
-
-//*************Bank and PAN Verification*************
-// const verificationApiUrl = 'https://complianceapi.balajimariline.com/v1/utility/'
 
 const facebookApiUrl = 'https://leads.moneytreerealty.com/'
 
@@ -78,14 +42,6 @@ export const axiosInstance = axios.create({
     "Content-Type": "application/json",
   },
 });
-
-// export const verificationApiClient = axios.create({
-//   baseURL: verificationApiUrl,
-//   headers: {
-//     "Content-Type": "application/json",
-//     "x-auth-token": "96f5bca294b3281b6761a2c0aa952b6b01d80b8b163eb905f4e0d54fd26f0d60",
-//   },
-// });
 
 export const facebookApiClient = axios.create({
   baseURL: facebookApiUrl

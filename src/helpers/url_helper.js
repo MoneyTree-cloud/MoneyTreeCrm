@@ -199,6 +199,12 @@ export const UPDATE_SALE_ATTACHMENT_STATUS = "user/management/sale-attachment/up
 export const CREATE_SALE_ATTACHMENT = "user/management/sale-attachment/create";
 export const GET_SALE_ATTACHMENT_BY_EMPLOYEE = "user/management/sale-attachment/get/employee/";
 
+//Booking Annexure
+export const CREATE_BOOKING_ANNEXURE = "user/management/booking-annexure/create";
+export const UPDATE_BOOKING_ANNEXURE = "user/management/booking-annexure/update/";
+export const GET_ALL_BOOKING_ANNEXURE = "user/management/booking-annexure/get/list";
+export const UPLOAD_BOOKING_ANNEXURE = "user/management/booking-annexure/upload";
+
 //Maps Master
 export const CREATE_MAPS_MASTER = "user/management/mapp/create";
 export const UPDATE_MAPS_MASTER = "user/management/mapp/update";
@@ -311,7 +317,7 @@ export const GET_ALL_MT_PAY_SCHEME_DATA = "user/management/wednesday-scheme/get/
 export const DROPDOWN_MT_PAY_SCHEME_DATA = "user/management/wednesday-scheme/dropdown";
 export const GET_ALL_MT_PAY_SCHEME_BOOKING_DATA = "user/management/wednesday-scheme/get/booking/v2";
 export const MARK_PAYOUT_MT_PAY_SCHEME_BOOKING_DATA = "user/management/wednesday-scheme/update/payout";
-export const CREATE_MT_PAY_SCHEME_BOOKING= "user/management/wednesday-scheme/create";
+export const CREATE_MT_PAY_SCHEME_BOOKING = "user/management/wednesday-scheme/create";
 
 //Sale Master Excel Upload
 export const UPLOAD_SALE_MASTER_EXCEL = "user/management/sale/upload";
@@ -570,6 +576,9 @@ export const GET_CANDIDATE_CHAT = "hr/candidate-chat-details/get";
 export const SEND_CANDIDATE_CHAT = "hr/candidate-chat-details/send";
 export const INTERVIEW_HANDOVER_ASSIGN = "hr/interview/handover/assign";
 export const GET_MESSAGE_COUNT = "hr/candidate-chat-details/get/count";
+export const GET_BRANCH_WISE_ASSIGNED_CANDIDATE = "hr/report/branch/candidates";
+export const SUBMIT_CANDIDATE_REMARKS = "hr/candidate/branch-head/remarks";
+export const GET_REFERRAL_DATA_STATUS = "hr/candidate/team/referral";
 
 //Recruitment Feedback
 export const GET_RECRUITMENT_FEEDBACK_LIST = "user/management/feedback/get/doj";

@@ -199,8 +199,6 @@ export default function HrCandidateHistory() {
     const { userId, empCode } = useUserStore(s => s.user)
     const { rowData, status, filters, page, candidateStatus, showFilters, final_Status } = location.state || {}
 
-    console.log("rowData ", rowData)
-
     const { data: mainTeamSubTeam } = useGet(GET_ALL_MAIN_TEAM_SUB_TEAM_DROPDOWN)
     const { data: designationList } = useGet(GET_ALL_POSITION_DROPDOWN)
     const { data: locationOptions } = useGet(HR_LOCATION_DROPDOWN)

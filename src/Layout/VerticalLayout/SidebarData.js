@@ -151,6 +151,9 @@ import {
   MdBookOnline,
   MdAnimation,
   MdDocumentScanner,
+  MdAssignmentAdd,
+  MdCandlestickChart,
+  MdOutlineMp,
 } from "react-icons/md"; // Material Design
 import { MdGroup, MdPersonAdd } from "react-icons/md";
 import { FaFolderOpen, FaUserShield } from "react-icons/fa";
@@ -350,6 +353,16 @@ export const AdminSidebarData = [
         sublabel: "Booking Documents",
         link: "/booking-docs",
         icon: <MdDocumentScanner color={defaultTheme.btnEnable} size={16} />,
+      },
+      {
+        sublabel: "Booking Details",
+        link: "/booking-details",
+        icon: <FaClipboardList color={defaultTheme.btnEnable} size={16} />,
+      },
+      {
+        sublabel: "Upload Booking Details",
+        link: "/booking-annexure-upload",
+        icon: <MdFileUpload color={defaultTheme.btnEnable} size={16} />,
       },
       {
         sublabel: "Receive Pay Details",
@@ -597,6 +610,21 @@ export const AdminSidebarData = [
         sublabel: "Meetings Not Ended",
         link: "/bm-meeting-not-ended",
         icon: <MdMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+      },
+      {
+        sublabel: "BM Assigned Candidate",
+        link: "/bm-assigned-candidate",
+        icon: <MdAssignmentAdd color={defaultTheme.btnEnable} size={16} />,
+      },
+      {
+        sublabel: "BM Booking",
+        link: "/bm-sales-entry-new",
+        icon: <MdBookOnline color={defaultTheme.btnEnable} size={16} />,
+      },
+      {
+        sublabel: "BM Temp Booking",
+        link: "/bm-fresh-booking",
+        icon: <MdOutlineMp color={defaultTheme.btnEnable} size={16} />,
       }
     ]
   },
@@ -1684,7 +1712,7 @@ export const AssociateSidebarData = [
         link: "/transfer-p-100-leads",
         icon: <MdTransferWithinAStation color={defaultTheme.btnEnable} size={16} />,
       },
-       {
+      {
         sublabel: "Upload Booking Docs",
         link: "/upload-booking-docs",
         icon: <MdFileUpload color={defaultTheme.btnEnable} size={16} />,
@@ -1729,7 +1757,12 @@ export const AssociateSidebarData = [
         sublabel: "Admin FNF List",
         link: "/admin-fnf-list",
         icon: <FaBoxes color={defaultTheme.btnEnable} size={16} />,
-      }
+      },
+      // {
+      //   sublabel: "BM Assigned Candidate",
+      //   link: "/bm-assigned-candidate",
+      //   icon: <MdAssignmentAdd color={defaultTheme.btnEnable} size={16} />,
+      // }
     ]
   },
   {
@@ -1818,6 +1851,11 @@ export const AssociateSidebarData = [
         sublabel: "Assigned Candidate",
         link: "/assigned-candidate-data",
         icon: <MdAssignmentInd color={defaultTheme.btnEnable} size={16} />,
+      },
+      {
+        sublabel: "Referral Candidate Status",
+        link: "/referral-candidate-status",
+        icon: <MdCandlestickChart color={defaultTheme.btnEnable} size={16} />,
       }
     ]
   },

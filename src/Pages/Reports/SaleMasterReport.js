@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
-import { formatDate, formatDateForInput, generateTimestamp, getBookingMonthName, getBookingYear, roundToTwoDecimals, WordWrapCell } from "../../helpers/function_helper";
+import { formatDate, formatDateForInput, generateTimestamp, getBookingMonthName, getBookingYear, WordWrapCell } from "../../helpers/function_helper";
 import { SALE_MASTER_REPORT, SALE_MASTER_REPORT_VIEW } from "../../helpers/url_helper";
 import ScreenLoader from "../../constants/ScreenLoader";
 import "../CSS/styles.css";
@@ -150,7 +150,7 @@ export default function SaleMasterReport() {
     {
       name: <span className="font-weight-bold fs-13">SL No.</span>,
       selector: (_, index) => index + 1,
-      width: "2%",
+      width: "4%",
     },
     {
       name: <span className="font-weight-bold fs-13">Unique ID</span>,
@@ -200,12 +200,12 @@ export default function SaleMasterReport() {
       sortable: true,
       cell: (row) => <WordWrapCell>{row.Location}</WordWrapCell>
     },
-    {
-      name: <span className="font-weight-bold fs-13">Booking Count</span>,
-      selector: (row) => row.booking_count,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.booking_count}</WordWrapCell>
-    },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Booking Count</span>,
+    //   selector: (row) => row.booking_count,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.booking_count}</WordWrapCell>
+    // },
     {
       name: <span className="font-weight-bold fs-13">Prop Type</span>,
       selector: (row) => row.PropType,
@@ -218,12 +218,12 @@ export default function SaleMasterReport() {
       sortable: true,
       cell: (row) => <WordWrapCell>{row.Form_Stage}</WordWrapCell>
     },
-    {
-      name: <span className="font-weight-bold fs-13">BD Amount</span>,
-      selector: (row) => row.BD_Amount,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.BD_Amount}</WordWrapCell>
-    },
+    // {
+    //   name: <span className="font-weight-bold fs-13">BD Amount</span>,
+    //   selector: (row) => row.BD_Amount,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.BD_Amount}</WordWrapCell>
+    // },
     {
       name: <span className="font-weight-bold fs-13">Booking Status</span>,
       selector: (row) => row.BookingStatus,
@@ -248,18 +248,18 @@ export default function SaleMasterReport() {
       sortable: true,
       cell: (row) => <WordWrapCell>{row.ClientName}</WordWrapCell>
     },
-    {
-      name: <span className="font-weight-bold fs-13">Floor</span>,
-      selector: (row) => row.Floor,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Floor}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Tower/Block</span>,
-      selector: (row) => row.TowerBlock,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.TowerBlock}</WordWrapCell>
-    },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Floor</span>,
+    //   selector: (row) => row.Floor,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Floor}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Tower/Block</span>,
+    //   selector: (row) => row.TowerBlock,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.TowerBlock}</WordWrapCell>
+    // },
     {
       name: <span className="font-weight-bold fs-13">Unit No</span>,
       selector: (row) => row.UnitNo,
@@ -275,159 +275,165 @@ export default function SaleMasterReport() {
           ? row.Area
           : row?.Area?.toFixed(2)}</WordWrapCell>
     },
-    {
-      name: <span className="font-weight-bold fs-13">BSP</span>,
-      selector: (row) => row.BSP,
-      sortable: true,
-      cell: (row) =>
-        <WordWrapCell>{row.BSP % 1 === 0
-          ? row.BSP
-          : row?.BSP?.toFixed(2)}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Inaugral Discount</span>,
-      selector: (row) => row.Inaugral_Discount,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Inaugral_Discount}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Discount On Form</span>,
-      selector: (row) => row.Discount_on_Form,
-      sortable: true,
-      cell: (row) =>
-        <WordWrapCell>{row.Discount_on_Form % 1 === 0
-          ? row.Discount_on_Form
-          : row.Discount_on_Form?.toFixed(2)}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">NPV</span>,
-      selector: (row) => row.NPV,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.NPV}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Total Discount Amount Per SqFt</span>,
-      selector: (row) => row.Total_Discount_Amount_Per_SqFt,
-      sortable: true,
-      cell: (row) =>
-        <WordWrapCell>{row.Total_Discount_Amount_Per_SqFt % 1 === 0
-          ? row.Total_Discount_Amount_Per_SqFt
-          : row.Total_Discount_Amount_Per_SqFt?.toFixed(2)}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Effective BSP to Customer</span>,
-      selector: (row) => row.Effective_BSP_to_Customer,
-      sortable: true,
-      cell: (row) =>
-        <WordWrapCell>{row.Effective_BSP_to_Customer % 1 === 0
-          ? row.Effective_BSP_to_Customer
-          : row.Effective_BSP_to_Customer?.toFixed(2)}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Effective BSP To Customer*Area</span>,
-      selector: (row) => row.Effective_BSP_to_Customer_X_Area,
-      sortable: true,
-      cell: (row) =>
-        <WordWrapCell>{row.Effective_BSP_to_Customer_X_Area % 1 === 0
-          ? row.Effective_BSP_to_Customer_X_Area
-          : row.Effective_BSP_to_Customer_X_Area?.toFixed(2)}</WordWrapCell>
-    },
     // {
-    //   name: <span className="font-weight-bold fs-13">Net PLC Amount</span>,
-    //   selector: (row) => row.Net_PLC_Amount,
+    //   name: <span className="font-weight-bold fs-13">BSP</span>,
+    //   selector: (row) => row.BSP,
     //   sortable: true,
-    //   cell: (row) => <WordWrapCell>{row.Net_PLC_Amount}</WordWrapCell>
+    //   cell: (row) =>
+    //     <WordWrapCell>{row.BSP % 1 === 0
+    //       ? row.BSP
+    //       : row?.BSP?.toFixed(2)}</WordWrapCell>
     // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Inaugral Discount</span>,
+    //   selector: (row) => row.Inaugral_Discount,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Inaugral_Discount}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Discount On Form</span>,
+    //   selector: (row) => row.Discount_on_Form,
+    //   sortable: true,
+    //   cell: (row) =>
+    //     <WordWrapCell>{row.Discount_on_Form % 1 === 0
+    //       ? row.Discount_on_Form
+    //       : row.Discount_on_Form?.toFixed(2)}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">NPV</span>,
+    //   selector: (row) => row.NPV,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.NPV}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Total Discount Amount Per SqFt</span>,
+    //   selector: (row) => row.Total_Discount_Amount_Per_SqFt,
+    //   sortable: true,
+    //   cell: (row) =>
+    //     <WordWrapCell>{row.Total_Discount_Amount_Per_SqFt % 1 === 0
+    //       ? row.Total_Discount_Amount_Per_SqFt
+    //       : row.Total_Discount_Amount_Per_SqFt?.toFixed(2)}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Effective BSP to Customer</span>,
+    //   selector: (row) => row.Effective_BSP_to_Customer,
+    //   sortable: true,
+    //   cell: (row) =>
+    //     <WordWrapCell>{row.Effective_BSP_to_Customer % 1 === 0
+    //       ? row.Effective_BSP_to_Customer
+    //       : row.Effective_BSP_to_Customer?.toFixed(2)}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Effective BSP To Customer*Area</span>,
+    //   selector: (row) => row.Effective_BSP_to_Customer_X_Area,
+    //   sortable: true,
+    //   cell: (row) =>
+    //     <WordWrapCell>{row.Effective_BSP_to_Customer_X_Area % 1 === 0
+    //       ? row.Effective_BSP_to_Customer_X_Area
+    //       : row.Effective_BSP_to_Customer_X_Area?.toFixed(2)}</WordWrapCell>
+    // },
+    // // {
+    // //   name: <span className="font-weight-bold fs-13">Net PLC Amount</span>,
+    // //   selector: (row) => row.Net_PLC_Amount,
+    // //   sortable: true,
+    // //   cell: (row) => <WordWrapCell>{row.Net_PLC_Amount}</WordWrapCell>
+    // // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Total Value Of Other Charges</span>,
+    //   selector: (row) => row.Total_value_of_Other_Charges,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Total_value_of_Other_Charges}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Possession Charges</span>,
+    //   selector: (row) => row.Possession_Charges,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Possession_Charges}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Net Cost After Possession Charges</span>,
+    //   selector: (row) => row.Net_Cost_after_Possession_Charges,
+    //   sortable: true,
+    //   cell: (row) =>
+    //     <WordWrapCell>{row.Net_Cost_after_Possession_Charges % 1 === 0
+    //       ? row.Net_Cost_after_Possession_Charges
+    //       : row.Net_Cost_after_Possession_Charges?.toFixed(2)}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Turnover</span>,
+    //   selector: (row) => row.Turnover,
+    //   sortable: true,
+    //   cell: (row) =>
+    //     <WordWrapCell>{row.Turnover % 1 === 0
+    //       ? row?.Turnover
+    //       : row?.Turnover?.toFixed(2)}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Plan Choosen By Customer</span>,
+    //   selector: (row) => row.Plan_Chosen_by_Customer,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Plan_Chosen_by_Customer}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Demand</span>,
+    //   selector: (row) => row.Demand,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Demand}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Demand Amt</span>,
+    //   selector: (row) => row.Demand_Amt,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{roundToTwoDecimals(row.Demand_Amt)}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">GST%</span>,
+    //   selector: (row) => row.GST,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.GST}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">GST Amount</span>,
+    //   selector: (row) => row.GST_Amount,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell> {row.GST_Amount % 1 === 0
+    //     ? row.GST_Amount
+    //     : row.GST_Amount?.toFixed(2)}</WordWrapCell>,
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Balance Payment With GST</span>,
+    //   selector: (row) => row.Balance_Payment_with_GST,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Balance_Payment_with_GST % 1 === 0
+    //     ? row.Balance_Payment_with_GST
+    //     : row.Balance_Payment_with_GST?.toFixed(2)}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Payment Rec</span>,
+    //   selector: (row) => row.Payment_Rec,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Payment_Rec}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Clearance Amount</span>,
+    //   selector: (row) => row.Clearance_Amount,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Clearance_Amount}</WordWrapCell>
+    // },
+    // {
+    //   name: <span className="font-weight-bold fs-13">Due Balance</span>,
+    //   selector: (row) => row.Due_Balance,
+    //   sortable: true,
+    //   cell: (row) => <WordWrapCell>{row.Due_Balance % 1 === 0
+    //     ? row?.Due_Balance
+    //     : row?.Due_Balance?.toFixed(2)}</WordWrapCell>
+    // }
     {
-      name: <span className="font-weight-bold fs-13">Total Value Of Other Charges</span>,
-      selector: (row) => row.Total_value_of_Other_Charges,
+      name: <span className="font-weight-bold fs-13">BBA Value</span>,
+      selector: (row) => row.BBA_Value,
       sortable: true,
-      cell: (row) => <WordWrapCell>{row.Total_value_of_Other_Charges}</WordWrapCell>
+      cell: (row) => <WordWrapCell>{row.BBA_Value}</WordWrapCell>
     },
-    {
-      name: <span className="font-weight-bold fs-13">Possession Charges</span>,
-      selector: (row) => row.Possession_Charges,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Possession_Charges}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Net Cost After Possession Charges</span>,
-      selector: (row) => row.Net_Cost_after_Possession_Charges,
-      sortable: true,
-      cell: (row) =>
-        <WordWrapCell>{row.Net_Cost_after_Possession_Charges % 1 === 0
-          ? row.Net_Cost_after_Possession_Charges
-          : row.Net_Cost_after_Possession_Charges?.toFixed(2)}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Turnover</span>,
-      selector: (row) => row.Turnover,
-      sortable: true,
-      cell: (row) =>
-        <WordWrapCell>{row.Turnover % 1 === 0
-          ? row?.Turnover
-          : row?.Turnover?.toFixed(2)}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Plan Choosen By Customer</span>,
-      selector: (row) => row.Plan_Chosen_by_Customer,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Plan_Chosen_by_Customer}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Demand</span>,
-      selector: (row) => row.Demand,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Demand}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Demand Amt</span>,
-      selector: (row) => row.Demand_Amt,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{roundToTwoDecimals(row.Demand_Amt)}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">GST%</span>,
-      selector: (row) => row.GST,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.GST}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">GST Amount</span>,
-      selector: (row) => row.GST_Amount,
-      sortable: true,
-      cell: (row) => <WordWrapCell> {row.GST_Amount % 1 === 0
-        ? row.GST_Amount
-        : row.GST_Amount?.toFixed(2)}</WordWrapCell>,
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Balance Payment With GST</span>,
-      selector: (row) => row.Balance_Payment_with_GST,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Balance_Payment_with_GST % 1 === 0
-        ? row.Balance_Payment_with_GST
-        : row.Balance_Payment_with_GST?.toFixed(2)}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Payment Rec</span>,
-      selector: (row) => row.Payment_Rec,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Payment_Rec}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Clearance Amount</span>,
-      selector: (row) => row.Clearance_Amount,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Clearance_Amount}</WordWrapCell>
-    },
-    {
-      name: <span className="font-weight-bold fs-13">Due Balance</span>,
-      selector: (row) => row.Due_Balance,
-      sortable: true,
-      cell: (row) => <WordWrapCell>{row.Due_Balance % 1 === 0
-        ? row?.Due_Balance
-        : row?.Due_Balance?.toFixed(2)}</WordWrapCell>
-    }
   ];
 
   if (accessGranted === null) {

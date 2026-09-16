@@ -22,7 +22,7 @@ import { formStageOptions } from "../../constants/global";
 export default function SalesEntryNew() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { userId } = useUserStore((state) => state.user);
+  const { userId,empCode } = useUserStore((state) => state.user);
   const [accessGranted, setAccessGranted] = useState(null);
   const LIMIT = 100;
   const { formState_: formStateFromNav, page_: pageFromNav } = location.state || {};
@@ -309,10 +309,10 @@ export default function SalesEntryNew() {
       cell: (row) => <WordWrapCell>{row.clientName}</WordWrapCell>,
     },
     {
-      name: <span className="font-weight-bold fs-13">Unit Name</span>,
-      selector: (row) => row.unitName,
+      name: <span className="font-weight-bold fs-13">Unit No.</span>,
+      selector: (row) => row.unitNo,
       sortable: true,
-      cell: (row) => <WordWrapCell>{row.unitName}</WordWrapCell>,
+      cell: (row) => <WordWrapCell>{row.unitNo}</WordWrapCell>,
     },
     {
       name: <span className="font-weight-bold fs-13">BBA Value</span>,
@@ -522,13 +522,16 @@ export default function SalesEntryNew() {
           </Card>
         </form>
 
-        <i
-          className="fas fa-file-excel"
-          style={iconStyle}
-          title="Download Excel"
-          fontSize="15px"
-          onClick={downloadDataExcel}
-        />
+        {empCode !== "20019" && (
+
+          <i
+            className="fas fa-file-excel"
+            style={iconStyle}
+            title="Download Excel"
+            fontSize="15px"
+            onClick={downloadDataExcel}
+          />
+        )}
 
         <AppTable
           columns={columns}

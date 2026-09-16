@@ -176,25 +176,21 @@ export default function MeetingDashboardAdmin() {
       selector: (row) => row.prospectId,
       sortable: true,
       width: "15%",
-      cell: (row) => (
-        <div style={{ wordWrap: "break-word", whiteSpace: "normal" }}>
-          {row.prospectId}
-        </div>
-      ),
+      cell: (row) => <WordWrapCell>{row.prospectId}</WordWrapCell>
     },
     {
       name: <span className="font-weight-bold fs-13">Associate Name</span>,
       selector: (row) => row.loginUserName,
       sortable: true,
       width: "10%",
-      cell: (row) => <WordWrapCell>{row.mainTeam}</WordWrapCell>
+      cell: (row) => <WordWrapCell>{row.loginUserName}</WordWrapCell>
     },
     {
       name: <span className="font-weight-bold fs-13">Meeting Type</span>,
       selector: (row) => row.meetTypeName,
       sortable: true,
       width: "7%",
-      cell: (row) => <WordWrapCell>{row.mainTeam}</WordWrapCell>
+      cell: (row) => <WordWrapCell>{row.meetTypeName}</WordWrapCell>
     },
     {
       name: <span className="font-weight-bold fs-13">Client Name</span>,
@@ -207,7 +203,6 @@ export default function MeetingDashboardAdmin() {
       name: <span className="font-weight-bold fs-13">Mobile Number</span>,
       width: "7%",
       selector: (row) => row.phoneNo,
-      sortable: true,
       cell: (row) => (
         <div className="phone-container">
           <MdMobileFriendly

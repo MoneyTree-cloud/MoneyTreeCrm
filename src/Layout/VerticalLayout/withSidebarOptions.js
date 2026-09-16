@@ -86,7 +86,8 @@ const withSidebarOptions = (Component) => {
                   subItem.sublabel === "Assigned Candidate" ||
                   subItem.sublabel === "Due Payment" ||
                   subItem.sublabel === "Report P100 Leads" ||
-                  subItem.sublabel === "P100 Leads Report"
+                  subItem.sublabel === "P100 Leads Report" ||
+                  subItem.sublabel === "Referral Candidate Status"
                   // subItem.sublabel === "Transfer P100 Leads"
                 );
               }
