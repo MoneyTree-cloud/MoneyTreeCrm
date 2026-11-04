@@ -52,9 +52,9 @@
 
         .slick-current {
             opacity: 1;
-            background-color: rgba($primary, 0.2);
+            background-color: rgba(var(--mt-primary-rgb), 0.2);
             .nav-title {
-                color: $primary;
+                color: var(--mt-primary);
             }
         }
 
@@ -103,7 +103,7 @@
 
         &.active {
             .event-timeline-dot {
-                color: $primary;
+                color: var(--mt-primary);
             }
         }
 

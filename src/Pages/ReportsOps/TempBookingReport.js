@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col, Button, Card, CardBody } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import * as XLSX from 'xlsx-js-style';
 import { FaFileExcel } from 'react-icons/fa';
 import {

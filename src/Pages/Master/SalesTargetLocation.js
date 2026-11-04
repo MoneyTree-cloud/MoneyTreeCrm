@@ -10,7 +10,7 @@ import ScreenLoader from "../../constants/ScreenLoader";
 import AppTable from "../../components/Common/Table";
 import { useUserStore } from "../../store/useUserStore";
 import { formatDateTime, WordWrapCell } from "../../helpers/function_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { scrollToTop } from "../../constants/global";

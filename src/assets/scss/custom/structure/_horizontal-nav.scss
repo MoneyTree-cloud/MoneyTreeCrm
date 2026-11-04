@@ -217,7 +217,7 @@
 
                 &.active,
                 &:active {
-                    color: $primary;
+                    color: var(--mt-primary);
                 }
             }
         }

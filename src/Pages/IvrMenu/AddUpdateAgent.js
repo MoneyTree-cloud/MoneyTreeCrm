@@ -6,7 +6,7 @@ import { Card, CardBody, Col, Container, FormGroup, Input, Label, Row } from 're
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ADD_IVR_AGENT, GET_ALL_IVR_USERS, UPDATE_IVR_AGENT } from '../../helpers/url_helper'
 import { useGet } from '../../Hooks/useApi'
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import ScreenLoader from '../../constants/ScreenLoader'
 import { toast } from 'react-toastify'
 import ApiClient from '../../helpers/api_helper'

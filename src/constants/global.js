@@ -1,6 +1,17 @@
 import { FaClock, FaFileAlt, FaFileImage, FaFilePdf, FaFilePowerpoint, FaFileVideo, FaFileWord } from "react-icons/fa";
 import { PiCheckCircleBold, PiPauseCircleBold, PiXCircleBold } from "react-icons/pi";
 import { formatDateTime } from "../helpers/function_helper";
+import { defaultTheme } from "../helpers/defaultTheme";
+
+// ── Sidebar look — change here for the whole sidebar ──
+// Menu = top level modules, Sub menu = items inside a module.
+// (hover / active states switch to white on the theme gradient automatically)
+export const TOP_ICON_SIZE = 18; // menu icon size
+export const ICON_SIZE = 16; // sub menu icon size
+export const TOP_ICON_COLOR = defaultTheme.primary; // menu icon colour
+export const ICON_COLOR = defaultTheme.primary; // sub menu icon colour
+export const MENU_TEXT_COLOR = "#1f2933"; // menu text colour
+export const SUB_MENU_TEXT_COLOR = "#1f2933"; // sub menu text colour
 
 export const USER_TYPE = {
   ADMIN: "ADMIN",

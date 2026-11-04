@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 import React, { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col, Card, CardBody } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 import PageContent from '../../components/Common/PageContent';
 import ScreenLoader from '../../constants/ScreenLoader';

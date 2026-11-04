@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Container, Card, CardBody, Label } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { toast } from 'react-toastify';
 import { FaCalculator, FaFileInvoiceDollar, FaCoins, FaWallet, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import PageContent from '../../components/Common/PageContent';
@@ -10,7 +10,7 @@ import AppTable from '../../components/Common/Table';
 import ScreenLoader from '../../constants/ScreenLoader';
 import ApiClient, { assetImageBaseUrl } from '../../helpers/api_helper';
 import { defaultTheme } from '../../helpers/defaultTheme';
-import { formatINR, WordWrapCell } from '../../helpers/function_helper';
+import { formatINR, WordWrapCell, Notes, Note } from '../../helpers/function_helper';
 import { useUserStore } from '../../store/useUserStore';
 import {
     GET_ALL_MT_PAY_SCHEME_DATA,
@@ -371,22 +371,10 @@ export default function MTPay() {
                         <FaFileInvoiceDollar size={12} /> My Statement
                     </button>
                 </div>
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        flexWrap: "wrap",
-                        gap: "8px",
-                        fontSize: 12,
-                        fontWeight: 500,
-                        color: defaultTheme.redColor,
-                        marginTop: 8,
-                    }}
-                >
-                    <span><strong>Note:</strong></span>
-                    <span>1• You should be active in the system at the time of disbursal.</span>
-                    <span>2• Subject to the 5× incentive rule.</span>
-                </div>
+                <Notes>
+                    <Note tone="gold">You should be active in the system at the time of disbursal.</Note>
+                    <Note tone="gold">Subject to the 5× incentive rule.</Note>
+                </Notes>
 
                 {/* ══ Calculator tab ══════════════════════════════════════ */}
                 {activeTab === 'calculator' && (
@@ -414,7 +402,7 @@ export default function MTPay() {
 
                         {/* Total Incentive Card */}
                         <div style={{
-                            background: 'linear-gradient(135deg, #005B52, #007A6E)',
+                            background: 'linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light))',
                             color: '#fff',
                             borderRadius: 14,
                             padding: '18px 22px',
@@ -424,7 +412,7 @@ export default function MTPay() {
                             justifyContent: 'space-between',
                             flexWrap: 'wrap',
                             gap: 10,
-                            boxShadow: '0 2px 8px rgba(0,91,82,.2)',
+                            boxShadow: '0 2px 8px rgba(var(--mt-primary-rgb),.2)',
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                                 <div style={{
@@ -462,7 +450,7 @@ export default function MTPay() {
                                 <div style={{
                                     width: 44, height: 44,
                                     borderRadius: 11,
-                                    background: `${defaultTheme.primary}15`,
+                                    background: `rgba(var(--mt-primary-rgb), 0.08)`,
                                     color: defaultTheme.primary,
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     fontSize: 18,

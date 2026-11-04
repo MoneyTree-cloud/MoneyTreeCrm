@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Row, Col, Card, CardBody, Button, Container, Form, Input } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { ALL_LOCATION_DROPDOWN, GET_DROPDOWN_BUILDER_, GET_PROJECT_BY_BUILDER_, CREATE_FOCUS_PROJECT, GET_ALL_FOCUS_PROJECT, STATUS_CHANGE_FOCUS_PROJECT, UPDATE_FOCUS_PROJECT } from "../../helpers/url_helper";
 import { useUserStore } from "../../store/useUserStore";
@@ -330,7 +330,7 @@ const FocusProjectMaster = () => {
                 <Switch
                     checked={row.active}
                     offColor={defaultTheme.goldColorLogo}
-                    onColor={defaultTheme.primary}
+                    onColor={defaultTheme.primaryHex}
                     height={20}
                     width={40}
                     onChange={() => handleSwitchChange(row)}

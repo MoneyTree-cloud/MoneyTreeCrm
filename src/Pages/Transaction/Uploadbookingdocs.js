@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Container, Row, Col, Card, CardBody, Label, Button } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { toast } from 'react-toastify';
 import {
     FaClock, FaCheckCircle, FaTimesCircle,
@@ -78,7 +78,7 @@ function FileUploadZone({ file, onChange, accept = '.pdf,.png,.jpg,.jpeg' }) {
                 border: `1.5px dashed ${file ? defaultTheme.primary : '#CBD5E1'}`,
                 borderRadius: 10,
                 padding: '14px 16px',
-                background: file ? '#F0FDF9' : '#FAFBFC',
+                background: file ? 'var(--mt-primary-50)' : '#FAFBFC',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -89,7 +89,7 @@ function FileUploadZone({ file, onChange, accept = '.pdf,.png,.jpg,.jpeg' }) {
             <div style={{
                 width: 44, height: 44,
                 borderRadius: 10,
-                background: `${defaultTheme.primary}15`,
+                background: `rgba(var(--mt-primary-rgb), 0.08)`,
                 color: defaultTheme.primary,
                 display: 'flex',
                 alignItems: 'center',
@@ -310,9 +310,9 @@ export default function UploadBookingDocs() {
                             alignItems: 'center',
                             gap: 5,
                             padding: '5px 11px',
-                            background: `${defaultTheme.primary}15`,
+                            background: `rgba(var(--mt-primary-rgb), 0.08)`,
                             color: defaultTheme.primary,
-                            border: `1px solid ${defaultTheme.primary}40`,
+                            border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                             borderRadius: 7,
                             fontSize: 11,
                             fontWeight: 700,
@@ -439,7 +439,7 @@ export default function UploadBookingDocs() {
                             <div style={{
                                 width: 40, height: 40,
                                 borderRadius: 10,
-                                background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                 color: '#fff',
                                 display: 'flex',
                                 alignItems: 'center',

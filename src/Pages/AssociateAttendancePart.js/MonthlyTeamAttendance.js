@@ -18,7 +18,7 @@ import {
   GET_MY_TEAM_ID,
 } from "../../helpers/url_helper";
 import { useGet } from "../../Hooks/useApi";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import ApiClient from "../../helpers/api_helper";
 import PageContent from "../../components/Common/PageContent";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";

@@ -8,7 +8,7 @@ import ScreenLoader from "../../constants/ScreenLoader";
 import "../CSS/styles.css";
 import { toast } from "react-toastify";
 import ApiClient from "../../helpers/api_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import PageContent from "../../components/Common/PageContent";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import PermissionMissing from "../Utility/PermissonMissing";

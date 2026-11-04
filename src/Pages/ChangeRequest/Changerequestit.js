@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo, useState, useEffect } from 'react';
 import { Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { toast } from 'react-toastify';
 import { FaEye, FaFile, FaHistory } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
@@ -268,7 +268,7 @@ export default function ChangeRequestIT() {
                             cursor: long ? 'pointer' : 'default',
                             textDecoration: long ? 'underline' : 'none',
                             textDecorationStyle: 'dotted',
-                            textDecorationColor: 'rgba(0,91,82,.3)',
+                            textDecorationColor: 'rgba(var(--mt-primary-rgb),.3)',
                             textUnderlineOffset: 3
                         }}
                         title={long ? 'Click to view full description' : ''}

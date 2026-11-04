@@ -118,7 +118,7 @@ function RemarksModal({ isOpen, toggle, candidate, onSuccess, branchHeadName }) 
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                                 <div style={{
                                     width: 32, height: 32, borderRadius: '50%',
-                                    background: `${defaultTheme.primary}15`, color: defaultTheme.primary,
+                                    background: `rgba(var(--mt-primary-rgb), 0.08)`, color: defaultTheme.primary,
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 }}>
                                     <FaUser size={12} />
@@ -302,7 +302,7 @@ export default function BMAssignedCandidate() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <div style={{
                             width: 32, height: 32, borderRadius: '50%',
-                            background: `${defaultTheme.primary}15`, color: defaultTheme.primary,
+                            background: `rgba(var(--mt-primary-rgb), 0.08)`, color: defaultTheme.primary,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             fontSize: 12, flexShrink: 0,
                         }}>
@@ -367,9 +367,9 @@ export default function BMAssignedCandidate() {
                         style={{
                             display: 'inline-flex', alignItems: 'center', gap: 4,
                             padding: '5px 10px',
-                            background: `${defaultTheme.primary}15`,
+                            background: `rgba(var(--mt-primary-rgb), 0.08)`,
                             color: defaultTheme.primary,
-                            border: `1px solid ${defaultTheme.primary}40`,
+                            border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                             borderRadius: 6, fontSize: 10.5, fontWeight: 700,
                             textDecoration: 'none',
                         }}>
@@ -449,16 +449,16 @@ export default function BMAssignedCandidate() {
                         style={{
                             display: 'inline-flex', alignItems: 'center', gap: 5,
                             padding: '5px 11px',
-                            background: `${defaultTheme.primary}1A`,
+                            background: `rgba(var(--mt-primary-rgb), 0.1)`,
                             color: defaultTheme.primary,
-                            border: `1px solid ${defaultTheme.primary}40`,
+                            border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                             borderRadius: 7,
                             fontSize: 11, fontWeight: 700,
                             cursor: 'pointer',
                             transition: 'background .15s',
                         }}
-                        onMouseEnter={(e) => e.currentTarget.style.background = `${defaultTheme.primary}25`}
-                        onMouseLeave={(e) => e.currentTarget.style.background = `${defaultTheme.primary}1A`}
+                        onMouseEnter={(e) => e.currentTarget.style.background = `rgba(var(--mt-primary-rgb), 0.15)`}
+                        onMouseLeave={(e) => e.currentTarget.style.background = `rgba(var(--mt-primary-rgb), 0.1)`}
                     >
                         <FaCommentDots size={10} /> Add Remarks
                     </button>
@@ -486,7 +486,7 @@ export default function BMAssignedCandidate() {
                         }}>
                             <div style={{
                                 width: 38, height: 38, borderRadius: 10,
-                                background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                 color: '#fff',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 fontSize: 14,

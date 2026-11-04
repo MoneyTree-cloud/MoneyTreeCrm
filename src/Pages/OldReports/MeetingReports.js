@@ -6,7 +6,7 @@ import { defaultTheme } from "../../helpers/defaultTheme";
 import { formatDateForInput } from "../../helpers/function_helper";
 import { SHOW_MEETING_REPORT } from "../../helpers/url_helper";
 import { useGet } from "../../Hooks/useApi";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import ScreenLoader from "../../constants/ScreenLoader";
 import { toast } from "react-toastify";
 import PageContent from "../../components/Common/PageContent";

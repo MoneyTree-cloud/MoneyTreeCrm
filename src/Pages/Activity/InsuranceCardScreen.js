@@ -26,7 +26,7 @@ _s.textContent = `
     }
     .pc-download-btn {
         display:inline-flex; align-items:center; gap:8px;
-        padding:10px 22px; background:#005B52;
+        padding:10px 22px; background:var(--mt-primary);
         color:#fff; border:none; border-radius:9px; font-size:13px; font-weight:700;
         cursor:pointer; transition:opacity .15s;
     }
@@ -67,13 +67,13 @@ _s.textContent = `
         display:flex; align-items:center; justify-content:center; flex-shrink:0;
     }
     .pc-lbl { font-size:13px; font-weight:700; color:#1a1a1a; }
-    .pc-val { font-size:13px; font-weight:700; color:#005B52; margin-top:2px; }
+    .pc-val { font-size:13px; font-weight:700; color:var(--mt-primary); margin-top:2px; }
 
     /* ── WAVE ── */
     .pc-wave-wrap { background:#ede8d8; line-height:0; display:block; }
 
     /* ── BOTTOM half: dark green ── */
-    .pc-bottom { background:#004D45; padding:20px 26px 14px; }
+    .pc-bottom { background:var(--mt-primary-dark); padding:20px 26px 14px; }
     .pc-bottom-grid {
         display:grid; grid-template-columns:1fr 1fr;
         gap:14px 36px; margin-bottom:16px;
@@ -119,7 +119,7 @@ const Wave = () => (
         <svg viewBox="0 0 760 60" preserveAspectRatio="none"
             style={{ width: "100%", display: "block", height: 60 }}
             xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,20 C130,52 250,4 380,24 C510,44 630,6 760,28 L760,60 L0,60 Z" fill="#004D45" />
+            <path d="M0,20 C130,52 250,4 380,24 C510,44 630,6 760,28 L760,60 L0,60 Z" style={{ fill: "var(--mt-primary-dark)" }} />
             <path d="M0,20 C130,52 250,4 380,24 C510,44 630,6 760,28"
                 fill="none" stroke="#C9A84C" strokeWidth="3.5" />
             <path d="M0,20 C130,52 250,4 380,24 C510,44 630,6 760,28"
@@ -236,7 +236,7 @@ export default function InsuranceCardScreen() {
                         {/* ── TOP ── */}
                         <div className="pc-top">
                             {downloadDate && (
-                                <div style={{ textAlign: 'center', fontSize: 11, fontWeight: 700, color: '#005B52', marginBottom: 6, letterSpacing: 0.3, textDecoration: 'underline' }}>
+                                <div style={{ textAlign: 'center', fontSize: 11, fontWeight: 700, color: 'var(--mt-primary)', marginBottom: 6, letterSpacing: 0.3, textDecoration: 'underline' }}>
                                     Downloaded On: {downloadDate}
                                 </div>
                             )}

@@ -689,7 +689,7 @@ const WIDGET_CSS = `
     padding:6px 12px;
     border:none;
     border-radius:6px;
-    background:#005B52;
+    background:var(--mt-primary);
     color:#fff;
     cursor:pointer;
     font-size:12px;
@@ -741,11 +741,11 @@ const WIDGET_CSS = `
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #005B52, #007A6E);
+        background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
         color: #fff;
         border: none;
         cursor: pointer;
-        box-shadow: 0 6px 20px rgba(0,91,82,0.35);
+        box-shadow: 0 6px 20px rgba(var(--mt-primary-rgb),0.35);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -754,7 +754,7 @@ const WIDGET_CSS = `
     }
     .mtw-bubble:hover {
         transform: scale(1.08);
-        box-shadow: 0 8px 24px rgba(0,91,82,0.45);
+        box-shadow: 0 8px 24px rgba(var(--mt-primary-rgb),0.45);
     }
     .mtw-bubble:active {
         transform: scale(0.95);
@@ -763,7 +763,7 @@ const WIDGET_CSS = `
         position: absolute;
         inset: 0;
         border-radius: 50%;
-        border: 2px solid #007A6E;
+        border: 2px solid var(--mt-primary-light);
         animation: mtwPulse 2s infinite;
         opacity: 0;
         pointer-events: none;
@@ -810,7 +810,7 @@ const WIDGET_CSS = `
         align-items: center;
         justify-content: space-between;
         padding: 12px 14px;
-        background: linear-gradient(135deg, #005B52, #007A6E);
+        background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
         color: #fff;
         flex-shrink: 0;
     }
@@ -868,11 +868,11 @@ const WIDGET_CSS = `
     }
     .mtw-welcome-icon {
         width: 56px; height: 56px; border-radius: 50%;
-        background: linear-gradient(135deg, #005B52, #007A6E);
+        background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
         color: #fff;
         display: flex; align-items: center; justify-content: center;
         margin-bottom: 12px;
-        box-shadow: 0 4px 12px rgba(0,91,82,0.25);
+        box-shadow: 0 4px 12px rgba(var(--mt-primary-rgb),0.25);
     }
     .mtw-welcome-title {
         font-size: 17px; font-weight: 700;
@@ -904,9 +904,9 @@ const WIDGET_CSS = `
         font-family: inherit;
     }
     .mtw-quick-btn:hover {
-        border-color: #005B52;
-        background: #F0FDF9;
-        color: #005B52;
+        border-color: var(--mt-primary);
+        background: var(--mt-primary-50);
+        color: var(--mt-primary);
     }
 
     /* ── Messages ── */
@@ -918,7 +918,7 @@ const WIDGET_CSS = `
 
     .mtw-ai-avatar {
         width: 30px; height: 30px;
-        background: linear-gradient(135deg, #005B52, #007A6E);
+        background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
         color: #fff;
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
@@ -945,17 +945,17 @@ const WIDGET_CSS = `
         border-radius: 4px;
         font-size: 12px;
         font-family: 'Fira Code', monospace;
-        color: #005B52;
+        color: var(--mt-primary);
     }
     .mtw-bubble-ai strong { font-weight: 700; color: #0F172A; }
-    .mtw-bubble-ai em { font-style: italic; color: #005B52; }
+    .mtw-bubble-ai em { font-style: italic; color: var(--mt-primary); }
 
     .mtw-bubble-typing {
         padding: 14px 16px;
     }
 
     .mtw-bubble-user {
-        background: linear-gradient(135deg, #005B52, #007A6E);
+        background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
         color: #fff;
         border-radius: 14px 14px 4px 14px;
         padding: 10px 14px;
@@ -963,7 +963,7 @@ const WIDGET_CSS = `
         line-height: 1.5;
         max-width: 78%;
         word-break: break-word;
-        box-shadow: 0 2px 6px rgba(0,91,82,0.2);
+        box-shadow: 0 2px 6px rgba(var(--mt-primary-rgb),0.2);
     }
 
     /* ── Typing dots ── */
@@ -972,7 +972,7 @@ const WIDGET_CSS = `
     }
     .mtw-typing span {
         width: 6px; height: 6px;
-        background: #005B52;
+        background: var(--mt-primary);
         border-radius: 50%;
         animation: mtwBounce 1.2s infinite ease-in-out;
     }
@@ -1024,9 +1024,9 @@ const WIDGET_CSS = `
         transition: border-color 0.15s, box-shadow 0.15s;
     }
     .mtw-input-box:focus-within {
-        border-color: #005B52;
+        border-color: var(--mt-primary);
         background: #fff;
-        box-shadow: 0 0 0 3px rgba(0, 91, 82, 0.08);
+        box-shadow: 0 0 0 3px rgba(var(--mt-primary-rgb), 0.08);
     }
     .mtw-input-recording {
         border-color: #DC2626 !important;
@@ -1074,9 +1074,9 @@ const WIDGET_CSS = `
         animation: mtwBlink 1.6s infinite;
     }
     .mtw-send-active {
-        background: linear-gradient(135deg, #005B52, #007A6E) !important;
+        background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light)) !important;
         color: #fff !important;
-        box-shadow: 0 2px 6px rgba(0,91,82,0.25);
+        box-shadow: 0 2px 6px rgba(var(--mt-primary-rgb),0.25);
     }
     .mtw-send-active:hover { opacity: 0.92; }
     .mtw-send-btn:disabled, .mtw-mic-btn:disabled { cursor: not-allowed; opacity: 0.6; }
@@ -1122,11 +1122,11 @@ const WIDGET_CSS = `
         transition: all 0.15s;
     }
     .mtw-sess-item:hover {
-        border-color: #005B52;
-        background: #F0FDF9;
+        border-color: var(--mt-primary);
+        background: var(--mt-primary-50);
     }
     .mtw-sess-item.active {
-        border-color: #005B52;
+        border-color: var(--mt-primary);
         background: #ECFDF5;
     }
 

@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 import { useEffect, useState } from "react";
 import { Button, Card, CardBody, Col, Container, Modal, ModalBody, ModalFooter, ModalHeader, Row } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useGet, usePost, usePut } from "../../Hooks/useApi";
 import { CREATE_PROSPECT, GET_ALL_PROSPECTS_MASTER, PROJECT_ID_NAME_DROPDOWN, UPDATE_PROSPECT, MARK_DND, GET_MY_ALL_TEAM } from "../../helpers/url_helper";

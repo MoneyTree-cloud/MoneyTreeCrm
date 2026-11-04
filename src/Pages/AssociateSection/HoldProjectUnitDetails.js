@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import AppTable from "../../components/Common/Table";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet } from "../../Hooks/useApi";
 import {
   GET_DROPDOWN_BUILDER_,

@@ -13,7 +13,7 @@ import ApiClient from '../../helpers/api_helper';
 import { ALL_LOCATION_DROPDOWN, CALL_FOR_BOOKING, GET_ALL_MAIN_TEAM_DROPDOWN, GET_ALL_SUB_TEAM_DROPDOWN, MEETING_FEEDBACK_DATA, RECORDING_BOOKING, UPDATE_MEETING_FEEDBACK_DATA } from '../../helpers/url_helper';
 import { toast } from 'react-toastify';
 import { FaEye, FaHeadphones } from "react-icons/fa";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from '../../helpers/defaultTheme';
 import { useGet, usePost } from '../../Hooks/useApi';
 import { IoCall } from 'react-icons/io5';

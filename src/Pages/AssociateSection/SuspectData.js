@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Card, CardBody, Col, Container, Row, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, } from "reactstrap";
 import AppTable from "../../components/Common/Table";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { usePost, usePut } from "../../Hooks/useApi";
 import { CREATE_SUSPECT, GET_SUSPECT_DATA_BY_ASSOCIATE_ID_NEW, IVR_MAKE_CALL, MARK_DND, UPDATE_SUSPECT_DATA } from "../../helpers/url_helper";
 import ScreenLoader from "../../constants/ScreenLoader";

@@ -123,7 +123,7 @@ const AddTickerData = () => {
           onChange={() => handleSwitchChange(row)}
           checked={row.isActive === "YES"}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
         />

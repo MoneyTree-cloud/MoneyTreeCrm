@@ -22,7 +22,7 @@ _s.id = "ind-s"
 _s.textContent = `
     /* ── Header ── */
     .ind-hdr {
-        background:linear-gradient(135deg,#005B52 0%,#007A6E 60%,#00897B 100%);
+        background:linear-gradient(135deg,var(--mt-primary) 0%,var(--mt-primary-light) 60%,var(--mt-primary-light) 100%);
         border-radius:14px; padding:18px 22px; margin-bottom:14px;
         display:flex; align-items:center; justify-content:space-between;
         flex-wrap:wrap; gap:10px; position:relative; overflow:hidden;
@@ -56,12 +56,12 @@ _s.textContent = `
         border-radius:8px; font-size:13px; color:#0F172A;
         outline:none; flex:1; width:100%; transition:border-color .15s; background:#fff;
     }
-    .ind-search-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .ind-search-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     .ind-clear-x {
         position:absolute; right:10px; color:#94A3B8; cursor:pointer;
         display:flex; align-items:center; transition:color .15s;
     }
-    .ind-clear-x:hover { color:#005B52; }
+    .ind-clear-x:hover { color:var(--mt-primary); }
     .ind-count-chip {
         font-size:11px; font-weight:700; color:#64748B;
         background:#F1F5F9; border:1px solid #E2E8F0;
@@ -83,7 +83,7 @@ _s.textContent = `
     .ind-rel-other    { background:#F8FAFC; color:#475569; border:1px solid #E2E8F0; }
 
      .ul-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; white-space:nowrap; }
-    .ul-btn-primary   { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .ul-btn-primary   { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .ul-btn-primary:hover { opacity:.88; }
     .ul-btn-secondary { background:#F1F5F9; color:#475569; border:1.5px solid #E2E8F0; }
     .ul-btn-secondary:hover { background:#E2E8F0; }
@@ -122,7 +122,7 @@ const columns = [
         sortable: true,
         cell: r => (
             <WordWrapCell>
-                <span style={{ fontWeight: 700, color: '#005B52' }}>{r.empCode || '—'}</span>
+                <span style={{ fontWeight: 700, color: 'var(--mt-primary)' }}>{r.empCode || '—'}</span>
             </WordWrapCell>
         ),
     },

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Label } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import AppTable from "../../components/Common/Table";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useGet } from "../../Hooks/useApi";

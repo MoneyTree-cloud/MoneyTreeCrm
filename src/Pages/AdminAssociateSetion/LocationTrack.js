@@ -13,7 +13,7 @@ import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import "../CSS/styles.css";
 import { MdRefresh } from "react-icons/md";
 

@@ -1,4 +1,4 @@
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { Row, Col, Input } from "reactstrap";
 
 const options = [

@@ -2,6 +2,10 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import ResizeObserver from 'resize-observer-polyfill';
+import { applyTheme, loadSavedTheme } from './helpers/defaultTheme';
+
+// Apply the saved colour theme before the first paint (no flash of the default colour)
+applyTheme(loadSavedTheme());
 
 // Add polyfill for ResizeObserver (you already had this)
 if (!window.ResizeObserver) {

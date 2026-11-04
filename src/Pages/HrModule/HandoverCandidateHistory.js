@@ -11,7 +11,7 @@ import { hrImageBaseUrl } from '../../helpers/api_helper';
 import { toast } from 'react-toastify';
 import { useGet, usePost } from '../../Hooks/useApi';
 import { GET_ALL_SUB_TEAM_DROPDOWN, GET_MY_TEAM_BY_EMP_CODE, MAINTEAM_HANDOVER_TO_HR } from '../../helpers/url_helper';
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import ScreenLoader from '../../constants/ScreenLoader';
 import { useUserStore } from '../../store/useUserStore';
 import NoData from './NoData.js'

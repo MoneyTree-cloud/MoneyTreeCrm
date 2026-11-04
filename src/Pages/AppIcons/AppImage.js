@@ -14,7 +14,7 @@ import { useGet, usePost } from "../../Hooks/useApi";
 import AppTable from "../../components/Common/Table";
 import { imageBaseUrl } from "../../helpers/api_helper";
 import ImageModal from "../../components/Common/ImageModal";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Switch from "react-switch";
 import { formatDate, RequiredStar } from "../../helpers/function_helper";
 import PageContent from "../../components/Common/PageContent";
@@ -188,7 +188,7 @@ const AppImage = () => {
           onChange={() => handleSwitchChange(row)}
           checked={row.isActive === 'YES'}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
         />

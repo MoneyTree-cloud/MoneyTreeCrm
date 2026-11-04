@@ -9,7 +9,7 @@ $assetImageBaseUrl: "https://assetstorage.moneytreerealty.com/media/loginBg.png"
     background-size: cover; // Ensures the image covers the screen
     background-position: center; // Centers the image
     background-attachment: fixed; // Optional: keeps image fixed on scroll
-    background-color: #005b52; // Fallback color
+    background-color: var(--mt-primary); // Fallback color
 }
 
 .auth-logo {
@@ -27,6 +27,6 @@ $assetImageBaseUrl: "https://assetstorage.moneytreerealty.com/media/loginBg.png"
 @media only screen and (max-width: 1024px) {
     .bg-pattern {
         background-image: none !important;
-        background-color: #005b52 !important;
+        background-color: var(--mt-primary) !important;
     }
 }

@@ -10,7 +10,7 @@ import ScreenLoader from "../../constants/ScreenLoader";
 import { useUserStore } from "../../store/useUserStore";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RegexFile } from "../../helpers/RegexFile";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import ApiClient from "../../helpers/api_helper";
 import { RequiredStar } from "../../helpers/function_helper";
 

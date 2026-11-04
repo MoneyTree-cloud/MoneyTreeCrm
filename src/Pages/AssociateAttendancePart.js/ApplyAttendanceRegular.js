@@ -5,7 +5,7 @@ import { Button, Card, CardBody, Col, Container, Row } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import "../CSS/styles.css";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { toast } from "react-toastify";
 import { usePost } from "../../Hooks/useApi";
 import { DELETE_OD_DATA, GET_OD_DATA, UPDATE_OD_DATA } from "../../helpers/url_helper";

@@ -124,7 +124,7 @@ export default function SalesCharts() {
                             key={`cell-${index}`}
                             fill={
                               index % 2 === 0
-                                ? defaultTheme.primary
+                                ? defaultTheme.primaryHex
                                 : defaultTheme.goldColorLogo
                             }
                           />
@@ -170,7 +170,7 @@ export default function SalesCharts() {
                           key={`cell-${index}`}
                           fill={
                             index % 2 === 0
-                              ? defaultTheme.primary
+                              ? defaultTheme.primaryHex
                               : defaultTheme.goldColorLogo
                           }
                         />

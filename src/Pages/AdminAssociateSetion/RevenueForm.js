@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { Card, CardBody, Col, Container, Row, Button } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { useGet, usePost, usePut } from "../../Hooks/useApi";
 import {

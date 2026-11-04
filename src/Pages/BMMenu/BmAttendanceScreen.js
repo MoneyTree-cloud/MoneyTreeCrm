@@ -17,7 +17,7 @@ import { USER_TYPE } from "../../constants/global";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { useGet } from "../../Hooks/useApi";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 
 export default function BmAttendanceScreen() {
   const { userId, role, locationName } = useUserStore((state) => state.user);

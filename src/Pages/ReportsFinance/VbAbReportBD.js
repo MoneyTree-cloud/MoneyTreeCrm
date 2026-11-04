@@ -13,7 +13,7 @@ import { useUserStore } from '../../store/useUserStore';
 import CheckUserAccess from '../../components/Common/CheckUserAccess';
 import PermissionMissing from '../Utility/PermissonMissing';
 import { decryptData } from '../../components/Common/CryptoUtils';
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet } from '../../Hooks/useApi';
 import { defaultTheme } from '../../helpers/defaultTheme';
 

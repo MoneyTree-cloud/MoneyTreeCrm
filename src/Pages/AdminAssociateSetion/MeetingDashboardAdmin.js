@@ -7,7 +7,7 @@ import { useGet } from "../../Hooks/useApi";
 import { ADMIN_ALL_MEETING, ASSCOIATE_MEETING__EXCEL, GET_ALL_MAIN_TEAM_DROPDOWN, GET_ALL_SUB_TEAM_DROPDOWN } from "../../helpers/url_helper";
 import { formatDateForInput, formatDateTime, generateTimestamp, WordWrapCell, } from "../../helpers/function_helper";
 import ScreenLoader from "../../constants/ScreenLoader";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { MdMobileFriendly } from "react-icons/md";
 import "../CSS/styles.css";

@@ -16,7 +16,7 @@
         &.active, &.active:hover, .active.disabled, &.active.disabled:hover,
         &.today,  &.today:hover, &.today.disabled, &.today.disabled:hover, 
         &.selected, &.selected:hover, &.selected.disabled, &.selected.disabled:hover{
-          background-color: $primary !important;
+          background-color: var(--mt-primary) !important;
           background-image: none;
           box-shadow: none;
           color: $white !important;

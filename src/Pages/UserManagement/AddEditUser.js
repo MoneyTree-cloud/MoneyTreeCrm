@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useReducer, useEffect, useMemo, useCallback, useState } from "react";
 import { Container, TabContent, TabPane } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useGet, usePost, usePut } from "../../Hooks/useApi";
 import { ALL_DEPARTMENT_DROPDOWN, ALL_DESIGNATION_DROPDOWN, ALL_HR_DROPDOWN, ALL_LOCATION_DROPDOWN, CHECK_USER_EXIST, CREATE_USER, FIND_USER_BY_ID, GET_ALL_MAIN_TEAM_DROPDOWN, GET_ALL_POSITION_DROPDOWN, GET_ALL_SUB_TEAM_DROPDOWN, GET_ALL_USERS_DROPDOWN, GROUP_DROPDOWN_MULTISELECT, UPDATE_USER } from "../../helpers/url_helper";
@@ -27,7 +27,7 @@ _s.textContent = `
     .cuf-card { background:#fff; border:1px solid #D1D5DB; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.06); margin-bottom:16px; }
 
     /* ── Profile header ── */
-    .cuf-hdr { background:linear-gradient(135deg,#005B52,#007A6E); padding:16px 22px; display:flex; align-items:center; gap:14px; }
+    .cuf-hdr { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); padding:16px 22px; display:flex; align-items:center; gap:14px; }
     .cuf-hdr-avatar { width:52px; height:52px; object-fit:cover; border-radius:12px; border:2px solid rgba(255,255,255,.4); padding:2px; cursor:pointer; flex-shrink:0; }
     .cuf-hdr-avatar-placeholder { width:52px; height:52px; border-radius:12px; background:rgba(255,255,255,.15); border:2px dashed rgba(255,255,255,.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
     .cuf-hdr-title { font-size:15px; font-weight:800; color:#fff; }
@@ -49,9 +49,9 @@ _s.textContent = `
     }
     .cuf-tab:hover:not(.active) { color:#475569; background:rgba(255,255,255,.6); border-color:#E2E8F0; }
     .cuf-tab.active {
-        color:#005B52; background:#fff;
+        color:var(--mt-primary); background:#fff;
         border-color:#E2E8F0; border-bottom-color:#fff;
-        box-shadow:0 -2px 8px rgba(0,91,82,.08);
+        box-shadow:0 -2px 8px rgba(var(--mt-primary-rgb),.08);
     }
     .cuf-tab.active::after {
         content:""; position:absolute; bottom:-2px; left:0; right:0;
@@ -64,13 +64,13 @@ _s.textContent = `
         display:flex; align-items:center; justify-content:center; flex-shrink:0;
         transition:all .18s;
     }
-    .cuf-tab.active .cuf-tab-num { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; box-shadow:0 2px 6px rgba(0,91,82,.3); }
+    .cuf-tab.active .cuf-tab-num { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; box-shadow:0 2px 6px rgba(var(--mt-primary-rgb),.3); }
     .cuf-tab-inactive-line { position:absolute; bottom:0; left:0; right:0; height:2px; background:#E2E8F0; }
 
     /* ── Progress bar ── */
     .cuf-progress-wrap { padding:0 22px; background:#fff; border-bottom:1px solid #F1F5F9; }
     .cuf-progress { height:3px; background:#E2E8F0; border-radius:2px; }
-    .cuf-progress-bar { height:100%; background:linear-gradient(90deg,#005B52,#007A6E); border-radius:2px; transition:width .3s ease; }
+    .cuf-progress-bar { height:100%; background:linear-gradient(90deg,var(--mt-primary),var(--mt-primary-light)); border-radius:2px; transition:width .3s ease; }
 
     /* ── Form body ── */
     .cuf-body { padding:20px 22px; }
@@ -92,23 +92,23 @@ _s.textContent = `
     /* ── Input ── */
     .cuf-label { font-size:10px; font-weight:700; color:#374151; text-transform:uppercase; letter-spacing:.4px; margin-bottom:4px; display:block; }
     .cuf-input { width:100%; height:38px; padding:0 11px; border:1.5px solid #374151; border-radius:8px; font-size:13px; color:#0F172A; outline:none; transition:border-color .15s; background:#fff; }
-    .cuf-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .cuf-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     .cuf-input.disabled { background:#F1F5F9; color:#64748B; border-color:#CBD5E1; cursor:default; }
     .cuf-input.is-invalid { border-color:#EF4444 !important; }
     .cuf-err { font-size:10px; color:#EF4444; margin-top:3px; }
 
     /* ── Select ── */
     .cuf-sel .react-select__control { min-height:38px !important; border:1.5px solid #374151 !important; border-radius:8px !important; font-size:13px !important; }
-    .cuf-sel .react-select__control--is-focused { border-color:#005B52 !important; box-shadow:0 0 0 3px rgba(0,91,82,.08) !important; }
+    .cuf-sel .react-select__control--is-focused { border-color:var(--mt-primary) !important; box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08) !important; }
     .cuf-sel.is-invalid .react-select__control { border-color:#EF4444 !important; }
 
     /* ── Buttons ── */
     .cuf-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 22px; border-radius:10px; font-size:13px; font-weight:700; cursor:pointer; border:none; transition:all .15s; }
-    .cuf-btn-primary   { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; box-shadow:0 3px 10px rgba(0,91,82,.22); }
+    .cuf-btn-primary   { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; box-shadow:0 3px 10px rgba(var(--mt-primary-rgb),.22); }
     .cuf-btn-primary:hover { opacity:.88; }
     .cuf-btn-secondary { background:#F1F5F9; color:#374151; border:1.5px solid #D1D5DB; }
     .cuf-btn-secondary:hover { background:#E2E8F0; }
-    .cuf-btn-tab { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; }
+    .cuf-btn-tab { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; }
     .cuf-btn-tab-sec { background:#F1F5F9; color:#374151; border:1.5px solid #D1D5DB; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; }
 
     /* ── Actions bar ── */
@@ -175,8 +175,8 @@ _s.textContent = `
 document.head.appendChild(_s)
 
 const SEL_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "#005B52" : "#374151"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
+    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#374151"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
     placeholder: b => ({ ...b, color: "#9CA3AF", fontSize: 13 }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
@@ -235,7 +235,7 @@ const FSelect = ({ label, value, options, onChange, error, isMulti, isClearable 
 )
 
 // ── Section separator ─────────────────────────────────────────────────────────
-const Sec = ({ dot = "#005B52", label }) => (
+const Sec = ({ dot = "var(--mt-primary)", label }) => (
     <div className="cuf-sec">
         <span className="cuf-sec-dot" style={{ background: dot }} />
         <span className="cuf-sec-label">{label}</span>
@@ -509,7 +509,7 @@ const CreateUserForm = () => {
 
                                 {/* ── Tab 1: Personal ── */}
                                 <TabPane tabId={1}>
-                                    <Sec dot="#005B52" label="Identity" />
+                                    <Sec dot="var(--mt-primary)" label="Identity" />
                                     <div className="cuf-grid">
                                         <FInput label="Employee Code" id="employeeCode" type="number" value={f.employeeCode} onChange={handleChange} error={state.errors.employeeCode} placeholder="Employee code…" disabled={!!userId} required onBlur={handleUserIdCheck} />
                                         <FInput label="User Name" id="userName" type="text" value={f.userName} onChange={handleChange} error={state.errors.userName} placeholder="Full name…" required />
@@ -548,7 +548,7 @@ const CreateUserForm = () => {
 
                                 {/* ── Tab 2: Employment ── */}
                                 <TabPane tabId={2}>
-                                    <Sec dot="#005B52" label="Work Details" />
+                                    <Sec dot="var(--mt-primary)" label="Work Details" />
                                     <div className="cuf-grid">
                                         <FInput label="Date of Joining" id="doj" type="date" value={f.doj} onChange={handleChange} error={state.errors.doj} required />
                                         <FInput label="Work Anniversary" id="doa" type="date" value={f.doa} onChange={handleChange} error={state.errors.doa} required />

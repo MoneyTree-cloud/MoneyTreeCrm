@@ -19,9 +19,9 @@ _s.id = "dash-s"
 _s.textContent = `
     /* ── Hero ── */
     .dash-hero {
-        background:linear-gradient(135deg,#004A42 0%,#005B52 45%,#007A6E 100%);
+        background:linear-gradient(135deg,#004A42 0%,var(--mt-primary) 45%,var(--mt-primary-light) 100%);
         border-radius:18px; padding:0; overflow:hidden;
-        box-shadow:0 8px 30px rgba(0,91,82,.22); margin-bottom:18px;
+        box-shadow:0 8px 30px rgba(var(--mt-primary-rgb),.22); margin-bottom:18px;
         display:flex; align-items:stretch; min-height:200px;
         position:relative;
     }
@@ -85,9 +85,9 @@ _s.textContent = `
     .dash-card:hover .dash-card-arrow { opacity:.9; transform:translateX(3px); }
 
     /* card colour variants */
-    .dash-card-teal   { background:linear-gradient(135deg,#F0FDF9,#E6FAF6); border-color:#A7F3D0; color:#065F46; }
+    .dash-card-teal   { background:linear-gradient(135deg,var(--mt-primary-50),#E6FAF6); border-color:#A7F3D0; color:var(--mt-primary); }
     .dash-card-teal   .dash-card-icon { background:#CCFBEF; }
-    .dash-card-teal:hover { border-color:#005B52; box-shadow:0 8px 24px rgba(0,91,82,.12); }
+    .dash-card-teal:hover { border-color:var(--mt-primary); box-shadow:0 8px 24px rgba(var(--mt-primary-rgb),.12); }
 
     .dash-card-gold   { background:linear-gradient(135deg,#FFFBEB,#FEF3C7); border-color:#FDE68A; color:#78350F; }
     .dash-card-gold   .dash-card-icon { background:#FEF9C3; }

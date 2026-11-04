@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Card, CardBody, Col, Container, Modal, ModalBody, ModalFooter, ModalHeader, Row } from "reactstrap";
 import AppTable from "../../components/Common/Table";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { useGet, usePut } from "../../Hooks/useApi";
 import {CHANGE_PROJECT_UNIT_ASSOCIATE_STATUS,GET_DROPDOWN_BUILDER_,GET_PROJECT_BY_BUILDER_,GET_PROJECT_UNIT_ASSOCIATE} from "../../helpers/url_helper";

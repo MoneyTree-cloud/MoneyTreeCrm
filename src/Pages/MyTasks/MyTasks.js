@@ -10,7 +10,7 @@ import '../CSS/styles.css';
 import ApiClient from '../../helpers/api_helper';
 import { useGet } from '../../Hooks/useApi';
 import { CREATE_TASK, GET_ALL_TASKS, GET_TASK_MEMBERS, UPDATE_TASK, TASK_REPLY_URL, SEND_TASK_REMINDER } from '../../helpers/url_helper';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { formatActionType, formatDate, RequiredStar } from '../../helpers/function_helper';
 import { useUserStore } from '../../store/useUserStore';
 import { toast } from 'react-toastify';

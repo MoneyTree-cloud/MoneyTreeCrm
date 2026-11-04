@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Card, CardBody, Col, Container, Row, } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { ALL_DEPARTMENT_DROPDOWN, ALL_LOCATION_DROPDOWN, CREATE_JOB, STATUS_CHANGE_JOB, GET_ALL_JOBS, UPDTATE_JOB, } from "../../helpers/url_helper";
@@ -306,7 +306,7 @@ export default function JobsScreen() {
         <Switch
           checked={row.active}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
           onChange={() => handleStatusChange(row.id)}

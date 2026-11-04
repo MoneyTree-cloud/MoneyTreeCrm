@@ -10,7 +10,7 @@ import {
   Form
 } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { RequiredStar } from "../../helpers/function_helper";
 
 const AddAnexture = () => {

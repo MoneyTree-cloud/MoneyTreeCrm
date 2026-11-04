@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card, CardHeader, CardBody, Button, Spinner, Badge, Row, Col, Input } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import FnFHeaderSection from "./FnFHeaderSection";
 import YesNoRow from "./YesNoRow";
 import { FaClipboardCheck, FaSave } from "react-icons/fa";

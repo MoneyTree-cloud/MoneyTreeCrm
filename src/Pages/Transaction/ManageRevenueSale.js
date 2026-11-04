@@ -26,7 +26,7 @@ import {
   PAYMENT_PLAN_DROPDOWN,
   UPDATE_REVENUE_SALE,
 } from "../../helpers/url_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

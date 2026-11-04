@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from "reactstrap";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import moneyTreeLogo from "../../assets/images/profile-user.png";
 import { useUserStore } from "../../store/useUserStore";
-import { defaultTheme } from "../../helpers/defaultTheme";
 import { imageBaseUrl } from "../../helpers/api_helper";
 
 const ProfileMenu = (props) => {
   const [menu, setMenu] = useState(false);
-  const userName = useUserStore((state) => state.user.userName);
-  const profileImage = useUserStore((state) => state.user.profileImage);
+  const {userName, profileImage} = useUserStore((state) => state.user);
   const logout = useUserStore((state) => state.logout);
 
   return (
@@ -20,56 +18,43 @@ const ProfileMenu = (props) => {
         className="d-inline-block"
       >
         <DropdownToggle
-          className="btn header-item "
+          className="btn header-item mt-header__profile"
           id="page-header-user-dropdown"
           tag="button"
         >
-          <span
-            className="d-none d-xl-inline-block me-2"
-            style={{
-              fontWeight: 500,
-              color: defaultTheme.primary,
-              fontSize: 12,
-            }}
-          >
-            Welcome {userName}
+          <span className="mt-header__profile-text d-none d-xl-flex">
+            <span className="mt-header__profile-hello">Welcome</span>
+            <span className="mt-header__profile-name">{userName}</span>
           </span>
           {profileImage === "null" || typeof profileImage === "object" || profileImage === '0' || !profileImage ? (
             <img
               className="rounded-circle header-profile-user"
               src={moneyTreeLogo}
               alt="Header Avatar"
-              style={{ objectFit: 'contain' }}
             />
           ) : (
             <img
               className="rounded-circle header-profile-user"
               src={imageBaseUrl + profileImage}
-              style={{ objectFit: 'contain',border: `2px solid ${defaultTheme.primary}` }}
               alt=""
             />
           )}
-          <i className="mdi mdi-chevron-down d-none d-xl-inline-block ms-2" style={{ color: defaultTheme.primary }} />
+          <i className="mdi mdi-chevron-down mt-header__profile-caret d-none d-xl-inline-block" />
         </DropdownToggle>
-        <DropdownMenu className="dropdown-menu-end">
-          <DropdownItem tag="a" href="/user-profile">
-            {" "}
+        <DropdownMenu className="dropdown-menu-end mt-header__menu">
+          <DropdownItem tag="a" href="/user-profile" title="Profile">
             <i className="ri-user-line align-middle me-2" />
-            {"Profile"}{" "}
+            Profile
           </DropdownItem>
-          <div className="dropdown-divider" />
-
-          <DropdownItem tag="a" href="/password-change">
-            {" "}
+          <DropdownItem tag="a" href="/password-change" title="Change Password">
             <i className="ri-key-line align-middle me-2" />
-            {"Change Password"}{" "}
+            Change Password
           </DropdownItem>
           <div className="dropdown-divider" />
-
-          <Button onClick={logout} className="dropdown-item">
+          <DropdownItem onClick={logout} title="Logout">
             <i className="ri-shut-down-line align-middle me-2 text-danger" />
-            <span style={{ color: "black" }}>{"Logout"}</span>
-          </Button>
+            Logout
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </React.Fragment>

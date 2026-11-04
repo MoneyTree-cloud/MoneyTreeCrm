@@ -9,11 +9,11 @@
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 91, 82, 0.1);
+  box-shadow: 0 4px 12px rgba(var(--mt-primary-rgb), 0.1);
 }
 
 .confirmation-header {
-  background-color: #005b52;
+  background-color: var(--mt-primary);
   text-align: center;
 }
 
@@ -40,12 +40,12 @@
 .confirmation-title {
   font-size: 28px;
   font-weight: 700;
-  color: #005b52;
+  color: var(--mt-primary);
 }
 
 .user-name {
   font-weight: 700;
-  color: #005b52;
+  color: var(--mt-primary);
 }
 
 .confirmation-subtitle {
@@ -70,7 +70,7 @@
 }
 
 .footer-logo {
-  color: #005b52;
+  color: var(--mt-primary);
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 10px;

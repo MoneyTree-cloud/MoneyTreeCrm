@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Input } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { CREATE_EVENT_FORM, GET_ALL_EVENT_FORM_BY_ID, GET_ALL_USERS_DROPDOWN, GET_ASSIGNED_EVENT, GET_VISITOR_DATA_BY_MOBILE, SEND_OTP, VERIFY_TEXT_OTP } from "../../helpers/url_helper";
@@ -514,7 +514,7 @@ export default function EventEntryScreen() {
                       control: (provided, state) => ({
                         ...provided,
                         borderColor: errors.toWhom ? "red" : "black",
-                        boxShadow: state.isFocused ? "0 0 0 1px #005b52" : "none",
+                        boxShadow: state.isFocused ? "0 0 0 1px var(--mt-primary)" : "none",
                       }),
                     }}
                     className={errors.toWhom ? "is-invalid" : ""}
@@ -544,7 +544,7 @@ export default function EventEntryScreen() {
                       control: (provided, state) => ({
                         ...provided,
                         borderColor: errors.eventName ? "red" : "black",
-                        boxShadow: state.isFocused ? "0 0 0 1px #005b52" : "none",
+                        boxShadow: state.isFocused ? "0 0 0 1px var(--mt-primary)" : "none",
                       }),
                     }}
                     className={errors.eventName ? "is-invalid" : ""}

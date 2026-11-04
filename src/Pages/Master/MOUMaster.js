@@ -11,7 +11,7 @@ import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { useUserStore } from "../../store/useUserStore";
 import { formatDate, RequiredStar, WordWrapCell } from "../../helpers/function_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { imageBaseUrl } from "../../helpers/api_helper";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { defaultTheme } from "../../helpers/defaultTheme";

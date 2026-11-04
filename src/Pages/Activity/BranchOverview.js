@@ -19,7 +19,7 @@ import ScreenLoader from "../../constants/ScreenLoader";
 import { useUserStore } from "../../store/useUserStore";
 import ApiClient, { assetImageBaseUrl } from "../../helpers/api_helper";
 import { BRANCH_WISE_DATA, BRANCH_WISE_GRAPH_DATA } from "../../helpers/url_helper";
-import { defaultTheme } from "../../helpers/defaultTheme";
+import { defaultTheme, withAlpha } from "../../helpers/defaultTheme";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import {
@@ -65,9 +65,9 @@ if (!document.getElementById("branch-data-styles")) {
             width:44px; height:44px;
             display:flex; align-items:center; justify-content:center;
             border-radius:11px;
-            background:linear-gradient(135deg, ${defaultTheme.primary}, #007A6E);
+            background:linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light));
             color:#fff;
-            box-shadow:0 2px 6px rgba(0,91,82,.22);
+            box-shadow:0 2px 6px rgba(var(--mt-primary-rgb),.22);
             flex-shrink:0;
         }
         .bwd-location-meta { display:flex; flex-direction:column; gap:2px; }
@@ -99,7 +99,7 @@ if (!document.getElementById("branch-data-styles")) {
         .bwd-loc-single {
             display:inline-flex; align-items:center; gap:7px;
             padding:7px 14px; border-radius:999px;
-            background:${defaultTheme.primary}1A;
+            background:rgba(var(--mt-primary-rgb), 0.1);
             color:${defaultTheme.primary};
             font-size:12px; font-weight:700;
         }
@@ -423,9 +423,10 @@ function RingCard({ metric, data, index, branchTargets }) {
                     <circle
                         className="bwd-ring-fg"
                         cx={cx} cy={cy} r={radius}
-                        stroke={color}
                         transform={rotation}
                         style={{
+                            // in style (not the attribute) so theme CSS variables resolve
+                            stroke: color,
                             "--ring-total": circumference,
                             "--ring-offset": offset,
                         }}
@@ -447,7 +448,7 @@ function RingCard({ metric, data, index, branchTargets }) {
                             </div>
                             <div
                                 className="bwd-ring-pct"
-                                style={{ background: `${color}1A`, color }}
+                                style={{ background: `${withAlpha(color, 0.1)}`, color }}
                             >
                                 {pct.toFixed(0)}%
                             </div>
@@ -898,12 +899,12 @@ export default function BranchOverview() {
                                 border: "none",
                                 background: downloading
                                     ? "#94A3B8"
-                                    : `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                    : `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                 color: "#fff",
                                 fontSize: 12,
                                 fontWeight: 700,
                                 cursor: downloading ? "not-allowed" : "pointer",
-                                boxShadow: "0 2px 6px rgba(0,91,82,.22)",
+                                boxShadow: "0 2px 6px rgba(var(--mt-primary-rgb),.22)",
                                 whiteSpace: "nowrap",
                             }}
                         >
@@ -994,7 +995,7 @@ export default function BranchOverview() {
                                                         }}
                                                     />
                                                     <Legend wrapperStyle={{ display: "none" }} />
-                                                    <Bar dataKey="prospect" fill={defaultTheme.primary} name="Prospects" radius={[4, 4, 0, 0]}>
+                                                    <Bar dataKey="prospect" fill={defaultTheme.primaryHex} name="Prospects" radius={[4, 4, 0, 0]}>
                                                         <LabelList
                                                             dataKey="prospect"
                                                             position="top"

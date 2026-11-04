@@ -9,7 +9,7 @@ import ScreenLoader from "../../constants/ScreenLoader";
 import ApiClient from "../../helpers/api_helper";
 import { FaArrowAltCircleRight, FaCheck, FaTimes, FaFilter, FaFileExcel, FaCalendarAlt, FaHistory } from "react-icons/fa";
 import PageContent from "../../components/Common/PageContent";
-import { formatActionType, formatDate, formatDateForInput, formatDateTime, generateTimestamp, RequiredStar, WordWrapCell } from "../../helpers/function_helper";
+import { formatActionType, formatDate, formatDateForInput, formatDateTime, generateTimestamp, RequiredStar, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import { BiCalendarEdit, BiSend } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { decryptData } from "../../components/Common/CryptoUtils";
 import { useGet } from "../../Hooks/useApi";
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { sourceOptions } from "../../constants/global";
 import ChatModal from "../../constants/ChatModal";
 import { MdChat } from "react-icons/md";
@@ -37,8 +37,8 @@ _s.textContent = `
         cursor:pointer; border:1.5px solid #E2E8F0; background:#fff;
         color:#64748B; transition:all .15s; white-space:nowrap;
     }
-    .ach-status-tab:hover { border-color:#005B52; color:#005B52; background:#F0FDF4; }
-    .ach-status-tab.active { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; border-color:#005B52; box-shadow:0 3px 10px rgba(0,91,82,.22); }
+    .ach-status-tab:hover { border-color:var(--mt-primary); color:var(--mt-primary); background:#F0FDF4; }
+    .ach-status-tab.active { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; border-color:var(--mt-primary); box-shadow:0 3px 10px rgba(var(--mt-primary-rgb),.22); }
     .ach-status-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 
     /* ── Top toolbar ── */
@@ -49,16 +49,16 @@ _s.textContent = `
     .ach-filter-title { font-size:11px; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:.8px; margin-bottom:14px; display:flex; align-items:center; gap:7px; }
     .ach-filter-label { font-size:11px; font-weight:600; color:#475569; margin-bottom:5px; display:block; }
     .ach-filter-input { width:100%; height:38px; padding:0 11px; border:1.5px solid #0d0d0e; border-radius:8px; font-size:13px; color:#0F172A; outline:none; transition:border-color .15s; background:#fff; }
-    .ach-filter-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .ach-filter-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
 
     /* ── Filter action buttons ── */
     .ach-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; white-space:nowrap; }
-    .ach-btn-primary { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .ach-btn-primary { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .ach-btn-primary:hover { opacity:.88; }
     .ach-btn-secondary { background:#F1F5F9; color:#475569; border:1.5px solid #E2E8F0; }
     .ach-btn-secondary:hover { background:#E2E8F0; }
-    .ach-btn-filter {  border:1.5px solid #005B52; }
-    .ach-btn-filter.open { background:#005B52; color:#fff; }
+    .ach-btn-filter {  border:1.5px solid var(--mt-primary); }
+    .ach-btn-filter.open { background:var(--mt-primary); color:#fff; }
     .ach-btn-excel { background:#F0FDF4; color:#166534; border:1.5px solid #BBF7D0; }
     .ach-btn-excel:hover { background:#DCFCE7; }
 
@@ -72,7 +72,7 @@ _s.textContent = `
 
     /* ── Select override ── */
     .ach-filter-panel .react-select__control { min-height:38px !important; border:1.5px solid #E2E8F0 !important; border-radius:8px !important; font-size:13px !important; }
-    .ach-filter-panel .react-select__control--is-focused { border-color:#005B52 !important; box-shadow:0 0 0 3px rgba(0,91,82,.08) !important; }
+    .ach-filter-panel .react-select__control--is-focused { border-color:var(--mt-primary) !important; box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08) !important; }
 `
 document.head.appendChild(_s)
 
@@ -85,8 +85,8 @@ const STATUS_CONFIG = {
 }
 
 const SELECT_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "#005B52" : "#090909"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
+    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#090909"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
 
@@ -399,9 +399,9 @@ export default function AllCandidateHistory() {
                                 display: "inline-flex",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                background: `${defaultTheme.primary}1A`,
+                                background: `rgba(var(--mt-primary-rgb), 0.1)`,
                                 color: defaultTheme.primary,
-                                border: `1px solid ${defaultTheme.primary}40`,
+                                border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                                 borderRadius: 8,
                                 cursor: "pointer",
                                 padding: "6px 8px",
@@ -622,12 +622,9 @@ export default function AllCandidateHistory() {
                 )}
 
                 {/* ── Note ── */}
-                <div style={{ marginBottom: 12 }}>
-                    <span className="ach-note">
-                        <span style={{ color: defaultTheme.btnEnable, fontWeight: 800 }}>●</span>
-                        Candidates in blue are transferred candidates
-                    </span>
-                </div>
+                <Notes style={{ margin: "0 0 12px" }}>
+                    <Note tone="blue">Rows shown in blue are transferred candidates.</Note>
+                </Notes>
 
                 <AppTable
                     progressPending={isPending}
@@ -659,7 +656,7 @@ export default function AllCandidateHistory() {
                 {/* ── Reschedule Modal ── */}
                 <Modal isOpen={rescheduleModalOpen} toggle={() => setRescheduleModalOpen(p => !p)}>
                     <ModalHeader toggle={() => setRescheduleModalOpen(false)}
-                        style={{ background: "linear-gradient(135deg,#005B52,#007A6E)", color: "#fff", borderRadius: "8px 8px 0 0" }}>
+                        style={{ background: "linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))", color: "#fff", borderRadius: "8px 8px 0 0" }}>
                         <span style={{ color: "#fff", fontWeight: 700 }}>
                             <FaCalendarAlt style={{ marginRight: 8 }} />
                             Reschedule — {selectedRow?.firstName} {selectedRow?.middleName} {selectedRow?.lastName}
@@ -681,7 +678,7 @@ export default function AllCandidateHistory() {
                         ))}
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={handleReschedule} style={{ background: "linear-gradient(135deg,#005B52,#007A6E)", border: "none", fontWeight: 700 }}>
+                        <Button onClick={handleReschedule} style={{ background: "linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))", border: "none", fontWeight: 700 }}>
                             Reschedule
                         </Button>
                         <Button color="secondary" onClick={() => setRescheduleModalOpen(false)} style={{ backgroundColor: defaultTheme.goldColorLogo }}>Cancel</Button>

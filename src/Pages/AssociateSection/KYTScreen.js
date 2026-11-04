@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useState } from "react";
 import { Card, CardBody, Col, Container, Row, UncontrolledTooltip } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import AppTable from "../../components/Common/Table";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { GET_KYT_DATA } from "../../helpers/url_helper";

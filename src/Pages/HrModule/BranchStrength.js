@@ -13,7 +13,7 @@ import ApiClient from "../../helpers/api_helper";
 import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 
 export default function BranchStrength() {
     const [fromDate, setFromDate] = useState("");

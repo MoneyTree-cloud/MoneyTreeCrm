@@ -38,7 +38,7 @@ const NotificationViewScreen = () => {
                   className={"card-custom"}
                   style={{
                     boxShadow:
-                      index % 2 === 0 ? "0 0 0 #c38c42" : "0 0 0 #005b52",
+                      index % 2 === 0 ? "0 0 0 #c38c42" : "0 0 0 var(--mt-primary)",
                   }}
                 >
                   <CardBody className="card-body-custom">

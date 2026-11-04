@@ -14,7 +14,7 @@ import { defaultTheme } from '../../helpers/defaultTheme'
 import CheckUserAccess from '../../components/Common/CheckUserAccess'
 import { useUserStore } from '../../store/useUserStore'
 import PermissionMissing from '../Utility/PermissonMissing'
-import Select from 'react-select'
+import Select from '../../components/Common/AppSelect'
 import { useGet } from '../../Hooks/useApi'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 import { decryptData } from '../../components/Common/CryptoUtils'
@@ -26,7 +26,7 @@ const _s = document.createElement("style")
 _s.id = "imd-s"
 _s.textContent = `
     /* ── Header card ── */
-    .imd-hdr { background:linear-gradient(135deg,#005B52 0%,#007A6E 60%,#00897B 100%); border-radius:16px; padding:20px 26px; margin-bottom:16px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    .imd-hdr { background:linear-gradient(135deg,var(--mt-primary) 0%,var(--mt-primary-light) 60%,var(--mt-primary-light) 100%); border-radius:16px; padding:20px 26px; margin-bottom:16px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
     .imd-hdr::before { content:''; position:absolute; top:-40px; right:-40px; width:180px; height:180px; border-radius:50%; background:rgba(255,255,255,.05); pointer-events:none; }
     .imd-hdr::after  { content:''; position:absolute; bottom:-50px; left:60px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,.04); pointer-events:none; }
     .imd-hdr-title { font-size:20px; font-weight:800; color:#fff; display:flex; align-items:center; gap:10px; position:relative; }
@@ -37,7 +37,7 @@ _s.textContent = `
     .imd-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; background:#fff; border:1px solid #E8ECF2; border-radius:14px; padding:10px 16px; margin-bottom:14px; box-shadow:0 1px 4px rgba(0,0,0,.04); }
     .imd-search-wrap { display:flex; align-items:center; gap:8px; flex:1; min-width:200px; position:relative; }
     .imd-search-input { height:38px; padding:0 12px 0 34px; border:1.5px solid #080808; border-radius:8px; font-size:13px; color:#0F172A; outline:none; flex:1; transition:border-color .15s; background:#fff; }
-    .imd-search-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .imd-search-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     .imd-search-icon { position:absolute; left:10px; right:10px; color:#94A3B8; pointer-events:none; }
     .imd-clear-btn { display:inline-flex; align-items:center; gap:5px; padding:7px 14px; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid #E2E8F0; background:#F8FAFC; color:#64748B; transition:all .15s; }
     .imd-clear-btn:hover { background:#E2E8F0; }
@@ -47,16 +47,16 @@ _s.textContent = `
     @media(max-width:700px){ .imd-grid { grid-template-columns:1fr; } }
 
     .imd-card { background:#fff; border:1px solid #E2E8F0; border-radius:14px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.04); transition:all .2s; }
-    .imd-card:hover { border-color:#007A6E; box-shadow:0 4px 16px rgba(0,91,82,.1); transform:translateY(-2px); }
+    .imd-card:hover { border-color:var(--mt-primary-light); box-shadow:0 4px 16px rgba(var(--mt-primary-rgb),.1); transform:translateY(-2px); }
 
-    .imd-card-hdr { background:linear-gradient(135deg,#F0FDF9,#E6FAF5); padding:14px 16px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #E2E8F0; }
-    .imd-card-avatar { width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#005B52,#007A6E); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .imd-card-hdr { background:linear-gradient(135deg,var(--mt-primary-50),var(--mt-primary-100)); padding:14px 16px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #E2E8F0; }
+    .imd-card-avatar { width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
     .imd-card-name { font-size:14px; font-weight:800; color:#0F172A; }
     .imd-card-id   { font-size:10px; color:#94A3B8; font-weight:600; margin-top:1px; }
 
     .imd-card-body { padding:14px 16px; display:flex; flex-direction:column; gap:8px; }
     .imd-card-row { display:flex; align-items:center; gap:8px; font-size:12px; color:#374151; }
-    .imd-card-row-icon { color:#005B52; flex-shrink:0; }
+    .imd-card-row-icon { color:var(--mt-primary); flex-shrink:0; }
     .imd-card-row-label { color:#94A3B8; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; min-width:70px; }
     .imd-card-row-val { font-size:12px; font-weight:600; color:#0F172A; word-break:break-word; }
 
@@ -69,7 +69,7 @@ _s.textContent = `
     /* ── View toggle ── */
     .imd-view-toggle { display:flex; gap:4px; }
     .imd-view-btn { width:34px; height:34px; border-radius:8px; border:1.5px solid #E2E8F0; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; }
-    .imd-view-btn.active { background:#005B52; border-color:#005B52; color:#fff; }
+    .imd-view-btn.active { background:var(--mt-primary); border-color:var(--mt-primary); color:#fff; }
 
     /* ── Empty state ── */
     .imd-empty { text-align:center; padding:50px 20px; color:#94A3B8; }
@@ -85,8 +85,8 @@ _s.textContent = `
 document.head.appendChild(_s)
 
 const SEL_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "#005B52" : "#374151"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
+    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#374151"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
     placeholder: b => ({ ...b, color: "#9CA3AF", fontSize: 13 }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
@@ -457,7 +457,7 @@ export default function ThinkIt() {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            background: selectedUsers[row.id] ? "#005B52" : "#CBD5E1",
+                            background: selectedUsers[row.id] ? "var(--mt-primary)" : "#CBD5E1",
                             color: "#fff",
                             border: "none",
                             borderRadius: 8,
@@ -841,7 +841,7 @@ export default function ThinkIt() {
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
-                                                background: selectedUsers[row.id] ? "#005B52" : "#CBD5E1",
+                                                background: selectedUsers[row.id] ? "var(--mt-primary)" : "#CBD5E1",
                                                 color: "#fff",
                                                 border: "none",
                                                 borderRadius: 8,

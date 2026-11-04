@@ -95,11 +95,11 @@ table.dataTable {
     // Multi select table
 
     > tr.selected, >tr>.selected {
-        background-color: rgba($primary,.2);
+        background-color: rgba(var(--mt-primary-rgb),.2);
         
         td {
-            border-color: rgba($primary,.2);
-            color: $primary;
+            border-color: rgba(var(--mt-primary-rgb),.2);
+            color: var(--mt-primary);
         }
     }
     td {
@@ -109,9 +109,9 @@ table.dataTable {
     }
     // Key Tables
     th.focus,td.focus{
-        outline: 2px solid $primary !important;
+        outline: 2px solid var(--mt-primary) !important;
         outline-offset: -1px;
-        background-color: rgba($primary, 0.15);
+        background-color: rgba(var(--mt-primary-rgb), 0.15);
     }
 }
 }
@@ -155,7 +155,7 @@ table.dataTable.dtr-inline.collapsed {
 
 // Data Table copy button
 div.dt-button-info {
-  background-color: $primary;
+  background-color: var(--mt-primary);
   border: none;
   color: $white;
   box-shadow: none;
@@ -245,7 +245,7 @@ table {
           text-indent: 0 !important;
           line-height: 12px;
           content: '+';
-          background-color: $primary;
+          background-color: var(--mt-primary);
         }
       }
     }

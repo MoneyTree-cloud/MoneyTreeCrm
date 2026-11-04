@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, FormFeedback, Card, CardBody } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 import { toast } from 'react-toastify';
 import { CANDIDATE_DOCUMENT_SUBMIT, CANDIDATE_HISTORY_BY_ID, CANDIDATE_SINGLE_DOCUMENT_SUBMIT } from '../../helpers/url_helper';
@@ -18,7 +18,7 @@ import {
     FaCheckCircle, FaTimesCircle, FaEye, FaRedo, FaTrash,
     FaCloudUploadAlt, FaUserFriends,
 } from 'react-icons/fa';
-import { defaultTheme } from '../../helpers/defaultTheme';
+import { defaultTheme, withAlpha } from '../../helpers/defaultTheme';
 import ImageModal from '../../components/Common/ImageModal';
 
 // ── Document types config (key = backend enum) ──────────────────────────────
@@ -52,7 +52,7 @@ const iconBtn = (color) => ({
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
     width: 22, height: 22,
     background: 'transparent', color,
-    border: `1px solid ${color}40`, borderRadius: 5,
+    border: `1px solid ${withAlpha(color, 0.25)}`, borderRadius: 5,
     cursor: 'pointer', padding: 0,
 });
 
@@ -107,7 +107,7 @@ function DocUploadCard({ label, Icon, isMandatory, state, onStateChange, onPrevi
     let iconColor = '#94A3B8';
     if (isError) { borderColor = '#DC2626'; bg = '#FEF2F2'; iconBg = '#FEE2E2'; iconColor = '#DC2626'; }
     else if (uploaded) { borderColor = '#16A34A'; bg = '#F0FDF4'; iconBg = '#DCFCE7'; iconColor = '#16A34A'; }
-    else if (uploading) { borderColor = defaultTheme.primary; bg = '#F0FDF9'; iconBg = `${defaultTheme.primary}15`; iconColor = defaultTheme.primary; }
+    else if (uploading) { borderColor = defaultTheme.primary; bg = 'var(--mt-primary-50)'; iconBg = `rgba(var(--mt-primary-rgb), 0.08)`; iconColor = defaultTheme.primary; }
 
     const filename = state?.file?.name || state?.filename;
 

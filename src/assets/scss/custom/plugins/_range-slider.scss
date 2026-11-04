@@ -13,7 +13,7 @@
     .irs-to,
     .irs-from,
     .irs-single {
-        background: $primary !important;
+        background: var(--mt-primary) !important;
         font-size: 11px;
     }
 
@@ -45,7 +45,7 @@
     }
 
     .irs-handle {
-        border: 2px solid $primary;
+        border: 2px solid var(--mt-primary);
         width: 12px;
         height: 12px;
         top: 31px;

@@ -8,7 +8,7 @@ import { useUserStore } from "../../store/useUserStore";
 import ScreenLoader from "../../constants/ScreenLoader";
 import { FaArrowAltCircleRight, FaEye } from "react-icons/fa";
 import PageContent from "../../components/Common/PageContent";
-import { formatActionType, formatDate, formatDateTime, WordWrapCell } from "../../helpers/function_helper";
+import { formatActionType, formatDate, formatDateTime, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, Col, Container, Input, Label, Row } from "reactstrap";
 import CountdownTimer from "./CountdownTimer";
@@ -265,9 +265,9 @@ export default function HandoverCandidate() {
                             display: "inline-flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            background: `${defaultTheme.primary}1A`,
+                            background: `rgba(var(--mt-primary-rgb), 0.1)`,
                             color: defaultTheme.primary,
-                            border: `1px solid ${defaultTheme.primary}40`,
+                            border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                             borderRadius: 8,
                             cursor: "pointer",
                         }}
@@ -664,15 +664,9 @@ export default function HandoverCandidate() {
             {(isPending) && <ScreenLoader />}
             <Container fluid={true}>
 
-                <h3
-                    style={{
-                        fontSize: 12,
-                        fontWeight: "500",
-                        color: defaultTheme.redColor,
-                    }}
-                >
-                    Note: As per the recruitment process, any candidate placed on hold will be automatically rejected if no further action is taken within 48 hours of the hold status being applied.
-                </h3>
+                <Notes style={{ margin: "0 0 12px" }}>
+                    <Note tone="gold">As per the recruitment process, any candidate placed on hold will be automatically rejected if no further action is taken within 48 hours of the hold status being applied.</Note>
+                </Notes>
 
                 <Card>
                     <CardBody>

@@ -6,10 +6,9 @@ import { toast } from "react-toastify";
 import { usePost } from "../../Hooks/useApi";
 import { SEND_OTP, VERIFY_TEXT_OTP } from "../../helpers/url_helper";
 import ScreenLoader from "../../constants/ScreenLoader";
-import { defaultTheme } from "../../helpers/defaultTheme";
 import { useUserStore } from "../../store/useUserStore";
 import PageContent from "../../components/Common/PageContent";
-import { RequiredStar } from "../../helpers/function_helper";
+import { RequiredStar, Notes, Note } from "../../helpers/function_helper";
 
 const EndMeetingOTPScreen = () => {
   const location = useLocation();
@@ -85,16 +84,9 @@ const EndMeetingOTPScreen = () => {
         {(isVerifyOtpSend || isPendingOtpSend) && <ScreenLoader />}
         <Breadcrumbs title="Meeting" breadcrumbItem="End Meeting" />
 
-        <span
-          style={{
-            color: defaultTheme.redColor,
-            fontSize: 12,
-            display: "block",
-            marginBottom: 10,
-          }}
-        >
-          Note : The Happy Code will be sent to customer via SMS.
-        </span>
+        <Notes style={{ margin: "0 0 12px" }}>
+          <Note tone="theme">The Happy Code will be sent to the customer via SMS.</Note>
+        </Notes>
 
         <Card>
           <CardBody>

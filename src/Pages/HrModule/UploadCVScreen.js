@@ -3,13 +3,13 @@ import { Row, Col, Card, CardBody, Button, Container } from "reactstrap";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { ALL_HR_DROPDOWN, GET_ALL_CV_FILE, UPLOAD_CV_FILE, } from "../../helpers/url_helper";
 import { toast } from "react-toastify";
 import ScreenLoader from "../../constants/ScreenLoader";
 import { hrImageBaseUrl } from "../../helpers/api_helper";
-import { formatDateTime, RequiredStar, WordWrapCell } from "../../helpers/function_helper";
+import { formatDateTime, RequiredStar, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import PageContent from "../../components/Common/PageContent";
 import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
@@ -215,15 +215,9 @@ const UploadCVScreen = () => {
                         </Row>
                     </CardBody>
                 </Card>
-                <h3
-                    style={{
-                        fontSize: 12,
-                        fontWeight: "bold",
-                        color: defaultTheme.redColor,
-                    }}
-                >
-                    Note: A minimum of 1 and a maximum of 10 resumes can be uploaded.
-                </h3>
+                <Notes style={{ margin: "0 0 12px" }}>
+                    <Note tone="gold">A minimum of 1 and a maximum of 10 resumes can be uploaded.</Note>
+                </Notes>
 
                 {imagesData?.data?.data?.content?.length > 0 && (
                     <AppTable

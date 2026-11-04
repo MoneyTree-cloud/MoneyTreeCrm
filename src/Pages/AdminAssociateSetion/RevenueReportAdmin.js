@@ -11,7 +11,7 @@ import {
 } from "../../helpers/url_helper";
 import { formatDateForInput } from "../../helpers/function_helper";
 import ScreenLoader from "../../constants/ScreenLoader";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import "../CSS/styles.css";
 import { toast } from "react-toastify";

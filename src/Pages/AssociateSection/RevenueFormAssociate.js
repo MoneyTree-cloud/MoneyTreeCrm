@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { Card, CardBody, Col, Container, Row, Button } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { useGet, usePost, usePut } from "../../Hooks/useApi";
 import { CALCULATE_ASSOCIATE_REVENUE, GET_ALL_MAIN_TEAM_DROPDOWN_ID, GET_ALL_USERS_DROPDOWN, GET_DROPDOWN_BUILDER, GET_MY_TEAM, GET_PROJECT_BY_BUILDER, GET_PROSPECT_DETAILS_BY_PROS_ID, GET_UNIT_BY_BUILDER_PROJECT, PROSPECT_DROPDOWN, SAVE_ASSOCIATE_REVENUE } from "../../helpers/url_helper";

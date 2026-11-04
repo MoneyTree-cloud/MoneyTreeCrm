@@ -10,7 +10,7 @@ import ScreenLoader from "../../constants/ScreenLoader";
 import ApiClient from "../../helpers/api_helper";
 import { FaArrowAltCircleRight, FaCheck, FaTimes, FaFilter, FaPlus, FaCalendarAlt } from "react-icons/fa";
 import PageContent from "../../components/Common/PageContent";
-import { formatActionType, formatDate, formatDateTime, WordWrapCell } from "../../helpers/function_helper";
+import { formatActionType, formatDate, formatDateTime, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import { BiCalendarEdit, BiSend } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ import { decryptData } from "../../components/Common/CryptoUtils";
 import PermissionMissing from "../Utility/PermissonMissing";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import { useGet } from "../../Hooks/useApi";
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { sourceOptions } from "../../constants/global";
 import ChatModal from "../../constants/ChatModal";
 import { MdChat } from "react-icons/md";
@@ -36,8 +36,8 @@ _s.textContent = `
     .hrh-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:14px; background:#fff; border:1px solid #E8ECF2; border-radius:14px; padding:12px 16px; box-shadow:0 1px 4px rgba(0,0,0,.04); }
     .hrh-status-tabs { display:flex; gap:6px; flex-wrap:wrap; }
     .hrh-status-tab { display:flex; align-items:center; gap:6px; padding:7px 16px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid #E2E8F0; background:#fff; color:#64748B; transition:all .15s; white-space:nowrap; }
-    .hrh-status-tab:hover { border-color:#005B52; color:#005B52; background:#F0FDF4; }
-    .hrh-status-tab.active { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; border-color:#005B52; box-shadow:0 3px 10px rgba(0,91,82,.22); }
+    .hrh-status-tab:hover { border-color:var(--mt-primary); color:var(--mt-primary); background:#F0FDF4; }
+    .hrh-status-tab.active { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; border-color:var(--mt-primary); box-shadow:0 3px 10px rgba(var(--mt-primary-rgb),.22); }
     .hrh-status-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 
     .hrh-type-tabs { display:flex; gap:6px; margin-bottom:14px; }
@@ -48,15 +48,15 @@ _s.textContent = `
     .hrh-filter-title { font-size:11px; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:.8px; margin-bottom:14px; display:flex; align-items:center; gap:7px; }
     .hrh-filter-label { font-size:11px; font-weight:600; color:#475569; margin-bottom:5px; display:block; }
     .hrh-filter-input { width:100%; height:38px; padding:0 11px; border:1.5px solid #080808; border-radius:8px; font-size:13px; color:#0F172A; outline:none; transition:border-color .15s; background:#fff; }
-    .hrh-filter-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .hrh-filter-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
 
     .hrh-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; white-space:nowrap; }
-    .hrh-btn-primary  { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .hrh-btn-primary  { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .hrh-btn-primary:hover { opacity:.88; }
     .hrh-btn-secondary { background:#F1F5F9; color:#475569; border:1.5px solid #E2E8F0; }
     .hrh-btn-secondary:hover { background:#E2E8F0; }
-    .hrh-btn-filter {  border:1.5px solid #005B52; }
-    .hrh-btn-filter.open { background:#005B52; color:#fff; }
+    .hrh-btn-filter {  border:1.5px solid var(--mt-primary); }
+    .hrh-btn-filter.open { background:var(--mt-primary); color:#fff; }
     .hrh-btn-add { background:#FFFBEB; color:#92400E; border:1.5px solid #FDE68A; }
     .hrh-btn-add:hover { background:#FEF3C7; }
 
@@ -76,8 +76,8 @@ const STATUS_CONFIG = {
 }
 
 const SELECT_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "#005B52" : "#0b0b0b"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
+    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#0b0b0b"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
 
@@ -316,9 +316,9 @@ export default function HrRecruiterHistory() {
                             display: "inline-flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            background: `${defaultTheme.primary}1A`,
+                            background: `rgba(var(--mt-primary-rgb), 0.1)`,
                             color: defaultTheme.primary,
-                            border: `1px solid ${defaultTheme.primary}40`,
+                            border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                             borderRadius: 8,
                             cursor: "pointer",
                         }}
@@ -518,10 +518,9 @@ export default function HrRecruiterHistory() {
 
                 {/* ── Note ── */}
                 {candidateStatus === 'self' && (
-                    <div className="hrh-note">
-                        <span style={{ color: defaultTheme.btnEnable, fontWeight: 800 }}>●</span>
-                        Candidates in blue are transferred candidates
-                    </div>
+                    <Notes style={{ margin: "0 0 12px" }}>
+                        <Note tone="blue">Rows shown in blue are transferred candidates.</Note>
+                    </Notes>
                 )}
 
                 <AppTable
@@ -554,7 +553,7 @@ export default function HrRecruiterHistory() {
                 {/* ── Reschedule Modal ── */}
                 <Modal isOpen={rescheduleModalOpen} toggle={() => setRescheduleModalOpen(p => !p)}>
                     <ModalHeader toggle={() => setRescheduleModalOpen(false)}
-                        style={{ background: "linear-gradient(135deg,#005B52,#007A6E)", color: "#fff", borderRadius: "8px 8px 0 0" }}>
+                        style={{ background: "linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))", color: "#fff", borderRadius: "8px 8px 0 0" }}>
                         <span style={{ color: "#fff", fontWeight: 700 }}>
                             <FaCalendarAlt style={{ marginRight: 8 }} />
                             Reschedule — {selectedRow?.firstName} {selectedRow?.middleName} {selectedRow?.lastName}

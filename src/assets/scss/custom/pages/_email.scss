@@ -126,7 +126,7 @@
 
     &.active,
     &.active:hover {
-      box-shadow: inset 3px 0 0 $primary;
+      box-shadow: inset 3px 0 0 var(--mt-primary);
     }
 
     &.unread {

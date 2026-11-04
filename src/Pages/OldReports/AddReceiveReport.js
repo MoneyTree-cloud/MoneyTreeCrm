@@ -10,7 +10,7 @@ import {
   Form,
 } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import PageContent from "../../components/Common/PageContent";
 import { RequiredStar } from "../../helpers/function_helper";

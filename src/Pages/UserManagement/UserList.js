@@ -29,11 +29,11 @@ _s.textContent = `
     .ul-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:space-between; background:#fff; border:1px solid #E8ECF2; border-radius:14px; padding:10px 16px; margin-bottom:14px; box-shadow:0 1px 4px rgba(0,0,0,.04); }
     .ul-search-wrap { display:flex; align-items:center; gap:8px; flex:1; min-width:220px; }
     .ul-search-input { height:38px; padding:0 12px; border:1.5px solid #070707; border-radius:8px; font-size:13px; color:#0F172A; outline:none; flex:1; transition:border-color .15s; background:#fff; }
-    .ul-search-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .ul-search-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
 
     /* Buttons */
     .ul-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; white-space:nowrap; }
-    .ul-btn-primary   { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .ul-btn-primary   { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .ul-btn-primary:hover { opacity:.88; }
     .ul-btn-secondary { background:#F1F5F9; color:#475569; border:1.5px solid #E2E8F0; }
     .ul-btn-secondary:hover { background:#E2E8F0; }
@@ -232,7 +232,7 @@ export default function UserList() {
         },
         {
             name: <span className="font-weight-bold fs-13">Status</span>,
-            cell: row => <Switch checked={row.isActive === "YES"} offColor={defaultTheme.goldColorLogo} onColor={defaultTheme.primary} height={20} width={40} onChange={() => handleSwitchChange(row)} />
+            cell: row => <Switch checked={row.isActive === "YES"} offColor={defaultTheme.goldColorLogo} onColor={defaultTheme.primaryHex} height={20} width={40} onChange={() => handleSwitchChange(row)} />
         },
         { name: <span className="font-weight-bold fs-13">DOR</span>, sortable: true, selector: r => r.dol, cell: r => <WordWrapCell>{formatDate(r.dol)}</WordWrapCell> },
         { name: <span className="font-weight-bold fs-13">Relieving Reason</span>, sortable: true, selector: r => r.releavingReason, cell: r => <WordWrapCell>{r.releavingReason}</WordWrapCell> },

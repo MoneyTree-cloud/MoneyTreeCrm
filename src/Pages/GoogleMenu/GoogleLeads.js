@@ -13,7 +13,7 @@ import { MdEmail, MdMobileFriendly, MdOutlineFindInPage } from 'react-icons/md';
 import { defaultTheme } from '../../helpers/defaultTheme';
 import { FaRegComment } from 'react-icons/fa';
 import { useUserStore } from '../../store/useUserStore';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { useGet } from '../../Hooks/useApi';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { USER_TYPE } from '../../constants/global';

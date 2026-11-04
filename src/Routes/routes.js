@@ -279,6 +279,8 @@ import BHFreshBooking from "../Pages/Transaction/BHFreshBooking";
 import BookingDetails from "../Pages/Transaction/BookingDetails";
 import BookingDetailsUpload from "../Pages/Transaction/BookingDetailsUpload";
 import BookingDetailsForm from "../Pages/Transaction/BookingDetailsForm";
+import NFAMaster from "../Pages/Transaction/NFAMaster";
+import NFAMasterForm from "../Pages/Transaction/NFAMasterForm";
 
 // Lazy loading componentsfAss
 const Dashboard = lazy(() => import("../Pages/Dashboard"));
@@ -544,6 +546,11 @@ const authProtectedRoutes = [
   { path: "/booking-details", component: <BookingDetails /> },
   { path: "/booking-details/booking-details-form", component: <BookingDetailsForm /> },
   { path: "/booking-annexure-upload", component: <BookingDetailsUpload /> },
+
+  //NFA Master
+  { path: "/all-nfa-master", component: <NFAMaster readOnly /> },
+  { path: "/nfa-master", component: <NFAMaster /> },
+  { path: "/nfa-master/nfa-master-form", component: <NFAMasterForm /> },
 
   //KYC
   { path: "/kyc-team", component: <KycTeamScreen /> },

@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { Button, Card, CardBody, Col, Container, Row } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { GET_ALL_PROSPECTS_MASTER, GET_ALL_USERS_DROPDOWN_ALL, GET_MY_ALL_TEAM, GET_TEAMS_PROSPECTS_BY_ASSOCIATE_ID, PROJECT_ID_NAME_DROPDOWN, TRANSFER_PROSPECT_DATA_NEW } from "../../helpers/url_helper";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { toast } from "react-toastify";
-import { formatDate, WordWrapCell } from "../../helpers/function_helper";
+import { formatDate, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import ScreenLoader from "../../constants/ScreenLoader";
 import { useUserStore } from "../../store/useUserStore";
 import { MdEmail, MdMobileFriendly } from "react-icons/md";
@@ -443,16 +443,9 @@ export default function TransferProspects() {
             <Breadcrumbs title="Transfer" breadcrumbItem="Prospects" />
             {(pending || transferLoading || isLoading) && <ScreenLoader />}
             <Container fluid={true}>
-                <h3
-                    style={{
-                        fontSize: 12,
-                        fontWeight: "bold",
-                        color: defaultTheme.redColor,
-                        marginBottom: 10
-                    }}
-                >
-                    Note: The maximum transfer limit is set to 200 by default. To change this, please update the value in the <strong>Limit</strong> input field.
-                </h3>
+                <Notes style={{ margin: "0 0 12px" }}>
+                    <Note tone="gold">The maximum transfer limit is set to 200 by default. To change this, update the value in the <strong>Limit</strong> input field.</Note>
+                </Notes>
 
                 <Card>
                     <CardBody>

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import PageContent from "../../components/Common/PageContent";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { Container, Row, Col, Card, CardBody, Button, Input, Label, Modal, ModalHeader, ModalBody } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import AppTable from "../../components/Common/Table";
 import { FaEdit, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";

@@ -13,7 +13,7 @@ import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import AppTable from "../../components/Common/Table";
 import "../CSS/styles.css";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 
 export default function LetterHeadAdminScreen() {
     const [file, setFile] = useState(null);

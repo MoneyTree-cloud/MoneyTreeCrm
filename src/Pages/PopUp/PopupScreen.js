@@ -14,7 +14,7 @@ import ImageModal from "../../components/Common/ImageModal";
 import { MdDelete } from "react-icons/md";
 import VideoModal from "../../components/Common/VideoModal";
 import { FaVideo } from "react-icons/fa";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import PageContent from "../../components/Common/PageContent";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";

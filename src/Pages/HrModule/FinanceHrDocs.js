@@ -12,7 +12,7 @@ import PageContent from "../../components/Common/PageContent";
 import { formatDate, formatDateTime, WordWrapCell } from "../../helpers/function_helper";
 import { toast } from "react-toastify";
 import { useUserStore } from "../../store/useUserStore";
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { decryptData } from "../../components/Common/CryptoUtils";

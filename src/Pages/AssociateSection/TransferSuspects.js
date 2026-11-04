@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { Button, Card, CardBody, Col, Container, Row } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { GET_ALL_USERS_DROPDOWN_ALL, GET_MY_ALL_TEAM, GET_SUSPECT_DATA_BY_ASSOCIATE_ID_NEW, TRANSFER_LEAD_DATA } from "../../helpers/url_helper";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { toast } from "react-toastify";
-import { formatDateTime, WordWrapCell } from "../../helpers/function_helper";
+import { formatDateTime, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import ScreenLoader from "../../constants/ScreenLoader";
 import { useUserStore } from "../../store/useUserStore";
 import { MdMobileFriendly } from "react-icons/md";
@@ -274,16 +274,10 @@ export default function TransferSuspects() {
             <Container fluid={true}>
                 <Card>
                     <CardBody>
-                        <h3
-                            style={{
-                                fontSize: 12,
-                                fontWeight: "bold",
-                                color: defaultTheme.redColor,
-                                marginBottom: 10
-                            }}
-                        >
-                            Note: The maximum transfer limit is set to 200 by default. To change this, please update the value in the <strong>Limit</strong> input field. <br /> If no status is selected, all suspects will be displayed, including Self, Transferred, Hold, and Rejected.
-                        </h3>
+                        <Notes style={{ margin: "0 0 12px" }}>
+                            <Note tone="gold">The maximum transfer limit is set to 200 by default. To change this, update the value in the <strong>Limit</strong> input field.</Note>
+                            <Note tone="gold">If no status is selected, all suspects are shown, including Self, Transferred, Hold and Rejected.</Note>
+                        </Notes>
 
                         <Row className="g-3">
                             <Col lg="3">

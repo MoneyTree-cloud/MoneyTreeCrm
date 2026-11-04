@@ -1,7 +1,7 @@
 import PageContent from '../../components/Common/PageContent'
 import Breadcrumbs from '../../components/Common/Breadcrumb'
 import { Button, Card, CardBody, Col, Container, Row } from 'reactstrap'
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet } from '../../Hooks/useApi';
 import { ADMIN_ASSET_CREATE, ADMIN_ASSET_GET_ALL, ADMIN_ASSET_UPDATE, GET_ALL_MAIN_TEAM_DROPDOWN, GET_ALL_SUB_TEAM_DROPDOWN, GET_ALL_USERS_DROPDOWN } from '../../helpers/url_helper';
 import { useEffect, useState } from 'react';

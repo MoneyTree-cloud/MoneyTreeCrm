@@ -361,7 +361,7 @@ export default function CandidateHistory() {
                     </button>
                     <div style={{
                         width: 48, height: 48, borderRadius: 12,
-                        background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                        background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                         color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
                         fontSize: 18,
                     }}>

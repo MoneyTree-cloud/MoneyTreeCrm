@@ -148,7 +148,7 @@ function MasterPasswordModal({ onSuccess, onClose }) {
                 overflow: 'hidden',
             }}>
                 {/* Header band */}
-                <div style={{ background: 'linear-gradient(135deg,#005B52 0%,#007A6E 60%,#009688 100%)', padding: '30px 28px 26px', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ background: 'linear-gradient(135deg,var(--mt-primary) 0%,var(--mt-primary-light) 60%,#009688 100%)', padding: '30px 28px 26px', position: 'relative', overflow: 'hidden' }}>
                     <div style={{ position: 'absolute', top: -40, right: -30, width: 120, height: 120, borderRadius: '50%', background: 'rgba(255,255,255,.06)' }} />
                     <div style={{ position: 'absolute', bottom: -20, left: -20, width: 80, height: 80, borderRadius: '50%', background: 'rgba(201,168,76,.12)' }} />
                     {/* ✕ Close button */}
@@ -174,7 +174,7 @@ function MasterPasswordModal({ onSuccess, onClose }) {
                 </div>
 
                 {/* Gold accent line */}
-                <div style={{ height: 3, background: 'linear-gradient(90deg,#005B52,#C9A84C,#005B52)' }} />
+                <div style={{ height: 3, background: 'linear-gradient(90deg,var(--mt-primary),#C9A84C,var(--mt-primary))' }} />
 
                 {/* Body */}
                 <div style={{ padding: '24px 28px 20px' }}>
@@ -238,7 +238,7 @@ function MasterPasswordModal({ onSuccess, onClose }) {
                             disabled={locked || !val}
                             style={{
                                 width: '100%', padding: 14,
-                                background: locked ? '#F1F5F9' : 'linear-gradient(135deg,#005B52,#007A6E)',
+                                background: locked ? '#F1F5F9' : 'linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))',
                                 color: locked ? '#94A3B8' : '#fff',
                                 border: 'none', borderRadius: 12, fontSize: 15, fontWeight: 800,
                                 cursor: locked || !val ? 'not-allowed' : 'pointer',
@@ -450,7 +450,7 @@ export default function SocialMediaData() {
 
     const userId = useUserStore((state) => state.user.userId);
     const goldColor = defaultTheme?.goldColorLogo || '#C9A84C'
-    const greenColor = defaultTheme?.primaryColor || '#005B52'
+    const greenColor = defaultTheme?.primaryColor || 'var(--mt-primary)'
 
     const depts = ['All', ...Array.from(new Set(DATA.map(d => d.dept)))]
 
@@ -675,12 +675,12 @@ const GLOBAL_CSS = `
 
   /* Filter chips */
   .mt-chip-btn        { padding:6px 13px; border-radius:8px; border:1.5px solid #E2E8F0; background:#fff; color:#64748B; font-size:11px; font-weight:700; cursor:pointer; font-family:inherit; transition:all .15s; white-space:nowrap; letter-spacing:.3px; }
-  .mt-chip-btn.active { background:#005B52; border-color:#005B52; color:#fff; }
+  .mt-chip-btn.active { background:var(--mt-primary); border-color:var(--mt-primary); color:#fff; }
   .mt-chip-btn:hover:not(.active) { background:#F1F5F9; border-color:#CBD5E1; }
 
   /* Action buttons */
   .mt-action-btn         { display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:9px; border:1.5px solid #E2E8F0; background:#fff; color:#334155; font-size:12px; font-weight:700; cursor:pointer; font-family:inherit; transition:all .15s; white-space:nowrap; }
-  .mt-action-btn.primary { background:linear-gradient(135deg,#005B52,#007A6E); border-color:#005B52; color:#fff; }
+  .mt-action-btn.primary { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); border-color:var(--mt-primary); color:#fff; }
   .mt-action-btn.primary:hover { opacity:.9; }
   .mt-action-btn.danger  { background:#FEF2F2; border-color:#FECACA; color:#DC2626; }
   .mt-action-btn:hover:not(.primary):not(.danger) { background:#F1F5F9; }
@@ -700,15 +700,15 @@ const GLOBAL_CSS = `
   .mt-chip:hover { background:#F1F5F9 !important; }
 
   /* Icon button hover — scoped, does NOT override primary/action buttons */
-  .mt-action-btn.primary:hover { background:linear-gradient(135deg,#004840,#005B52) !important; color:#fff !important; opacity:1 !important; }
+  .mt-action-btn.primary:hover { background:linear-gradient(135deg,#004840,var(--mt-primary)) !important; color:#fff !important; opacity:1 !important; }
   .mt-action-btn.danger:hover  { background:#fee2e2 !important; color:#DC2626 !important; }
   .mt-action-btn:hover:not(.primary):not(.danger) { background:#F1F5F9 !important; color:#334155 !important; }
 
   /* Modal input focus */
   input:focus {
-    border-color: #005B52 !important;
+    border-color: var(--mt-primary) !important;
     background: #fff !important;
-    box-shadow: 0 0 0 3px rgba(0,91,82,.1) !important;
+    box-shadow: 0 0 0 3px rgba(var(--mt-primary-rgb),.1) !important;
   }
 
   /* Responsive */

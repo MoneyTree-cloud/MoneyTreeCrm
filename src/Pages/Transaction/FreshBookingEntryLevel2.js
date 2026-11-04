@@ -27,7 +27,7 @@ if (document.getElementById("fbe2-s")) document.getElementById("fbe2-s").remove(
 const _s = document.createElement("style")
 _s.id = "fbe2-s"
 _s.textContent = `
-    .fbe2-hdr { background: linear-gradient(135deg,#005B52 0%,#007A6E 60%,#00897B 100%); border-radius:16px; padding:22px 26px; margin-bottom:14px; position:relative; overflow:hidden; }
+    .fbe2-hdr { background: linear-gradient(135deg,var(--mt-primary) 0%,var(--mt-primary-light) 60%,var(--mt-primary-light) 100%); border-radius:16px; padding:22px 26px; margin-bottom:14px; position:relative; overflow:hidden; }
     .fbe2-hdr::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,.05); }
     .fbe2-hdr::after  { content:''; position:absolute; bottom:-60px; right:80px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,.04); }
     .fbe2-hdr-row { display:flex; flex-wrap:wrap; gap:14px 28px; margin-bottom:14px; position:relative; }
@@ -44,7 +44,7 @@ _s.textContent = `
     .fbe2-tabs { display:flex; gap:3px; padding:4px; background:#F1F5F9; border-radius:12px; margin-bottom:20px; }
     .fbe2-tab { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:8px 14px; font-size:12px; font-weight:600; color:#64748B; border:none; background:transparent; border-radius:9px; cursor:pointer; transition:all .15s; white-space:nowrap; }
     .fbe2-tab:hover:not(.active) { background:rgba(255,255,255,.6); color:#334155; }
-    .fbe2-tab.active { background:#fff; color:#005B52; font-weight:700; box-shadow:0 1px 4px rgba(0,0,0,.1); }
+    .fbe2-tab.active { background:#fff; color:var(--mt-primary); font-weight:700; box-shadow:0 1px 4px rgba(0,0,0,.1); }
     .fbe2-sec { display:flex; align-items:center; gap:8px; font-size:10px; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:.8px; margin:18px 0 12px; }
     .fbe2-sec:first-child { margin-top:0; }
     .fbe2-sec-line { flex:1; height:1px; background:#F1F5F9; }
@@ -56,24 +56,24 @@ _s.textContent = `
     .fbe2-table td.k { font-size:11px; font-weight:700; color:#171818; white-space:nowrap; width:38%; text-transform:uppercase; letter-spacing:.4px; padding-right:12px; }
     .fbe2-table td.v { font-size:13px; font-weight:600; color:#0F172A; }
     .fbe2-table td.v.em { color:#CBD5E1; font-style:italic; font-weight:400; font-size:12px; }
-    .fbe2-table td.v.hi { color:#005B52; font-weight:700; }
+    .fbe2-table td.v.hi { color:var(--mt-primary); font-weight:700; }
     .fbe2-table td.v.warn { color:#92400E; }
     .fbe2-2col { display:grid; grid-template-columns:1fr 1fr; gap:0 20px; }
     @media(max-width:900px) { .fbe2-2col { grid-template-columns:1fr; } }
     .fbe2-total-cards { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
     .fbe2-total-card { flex:1; min-width:160px; padding:14px 16px; border-radius:12px; }
-    .fbe2-total-card.green { background:linear-gradient(135deg,#f0fdf9,#e8f4f2); border:1.5px solid #005B5225; }
+    .fbe2-total-card.green { background:linear-gradient(135deg,var(--mt-primary-50),var(--mt-primary-100)); border:1.5px solid rgba(var(--mt-primary-rgb), 0.15); }
     .fbe2-total-card.gold  { background:linear-gradient(135deg,#fffbeb,#fef3c7); border:1.5px solid #C9A84C30; }
     .fbe2-total-card .tc-k { font-size:10px; font-weight:700; color:#64748B; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
-    .fbe2-total-card.green .tc-v { font-size:18px; font-weight:800; color:#005B52; }
+    .fbe2-total-card.green .tc-v { font-size:18px; font-weight:800; color:var(--mt-primary); }
     .fbe2-total-card.gold  .tc-v { font-size:18px; font-weight:800; color:#92400E; }
     .fbe2-textarea { width:100%; padding:10px 13px; border:1.5px solid #E2E8F0; border-radius:9px; font-size:13px; color:#0F172A; outline:none; resize:vertical; min-height:80px; transition:border-color .15s; }
-    .fbe2-textarea:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.07); }
+    .fbe2-textarea:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.07); }
     .fbe2-textarea.err { border-color:#EF4444; }
     .fbe2-reject-box { background:#FEF2F2; border:1.5px solid #FECACA; border-radius:12px; padding:16px 18px; margin-bottom:12px; }
     .fbe2-actions { display:flex; align-items:center; gap:10px; padding:14px 20px; background:#fff; border:1px solid #E8ECF2; border-radius:12px; flex-wrap:wrap; }
     .fbe2-btn { display:flex; align-items:center; gap:6px; padding:9px 20px; border-radius:9px; font-size:13px; font-weight:700; cursor:pointer; border:none; transition:all .15s; white-space:nowrap;  }
-    .fbe2-btn-primary { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .fbe2-btn-primary { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .fbe2-btn-primary:hover { opacity:.88; }
     .fbe2-btn-primary:disabled { opacity:.5; cursor:not-allowed; }
     .fbe2-btn-danger { background:#FEF2F2; color:#DC2626; border:1.5px solid #FECACA; }
@@ -82,9 +82,9 @@ _s.textContent = `
     .fbe2-btn-secondary:hover { background:#E2E8F0; }
     .fbe2-nav { display:flex; justify-content:flex-end; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid #F1F5F9; }
     .fbe2-nav-btn { display:flex; align-items:center; gap:5px; padding:7px 16px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; border:1.5px solid #E2E8F0; background:#fff; color:#64748B; transition:all .15s; }
-    .fbe2-nav-btn:hover:not(:disabled) { border-color:#005B52; color:#005B52; background:#f0fdf9; }
+    .fbe2-nav-btn:hover:not(:disabled) { border-color:var(--mt-primary); color:var(--mt-primary); background:var(--mt-primary-50); }
     .fbe2-nav-btn:disabled { opacity:.4; cursor:not-allowed; }
-    .fbe2-nav-btn.p { background:#005B52; border-color:#005B52; color:#fff; }
+    .fbe2-nav-btn.p { background:var(--mt-primary); border-color:var(--mt-primary); color:#fff; }
 
     
         /* ── Responsive ── */
@@ -151,7 +151,7 @@ const KV = ({ k, v, hi, warn }) => {
 }
 
 // ── Section heading ───────────────────────────────────────────────────────────
-const Sec = ({ label, color = "#005B52" }) => (
+const Sec = ({ label, color = "var(--mt-primary)" }) => (
     <div className="fbe2-sec">
         <span className="fbe2-sec-dot" style={{ background: color }} />
         {label}
@@ -526,7 +526,7 @@ export default function FreshBookingEntryLevel2() {
                         {/* CLIENT INFO */}
                         {activeTab === 1 && (
                             <>
-                                <Sec label="Applicant" color="#005B52" />
+                                <Sec label="Applicant" color="var(--mt-primary)" />
                                 <Table2 rows={[
                                     ["Name", t1.applicantName, true],
                                     ["Contact 1", t1.contactNum1],
@@ -613,7 +613,7 @@ export default function FreshBookingEntryLevel2() {
                                     </div> */}
 
                                 </div>
-                                <Sec label="Payment" color="#005B52" />
+                                <Sec label="Payment" color="var(--mt-primary)" />
                                 <Table2 rows={[
                                     ["Payment Plan", t2?.paymentPlan?.label],
                                     ["Assured Business %", t2?.raPercent],
@@ -625,7 +625,7 @@ export default function FreshBookingEntryLevel2() {
                         {/* OTHER DETAILS */}
                         {activeTab === 3 && (
                             <>
-                                <Sec label="Booking Info" color="#005B52" />
+                                <Sec label="Booking Info" color="var(--mt-primary)" />
                                 <Table2 rows={[
                                     ["SO Received Date", t3.soReceiveDate, true],
                                     ["Property Type", t3.propType?.label],

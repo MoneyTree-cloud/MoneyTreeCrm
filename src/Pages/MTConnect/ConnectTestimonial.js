@@ -165,7 +165,7 @@ export default function ConnectTestimonial() {
           onChange={() => handleSwitchClick(row.id)}
           checked={row.active === true}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
         />

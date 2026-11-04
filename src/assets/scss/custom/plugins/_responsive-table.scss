@@ -14,8 +14,8 @@
       background-color: var(--#{$prefix}tertiary-bg);
       color: var(--#{$prefix}emphasis-color);
       &.btn-primary {
-        background-color: $primary;
-        border-color: $primary;
+        background-color: var(--mt-primary);
+        border-color: var(--mt-primary);
         color: $white;
       }
     }
@@ -108,8 +108,8 @@
     }
     input[type="checkbox"]:checked + label {
       &::before {
-        background-color: $primary;
-        border-color: $primary;
+        background-color: var(--mt-primary);
+        border-color: var(--mt-primary);
       }
       &::after {
         color: $white;
@@ -120,7 +120,7 @@
   .fixed-solution {
     .sticky-table-header {
       top: $header-height !important;
-      background-color: $primary;
+      background-color: var(--mt-primary);
       tr {
         th {
           color: $light;

@@ -24,7 +24,7 @@ import PageContent from "../../components/Common/PageContent";
 import { MdMobileFriendly } from "react-icons/md";
 import { formatDateTime, RequiredStar } from "../../helpers/function_helper";
 import { useLocation, useNavigate } from "react-router-dom";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { toast } from "react-toastify";
 import { FaEdit } from "react-icons/fa";
 import { decryptData } from "../../components/Common/CryptoUtils";

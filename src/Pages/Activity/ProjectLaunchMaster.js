@@ -6,7 +6,7 @@ import { useGet, usePost } from "../../Hooks/useApi";
 import { toast } from "react-toastify";
 import ScreenLoader from "../../constants/ScreenLoader";
 import { ADD_LAUNCH_PROJECT, GET_ALL_LAUNCH_PROJECT, UPDATE_LAUNCH_PROJECT } from "../../helpers/url_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import PageContent from "../../components/Common/PageContent";
 import { FaChevronDown, FaChevronUp, FaEdit, FaEye } from "react-icons/fa";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";

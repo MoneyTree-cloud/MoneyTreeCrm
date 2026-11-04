@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Container, Form } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useLocation, useNavigate } from "react-router-dom";
 import { usePost } from "../../Hooks/useApi";
 import { CREATE_PAYMENT_SALE } from "../../helpers/url_helper";
@@ -18,7 +18,7 @@ const _s = document.createElement("style")
 _s.id = "cp-s"
 _s.textContent = `
     .cp-card { background:#fff; border:1px solid #D1D5DB; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.06); margin-bottom:16px; }
-    .cp-card-hdr { background:linear-gradient(135deg,#005B52,#007A6E); padding:14px 22px; }
+    .cp-card-hdr { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); padding:14px 22px; }
     .cp-card-hdr-title { font-size:14px; font-weight:800; color:#fff; }
     .cp-card-hdr-sub   { font-size:11px; color:rgba(255,255,255,.65); margin-top:2px; }
     .cp-card-body { padding:20px 22px; }
@@ -39,21 +39,21 @@ _s.textContent = `
     /* Field */
     .cp-label { font-size:10px; font-weight:700; color:#374151; text-transform:uppercase; letter-spacing:.4px; margin-bottom:4px; display:block; }
     .cp-input { width:100%; height:38px; padding:0 11px; border:1.5px solid #374151; border-radius:8px; font-size:13px; color:#0F172A; outline:none; transition:border-color .15s; background:#fff; }
-    .cp-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .cp-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     .cp-input.readonly { background:#F1F5F9; color:#64748B; cursor:default; border-color:#CBD5E1; }
     textarea.cp-input  { height:auto; padding:8px 11px; resize:vertical; }
     .cp-err { font-size:11px; color:#EF4444; margin-top:3px; }
 
     /* Select */
     .cp-sel .react-select__control { min-height:38px !important; border:1.5px solid #374151 !important; border-radius:8px !important; font-size:13px !important; }
-    .cp-sel .react-select__control--is-focused { border-color:#005B52 !important; box-shadow:0 0 0 3px rgba(0,91,82,.08) !important; }
+    .cp-sel .react-select__control--is-focused { border-color:var(--mt-primary) !important; box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08) !important; }
 
     /* File */
     .cp-file { width:100%; height:38px; padding:6px 10px; border:1.5px solid #374151; border-radius:8px; font-size:12px; cursor:pointer; }
 
     /* Buttons */
     .cp-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 22px; border-radius:10px; font-size:13px; font-weight:700; cursor:pointer; border:none; transition:all .15s; }
-    .cp-btn-primary   { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; box-shadow:0 3px 10px rgba(0,91,82,.22); }
+    .cp-btn-primary   { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; box-shadow:0 3px 10px rgba(var(--mt-primary-rgb),.22); }
     .cp-btn-primary:hover { opacity:.88; }
     .cp-btn-secondary { background:#F1F5F9; color:#374151; border:1.5px solid #D1D5DB; }
     .cp-btn-secondary:hover { background:#E2E8F0; }
@@ -61,8 +61,8 @@ _s.textContent = `
 document.head.appendChild(_s)
 
 const SEL_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "#005B52" : "#374151"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
+    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#374151"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
 
@@ -220,7 +220,7 @@ const CreatePayment = () => {
 
                             {/* ── Section 1: Payment Info ── */}
                             <div className="cp-sec">
-                                <span className="cp-sec-dot" style={{ background: "#005B52" }} />
+                                <span className="cp-sec-dot" style={{ background: "var(--mt-primary)" }} />
                                 <span className="cp-sec-label">Payment Information</span>
                                 <span className="cp-sec-line" />
                             </div>

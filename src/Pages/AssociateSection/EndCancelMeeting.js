@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 import { useEffect, useState } from "react";
 import { Button, Card, CardBody, Col, Container, Row } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { CANCEL_START_MEETING, END_ASSOCIATE_MEETING, GET_ALL_PROSPECTS_MASTER, GET_MEETING_DETAILS_BY_ID, GET_MY_ALL_TEAM, PROJECT_ID_NAME_DROPDOWN } from "../../helpers/url_helper";

@@ -10,7 +10,7 @@ import ScreenLoader from "../../constants/ScreenLoader";
 import "../CSS/styles.css"; // Import your CSS file
 import { toast } from "react-toastify";
 import ApiClient from "../../helpers/api_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { MdMobileFriendly } from "react-icons/md";
 import PageContent from "../../components/Common/PageContent";

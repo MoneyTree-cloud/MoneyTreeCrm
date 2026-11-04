@@ -2,7 +2,7 @@
 /* eslint-disable eqeqeq */
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Button, Input, Label } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { GET_ALL_CUSTOMER_VISIT_DATA_BY_ID, GET_ALL_USERS_DROPDOWN, GET_VISITOR_DATA_BY_MOBILE, SAVE_VISITOR_DATA, SEND_OTP, VERIFY_TEXT_OTP, MARK_VISITOR_OUT, GET_USER_BY_TOKEN, STATUS_CHANGE_TOKEN } from "../../helpers/url_helper";
@@ -58,7 +58,7 @@ const S = {
     flexWrap: "wrap",
     rowGap: 8,
   },
-  sectionTitle: { fontSize: 13, fontWeight: 600, color: "#1a2e2c", margin: 0 },
+  sectionTitle: { fontSize: 13, fontWeight: 600, color: "var(--mt-primary-900)", margin: 0 },
   sectionDot: {
     width: 8, height: 8, borderRadius: "50%",
     background: PRIMARY, flexShrink: 0,
@@ -74,7 +74,7 @@ const S = {
     outline: "none",
     fontFamily: "inherit",
     background: hasErr ? "#fff8f8" : "#fff",
-    color: "#1a2e2c",
+    color: "var(--mt-primary-900)",
     transition: "border-color .15s",
   }),
   textarea: {
@@ -85,7 +85,7 @@ const S = {
     width: "100%",
     outline: "none",
     fontFamily: "inherit",
-    color: "#1a2e2c",
+    color: "var(--mt-primary-900)",
     resize: "vertical",
     minHeight: 80,
   },
@@ -101,7 +101,7 @@ const S = {
     width: 44, height: 44, textAlign: "center",
     fontSize: 18, fontWeight: 600, borderRadius: 8,
     border: `2px solid ${GOLD}`,
-    outline: "none", color: "#1a2e2c", background: "#fff",
+    outline: "none", color: "var(--mt-primary-900)", background: "#fff",
   },
   verifiedStrip: {
     display: "flex", alignItems: "center", gap: 6,
@@ -114,7 +114,7 @@ const S = {
     borderRadius: 8, padding: "16px 12px",
     display: "flex", flexDirection: "column",
     alignItems: "center", gap: 6, cursor: "pointer",
-    background: hasFile ? "#e8f4f2" : "#fafafa",
+    background: hasFile ? "var(--mt-primary-100)" : "#fafafa",
     transition: "all .15s",
   }),
   photoText: { fontSize: 12, color: "#4a6b67", textAlign: "center" },
@@ -135,7 +135,7 @@ const S = {
     borderRadius: 7,
     border: "2px solid black",
     padding: "0 10px", outline: "none",
-    // fontFamily: "inherit", color: "#1a2e2c",
+    // fontFamily: "inherit", color: "var(--mt-primary-900)",
     // background: "#fff", width: 155,
   },
   clearBtn: {
@@ -161,10 +161,10 @@ const selectStyles = (hasErr) => ({
   }),
   option: (p, s) => ({
     ...p, fontSize: 13,
-    background: s.isSelected ? PRIMARY : s.isFocused ? "#e8f4f2" : "#fff",
+    background: s.isSelected ? PRIMARY : s.isFocused ? "var(--mt-primary-100)" : "#fff",
   }),
   menu: (p) => ({ ...p, fontSize: 13, zIndex: 9999 }),
-  singleValue: (p) => ({ ...p, fontSize: 13, color: "#1a2e2c" }),
+  singleValue: (p) => ({ ...p, fontSize: 13, color: "var(--mt-primary-900)" }),
 });
 
 /* badge helper */
@@ -259,7 +259,7 @@ function TokenInput({ value, onChange, disabled, isVerified }) {
             color: isVerified ? '#16A34A' : '#0F172A',
             border: `2px solid ${isVerified ? '#16A34A' : (digits[i].trim() ? defaultTheme.primary : '#CBD5E1')}`,
             borderRadius: 10,
-            background: isVerified ? '#F0FDF4' : (digits[i].trim() ? '#F0FDF9' : '#fff'),
+            background: isVerified ? '#F0FDF4' : (digits[i].trim() ? 'var(--mt-primary-50)' : '#fff'),
             outline: 'none',
             transition: 'all .15s',
             cursor: disabled ? 'not-allowed' : 'text',
@@ -899,8 +899,8 @@ export default function VisitorEntryScreen() {
                   <Col md="6">
                     <div
                       style={{
-                        background: "#F0FDF9",
-                        border: `1.5px solid ${defaultTheme.primary}40`,
+                        background: "var(--mt-primary-50)",
+                        border: `1.5px solid rgba(var(--mt-primary-rgb), 0.25)`,
                         borderRadius: 12,
                         padding: "14px 16px",
                       }}

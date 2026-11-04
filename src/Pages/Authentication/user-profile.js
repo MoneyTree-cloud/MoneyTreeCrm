@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardBody, Col, Container, Row, Button, Input, FormGroup, Label, } from "reactstrap";
 import { AiFillCamera } from "react-icons/ai";
+import { FaEdit } from "react-icons/fa";
 import moneyTreeLogo from "../../assets/images/profile-user.png";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
@@ -13,8 +14,7 @@ import { imageBaseUrl } from "../../helpers/api_helper";
 import PageContent from "../../components/Common/PageContent";
 import ImageModal from "../../components/Common/ImageModal";
 import { decryptData, encryptAndStore } from "../../components/Common/CryptoUtils";
-import { formatDate } from "../../helpers/function_helper";
-import { FaEdit } from "react-icons/fa";
+import { formatDate, Notes, Note } from "../../helpers/function_helper";
 import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
@@ -205,36 +205,45 @@ const UserProfile = () => {
             </div>
 
             <Row className="">
-              <Col
-                className="text-center mb-3"
-                style={{ position: "relative" }}
-              >
-                <img
-                  src={imageSrc}
-                  alt=""
-                  className="avatar-md rounded-circle img-thumbnail"
-                  onClick={toggleModal}
-                  style={{
-                    cursor: "pointer",
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "contain",
-                  }}
-                />
-                <label htmlFor="file-upload" style={{ cursor: "pointer" }}>
-                  <AiFillCamera
-                    size={30}
+              <Col className="text-center mb-3">
+                {/* WhatsApp-style: camera badge pinned to the photo's bottom-right corner */}
+                <div style={{ position: "relative", display: "inline-block", width: 110, height: 110 }}>
+                  <img
+                    src={imageSrc}
+                    alt=""
+                    className="rounded-circle img-thumbnail"
+                    onClick={toggleModal}
                     style={{
-                      position: "absolute",
-                      bottom: "1px",
-                      right: "45%",
-                      backgroundColor: defaultTheme.goldColorLogo,
-                      color: "white",
-                      borderRadius: "50%",
-                      padding: "5px",
+                      cursor: "pointer",
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
                     }}
                   />
-                </label>
+                  <label
+                    htmlFor="file-upload"
+                    title="Change photo"
+                    style={{
+                      position: "absolute",
+                      right: 2,
+                      bottom: 2,
+                      width: 34,
+                      height: 34,
+                      margin: 0,
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: defaultTheme.primary,
+                      color: "#fff",
+                      border: "3px solid #fff",
+                      boxShadow: "0 3px 8px rgba(0, 0, 0, 0.25)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <AiFillCamera size={16} />
+                  </label>
+                </div>
                 <Input
                   id="file-upload"
                   type="file"
@@ -258,35 +267,28 @@ const UserProfile = () => {
                 {renderField("Blood Group", formData.bloodGroup)}
                 {/* {renderField("UAN No.", formData.uanNumber)} */}
               </Row>
-              <p
-                className="text-center"
-                style={{
-                  fontSize: 14,
-                  fontWeight: "700",
-                  color: defaultTheme.redColor,
-                }}
-              >
-                Note: In case of any discrepancy in your reporting hierarchy, please contact the HR department.
-              </p>
+              <Notes style={{ margin: "0 0 12px" }}>
+                <Note tone="gold">In case of any discrepancy in your reporting hierarchy, please contact the HR department.</Note>
+              </Notes>
               <Row className="mb-2">
                 <hr className="dashed-divider" />
                 <Col md="12" className="d-flex justify-content-between align-items-center">
                   <h5>Personal Details</h5>
-                  <Button
+                  {/* <Button
                     color="link"
                     onClick={handleEditClick}
                     disabled={isEditing}
                     style={{ textDecoration: "none" }}
                   >
                     <FaEdit size={22} />
-                  </Button>
+                  </Button> */}
                 </Col>
               </Row>
 
               {!isEditing ? (
                 <Row>
-                  {renderField("Phone No", formData.mobileNo)}
-                  {renderField("Emergency Phone No", formData.emergencyPhone)}
+                  {renderField("Personal Mobile (use for Talk's App login)", formData.mobileNo)}
+                  {renderField("Emergency Mobile", formData.emergencyPhone)}
                   {renderField("Email", formData.personalEmail)}
                   {renderField("Instagram ID", formData.instagramId || '-')}
                   {updateUserData.maritalStatus === 'Married' && renderField("Marriage Anniversary", formatDate(formData.marriageAnniversary))}
@@ -294,8 +296,8 @@ const UserProfile = () => {
                 </Row>
               ) : (
                 <Row>
-                  {renderEditableField("Phone No", "mobileNo", formData.mobileNo)}
-                  {renderEditableField("Emergency Phone No", "emergencyPhone", formData.emergencyPhone)}
+                  {renderEditableField("Personal Mobile (use for Talk's App login)", "mobileNo", formData.mobileNo)}
+                  {renderEditableField("Emergency Mobile", "emergencyPhone", formData.emergencyPhone)}
                   {renderEditableField("Email", "personalEmail", formData.personalEmail)}
                   {renderEditableField("Instagram ID", "instagramId", formData.instagramId)}
                   {/* {renderEditableField("Actual DOB", "dob", formData.dob, "date")}
@@ -333,16 +335,9 @@ const UserProfile = () => {
               )}
             </form>
 
-            <p
-              className="text-center"
-              style={{
-                fontSize: 14,
-                fontWeight: "700",
-                color: defaultTheme.redColor,
-              }}
-            >
-              Note: Please review and update your profile image along with other details before saving the changes.
-            </p>
+            <Notes>
+              <Note tone="gold">Please review and update your profile image before saving the changes.</Note>
+            </Notes>
             <ImageModal
               isOpen={modal}
               toggle={toggleModal}

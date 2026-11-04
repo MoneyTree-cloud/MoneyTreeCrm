@@ -15,7 +15,7 @@ import { decryptData } from "../../components/Common/CryptoUtils";
 import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 
 const VisitorHrDetails = () => {
     const LIMIT = 200;

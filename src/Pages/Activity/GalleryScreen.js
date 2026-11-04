@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
 import ImageModal from "../../components/Common/ImageModal";
 import { MdDelete, MdAdd } from "react-icons/md";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { CREATE_FOLDER, DELETE_IMAGE, GET_ALL_FOLDER, GET_ALL_IMAGES, UPLOAD_MULTIPLE_IMAGE } from "../../helpers/url_helper";
 import { toast } from "react-toastify";

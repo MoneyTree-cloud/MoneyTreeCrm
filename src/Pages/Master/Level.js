@@ -87,7 +87,7 @@ export default function Level() {
         <Switch
           checked={row.isActive === "YES"}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           // uncheckedIcon={false}
           // checkedIcon={false}
           height={20}

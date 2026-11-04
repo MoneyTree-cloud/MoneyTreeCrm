@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useRef, useEffect } from "react";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
 import Switch from "react-switch";
@@ -314,7 +314,7 @@ export default function ProjectDocumentation() {
             <Switch
               checked={row.isActive === "YES"}
               offColor={defaultTheme.goldColorLogo}
-              onColor={defaultTheme.primary}
+              onColor={defaultTheme.primaryHex}
               height={20}
               width={40}
               onChange={() => handleSwitchChange(row)}

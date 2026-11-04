@@ -15,7 +15,7 @@ import { defaultTheme } from "../../helpers/defaultTheme";
 import PageContent from "../../components/Common/PageContent";
 import { useUserStore } from "../../store/useUserStore";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { WordWrapCell } from "../../helpers/function_helper";
+import { WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 
@@ -109,7 +109,7 @@ export default function AttendanceLocationMaster() {
         <Switch
           checked={row.active}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
           onChange={() => handleSwitchChange(row)}
@@ -185,15 +185,9 @@ export default function AttendanceLocationMaster() {
       {(addLoading || changeLoading || isLoading) && <ScreenLoader />}
       <Breadcrumbs title="Attendance" breadcrumbItem="Attendance Location" />
       <Container fluid={true}>
-        <h3
-          style={{
-            fontSize: 12,
-            fontWeight: "500",
-            color: defaultTheme.redColor,
-          }}
-        >
-          Note: Users can only mark their attendance will be only recorded within a 100-meter radius of the designated location.
-        </h3>
+        <Notes style={{ margin: "0 0 12px" }}>
+          <Note tone="gold">Attendance is recorded only within a 100-metre radius of the designated location.</Note>
+        </Notes>
         <form onSubmit={handleButtonClick}>
           <Card>
             <CardBody>

@@ -17,7 +17,7 @@ import AppTable from "../../components/Common/Table";
 import Switch from "react-switch";
 import { useUserStore } from "../../store/useUserStore";
 import { formatDate, formatDateTime, RequiredStar, WordWrapCell } from "../../helpers/function_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { scrollToTop } from "../../constants/global";
@@ -248,7 +248,7 @@ export default function CreateEvent() {
         <Switch
           checked={row.active === true}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
           onChange={() => handleSwitchChange(row.id)}

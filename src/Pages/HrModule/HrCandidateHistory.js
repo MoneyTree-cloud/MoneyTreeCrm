@@ -11,7 +11,7 @@ import ApiClient, { hrImageBaseUrl } from '../../helpers/api_helper';
 import { toast } from 'react-toastify';
 import { useGet, usePost } from '../../Hooks/useApi';
 import { FINAL_SUBMIT, GET_ALL_MAIN_TEAM_SUB_TEAM_DROPDOWN, GET_ALL_POSITION_DROPDOWN, HR_HANDOVER_TO_MAINTEAM, HR_LOCATION_DROPDOWN, HR_REJECT_CANDIDATE, SEND_MAIL_CANDIDATE_DOCUMENT_SUBMIT, TRIAL_PERIOD_CREATE, TRIAL_PERIOD_UPDATE } from '../../helpers/url_helper';
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import ScreenLoader from '../../constants/ScreenLoader';
 import { useUserStore } from '../../store/useUserStore';
 
@@ -21,7 +21,7 @@ const _s = document.createElement("style")
 _s.id = "hch-s"
 _s.textContent = `
     /* ── Profile header ── */
-    .hch-prof-hdr { background:linear-gradient(135deg,#005B52,#007A6E); border-radius:14px; padding:20px 24px; margin-bottom:16px; display:flex; align-items:center; gap:16px; position:relative; overflow:hidden; }
+    .hch-prof-hdr { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); border-radius:14px; padding:20px 24px; margin-bottom:16px; display:flex; align-items:center; gap:16px; position:relative; overflow:hidden; }
     .hch-prof-hdr::before { content:''; position:absolute; top:-40px; right:-40px; width:180px; height:180px; border-radius:50%; background:rgba(255,255,255,.05); pointer-events:none; }
     .hch-prof-avatar { width:52px; height:52px; border-radius:14px; background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; border:2px solid rgba(255,255,255,.3); }
     .hch-prof-name { font-size:18px; font-weight:800; color:#fff; }
@@ -59,15 +59,15 @@ _s.textContent = `
 
     /* ── Action section ── */
     .hch-action-card { background:linear-gradient(135deg,#F0FDF4,#fff); border:1.5px solid #BBF7D0; border-radius:12px; padding:18px 20px; margin-bottom:12px; }
-    .hch-action-title { font-size:13px; font-weight:800; color:#005B52; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .hch-action-title { font-size:13px; font-weight:800; color:var(--mt-primary); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
 
     /* ── Select styles override ── */
     .hch-action-card .react-select__control { min-height:38px; border:1.5px solid #D1D5DB; border-radius:8px; font-size:13px; }
-    .hch-action-card .react-select__control--is-focused { border-color:#005B52 !important; box-shadow:0 0 0 3px rgba(0,91,82,.08) !important; }
+    .hch-action-card .react-select__control--is-focused { border-color:var(--mt-primary) !important; box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08) !important; }
 
     /* ── Buttons ── */
     .hch-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; }
-    .hch-btn-primary  { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .hch-btn-primary  { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .hch-btn-primary:hover { opacity:.88; }
     .hch-btn-danger   { background:linear-gradient(135deg,#DC2626,#EF4444); color:#fff; }
     .hch-btn-danger:hover { opacity:.88; }
@@ -75,19 +75,19 @@ _s.textContent = `
     .hch-btn-success:hover { opacity:.88; }
     .hch-btn-secondary{ background:#F1F5F9; color:#374151; border:1.5px solid #E2E8F0; }
     .hch-btn-secondary:hover { background:#E2E8F0; }
-    .hch-btn-back { background:#fff; color:#005B52; border:1.5px solid #005B52; }
+    .hch-btn-back { background:#fff; color:var(--mt-primary); border:1.5px solid var(--mt-primary); }
     .hch-btn-back:hover { background:#F0FDF4; }
 
     /* ── Field label in forms ── */
     .hch-flabel { font-size:11px; font-weight:700; color:#374151; text-transform:uppercase; letter-spacing:.4px; margin-bottom:4px; display:block; }
     .hch-finput { width:100%; height:38px; padding:0 11px; border:1.5px solid #D1D5DB; border-radius:8px; font-size:13px; outline:none; transition:border-color .15s; }
-    .hch-finput:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .hch-finput:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     textarea.hch-finput { height:auto; padding:8px 11px; resize:vertical; }
 
     /* ── Radio pill ── */
     .hch-radio-grp { display:flex; gap:8px; flex-wrap:wrap; }
     .hch-rpill { padding:6px 14px; border-radius:8px; border:1.5px solid #D1D5DB; background:#fff; font-size:12px; font-weight:600; color:#374151; cursor:pointer; transition:all .14s; user-select:none; }
-    .hch-rpill.on { background:#005B52; color:#fff; border-color:#005B52; }
+    .hch-rpill.on { background:var(--mt-primary); color:#fff; border-color:var(--mt-primary); }
     .hch-rpill.on-gold { background:#C9A84C; color:#fff; border-color:#C9A84C; }
     .hch-rpill.on-red { background:#EF4444; color:#fff; border-color:#EF4444; }
 
@@ -164,8 +164,8 @@ _s.textContent = `
 document.head.appendChild(_s)
 
 const SEL_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "#005B52" : "#D1D5DB"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
+    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#D1D5DB"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
 
@@ -178,7 +178,7 @@ const KV = ({ label, value, icon, span2 }) => (
 )
 
 // ── Collapsible section ───────────────────────────────────────────────────────
-const Sec = ({ dot = "#005B52", label, badge, children, defaultOpen = true }) => {
+const Sec = ({ dot = "var(--mt-primary)", label, badge, children, defaultOpen = true }) => {
     const [open, setOpen] = useState(defaultOpen)
     return (
         <div className="hch-sec">
@@ -385,7 +385,7 @@ export default function HrCandidateHistory() {
                 </div>
 
                 {/* ── Part 1: Basic Info ── */}
-                <Sec dot="#005B52" label="Basic Information">
+                <Sec dot="var(--mt-primary)" label="Basic Information">
                     <div className="hch-kv-grid">
                         <KV label="Name" value={rowData.firstName} icon={<MdPerson />} />
                         <KV label="Email" value={rowData.email} icon={<MdEmail />} />
@@ -688,7 +688,7 @@ export default function HrCandidateHistory() {
 
                 {/* ── Final Salary Modal ── */}
                 <Modal isOpen={finalSalaryModal} toggle={toggleFinalSalaryModal}>
-                    <ModalHeader toggle={toggleFinalSalaryModal} style={{ background: "linear-gradient(135deg,#005B52,#007A6E)", color: "#fff", borderRadius: "8px 8px 0 0" }}>
+                    <ModalHeader toggle={toggleFinalSalaryModal} style={{ background: "linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))", color: "#fff", borderRadius: "8px 8px 0 0" }}>
                         <span style={{ color: "#fff", fontWeight: 700 }}>📋 Final Submission</span>
                     </ModalHeader>
                     <ModalBody>

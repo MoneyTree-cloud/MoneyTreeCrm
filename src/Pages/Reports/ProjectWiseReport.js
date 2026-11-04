@@ -13,7 +13,7 @@ import { defaultTheme } from "../../helpers/defaultTheme";
 import PageContent from "../../components/Common/PageContent";
 import * as XLSX from 'xlsx-js-style';
 import { useGet } from "../../Hooks/useApi";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";

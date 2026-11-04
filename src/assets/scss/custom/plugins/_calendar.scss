@@ -69,28 +69,28 @@
   }
 
   .fc-daygrid-day.fc-day-today {
-    background-color: rgba($primary, 0.1);
+    background-color: rgba(var(--mt-primary-rgb), 0.1);
     .fc-daygrid-day-number {
-      background-color: $primary;
+      background-color: var(--mt-primary);
       color: $white;
     }
   }
   .btn-group{
     button {
-      background-color: $primary;
+      background-color: var(--mt-primary);
       border-color: var(--#{$prefix}border-color);
       &:hover {
-        background-color: #099680;
+        background-color: var(--mt-primary-light);
         border-color: var(--#{$prefix}border-color);
       }
       &:active {
-        background-color: #099680 !important;
+        background-color: var(--mt-primary-light) !important;
         border-color: var(--#{$prefix}border-color) !important;
       }
     }
   }
   .fc-button-primary:not(:disabled).fc-button-active {
-    background-color: #099680 !important;
+    background-color: var(--mt-primary-light) !important;
     border-color: var(--#{$prefix}border-color) !important;
   }
 
@@ -170,7 +170,7 @@
 .fc-state-down,
 .fc-state-active,
 .fc-state-disabled {
-  background-color: $primary;
+  background-color: var(--mt-primary);
   color: $white;
   text-shadow: none;
 }
@@ -187,12 +187,12 @@
 
 .fc-event,
 .fc-event-dot {
-  background-color: $primary;
+  background-color: var(--mt-primary);
 }
 
 .fc-daygrid-dot-event.fc-event-mirror,
 .fc-daygrid-dot-event:hover {
-  background-color: $primary;
+  background-color: var(--mt-primary);
 }
 
 .fc-daygrid-dot-event {

@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, Col, Container, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { toast } from "react-toastify";
 import { MdCall, MdEmail, MdMobileFriendly } from "react-icons/md";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
@@ -13,7 +13,7 @@ import { useGet, usePost } from "../../Hooks/useApi";
 import { useUserStore } from "../../store/useUserStore";
 import ApiClient from "../../helpers/api_helper";
 import { defaultTheme } from "../../helpers/defaultTheme";
-import { formatDate, formatDateForInput, formatDateTime, WordWrapCell } from "../../helpers/function_helper";
+import { formatDate, formatDateForInput, formatDateTime, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import {
     GET_ALL_PROSPECTS_MASTER, GET_ALL_USERS_DROPDOWN, GET_MY_TEAM,
     GET_PROSPECT_DATA_BY_ASSOCIATE_ID_NEW, IVR_MAKE_CALL, MARK_PROSPECT_FAVOURITE, PROSPECT_BULK_UPDATE
@@ -779,13 +779,10 @@ const ProspectListMenu = () => {
                     </Card>
                 </form>
 
-                <h3 style={{ fontSize: 12, fontWeight: 500, color: defaultTheme.primary }}>
-                    Note: Prospects showing in{" "}
-                    <span style={{ color: defaultTheme.btnEnable }}>BLUE</span> color are transferred prospects.
-                </h3>
-                <h3 style={{ fontSize: 12, fontWeight: "500", color: defaultTheme.redColor }}>
-                    Note: The Prospect highlighted in red is marked as DND (Do Not Disturb).
-                </h3>
+                <Notes>
+                    <Note tone="blue">Rows shown in blue are transferred prospects.</Note>
+                    <Note tone="red">Rows shown in red are marked Do Not Disturb (DND).</Note>
+                </Notes>
 
                 {/* ── FIX 2: ref wrapper so we can query rows inside ── */}
                 <div ref={tableContainerRef}>

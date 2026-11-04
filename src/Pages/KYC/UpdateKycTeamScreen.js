@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Row, Col, Card, CardBody, FormGroup, Button, Container, Input } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGet, usePost } from "../../Hooks/useApi";

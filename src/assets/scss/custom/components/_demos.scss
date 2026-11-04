@@ -45,8 +45,8 @@
     &:hover {
       i {
         color: $white;
-        background-color: $primary;
-        border-color: $primary;
+        background-color: var(--mt-primary);
+        border-color: var(--mt-primary);
       }
     }
   }
@@ -76,8 +76,8 @@
     &:hover {
       i {
         color: $white;
-        background-color: $primary;
-        border-color: $primary;
+        background-color: var(--mt-primary);
+        border-color: var(--mt-primary);
       }
     }
   }
@@ -118,7 +118,7 @@
 .card-radio-input {
   display: none;
   &:checked + .card-radio {
-    border-color: $primary !important;
+    border-color: var(--mt-primary) !important;
   }
 }
 
@@ -131,8 +131,8 @@
       line-height: 28px !important;
       font-size: 20px !important;
       border-radius: 50% !important;
-      background-color: rgba($primary, 0.25) !important;
-      color: $primary !important;
+      background-color: rgba(var(--mt-primary-rgb), 0.25) !important;
+      color: var(--mt-primary) !important;
       margin: 4px 8px !important;
     }
   }

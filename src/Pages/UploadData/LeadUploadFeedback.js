@@ -12,7 +12,7 @@ import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import FeedbackModal from "./FeedbackModal";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 
 export default function LeadUploadFeedback() {
     const [fromDate, setFromDate] = useState("");

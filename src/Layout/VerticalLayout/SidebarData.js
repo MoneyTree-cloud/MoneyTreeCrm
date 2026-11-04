@@ -1,501 +1,516 @@
 import {
-  FaUsers,
+  BiSearchAlt,
+} from "react-icons/bi";
+import {
+  FaCalendarCheck,
   FaClipboardList,
   FaUpload,
-  FaChartLine,
-  FaUserTie,
-  FaBuilding,
-  FaMoneyCheckAlt,
-  FaDollarSign,
-  FaExchangeAlt,
-  FaBullhorn,
-  FaBriefcase,
-  FaFolder,
-  FaCalendarCheck,
-  FaClipboardCheck,
-  FaBox,
-  FaCogs,
-  FaShieldAlt,
-  FaSignInAlt,
-  FaCheckCircle,
-  FaCalendarAlt,
-  FaHardHat,
-  FaFileAlt,
-  FaUserAlt,
-  FaRegClock,
-  FaUserCheck,
-  FaWallet,
-  FaCommentAlt,
-  FaRegFileAlt,
-  FaHistory,
-  FaRegCalendarAlt,
-  FaShoppingCart,
-  FaCreditCard,
-  FaBullseye,
-  FaTools,
-  FaProjectDiagram,
-  FaExclamationTriangle,
-  FaEnvelope,
-  FaPhoneAlt,
-  FaMapMarkerAlt,
-  FaUsersCog,
-  FaIdCard,
-  FaKey,
-  FaRegWindowMaximize,
-  FaBookOpen,
-  FaRegMoneyBillAlt,
-  FaUserPlus,
-  FaRegClipboard,
-  FaCog,
-  FaFacebook,
-  FaChartBar,
-  FaHourglassHalf,
-  FaGoogle,
-  FaIdBadge,
-  FaTradeFederation,
-  FaUserFriends,
-  FaMobile,
-  FaUser,
-  FaLocationArrow,
-  FaUndo,
-  FaEdit,
-  FaFileContract,
-  FaHome,
-  FaBoxes,
-  FaLaptopCode,
-  FaWhatsapp,
-  FaList,
-  FaSteam,
-  FaRupeeSign,
-  FaDatabase,
-  FaRocket,
-  FaMouse,
-  FaMap,
-  FaShareAlt,
-  FaCalculator,
-  FaCodeBranch,
-  FaUserSlash,
-  FaRegHeart,
-  FaCoins,
-} from "react-icons/fa"; // Font Awesome
+} from "react-icons/fa";
 import {
-  MdAccountCircle,
-  MdAssignment,
-  MdAttachFile,
-  MdAttachMoney,
-  MdBusiness,
-  MdDashboard,
-  MdDescription,
+  FiLayers,
+} from "react-icons/fi";
+import {
   MdFileUpload,
-  MdMeetingRoom,
-  MdNotifications,
-  MdPayment,
-  MdPeople,
-  MdPhotoLibrary,
-  MdSecurity,
-  MdStickyNote2,
-  MdSupervisorAccount,
-  MdSupport,
-  MdTransferWithinAStation,
-  MdWork,
-  MdEvent,
-  MdAccessTime,
-  MdOutlineInfo,
-  MdCampaign,
-  MdSupportAgent,
-  MdLocationOn,
-  MdFormatQuote,
-  MdOpenInNew,
-  MdUpdate,
-  MdEventNote,
-  MdOutlineAssignment,
-  MdReportOff,
-  MdWorkOff,
-  MdDoNotDisturb,
-  MdInsertDriveFile,
-  MdDateRange,
-  MdMoney,
-  MdHistory,
-  MdCall,
-  MdAssignmentInd,
-  MdInsights,
-  MdOutlinePeopleAlt,
-  MdReport,
-  MdFeedback,
-  MdTask,
-  MdTaskAlt,
-  MdTrackChanges,
-  MdWhatsapp,
-  MdDomain,
-  MdInventory,
-  MdQuiz,
-  MdOutlineMeetingRoom,
-  MdPersonAddAlt,
-  MdDetails,
-  MdLooksOne,
-  MdLooksTwo,
-  MdLooks3,
-  MdVideoLibrary,
-  MdSettingsSuggest,
-  MdAccountBalance,
-  MdPointOfSale,
-  MdHealthAndSafety,
-  MdAdd,
-  MdAccountTree,
   MdOutlineDeveloperBoard,
-  MdOutlineSupervisorAccount,
   MdOutlinePerson,
   MdOutlineSettingsSuggest,
-  MdLeaderboard,
-  MdSchedule,
-  MdBookOnline,
-  MdAnimation,
-  MdDocumentScanner,
-  MdAssignmentAdd,
-  MdCandlestickChart,
-  MdOutlineMp,
-} from "react-icons/md"; // Material Design
-import { MdGroup, MdPersonAdd } from "react-icons/md";
-import { FaFolderOpen, FaUserShield } from "react-icons/fa";
+  MdOutlineSupervisorAccount,
+  MdSecurity,
+  MdSupport,
+} from "react-icons/md";
 import {
-  AiFillCreditCard,
-  AiOutlineCalendar,
-  AiOutlineCustomerService,
-  AiOutlineFileSearch,
-  AiOutlineFlag,
-  AiOutlineForm,
-  AiOutlineUser,
-} from "react-icons/ai";
-import { GiPadlock, GiPartyPopper } from "react-icons/gi";
-import { FiActivity, FiArchive, FiBarChart, FiFileText, FiInfo, FiLayers, FiMenu, FiUploadCloud, FiUserCheck, FiUsers } from "react-icons/fi";
-import { IoIosChatbubbles, IoMdDocument, IoMdGitBranch } from "react-icons/io";
-import { BiCloudUpload, BiSearchAlt } from "react-icons/bi";
-import { RiAwardLine, RiFilePaper2Line, RiGoogleLine, RiMenuFoldLine, RiOrganizationChart } from "react-icons/ri";
-import { defaultTheme } from "../../helpers/defaultTheme";
-import { IoCheckmarkDoneCircle, IoPeople, IoRecording } from "react-icons/io5";
+  PiAddressBookDuotone,
+  PiAirplaneTiltDuotone,
+  PiArrowUDownLeftDuotone,
+  PiArrowsClockwiseDuotone,
+  PiArrowsDownUpDuotone,
+  PiArrowsLeftRightDuotone,
+  PiBalloonDuotone,
+  PiBarbellDuotone,
+  PiBellDuotone,
+  PiBellRingingDuotone,
+  PiBellSlashDuotone,
+  PiBookOpenDuotone,
+  PiBriefcaseDuotone,
+  PiBrowsersDuotone,
+  PiBuildingApartmentDuotone,
+  PiBuildingsDuotone,
+  PiCakeDuotone,
+  PiCalculatorDuotone,
+  PiCalendarBlankDuotone,
+  PiCalendarCheckDuotone,
+  PiCalendarDotsDuotone,
+  PiCalendarPlusDuotone,
+  PiChartBarDuotone,
+  PiChartBarHorizontalDuotone,
+  PiChartDonutDuotone,
+  PiChartLineDuotone,
+  PiChartLineUpDuotone,
+  PiChartPieDuotone,
+  PiChartPieSliceDuotone,
+  PiChatCircleDotsDuotone,
+  PiChatTextDuotone,
+  PiChatsCircleDuotone,
+  PiCheckSquareOffsetDuotone,
+  PiClipboardTextDuotone,
+  PiClockClockwiseDuotone,
+  PiClockCounterClockwiseDuotone,
+  PiCloudArrowUpDuotone,
+  PiCoinsDuotone,
+  PiConfettiDuotone,
+  PiCreditCardDuotone,
+  PiCrosshairDuotone,
+  PiCrownDuotone,
+  PiCurrencyInrDuotone,
+  PiDatabaseDuotone,
+  PiDeviceMobileDuotone,
+  PiDoorOpenDuotone,
+  PiEnvelopeDuotone,
+  PiEnvelopeSimpleDuotone,
+  PiFileArrowUpDuotone,
+  PiFileTextDuotone,
+  PiFilesDuotone,
+  PiFilmStripDuotone,
+  PiFingerprintDuotone,
+  PiFolderOpenDuotone,
+  PiGearDuotone,
+  PiGiftDuotone,
+  PiGitBranchDuotone,
+  PiGitPullRequestDuotone,
+  PiGlobeDuotone,
+  PiGoogleDriveLogoDuotone,
+  PiGoogleLogoDuotone,
+  PiGraphDuotone,
+  PiGridFourDuotone,
+  PiHandCoinsDuotone,
+  PiHandshakeDuotone,
+  PiHeadsetDuotone,
+  PiHeartDuotone,
+  PiHeartbeatDuotone,
+  PiHourglassDuotone,
+  PiHourglassMediumDuotone,
+  PiHouseDuotone,
+  PiHouseLineDuotone,
+  PiIdentificationBadgeDuotone,
+  PiIdentificationCardDuotone,
+  PiImagesDuotone,
+  PiInstagramLogoDuotone,
+  PiKanbanDuotone,
+  PiKeyDuotone,
+  PiLaptopDuotone,
+  PiLifebuoyDuotone,
+  PiLightbulbFilamentDuotone,
+  PiListBulletsDuotone,
+  PiListChecksDuotone,
+  PiListDashesDuotone,
+  PiListNumbersDuotone,
+  PiLockDuotone,
+  PiLockKeyDuotone,
+  PiLockOpenDuotone,
+  PiMagnetDuotone,
+  PiMagnifyingGlassDuotone,
+  PiMapPinDuotone,
+  PiMapTrifoldDuotone,
+  PiMegaphoneDuotone,
+  PiMegaphoneSimpleDuotone,
+  PiMetaLogoDuotone,
+  PiMicrophoneDuotone,
+  PiMoneyDuotone,
+  PiNavigationArrowDuotone,
+  PiNotePencilDuotone,
+  PiNotepadDuotone,
+  PiNumberCircleOneDuotone,
+  PiNumberCircleThreeDuotone,
+  PiNumberCircleTwoDuotone,
+  PiPackageDuotone,
+  PiPasswordDuotone,
+  PiPencilSimpleDuotone,
+  PiPencilSimpleLineDuotone,
+  PiPhoneCallDuotone,
+  PiPlugsConnectedDuotone,
+  PiPlusCircleDuotone,
+  PiPresentationChartDuotone,
+  PiProhibitInsetDuotone,
+  PiPulseDuotone,
+  PiQuestionDuotone,
+  PiQuotesDuotone,
+  PiReceiptDuotone,
+  PiRobotDuotone,
+  PiRocketLaunchDuotone,
+  PiSealCheckDuotone,
+  PiShapesDuotone,
+  PiShareFatDuotone,
+  PiShareNetworkDuotone,
+  PiShieldCheckDuotone,
+  PiShieldStarDuotone,
+  PiSignInDuotone,
+  PiSignatureDuotone,
+  PiSparkleDuotone,
+  PiSquaresFourDuotone,
+  PiStairsDuotone,
+  PiStorefrontDuotone,
+  PiSunDuotone,
+  PiTagDuotone,
+  PiTargetDuotone,
+  PiTicketDuotone,
+  PiTrayArrowUpDuotone,
+  PiTreeStructureDuotone,
+  PiTrendUpDuotone,
+  PiTrophyDuotone,
+  PiTruckDuotone,
+  PiUploadDuotone,
+  PiUploadSimpleDuotone,
+  PiUserCheckDuotone,
+  PiUserCircleDuotone,
+  PiUserFocusDuotone,
+  PiUserGearDuotone,
+  PiUserListDuotone,
+  PiUserPlusDuotone,
+  PiUserSwitchDuotone,
+  PiUsersDuotone,
+  PiUsersFourDuotone,
+  PiUsersThreeDuotone,
+  PiVideoConferenceDuotone,
+  PiWarningCircleDuotone,
+  PiWhatsappLogoDuotone,
+  PiMathOperationsDuotone,
+  PiScrollDuotone,
+  PiWalletDuotone,
+} from "react-icons/pi";
+import { ICON_COLOR, ICON_SIZE, TOP_ICON_COLOR, TOP_ICON_SIZE } from "../../constants/global";
 
 export const AdminSidebarData = [
   //Security
   {
     label: "User Management",
-    icon: <GiPadlock color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiUserGearDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Create User",
         link: "/users-list",
-        icon: <MdPersonAdd color={defaultTheme.btnEnable} size={16} />
+        icon: <PiUserPlusDuotone color={ICON_COLOR} size={ICON_SIZE} />
       },
       {
         sublabel: "Employee Master",
         link: "/user-master",
-        icon: <IoPeople color={defaultTheme.btnEnable} size={16} />
+        icon: <PiIdentificationBadgeDuotone color={ICON_COLOR} size={ICON_SIZE} />
       },
       {
         sublabel: "User Rights",
         link: "/user-menu-map",
-        icon: <FaShieldAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShieldCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Visitor Details",
         link: "/customer-visit-data",
-        icon: <MdAccountCircle color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiIdentificationCardDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "User Login Log",
         link: "/user-login-log",
-        icon: <FaSignInAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiSignInDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Asset Management",
         link: "/asset-management",
-        icon: <MdInventory color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPackageDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   // Master
   {
     label: "Masters",
-    icon: <MdBusiness color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiDatabaseDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Department",
         link: "/department",
-        icon: <FaUserTie color={defaultTheme.btnEnable} size={16} />
+        icon: <PiTreeStructureDuotone color={ICON_COLOR} size={ICON_SIZE} />
       },
       {
         sublabel: "Level",
         link: "/level",
-        icon: <MdAssignment color={defaultTheme.btnEnable} size={16} />
+        icon: <PiStairsDuotone color={ICON_COLOR} size={ICON_SIZE} />
       },
       {
         sublabel: "Designation",
         link: "/designation",
-        icon: <FaIdBadge color={defaultTheme.btnEnable} size={16} />
+        icon: <PiIdentificationBadgeDuotone color={ICON_COLOR} size={ICON_SIZE} />
       },
       {
         sublabel: "Branch Master",
         link: "/branch-master",
-        icon: <FaCodeBranch color={defaultTheme.btnEnable} size={16} />
+        icon: <PiGitBranchDuotone color={ICON_COLOR} size={ICON_SIZE} />
       },
       {
         sublabel: "Builder",
         link: "/builder",
-        icon: <FaBuilding color={defaultTheme.btnEnable} size={16} />
+        icon: <PiBuildingsDuotone color={ICON_COLOR} size={ICON_SIZE} />
       },
       {
         sublabel: "Builder Project",
         link: "/project-builder",
-        icon: <FaCogs color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBuildingApartmentDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Project Unit Master",
         link: "/project-unit-master",
-        icon: <FaBox color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGridFourDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Payment Plan Master",
         link: "/payment-plan-master",
-        icon: <FaMoneyCheckAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiListDashesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Project Type Master",
         link: "/project-type-master",
-        icon: <FaFolder color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShapesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Attendance Location",
         link: "/attendance-location-master",
-        icon: <FaMapMarkerAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMapPinDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "MoneyTree Calender",
         link: "/calender-master",
-        icon: <FaCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarBlankDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sales Target Location",
         link: "/sales-target-location",
-        icon: <FaLocationArrow color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTargetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Domains Master",
         link: "/domains-master",
-        icon: <MdDomain color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGlobeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "MOU Master",
         link: "/mou-master",
-        icon: <FaMouse color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiSignatureDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "MOU Screen",
         link: "/mou-screen",
-        icon: <FaMouse color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHandshakeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Maps Master",
         link: "/maps-master",
-        icon: <FaMap color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMapTrifoldDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Social Media Data",
         link: "/social-media-data",
-        icon: <FaShareAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShareNetworkDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Scheme Master",
         link: "/scheme-master",
-        icon: <MdAccountTree color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTagDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   // Transaction
   {
     label: "Transactions",
-    icon: <AiFillCreditCard color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiCreditCardDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Fresh Booking",
         link: "/fresh-booking",
-        icon: <FaCalendarCheck color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHouseLineDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "L1 Fresh Booking",
         link: "/first-level-fresh-booking",
-        icon: <MdLooksOne color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiNumberCircleOneDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "L2 Fresh Booking",
         link: "/second-level-fresh-booking",
-        icon: <MdLooksTwo color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiNumberCircleTwoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "L3 Fresh Booking",
         link: "/third-level-fresh-booking",
-        icon: <MdLooks3 color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiNumberCircleThreeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Inactive Fresh Booking",
         link: "/inactive-fresh-booking",
-        icon: <FaUserSlash color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiProhibitInsetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sales Entry New",
         link: "/sales-entry-new",
-        icon: <FaDollarSign color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiNotePencilDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Booking Docs",
         link: "/upload-booking-docs",
-        icon: <MdFileUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUploadSimpleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Booking Documents",
         link: "/booking-docs",
-        icon: <MdDocumentScanner color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFilesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Booking Details",
         link: "/booking-details",
-        icon: <FaClipboardList color={defaultTheme.btnEnable} size={16} />,
+        icon: <FaClipboardList color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Booking Details",
         link: "/booking-annexure-upload",
-        icon: <MdFileUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <MdFileUpload color={ICON_COLOR} size={ICON_SIZE} />,
+      },
+      {
+        sublabel: "All NFA Master",
+        link: "/all-nfa-master",
+        icon: <FiLayers color={ICON_COLOR} size={ICON_SIZE} />,
+      },
+      {
+        sublabel: "NFA Master",
+        link: "/nfa-master",
+        icon: <FiLayers color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Receive Pay Details",
         link: "/receive-pay-details",
-        icon: <MdPayment color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHandCoinsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Finance Sale Update",
         link: "/finance-sale-update",
-        icon: <MdUpdate color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiArrowsClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Demand Amount Form",
         link: "/demand-form",
-        icon: <MdMoney color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCurrencyInrDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Demand Date Form",
         link: "/demand-date-form",
-        icon: <MdDateRange color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarPlusDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "BD Amount",
         link: "/bd-amount",
-        icon: <FaMoneyCheckAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMoneyDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sale Status",
         link: "/bba-value-manage",
-        icon: <FaFileContract color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiListChecksDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Acknowledgement Menu",
         link: "/acknowledgement-screen",
-        icon: <IoCheckmarkDoneCircle color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCheckSquareOffsetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       // {
       //   sublabel: "Cancel Sales",
       //   link: "/cancel-sales",
-      //   icon: <MdCancel color={defaultTheme.btnEnable} size={16}/>
+      //   icon: <PiProhibitDuotone color={ICON_COLOR} size={ICON_SIZE} />
       // },
     ],
   },
   // KYC
   {
     label: "KYC",
-    icon: <FaUserCheck color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiIdentificationCardDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       // {
       //   sublabel: "Back Office KYC",
       //   link: "/back-office-kyc",
-      //   icon: <AiOutlineIdcard color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiDesktopDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
       // {
       //   sublabel: "Ops KYC",
       //   link: "/ops-kyc",
-      //   icon: <AiOutlineCheckCircle color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiGearDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
       // {
       //   sublabel: "Finance KYC",
       //   link: "/accounts-kyc",
-      //   icon: <FaWallet color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiCalculatorDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
       {
         sublabel: "KYC Team",
         link: "/kyc-team",
-        icon: <FaUsers color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUsersThreeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "MTRS Calling",
         link: "/mtrs-calling",
-        icon: <FaPhoneAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPhoneCallDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Meeting Feedback",
         link: "/meeting-feedback",
-        icon: <MdOutlineMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChatTextDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //MTRS Docs
   {
     label: "MTRS Docs",
-    icon: <FaFileAlt color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiFilesDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Upload BBA",
         link: "/upload-bba",
-        icon: <FiUploadCloud color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUploadSimpleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload NOC",
         link: "/upload-noc",
-        icon: <BiCloudUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCloudArrowUpDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "MTRS Status",
         link: "/mtrs-status",
-        icon: <MdOutlineInfo color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiListChecksDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "MTRS Files",
         link: "/mtrs-files",
-        icon: <FiFileText color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFileTextDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //Project Data
   {
     label: "Project Data",
-    icon: <FaFolderOpen color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiFolderOpenDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Project Documentation",
         link: "/project-documentation",
-        icon: <MdDescription color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFilesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //IVR Menu
   {
     label: "IVR Menu",
-    icon: <FaPhoneAlt color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiPhoneCallDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "IVR Agent List",
         link: "/ivr-agent-list",
-        icon: <FaUser color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHeadsetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "IVR Recording",
         link: "/ivr-recording",
-        icon: <IoRecording color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMicrophoneDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
@@ -503,62 +518,62 @@ export const AdminSidebarData = [
   //Admin Associate Section
   {
     label: "Admin Associate",
-    icon: <FaUserShield color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiShieldCheckDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Associate Meeting",
         link: "/associate-meeting",
-        icon: <MdGroup color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHandshakeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Prospects",
         link: "/prospect-list-menu",
-        icon: <FiBarChart color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserListDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Lead Feedback",
         link: "/lead-feedback-list",
-        icon: <FaCommentAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChatTextDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Mark DND",
         link: "/mark-dnd-admin",
-        icon: <MdDoNotDisturb color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBellSlashDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "DND History",
         link: "/dnd-history",
-        icon: <MdDoNotDisturb color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockCounterClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Lead Report",
         link: "/lead-report",
-        icon: <MdReport color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartBarDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Track Location",
         link: "/track-location",
-        icon: <FaMapMarkerAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiNavigationArrowDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Pull Back Suspect",
         link: "/pull-back-suspect",
-        icon: <FaUndo color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiArrowUDownLeftDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Update Name/Meetings",
         link: "/update-pros-mobile",
-        icon: <FaEdit color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPencilSimpleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Q&A Master",
         link: "/Q&A-master",
-        icon: <MdQuiz color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiQuestionDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Personal Details",
         link: "/personal-birthday-details",
-        icon: <MdPersonAddAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserCircleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       }
     ],
   },
@@ -566,17 +581,17 @@ export const AdminSidebarData = [
   //Team
   {
     label: "Team",
-    icon: <FaUsers color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiUsersThreeDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Main Team",
         link: "/main-team",
-        icon: <MdSupervisorAccount color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUsersFourDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sub Team",
         link: "/sub-team",
-        icon: <FiLayers color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUsersDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
@@ -584,47 +599,47 @@ export const AdminSidebarData = [
   //BM Menu
   {
     label: "BH Menu",
-    icon: <MdBusiness color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiBuildingsDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Attendance",
         link: "/bm-attendance-screen",
-        icon: <FaCalendarCheck color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Suspects",
         link: "/bm-suspect-screen",
-        icon: <FaChartLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMagnifyingGlassDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Prospects",
         link: "/bm-prospect-screen",
-        icon: <FiBarChart color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserListDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Meetings",
         link: "/bm-meeting-screen",
-        icon: <MdAccessTime color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHandshakeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Meetings Not Ended",
         link: "/bm-meeting-not-ended",
-        icon: <MdMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHourglassMediumDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "BM Assigned Candidate",
         link: "/bm-assigned-candidate",
-        icon: <MdAssignmentAdd color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "BM Booking",
         link: "/bm-sales-entry-new",
-        icon: <MdBookOnline color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHouseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "BM Temp Booking",
         link: "/bm-fresh-booking",
-        icon: <MdOutlineMp color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHourglassDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       }
     ]
   },
@@ -632,185 +647,185 @@ export const AdminSidebarData = [
   // OTP
   {
     label: "OTP",
-    icon: <FaShieldAlt color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiPasswordDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "OTP Details",
         link: "/otp-details",
-        icon: <FiInfo color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiLockKeyDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "OTP Details (16-Dec-24)",
         link: "/old-otp-details",
-        icon: <FiArchive color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShieldCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //Upload Data
   {
     label: "Upload Data",
-    icon: <FaUpload color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiCloudArrowUpDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Upload SBI Files",
         link: "/upload-sbi-files",
-        icon: <MdAttachFile color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUploadSimpleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Transfer Prospects",
         link: "/trasfer-prospect-data",
-        icon: <MdTransferWithinAStation color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiArrowsLeftRightDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Leads",
         link: "/upload-lead-data",
-        icon: <MdFileUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFileArrowUpDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Lead Feedback",
         link: "/lead-upload-feedback",
-        icon: <MdFeedback color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUploadDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Transfer Suspects",
         link: "/lead-transfer",
-        icon: <FaExchangeAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiArrowsDownUpDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Unit Master",
         link: "/upload-unit-master",
-        icon: <FaUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTrayArrowUpDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Transfer P100 Leads",
         link: "/transfer-p-100-leads",
-        icon: <MdTransferWithinAStation color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShareFatDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Sale Master",
         link: "/upload-sale-master",
-        icon: <FaUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <FaUpload color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //Verification
   {
     label: "Verification",
-    icon: <FaCheckCircle color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiSealCheckDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Verification",
         link: "/verification",
-        icon: <FaSignInAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiIdentificationCardDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ]
   },
   //MOM
   {
     label: "M.O.M.",
-    icon: <FaRegFileAlt color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiNotepadDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "M.O.M. Menu",
         link: "/mom-screen",
-        icon: <MdDescription color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiNotePencilDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //Customer Care
   {
     label: "Customer Care",
-    icon: <FiMenu color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiHeadsetDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Customer Care Menu",
         link: "/customer-care-screen",
-        icon: <AiOutlineCustomerService color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiLifebuoyDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   // //Banner
   // {
   //   label: "App-Menu",
-  //   icon: <MdAnnouncement color={defaultTheme.btnEnable} size={16}/>,
+  //   icon: <MdAnnouncement color={ICON_COLOR} size={ICON_SIZE}/>,
   //   subItem: [
   //     {
   //       sublabel: "App Banner",
   //       link: "/app-banner",
-  //       icon: <FaBullhorn color={defaultTheme.btnEnable} size={16}/>,
+  //       icon: <PiFlagBannerDuotone color={ICON_COLOR} size={ICON_SIZE} />,
   //     },
   //     {
   //       sublabel: "App Icons",
   //       link: "/app-icons",
-  //       icon: <FaAppStore color={defaultTheme.btnEnable} size={16}/>,
+  //       icon: <PiShapesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
   //     },
   //   ]
   // },
   //Visitors
   {
     label: "Visitors",
-    icon: <AiOutlineUser color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiDoorOpenDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Visitor Entry",
         link: "/visitor-entry",
-        icon: <FaSignInAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiSignInDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Visitor History",
         link: "/visitor-history",
-        icon: <FaUserAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockCounterClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Client Inside History",
         link: "/client-inside-history",
-        icon: <FaHistory color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //Tasks
   {
     label: "Tasks",
-    icon: <MdTask color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiListChecksDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "My Tasks",
         link: "/my-tasks",
-        icon: <MdTaskAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCheckSquareOffsetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       }
     ],
   },
   //Meta
   {
     label: "Meta Menu",
-    icon: <FaFacebook color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiMetaLogoDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "All Leads",
         link: "/all-ads-screen",
-        icon: <MdCampaign color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiListBulletsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "All Campaigns",
         link: "/meta-admin-ads",
-        icon: <AiOutlineFlag color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMegaphoneDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   // Google
   {
     label: "Google Menu",
-    icon: <FaGoogle color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiGoogleLogoDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Google Leads",
         link: "/all-google-projects",
-        icon: <RiGoogleLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGoogleDriveLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Online Leads Details",
         link: "/online-lead-screen",
-        icon: <RiGoogleLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGlobeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       }
     ],
   },
@@ -819,162 +834,162 @@ export const AdminSidebarData = [
   //Activity
   {
     label: "Activity",
-    icon: <FiActivity color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiPulseDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Policy Documents",
         link: "/policy-creation",
-        icon: <RiFilePaper2Line color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiScrollDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Post Property",
         link: "/post-property",
-        icon: <FaHome color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHouseLineDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Focus Project Master",
         link: "/focus-project-master",
-        icon: <FaClipboardList color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCrosshairDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Ticker",
         link: "/ticker",
-        icon: <MdStickyNote2 color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMegaphoneDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Gallery",
         link: "/gallery",
-        icon: <MdPhotoLibrary color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiImagesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Award Master",
         link: "/reward-master",
-        icon: <RiAwardLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTrophyDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Marketing",
         link: "/marketing",
-        icon: <FaBullhorn color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMegaphoneSimpleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Chat Group",
         link: "/chat-group",
-        icon: <IoIosChatbubbles color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChatsCircleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Notifications",
         link: "/notification",
-        icon: <MdNotifications color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBellDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "WhatsApp Messages",
         link: "/whatsapp-messages",
-        icon: <MdWhatsapp color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiWhatsappLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Letter Head Master",
         link: "/letter-head-admin-screen",
-        icon: <RiFilePaper2Line color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiEnvelopeSimpleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Letter Head User",
         link: "/letter-head-user-screen",
-        icon: <RiFilePaper2Line color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiEnvelopeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Project Reward Points",
         link: "/reward-points-all",
-        icon: <RiAwardLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGiftDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "New Project Launch",
         link: "/project-launch-master",
-        icon: <FaRocket color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiSparkleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "New Projects",
         link: "/project-launch-screen",
-        icon: <FaDatabase color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiRocketLaunchDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Key Person's Registration",
         link: "/rm-details-data",
-        icon: <FaBuilding color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiKeyDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Project Registration",
         link: "/project-registration-data",
-        icon: <FaProjectDiagram color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClipboardTextDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Media Project Docs",
         link: "/media-project-documents",
-        icon: <MdVideoLibrary color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFilmStripDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Ops Project Docs",
         link: "/ops-project-documents",
-        icon: <MdSettingsSuggest color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGearDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Finance Project Docs",
         link: "/finance-project-documents",
-        icon: <MdAccountBalance color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalculatorDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "D.I.Y. Calculator",
         link: "/diy-calculator-menu",
-        icon: <FaCalculator color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMathOperationsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "BD Target",
         link: "/bd-target-screen",
-        icon: <MdTrackChanges color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTargetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Think IT",
         link: "/instant-meeting-screen",
-        icon: <FaLaptopCode color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiLightbulbFilamentDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Insurant Nomination Details",
         link: "/insurance-nominee-details",
-        icon: <MdHealthAndSafety color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHeartbeatDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Add PPC Leads",
         link: "/add-ppc-leads",
-        icon: <MdAdd color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPlusCircleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "PPC Leads",
         link: "/ppc-leads",
-        icon: <MdCampaign color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMagnetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Branch Overview",
         link: "/branch-overview",
-        icon: <IoMdGitBranch color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPresentationChartDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Report P100 Leads",
         link: "/p-100-report",
-        icon: <MdReport color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartBarDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "MTpay Scheme",
         link: "/mt-pay-scheme",
-        icon: <MdSchedule color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiWalletDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Booking MTpay Scheme",
         link: "/booking-mt-pay-scheme",
-        icon: <MdBookOnline color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCreditCardDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "AI BOT Rights",
         link: "/floating-chat-widget-rights",
-        icon: <MdAnimation color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiRobotDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ]
   },
@@ -982,221 +997,221 @@ export const AdminSidebarData = [
   //Events
   {
     label: "Events",
-    icon: <MdMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiConfettiDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Create Event",
         link: "/create-event",
-        icon: <MdMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarPlusDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Event Entry",
         link: "/event-entry",
-        icon: <AiOutlineCalendar color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTicketDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Event History",
         link: "/event-history",
-        icon: <FaHistory color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockCounterClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Event Meeting Details",
         link: "/event-meeting-details",
-        icon: <MdMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBalloonDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //Connect Menu
   {
     label: "Connect Menu",
-    icon: <FaWallet color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiPlugsConnectedDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Connect Enrollment",
         link: "/connect-enrollment",
-        icon: <MdPersonAdd color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserPlusDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Plan List",
         link: "/connect-plan-list",
-        icon: <FaRegMoneyBillAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiListDashesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Ticker",
         link: "/connect-ticker",
-        icon: <FaBullhorn color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMegaphoneDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Project Guide",
         link: "/connect-project-guide",
-        icon: <FaBookOpen color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBookOpenDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Pop-Up",
         link: "/connect-pop-up",
-        icon: <FaRegWindowMaximize color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBrowsersDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Notifications",
         link: "/connect-notifications",
-        icon: <MdNotifications color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBellDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Events",
         link: "/connect-events",
-        icon: <MdEvent color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiConfettiDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Testimonial",
         link: "/connect-testimonial",
-        icon: <MdFormatQuote color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiQuotesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "RM Change",
         link: "/connect-rm-change",
-        icon: <FaExchangeAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserSwitchDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "OTP List",
         link: "/connect-otp-list",
-        icon: <FaKey color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiListNumbersDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Support",
         link: "/connect-support",
-        icon: <MdSupportAgent color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHeadsetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Invoice",
         link: "/connect-invoice",
-        icon: <FaCreditCard color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiReceiptDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "KYC",
         link: "/connect-kyc",
-        icon: <FaIdCard color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiIdentificationCardDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Location Master",
         link: "/connect-location-master",
-        icon: <MdLocationOn color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMapPinDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Occupation Master",
         link: "/connect-occupation-master",
-        icon: <MdWork color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBriefcaseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Payout",
         link: "/connect-payout",
-        icon: <MdAttachMoney color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCoinsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "All Leads",
         link: "/all-connect-enrollment-leads",
-        icon: <FaUserPlus color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiListBulletsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       }
     ],
   },
   //HR Menu
   {
     label: "HR Menu",
-    icon: <FaUsersCog color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiUsersFourDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Create Candidate",
         link: "/recruiter-history",
-        icon: <FaIdBadge color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserPlusDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "All Candidate Details",
         link: "/all-candidate-history",
-        icon: <FaUserFriends color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserFocusDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Candidate Docs",
         link: "/candidate-docs",
-        icon: <MdInsertDriveFile color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFilesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Assigned Candidate",
         link: "/assigned-candidate-data",
-        icon: <MdAssignmentInd color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Interviewer History",
         link: "/interview-hr-history",
-        icon: <MdHistory color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockCounterClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Call Report",
         link: "/call-report",
-        icon: <MdCall color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPhoneCallDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Interview Report Details",
         link: "/view-interview-report-details",
-        icon: <MdInsertDriveFile color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartBarDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Joining/Resigned Report",
         link: "/view-employee-details",
-        icon: <MdOutlinePeopleAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartLineDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Main Team Report",
         link: "/hr-main-team-report",
-        icon: <MdInsights color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartBarHorizontalDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Branch Strength",
         link: "/branch-strength-report",
-        icon: <IoMdGitBranch color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBarbellDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Location Master",
         link: "/location-master",
-        icon: <MdLocationOn color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMapPinDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upcoming Joining List",
         link: "/hr-joining-list",
-        icon: <FaUserPlus color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarPlusDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "HR Data Transfer",
         link: "/hr-data-transfer",
-        icon: <MdTransferWithinAStation color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiArrowsLeftRightDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Jobs",
         link: "/jobs",
-        icon: <FaBriefcase color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBriefcaseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Social Media CV",
         link: "/upload-social-media-cv",
-        icon: <FaUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShareNetworkDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "GET Social Media CV",
         link: "/get-social-media-cv",
-        icon: <FaList color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiInstagramLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Finance HR Docs",
         link: "/finance-hr-docs",
-        icon: <IoMdDocument color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalculatorDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "HR Details Report",
         link: "/details-report",
-        icon: <MdDetails color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartDonutDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Recruitment Feedback",
         link: "/recruitment-feedback",
-        icon: <MdFeedback color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChatTextDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ]
   },
@@ -1206,8 +1221,8 @@ export const AdminSidebarData = [
     label: "SAP Modification",
     icon: (
       <MdOutlineSettingsSuggest
-        color={defaultTheme.btnEnable}
-        size={18}
+        color={ICON_COLOR}
+        size={TOP_ICON_SIZE}
       />
     ),
     subItem: [
@@ -1216,8 +1231,8 @@ export const AdminSidebarData = [
         link: "/user-change-request",
         icon: (
           <MdOutlinePerson
-            color={defaultTheme.btnEnable}
-            size={16}
+            color={ICON_COLOR}
+            size={ICON_SIZE}
           />
         ),
       },
@@ -1226,8 +1241,8 @@ export const AdminSidebarData = [
         link: "/rm-change-request",
         icon: (
           <MdOutlineSupervisorAccount
-            color={defaultTheme.btnEnable}
-            size={16}
+            color={ICON_COLOR}
+            size={ICON_SIZE}
           />
         ),
       },
@@ -1236,8 +1251,8 @@ export const AdminSidebarData = [
         link: "/it-change-request",
         icon: (
           <MdOutlineDeveloperBoard
-            color={defaultTheme.btnEnable}
-            size={16}
+            color={ICON_COLOR}
+            size={ICON_SIZE}
           />
         ),
       },
@@ -1246,37 +1261,37 @@ export const AdminSidebarData = [
   //FNF Menu
   {
     label: "FNF Menu",
-    icon: <FiMenu color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiGitPullRequestDuotone color={ICON_COLOR} size={ICON_SIZE} />,
     subItem: [
       {
         sublabel: "HR FNF List",
         link: "/hr-fnf-list",
-        icon: <FiUsers color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUsersFourDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "HOD FNF List",
         link: "/hods-fnf-list",
-        icon: <FaUserTie color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCrownDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Finance FNF List",
         link: "/finance-fnf-list",
-        icon: <FaMoneyCheckAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalculatorDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Admin FNF List",
         link: "/admin-fnf-list",
-        icon: <FaBoxes color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShieldStarDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "IT FNF List",
         link: "/it-fnf-list",
-        icon: <FaLaptopCode color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiLaptopDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "OPS FNF List",
         link: "/ops-fnf-list",
-        icon: <FaWhatsapp color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGearDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ]
   },
@@ -1284,238 +1299,238 @@ export const AdminSidebarData = [
   //Reports
   {
     label: "Reports",
-    icon: <FaFileAlt color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiChartBarDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "BD VB AB Report",
         link: "/bd-vb-ab-report",
-        icon: <IoMdDocument color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartBarHorizontalDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Temp Booking Report",
         link: "/temp-booking-report",
-        icon: <AiOutlineCalendar color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartLineDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Defaulter",
         link: "/defaulter-report",
-        icon: <FaExclamationTriangle color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiWarningCircleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Main Team Wise Pros",
         link: "/pros-report-mainteam",
-        icon: <FaChartLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserListDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sub Team Wise Pros",
         link: "/pros-report-subteam",
-        icon: <FaUsersCog color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiAddressBookDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Main Team Wise Meeting",
         link: "/meet-report-mainteam",
-        icon: <FaRegCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHandshakeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sub Team Wise Meeting",
         link: "/meet-report-subteam",
-        icon: <FaUsersCog color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUsersThreeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Associate Pros Details",
         link: "/pros-report-associate",
-        icon: <FaUserAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUsersDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Associate Meet Details",
         link: "/meet-report-associate",
-        icon: <FaUsers color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClipboardTextDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Branch Wise Meeting",
         link: "/meet-report-branch-wise",
-        icon: <MdMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiVideoConferenceDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Pros/Suspect/Meet",
         link: "/prospect-meeting-details-report",
-        icon: <MdEvent color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartPieSliceDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sale Master",
         link: "/report-sale-master",
-        icon: <FaShoppingCart color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiStorefrontDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sales Performance",
         link: "/user-performance-report",
-        icon: <FaChartLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTrendUpDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Payment Master",
         link: "/report-payment-plan-master",
-        icon: <FaCreditCard color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCreditCardDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Visitor Management",
         link: "/report-visitor-management",
-        icon: <FaUsers color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiKanbanDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sales Target",
         link: "/sales-target-report",
-        icon: <FaBullseye color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTargetDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Event Target",
         link: "/meeting-target-report",
-        icon: <FaRegCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCrosshairDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Builder Wise",
         link: "/report-builder-wise",
-        icon: <FaTools color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartDonutDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Project Wise",
         link: "/report-project-wise",
-        icon: <FaProjectDiagram color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartPieDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Booking Status",
         link: "/booking-status-report",
-        icon: <FaClipboardList color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiListChecksDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Demand Form",
         link: "/demand-form-report",
-        icon: <AiOutlineForm color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiNotePencilDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "KYC Report",
         link: "/kyc-report",
-        icon: <FaFileAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGraphDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Trading Window",
         link: "/trading-window-report",
-        icon: <FaTradeFederation color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartLineUpDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Tuesday Report",
         link: "/tuesday-report",
-        icon: <MdReportOff color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarDotsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Leave History",
         link: "/leave-history-report",
-        icon: <MdWorkOff color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockCounterClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       }
     ],
   },
   //  Finance Reports
   {
     label: "Finance Reports",
-    icon: <FaChartLine color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiChartLineUpDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Builder Wise Turnover",
         link: "/turnover-builder-wise",
-        icon: <FaHardHat color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCurrencyInrDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Builder Wise Booking",
         link: "/booking-builder-wise",
-        icon: <FaRegClipboard color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHouseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Team Wise Booking",
         link: "/booking-team-wise",
-        icon: <MdEventNote color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHouseLineDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "VB AB Report",
         link: "/vb-ab-report",
-        icon: <AiOutlineFileSearch color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartBarHorizontalDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //  BO Reports
   {
     label: "BO Reports",
-    icon: <FaCog color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiPresentationChartDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       // {
       //   sublabel: "Temp Booking",
       //   link: "/temp-booking-report",
-      //   icon: <AiOutlineCalendar color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiChartLineDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
       {
         sublabel: "Main Team Wise",
         link: "/data-main-team-wise",
-        icon: <FaChartBar color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartPieSliceDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Builder Wise",
         link: "/ops-report-builder-wise",
-        icon: <FaBuilding color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartDonutDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Project Wise",
         link: "/ops-report-project-wise",
-        icon: <MdOutlineAssignment color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartBarHorizontalDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Daily Booking",
         link: "/ops-report-daily-booking",
-        icon: <FaRegCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Daily Dispatch",
         link: "/ops-report-daily-dispatch",
-        icon: <FaBox color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiTruckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Daily Temp",
         link: "/ops-report-daily-temp-booking",
-        icon: <FaHourglassHalf color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiSunDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   {
     label: "Enquiry Menu",
-    icon: <RiMenuFoldLine color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiChatCircleDotsDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Add Enquiry",
         link: "/add-enquiry",
-        icon: <FaEnvelope color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPlusCircleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Enquiry History",
         link: "/enquiry-history",
-        icon: <FaHistory color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockCounterClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Add New Enquiry",
         link: "/new-enquiry",
-        icon: <FaEnvelope color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiQuestionDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ]
   },
   {
     label: "Pop Up Menu",
-    icon: <FiMenu color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiBellRingingDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Popup",
         link: "/popup-list",
-        icon: <MdOpenInNew color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiBrowsersDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Birthday Popup",
         link: "/birthday-popup",
-        icon: <GiPartyPopper color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCakeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ]
   },
@@ -1524,59 +1539,59 @@ export const AdminSidebarData = [
     label: "Support",
     url: "/support",
     issubMenubadge: true,
-    icon: <MdSupport color={defaultTheme.btnEnable} size={16} />,
+    icon: <MdSupport color={ICON_COLOR} size={ICON_SIZE} />,
   },
   {
     label: "Open Project Units",
     url: "/open-project-unit-details",
     issubMenubadge: true,
-    icon: <MdSecurity color={defaultTheme.btnEnable} size={16} />,
+    icon: <MdSecurity color={ICON_COLOR} size={ICON_SIZE} />,
   },
   {
     label: "Hold Project Units",
     url: "/hold-project-unit-details",
     issubMenubadge: true,
-    icon: <MdSecurity color={defaultTheme.btnEnable} size={16} />,
+    icon: <MdSecurity color={ICON_COLOR} size={ICON_SIZE} />,
   },
   {
     label: "All Attendance",
     url: "/attendance",
     issubMenubadge: true,
-    icon: <FaCalendarCheck color={defaultTheme.btnEnable} size={16} />,
+    icon: <FaCalendarCheck color={ICON_COLOR} size={ICON_SIZE} />,
   },
   {
     label: "Attendance",
-    icon: <FaCalendarCheck color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiCalendarCheckDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "OD History",
         link: "/od-history",
-        icon: <FaHardHat color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockCounterClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Regularize Attendance History",
         link: "/regularization-history",
-        icon: <FaCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Monthly Team Attendance",
         link: "/monthly-team-attendance",
-        icon: <FaCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarDotsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Main Team Attendance",
         link: "/view-team-attendance",
-        icon: <FaCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Branch Wise Attendance",
         link: "/branch-wise-attendance",
-        icon: <RiOrganizationChart color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFingerprintDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Mobile Attendance",
         link: "/mobile-attendance",
-        icon: <FaMobile color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiDeviceMobileDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
@@ -1585,277 +1600,277 @@ export const AdminSidebarData = [
 export const AssociateSidebarData = [
   {
     label: "Associate Section",
-    icon: <MdWork color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiBriefcaseDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "KYT",
         link: "/kyt-screen",
-        icon: <FaSteam color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFingerprintDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "D.I.Y. Calculator",
         link: "/diy-calculator-menu",
-        icon: <FaCalculator color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMathOperationsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "MTpay",
         link: "/sales-mt-pay-scheme",
-        icon: <FaCoins color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiWalletDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Focus Project",
         link: "/view-focus-project",
-        icon: <MdTrackChanges color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCrosshairDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Associate Meeting",
         link: "/associate-meeting-details",
-        icon: <MdPeople color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHandshakeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Meeting Dashboard",
         link: "/meeting-list-count",
-        icon: <MdDashboard color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiSquaresFourDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Meeting Details",
         link: "/meeting-details",
-        icon: <MdMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClipboardTextDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Prospects",
         link: "/prospect-list-menu",
-        icon: <FaClipboardList color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserListDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "My Favourite",
         link: "/my-favourite",
-        icon: <FaRegHeart color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHeartDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Prospects Bulk Update",
         link: "/prospect-bulk-update",
-        icon: <IoMdDocument color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPencilSimpleLineDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload SBI Proof",
         link: "/upload-sbi-proof",
-        icon: <FaUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUploadSimpleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Open Project Units",
         link: "/open-project-unit-details",
-        icon: <MdSecurity color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiLockOpenDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Hold Project Units",
         link: "/hold-project-unit-details",
-        icon: <MdSecurity color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiLockDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Suspect Data",
         link: "/suspect-data",
-        icon: <FaChartLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiDatabaseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Transfer Prospects",
         link: "/trasfer-prospect-data",
-        icon: <FaExchangeAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiArrowsLeftRightDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Transfer Suspects",
         link: "/lead-transfer",
-        icon: <MdTransferWithinAStation color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiArrowsDownUpDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "IVR Recording",
         link: "/ivr-recording",
-        icon: <IoRecording color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMicrophoneDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Project Documentation",
         link: "/project-documentation",
-        icon: <MdDescription color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFilesDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Leads",
         link: "/upload-lead-data",
-        icon: <MdFileUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiFileArrowUpDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Due Payment",
         link: "/due-payment-report",
-        icon: <FaRupeeSign color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiWarningCircleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Sales Project Docs",
         link: "/sales-project-documents",
-        icon: <MdPointOfSale color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiStorefrontDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Add P100 Leads",
         link: "/p-100-leads",
-        icon: <MdLeaderboard color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiPlusCircleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       // {
       //   sublabel: "P100 Leads Report",
       //   link: "/report-p-100",
-      //   icon: <MdReport color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiChartBarDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
       {
         sublabel: "Report P100 Leads",
         link: "/p-100-report",
-        icon: <MdReport color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiChartBarDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Transfer P100 Leads",
         link: "/transfer-p-100-leads",
-        icon: <MdTransferWithinAStation color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShareFatDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Upload Booking Docs",
         link: "/upload-booking-docs",
-        icon: <MdFileUpload color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUploadSimpleDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       // {
       //   sublabel: "Demand Data",
       //   link: "/view-demand-data",
-      //   icon: <MdFileUpload color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiTableDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
     ],
   },
   {
     label: "BM Menu",
-    icon: <MdBusiness color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiStorefrontDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Attendance",
         link: "/bm-attendance-screen",
-        icon: <FaCalendarCheck color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Suspects",
         link: "/bm-suspect-screen",
-        icon: <FaChartLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMagnifyingGlassDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Prospects",
         link: "/bm-prospect-screen",
-        icon: <FiBarChart color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserListDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Meetings",
         link: "/bm-meeting-screen",
-        icon: <MdAccessTime color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHandshakeDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Meetings Not Ended",
         link: "/bm-meeting-not-ended",
-        icon: <MdMeetingRoom color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiHourglassMediumDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Admin FNF List",
         link: "/admin-fnf-list",
-        icon: <FaBoxes color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShieldStarDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       // {
       //   sublabel: "BM Assigned Candidate",
       //   link: "/bm-assigned-candidate",
-      //   icon: <MdAssignmentAdd color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiUserCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // }
     ]
   },
   {
     label: "Attendance",
-    icon: <FaCalendarCheck color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiCalendarCheckDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "My Attendance",
         link: "/my-attendance",
-        icon: <FaCheckCircle color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Monthly Team Attendance",
         link: "/monthly-team-attendance",
-        icon: <FaCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCalendarDotsDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Daily Team Attendance",
         link: "/daily-team-attendance",
-        icon: <FaRegClock color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiSunDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Apply OD",
         link: "/apply-od",
-        icon: <FaClipboardCheck color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiAirplaneTiltDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "OD History",
         link: "/od-history",
-        icon: <FaHardHat color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockCounterClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Regularize Attendance",
         link: "/apply-attendance-regularization",
-        icon: <FaClipboardCheck color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Regularize Attendance History",
         link: "/regularization-history",
-        icon: <FaCalendarAlt color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiClockClockwiseDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
     ],
   },
   //  Meta
   {
     label: "Online Leads",
-    icon: <FiUserCheck color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiMagnetDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Meta Campaigns",
         link: "/meta-associate-leads",
-        icon: <FaFacebook color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiMetaLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "New Meta Leads",
         link: "/google-sheet-leads",
-        icon: <FaFacebook color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGoogleLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       // {
       //   sublabel: "Assigned Meta Leads",
       //   link: "/view-assigned-associate",
-      //   icon: <FaFacebookF color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiInstagramLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
       // {
       //   sublabel: "Google Leads",
       //   link: "/view-google-leads",
-      //   icon: <RiGoogleLine color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiGoogleLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
       {
         sublabel: "Google Projects",
         link: "/all-google-projects",
-        icon: <RiGoogleLine color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiGoogleDriveLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       // {
       //   sublabel: "Assigned Google Leads",
       //   link: "/view-assigned-google-leads",
-      //   icon: <FaGoogle color={defaultTheme.btnEnable} size={16} />,
+      //   icon: <PiGoogleChromeLogoDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       // },
     ],
   },
   {
     label: "HR Menu",
-    icon: <FaUsersCog color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiUsersFourDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
     subItem: [
       {
         sublabel: "Assigned Candidate",
         link: "/assigned-candidate-data",
-        icon: <MdAssignmentInd color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiUserCheckDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       },
       {
         sublabel: "Referral Candidate Status",
         link: "/referral-candidate-status",
-        icon: <MdCandlestickChart color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiShareNetworkDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       }
     ]
   },
@@ -1863,17 +1878,17 @@ export const AssociateSidebarData = [
   //Connect
   // {
   //   label: "Connect Menu",
-  //   icon: <MdBusiness color={defaultTheme.btnEnable} size={16} />,
+  //   icon: <PiPlugsConnectedDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
   //   subItem: [
   //     {
   //       sublabel: "Connect Info",
   //       link: "/connect-associate-info",
-  //       icon: <FaInfoCircle color={defaultTheme.btnEnable} size={16} />,
+  //       icon: <PiPlugsConnectedDuotone color={ICON_COLOR} size={ICON_SIZE} />,
   //     },
   //     {
   //       sublabel: "RM Change",
   //       link: "/connect-rm-change",
-  //       icon: <MdSwapHoriz color={defaultTheme.btnEnable} size={16} />,
+  //       icon: <PiUserSwitchDuotone color={ICON_COLOR} size={ICON_SIZE} />,
   //     }
   //   ]
   // },
@@ -1881,12 +1896,12 @@ export const AssociateSidebarData = [
   // FNF Menu
   {
     label: "FNF Menu",
-    icon: <FiMenu color={defaultTheme.btnEnable} size={16} />,
+    icon: <PiGitPullRequestDuotone color={ICON_COLOR} size={ICON_SIZE} />,
     subItem: [
       {
         sublabel: "HOD FNF List",
         link: "/hods-fnf-list",
-        icon: <FaUserTie color={defaultTheme.btnEnable} size={16} />,
+        icon: <PiCrownDuotone color={ICON_COLOR} size={ICON_SIZE} />,
       }
     ]
   },
@@ -1894,6 +1909,6 @@ export const AssociateSidebarData = [
     label: "Enquiry",
     url: "/enquiry-reply",
     issubMenubadge: true,
-    icon: <BiSearchAlt color={defaultTheme.btnEnable} size={16} />,
+    icon: <BiSearchAlt color={ICON_COLOR} size={ICON_SIZE} />,
   },
 ];

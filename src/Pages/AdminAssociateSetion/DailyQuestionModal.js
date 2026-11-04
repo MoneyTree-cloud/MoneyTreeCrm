@@ -236,13 +236,13 @@ export default function DailyQuestionModal({ userId }) {
         }
 
         .option-card:hover{
-          border-color:#0f766e;
+          border-color:var(--mt-primary);
           transform:scale(1.02);
         }
 
         .option-card.selected{
-          border:2px solid #0f766e;
-          background:#f0fdfa;
+          border:2px solid var(--mt-primary);
+          background:var(--mt-primary-50);
         }
 
         .option-card.correct{
@@ -258,7 +258,7 @@ export default function DailyQuestionModal({ userId }) {
         .submit-btn{
           width:100%;
           margin-top:20px;
-          background:#0f766e !important;
+          background:var(--mt-primary) !important;
           border:none !important;
           padding:10px;
           font-weight:600;

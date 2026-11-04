@@ -487,10 +487,10 @@ export default function MTAIScreen() {
 
     /* Role badge colour */
     const roleColor = {
-        MAIN_TL: '#005B52',
+        MAIN_TL: 'var(--mt-primary)',
         SUB_TL: '#B8862B',
         EMPLOYEE: '#0369A1',
-    }[user?.role] || '#005B52'
+    }[user?.role] || 'var(--mt-primary)'
 
     const scopeText = user ? ({
         MAIN_TL: `Main TL · ${user.mainTeam || user.main_team || ''}`,
@@ -721,19 +721,19 @@ const GLOBAL_CSS = `
     transition: background .15s, color .15s;
     flex-shrink: 0;
   }
-  .mt-toggle-btn:hover { background: #F1F5F9; color: #005B52; }
+  .mt-toggle-btn:hover { background: #F1F5F9; color: var(--mt-primary); }
 
   .mt-new-chat-btn {
     flex: 1; display: flex; align-items: center; gap: 8px;
     padding: 8px 14px;
-    background: linear-gradient(135deg, #005B52, #007A6E);
+    background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
     border: none;
     border-radius: 9px;
     color: #fff; font-size: 13px; font-weight: 700;
     cursor: pointer;
     transition: opacity .15s, transform .1s;
     white-space: nowrap; overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,91,82,.18);
+    box-shadow: 0 2px 6px rgba(var(--mt-primary-rgb),.18);
   }
   .mt-new-chat-btn:hover { opacity: .92; }
   .mt-new-chat-btn:active { transform: scale(.98); }
@@ -770,12 +770,12 @@ const GLOBAL_CSS = `
     border: 1px solid transparent;
   }
   .mt-sess-item:hover, .mt-sess-hov {
-    background: #F0FDF9;
+    background: var(--mt-primary-50);
     border-color: #B7E4C7;
   }
   .mt-sess-active {
     background: #ECFDF5 !important;
-    border-color: #005B52 !important;
+    border-color: var(--mt-primary) !important;
   }
 
   .mt-sess-content { flex: 1; overflow: hidden; }
@@ -784,7 +784,7 @@ const GLOBAL_CSS = `
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     font-weight: 500;
   }
-  .mt-sess-active .mt-sess-preview { color: #005B52; font-weight: 600; }
+  .mt-sess-active .mt-sess-preview { color: var(--mt-primary); font-weight: 600; }
   .mt-sess-date { font-size: 11px; color: #94A3B8; margin-top: 2px; }
 
   .mt-sess-del {
@@ -839,10 +839,10 @@ const GLOBAL_CSS = `
   .mt-brand-mark {
     width: 30px; height: 30px;
     display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #005B52, #007A6E);
+    background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
     color: #fff; border-radius: 8px;
     flex-shrink: 0;
-    box-shadow: 0 1px 3px rgba(0,91,82,.2);
+    box-shadow: 0 1px 3px rgba(var(--mt-primary-rgb),.2);
   }
   .mt-header-title {
     font-size: 14px; font-weight: 600; color: #334155;
@@ -882,11 +882,11 @@ const GLOBAL_CSS = `
   .mt-welcome-logo {
     font-size: 52px;
     margin-bottom: 18px;
-    filter: drop-shadow(0 4px 8px rgba(0,91,82,.15));
+    filter: drop-shadow(0 4px 8px rgba(var(--mt-primary-rgb),.15));
   }
   .mt-welcome-title {
     font-size: 30px; font-weight: 800;
-    background: linear-gradient(135deg, #005B52, #007A6E);
+    background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -917,10 +917,10 @@ const GLOBAL_CSS = `
     box-shadow: 0 1px 3px rgba(15,23,42,.03);
   }
   .mt-suggestion-card:hover {
-    border-color: #005B52;
-    background: #F0FDF9;
+    border-color: var(--mt-primary);
+    background: var(--mt-primary-50);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,91,82,.08);
+    box-shadow: 0 6px 16px rgba(var(--mt-primary-rgb),.08);
   }
   .mt-sug-icon { font-size: 22px; margin-bottom: 2px; }
   .mt-sug-title { font-size: 13px; font-weight: 700; color: #0F172A; }
@@ -936,10 +936,10 @@ const GLOBAL_CSS = `
 
   .mt-ai-avatar {
     width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, #005B52, #007A6E);
+    background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
     display: flex; align-items: center; justify-content: center;
     font-size: 17px; flex-shrink: 0; margin-top: 2px;
-    box-shadow: 0 2px 6px rgba(0,91,82,.2);
+    box-shadow: 0 2px 6px rgba(var(--mt-primary-rgb),.2);
   }
 
   .mt-msg-body  { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
@@ -947,7 +947,7 @@ const GLOBAL_CSS = `
 
   .mt-ai-label {
     font-size: 12px; font-weight: 700;
-    color: #005B52; letter-spacing: .3px;
+    color: var(--mt-primary); letter-spacing: .3px;
   }
 
   .mt-ai-text {
@@ -963,22 +963,22 @@ const GLOBAL_CSS = `
   .mt-ai-text h4,
   .mt-ai-text .md-h4 { font-size: 14px; font-weight: 700; color: #0F172A; margin: 13px 0 5px; }
   .mt-ai-text strong  { color: #0F172A; font-weight: 700; }
-  .mt-ai-text em      { color: #005B52; font-style: italic; }
+  .mt-ai-text em      { color: var(--mt-primary); font-style: italic; }
   .mt-ai-text ul      { margin: 8px 0; padding-left: 24px; list-style: disc; }
   .mt-ai-text ol      { margin: 8px 0; padding-left: 24px; list-style: decimal; }
   .mt-ai-text li      { margin-bottom: 5px; color: #334155; }
   .mt-ai-text blockquote {
-    border-left: 3px solid #005B52;
+    border-left: 3px solid var(--mt-primary);
     padding: 10px 16px;
     margin: 12px 0;
     color: #475569; font-style: italic;
-    background: #F0FDF9; border-radius: 0 8px 8px 0;
+    background: var(--mt-primary-50); border-radius: 0 8px 8px 0;
   }
   .mt-ai-text code.inline-code {
     background: #F1F5F9; border: 1px solid #E2E8F0;
     padding: 2px 6px; border-radius: 5px;
     font-size: 13px; font-family: 'Fira Code', monospace;
-    color: #005B52;
+    color: var(--mt-primary);
   }
   .mt-ai-text pre {
     background: #0F172A;
@@ -993,12 +993,12 @@ const GLOBAL_CSS = `
 
   /* User bubble */
   .mt-user-bubble {
-    background: linear-gradient(135deg, #005B52, #007A6E);
+    background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
     border: none;
     border-radius: 18px 18px 4px 18px;
     padding: 12px 18px;
     max-width: 72%;
-    box-shadow: 0 2px 8px rgba(0,91,82,.15);
+    box-shadow: 0 2px 8px rgba(var(--mt-primary-rgb),.15);
   }
   .mt-user-bubble p { font-size: 15px; color: #fff; line-height: 1.6; }
 
@@ -1026,7 +1026,7 @@ const GLOBAL_CSS = `
     color: #94A3B8; cursor: pointer; border-radius: 6px;
     transition: background .15s, color .15s;
   }
-  .mt-icon-btn:hover { background: #F1F5F9; color: #005B52; }
+  .mt-icon-btn:hover { background: #F1F5F9; color: var(--mt-primary); }
 
   /* Typing bubble */
   .mt-typing-bubble {
@@ -1040,7 +1040,7 @@ const GLOBAL_CSS = `
   }
   .mt-typing span {
     width: 7px; height: 7px;
-    background: #005B52; border-radius: 50%;
+    background: var(--mt-primary); border-radius: 50%;
     display: inline-block;
     animation: mtBounce 1.2s ease-in-out infinite;
   }
@@ -1068,9 +1068,9 @@ const GLOBAL_CSS = `
   }
   .mt-sql-toggle:hover { background: #F1F5F9; }
   .mt-sql-meta {
-    background: #F0FDF9; border: 1px solid #B7E4C7;
+    background: var(--mt-primary-50); border: 1px solid #B7E4C7;
     padding: 2px 9px; border-radius: 20px; font-size: 11px;
-    color: #005B52; font-weight: 700;
+    color: var(--mt-primary); font-weight: 700;
   }
   .mt-sql-body { position: relative; }
   .mt-sql-body pre {
@@ -1114,7 +1114,7 @@ const GLOBAL_CSS = `
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
   .mt-table tr:last-child td { border-bottom: none; }
-  .mt-table tr:hover td { background: #F0FDF9; }
+  .mt-table tr:hover td { background: var(--mt-primary-50); }
 
   /* Input zone */
   .mt-input-zone {
@@ -1135,8 +1135,8 @@ const GLOBAL_CSS = `
     transition: border-color .2s, box-shadow .2s;
   }
   .mt-input-box:focus-within {
-    border-color: #005B52;
-    box-shadow: 0 0 0 3px rgba(0,91,82,.08);
+    border-color: var(--mt-primary);
+    box-shadow: 0 0 0 3px rgba(var(--mt-primary-rgb),.08);
   }
 
   .mt-textarea {
@@ -1159,9 +1159,9 @@ const GLOBAL_CSS = `
     transition: all .15s;
   }
   .mt-send-active {
-    background: linear-gradient(135deg, #005B52, #007A6E) !important;
+    background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light)) !important;
     color: #fff !important;
-    box-shadow: 0 2px 6px rgba(0,91,82,.25) !important;
+    box-shadow: 0 2px 6px rgba(var(--mt-primary-rgb),.25) !important;
   }
   .mt-send-btn:disabled { cursor: not-allowed; }
   .mt-send-active:hover { opacity: .92; }

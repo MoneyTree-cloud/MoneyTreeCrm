@@ -10,7 +10,7 @@ import ScreenLoader from "../../constants/ScreenLoader";
 import PageContent from "../../components/Common/PageContent";
 import ApiClient from "../../helpers/api_helper";
 import { toast } from "react-toastify";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet } from "../../Hooks/useApi";
 
 export default function MeetingDetails() {

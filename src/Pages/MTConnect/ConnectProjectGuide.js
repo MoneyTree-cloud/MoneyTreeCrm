@@ -230,7 +230,7 @@ export default function ConnectProjectGuide() {
         <Switch
           checked={row.active === true}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
           onChange={() => handleSwitchChange(row)}

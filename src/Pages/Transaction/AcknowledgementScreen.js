@@ -8,7 +8,7 @@ import PageContent from '../../components/Common/PageContent';
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 import ScreenLoader from '../../constants/ScreenLoader';
 import AppTable from '../../components/Common/Table';
-import { formatDate, formatDateForInput, getDaysFromToday, WordWrapCell } from '../../helpers/function_helper';
+import { formatDate, formatDateForInput, getDaysFromToday, WordWrapCell, Notes, Note } from '../../helpers/function_helper';
 import { useUserStore } from '../../store/useUserStore';
 import CheckUserAccess from '../../components/Common/CheckUserAccess';
 import PermissionMissing from '../Utility/PermissonMissing';
@@ -295,9 +295,9 @@ export default function AcknowledgementScreen() {
                     Note: This list displays only bookings with a "SATISFIED" KYC status and an attached, signed acknowledgment copy.
 
                 </h3> */}
-                <h3 style={{ fontSize: 12, fontWeight: 800, color: defaultTheme.redColor }}>
-                    Note : This list displays only bookings with a status of "Accepted by Builder and an attached, signed acknowledgment copy."
-                </h3>
+                <Notes style={{ margin: "0 0 12px" }}>
+                    <Note tone="gold">This list displays only bookings with a status of "Accepted by Builder" and an attached, signed acknowledgment copy.</Note>
+                </Notes>
                 <AppTable
                     progressPending={isPending}
                     columns={columns}

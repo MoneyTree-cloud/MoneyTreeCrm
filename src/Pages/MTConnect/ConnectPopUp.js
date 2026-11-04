@@ -17,7 +17,7 @@ import { imageBaseUrl } from "../../helpers/api_helper";
 import ImageModal from "../../components/Common/ImageModal";
 import VideoModal from "../../components/Common/VideoModal";
 import { FaVideo } from "react-icons/fa";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import PageContent from "../../components/Common/PageContent";
 import Switch from "react-switch";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
@@ -270,7 +270,7 @@ const ConnectPopUp = () => {
         <Switch
           checked={row.active === true}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
           onChange={() => handleDeleteClick(row.id)}

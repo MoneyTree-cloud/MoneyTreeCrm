@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useMemo } from "react";
 import { Button, Card, CardBody, Col, Container, Row } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
 import { useGet } from "../../Hooks/useApi";
@@ -13,7 +13,7 @@ import {
 } from "../../helpers/url_helper";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { toast } from "react-toastify";
-import {  WordWrapCell } from "../../helpers/function_helper";
+import { WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import ScreenLoader from "../../constants/ScreenLoader";
 import { useUserStore } from "../../store/useUserStore";
 import { MdMobileFriendly } from "react-icons/md";
@@ -262,12 +262,9 @@ export default function TransferP100Leads() {
             <Container fluid>
                 <Card>
                     <CardBody>
-                        <h3 style={{
-                            fontSize: 12, fontWeight: 'bold',
-                            color: defaultTheme.redColor, marginBottom: 10,
-                        }}>
-                            Note: Select an associate to load their P100 leads, then choose individual leads or select all to transfer them to another associate.
-                        </h3>
+                        <Notes style={{ margin: "0 0 12px" }}>
+                            <Note tone="gold">Select an associate to load their P100 leads, then choose individual leads or select all to transfer them to another associate.</Note>
+                        </Notes>
 
                         <Row className="g-3">
                             <Col lg="4">

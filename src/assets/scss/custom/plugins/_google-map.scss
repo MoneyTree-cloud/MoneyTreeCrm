@@ -15,7 +15,7 @@
   color: $white;
   font-size: 16px;
   line-height: 40px;
-  background: $primary;
+  background: var(--mt-primary);
   border-radius: 4px;
   padding: 10px 20px;
 }
@@ -30,13 +30,13 @@
     bottom: -15px;
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
-    border-top: 16px solid $primary;
+    border-top: 16px solid var(--mt-primary);
   }
   &.below {
     top: -15px;
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
-    border-bottom: 16px solid $primary;
+    border-bottom: 16px solid var(--mt-primary);
   }
   
 }

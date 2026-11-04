@@ -33,7 +33,7 @@
   }
   
   .message.user {
-    background-color: #005b52; /* User messages in blue */
+    background-color: var(--mt-primary); /* User messages in blue */
     color: white;
     text-align: left; /* Align text to the left for user */
     float: right; /* Float user messages to the right */
@@ -152,7 +152,7 @@
   background-color: #f7f7f7; /* Light background color */
   border-radius: 8px; /* Rounded corners */
   border: 2px dashed #ccc; /* Dashed border for a clean, light style */
-  color: #005b52; /* Light grey text color */
+  color: var(--mt-primary); /* Light grey text color */
   font-size: 16px; /* Font size */
   font-family: 'Arial', sans-serif; /* Simple font */
   text-align: center; /* Center the text */
@@ -180,7 +180,7 @@
 
 /* For messages from the user (right side) */
 .message-right {
-  background-color: #005b52; /* Light green background for user messages */
+  background-color: var(--mt-primary); /* Light green background for user messages */
   align-self: flex-end;
   text-align: right;
   border-top-right-radius: 0;
@@ -383,7 +383,7 @@ button:hover {
   background-color: #fff;
   position: sticky;
   bottom: 0;
-  /* background-color: #005b52; */
+  /* background-color: var(--mt-primary); */
 
   z-index: 1;
   margin-top: 10px;

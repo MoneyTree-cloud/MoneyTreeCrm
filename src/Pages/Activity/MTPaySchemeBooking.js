@@ -10,7 +10,7 @@ import PageContent from "../../components/Common/PageContent";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { GET_ALL_MT_PAY_SCHEME_BOOKING_DATA, GET_ALL_USERS_DROPDOWN_LIST, MARK_PAYOUT_MT_PAY_SCHEME_BOOKING_DATA } from "../../helpers/url_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Switch from "react-switch";
 import ApiClient from "../../helpers/api_helper";
 import { defaultTheme } from "../../helpers/defaultTheme";
@@ -183,7 +183,7 @@ export default function MTPaySchemeBooking() {
                             checked={row.firstPayoutStatus}
                             onChange={(checked) => handleMarkPayout(checked, row)}
                             offColor={defaultTheme.goldColorLogo}
-                            onColor={defaultTheme.primary}
+                            onColor={defaultTheme.primaryHex}
                             height={22}
                             width={45}
                             disabled={row.vbstatus !== 'Justified' || row.firstPayoutStatus}

@@ -192,9 +192,9 @@ export default function P100File() {
                             alignItems: 'center',
                             gap: 5,
                             padding: '5px 11px',
-                            background: isDisabled ? '#E2E8F0' : `${defaultTheme.primary}1A`,
+                            background: isDisabled ? '#E2E8F0' : `rgba(var(--mt-primary-rgb), 0.1)`,
                             color: isDisabled ? '#94A3B8' : defaultTheme.primary,
-                            border: `1px solid ${isDisabled ? '#CBD5E1' : `${defaultTheme.primary}40`}`,
+                            border: `1px solid ${isDisabled ? '#CBD5E1' : `rgba(var(--mt-primary-rgb), 0.25)`}`,
                             borderRadius: 7,
                             fontSize: 11.5,
                             fontWeight: 700,
@@ -203,12 +203,12 @@ export default function P100File() {
                         }}
                         onMouseEnter={(e) => {
                             if (!isDisabled) {
-                                e.currentTarget.style.background = `${defaultTheme.primary}30`;
+                                e.currentTarget.style.background = `rgba(var(--mt-primary-rgb), 0.19)`;
                             }
                         }}
                         onMouseLeave={(e) => {
                             if (!isDisabled) {
-                                e.currentTarget.style.background = `${defaultTheme.primary}1A`;
+                                e.currentTarget.style.background = `rgba(var(--mt-primary-rgb), 0.1)`;
                             }
                         }}
                     >

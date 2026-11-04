@@ -14,7 +14,7 @@ import { FaFilePdf, FaVideo, FaImage, FaFile, FaExternalLinkAlt, FaTimes, FaSear
 import { MdFilterList } from "react-icons/md";
 import { GET_PROJECT_REGISTRATION_DATA, GET_DROPDOWN_BUILDER_, GET_PROJECT_BY_BUILDER_ } from "../../helpers/url_helper";
 import { formatDateTime } from "../../helpers/function_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet } from "../../Hooks/useApi";
 
 const DEPT = "Finance"
@@ -23,7 +23,7 @@ if (document.getElementById("fg-s")) document.getElementById("fg-s").remove()
 const _s = document.createElement("style")
 _s.id = "fg-s"
 _s.textContent = `
-    .fg-hdr { background:linear-gradient(135deg,#005B52 0%,#007A6E 55%,#00897B 100%); border-radius:14px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; position:relative; overflow:hidden; }
+    .fg-hdr { background:linear-gradient(135deg,var(--mt-primary) 0%,var(--mt-primary-light) 55%,var(--mt-primary-light) 100%); border-radius:14px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; position:relative; overflow:hidden; }
     .fg-hdr::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,255,255,.05); pointer-events:none; }
     .fg-hdr-title { font-size:18px; font-weight:800; color:#fff; position:relative; }
     .fg-hdr-sub   { font-size:12px; color:rgba(255,255,255,.65); margin-top:2px; position:relative; }
@@ -35,7 +35,7 @@ _s.textContent = `
     @media(max-width:768px){ .fg-filter-grid { grid-template-columns:1fr 1fr; } }
     @media(max-width:500px){ .fg-filter-grid { grid-template-columns:1fr; } }
     .fg-filter-label { font-size:10px; font-weight:700; color:#64748B; text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; display:block; }
-    .fg-show-btn { height:38px; padding:0 20px; background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; border:none; border-radius:9px; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; transition:opacity .15s; }
+    .fg-show-btn { height:38px; padding:0 20px; background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; border:none; border-radius:9px; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; transition:opacity .15s; }
     .fg-show-btn:hover { opacity:.88; }
     .fg-clear-btn { height:38px; padding:0 16px; background:#F1F5F9; color:#475569; border:1.5px solid #E2E8F0; border-radius:9px; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:5px; white-space:nowrap; transition:all .15s; }
     .fg-clear-btn:hover { background:#E2E8F0; }
@@ -67,7 +67,7 @@ _s.textContent = `
     .fg-cert-link:hover { opacity:.75; }
     .fg-card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:8px; border-top:1px solid #F1F5F9; margin-top:2px; }
     .fg-doc-badge { background:#EFF6FF; color:#1E3A8A; border:1px solid #BFDBFE; border-radius:20px; padding:2px 9px; font-size:11px; font-weight:700; }
-    .fg-view-btn { display:flex; align-items:center; gap:4px; padding:5px 12px; background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; border:none; border-radius:7px; font-size:11px; font-weight:700; cursor:pointer; }
+    .fg-view-btn { display:flex; align-items:center; gap:4px; padding:5px 12px; background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; border:none; border-radius:7px; font-size:11px; font-weight:700; cursor:pointer; }
     .fg-view-btn:hover { opacity:.88; }
 
     /* ── Empty ── */
@@ -81,14 +81,14 @@ _s.textContent = `
     @keyframes oifg { from{opacity:0} to{opacity:1} }
     .fg-modal { background:#fff; border-radius:18px; width:100%; max-width:640px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 24px 60px rgba(0,0,0,.25); margin:auto; flex-shrink:0; animation:mifg .22s cubic-bezier(.16,1,.3,1); }
     @keyframes mifg { from{opacity:0;transform:translateY(20px) scale(.97)} to{opacity:1;transform:none} }
-    .fg-modal-hdr { background:linear-gradient(135deg,#005B52,#007A6E); padding:14px 20px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+    .fg-modal-hdr { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); padding:14px 20px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
     .fg-modal-title { font-size:15px; font-weight:800; color:#fff; }
     .fg-modal-sub   { font-size:11px; color:rgba(255,255,255,.65); margin-top:1px; }
     .fg-modal-close { border-radius:50%; border:1.5px solid rgba(255,255,255,.4); background:rgba(255,255,255,.12); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .15s; }
     .fg-modal-close:hover { background:rgba(255,255,255,.25); }
     .fg-modal-tabs { display:flex; background:#fff; border-bottom:1px solid #E8ECF2; padding:0 20px; flex-shrink:0; }
     .fg-modal-tab { padding:10px 16px; font-size:12px; font-weight:700; color:#94A3B8; border:none; background:transparent; cursor:pointer; border-bottom:2px solid transparent; transition:all .15s; }
-    .fg-modal-tab.on { color:#005B52; border-bottom-color:#005B52; }
+    .fg-modal-tab.on { color:var(--mt-primary); border-bottom-color:var(--mt-primary); }
     .fg-modal-body { padding:18px 20px; background:#F8FAFC; overflow-y:auto; max-height:60vh; }
     .fg-modal-body::-webkit-scrollbar { width:4px; }
     .fg-modal-body::-webkit-scrollbar-thumb { background:#CBD5E1; border-radius:99px; }
@@ -115,8 +115,8 @@ _s.textContent = `
 document.head.appendChild(_s)
 
 const SEL = {
-    control: (b, st) => ({ ...b, borderRadius:9, minHeight:38, fontSize:13, border:`1.5px solid ${st.isFocused?"#005B52":"#E2E8F0"}`, boxShadow:st.isFocused?"0 0 0 3px rgba(0,91,82,.08)":"none" }),
-    option:  (b, st) => ({ ...b, fontSize:13, background:st.isSelected?"#005B52":st.isFocused?"#f0fdf9":"#fff", color:st.isSelected?"#fff":"#0F172A" }),
+    control: (b, st) => ({ ...b, borderRadius:9, minHeight:38, fontSize:13, border:`1.5px solid ${st.isFocused?"var(--mt-primary)":"#E2E8F0"}`, boxShadow:st.isFocused?"0 0 0 3px rgba(var(--mt-primary-rgb),.08)":"none" }),
+    option:  (b, st) => ({ ...b, fontSize:13, background:st.isSelected?"var(--mt-primary)":st.isFocused?"var(--mt-primary-50)":"#fff", color:st.isSelected?"#fff":"#0F172A" }),
     placeholder: b => ({ ...b, color:"#94A3B8", fontSize:13 }),
     menuPortal: b => ({ ...b, zIndex:9999 }),
 }
@@ -194,7 +194,7 @@ function ProjectModal({ project:p, onClose }) {
                     )}
                     {tab==="details" && (
                         <div className="fg-detail-grid">
-                            <div className="fg-detail-sec"><span className="fg-detail-sec-dot" style={{ background:"#005B52" }}/>Project Info<span className="fg-detail-sec-line"/></div>
+                            <div className="fg-detail-sec"><span className="fg-detail-sec-dot" style={{ background:"var(--mt-primary)" }}/>Project Info<span className="fg-detail-sec-line"/></div>
                             <DKV k="Builder" v={p.sapBuilder}/>
                             <DKV k="Project" v={p.sapProject}/>
                             <DKV k="Address" v={p.projectAddress}/>

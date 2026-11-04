@@ -1,529 +1,387 @@
-import { useState, useMemo } from "react";
+import {
+  PiCalendarCheckDuotone,
+  PiHeadsetDuotone,
+  PiHeartbeatDuotone,
+  PiLightbulbFilamentDuotone,
+  PiScrollDuotone,
+  PiSquaresFourDuotone,
+} from "react-icons/pi";
+import { useState, useMemo, useEffect, useRef } from "react";
 import withRouter from "../../components/Common/withRouter";
 import { Link, useLocation } from "react-router-dom";
 import { Sidebar as SBar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import useLayoutStore from "../../store/useLayoutStore";
-import { MdDashboard } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import withSidebarOptions from "./withSidebarOptions";
-import { defaultTheme } from "../../helpers/defaultTheme";
 import {
   FaCheckCircle,
   FaClipboardCheck,
   FaDesktop,
-  FaHeadset,
   FaTools,
   FaUsers,
   FaSearch,
-  FaLaptopCode,
 } from "react-icons/fa";
-import { InputGroup, InputGroupText } from "reactstrap";
 import { useUserStore } from "../../store/useUserStore";
-import { USER_TYPE } from "../../constants/global";
+import { USER_TYPE, ICON_COLOR, ICON_SIZE, TOP_ICON_COLOR, TOP_ICON_SIZE, MENU_TEXT_COLOR, SUB_MENU_TEXT_COLOR } from "../../constants/global";
 import "../../Pages/CSS/styles.css";
-import { RiFilePaper2Line, RiHealthBookLine } from "react-icons/ri";
 import { useGet } from "../../Hooks/useApi";
 import { VERIFY_GROUP_MEMBER } from "../../helpers/url_helper";
 
+// Keep in sync with the drawer breakpoint in Pages/CSS/styles.css / _vertical.scss
+const MOBILE_QUERY = "(max-width: 992px)";
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(
+    () => Boolean(window.matchMedia?.(MOBILE_QUERY).matches)
+  );
+
+  useEffect(() => {
+    if (!window.matchMedia) return undefined;
+    const mql = window.matchMedia(MOBILE_QUERY);
+    const onChange = (e) => setIsMobile(e.matches);
+    // Safari/iOS < 14 and old Edge only support the deprecated addListener
+    if (mql.addEventListener) {
+      mql.addEventListener("change", onChange);
+      return () => mql.removeEventListener("change", onChange);
+    }
+    mql.addListener(onChange);
+    return () => mql.removeListener(onChange);
+  }, []);
+
+  return isMobile;
+};
+
 const Sidebar = (props) => {
   const isSidebarCollapsed = useLayoutStore((state) => state.isSidebarCollapsed);
-  const pathname = props.router.location.pathname;
+  const changeSidebar = useLayoutStore((state) => state.changeSidebar);
   const role = useUserStore((state) => state.user.role);
   const empCode = useUserStore((state) => state.user.empCode);
-  const changeSidebar = useLayoutStore((state) => state.changeSidebar);
-  const location = useLocation();
-  const pathname_ = location.pathname;
-  const search = location.search;
+  const { pathname, search } = useLocation();
+  const isMobile = useIsMobile();
+  // On small screens the sidebar is a full-width drawer, never an icon rail
+  const collapsed = isSidebarCollapsed && !isMobile;
 
-  const { data: verifyData } = useGet(VERIFY_GROUP_MEMBER + empCode)
+  const { data: verifyData } = useGet(VERIFY_GROUP_MEMBER + empCode, { enabled: Boolean(empCode), });
   const thinkItEnabled = verifyData?.data?.data?.thinkIt;
 
-
   const [searchTerm, setSearchTerm] = useState("");
-  const [openMenu, setOpenMenu] = useState(() => {
-    let result = "";
-    for (let item of props.list) {
-      if (item?.url && item?.url === pathname) {
-        result = item.label;
-        break;
-      }
-      if (!item?.url && item.subItem?.length > 0) {
-        for (let subItem of item.subItem) {
-          if (pathname.includes(subItem.link)) {
-            result = item.label;
-            break;
-          }
-        }
-      }
-    }
-    return result;
-  });
+  const [openMenu, setOpenMenu] = useState("");
+  const searchInputRef = useRef(null);
+  const focusSearchOnExpand = useRef(false);
+
+  const isLinkActive = (link, exact) => {
+    if (!link) return false;
+    const [path, query] = link.split("?");
+    if (query) return pathname === path && search.includes(query);
+    return exact ? pathname === path : pathname.includes(path);
+  };
+
+  const isItemActive = (item) =>
+    item.url
+      ? isLinkActive(item.url, item.exact)
+      : Boolean(item.subItem?.some((sub) => isLinkActive(sub.link, sub.exact)));
+
+  // Static entries use the same shape as SidebarData so everything renders
+  // (and is searched) through one code path.
+  const groups = useMemo(() => {
+    const showAttendance = role === USER_TYPE.ADMIN || role === USER_TYPE.OTHER;
+
+    return [
+      {
+        title: "",
+        items: [
+          {
+            label: "Dashboard",
+            url: "/dashboard",
+            exact: true,
+            icon: <PiSquaresFourDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
+          },
+          thinkItEnabled && {
+            label: "Think IT",
+            url: "/think-it-data",
+            exact: true,
+            icon: <PiLightbulbFilamentDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
+          },
+        ].filter(Boolean),
+      },
+      { title: "Modules", items: props.list || [] },
+      {
+        title: "Self Service",
+        items: [
+          showAttendance && {
+            label: "My Attendance",
+            icon: <PiCalendarCheckDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
+            subItem: [
+              {
+                sublabel: "My Attendance",
+                link: "/my-attendance",
+                exact: true,
+                icon: <FaCheckCircle color={ICON_COLOR} size={ICON_SIZE} />,
+              },
+              {
+                sublabel: "Apply OD",
+                link: "/apply-od",
+                exact: true,
+                icon: <FaClipboardCheck color={ICON_COLOR} size={ICON_SIZE} />,
+              },
+              {
+                sublabel: "Regularize Attendance",
+                link: "/apply-attendance-regularization",
+                exact: true,
+                icon: <FaClipboardCheck color={ICON_COLOR} size={ICON_SIZE} />,
+              },
+            ],
+          },
+          {
+            label: "Policies",
+            url: "/view-policies",
+            exact: true,
+            icon: <PiScrollDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
+          },
+          {
+            label: "Insurance Card",
+            url: "/insurance-card",
+            exact: true,
+            icon: <PiHeartbeatDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
+          },
+          {
+            label: "Support (24x7)",
+            icon: <PiHeadsetDuotone color={TOP_ICON_COLOR} size={TOP_ICON_SIZE} />,
+            subItem: [
+              {
+                sublabel: "SAP Support",
+                link: "/live-support?supportType=sap",
+                icon: <FaTools color={ICON_COLOR} size={ICON_SIZE} />,
+              },
+              {
+                sublabel: "HR Support",
+                link: "/live-support?supportType=hr",
+                icon: <FaUsers color={ICON_COLOR} size={ICON_SIZE} />,
+              },
+              {
+                sublabel: "OPS Support",
+                link: "/live-support?supportType=ops",
+                icon: <FaDesktop color={ICON_COLOR} size={ICON_SIZE} />,
+              },
+            ],
+          },
+        ].filter(Boolean),
+      },
+    ];
+  }, [props.list, role, thinkItEnabled]);
 
   // ✅ Search filtering for both main & submenus
-  const filteredList = useMemo(() => {
-    if (!searchTerm.trim()) return props.list;
-    const lower = searchTerm.toLowerCase();
+  const isSearching = Boolean(searchTerm.trim());
+  const filteredGroups = useMemo(() => {
+    const lower = searchTerm.trim().toLowerCase();
+    if (!lower) return groups.filter((group) => group.items.length > 0);
 
-    return props.list
-      .map((item) => {
-        const parentMatch = item.label.toLowerCase().includes(lower);
-        const subItems =
-          item.subItem?.filter((sub) =>
-            sub.sublabel.toLowerCase().includes(lower)
-          ) || [];
+    return groups
+      .map((group) => ({
+        ...group,
+        items: group.items
+          .map((item) => {
+            if (item.label.toLowerCase().includes(lower)) return item;
+            const subItems =
+              item.subItem?.filter((sub) =>
+                sub.sublabel.toLowerCase().includes(lower)
+              ) || [];
+            return subItems.length > 0 ? { ...item, subItem: subItems } : null;
+          })
+          .filter(Boolean),
+      }))
+      .filter((group) => group.items.length > 0);
+  }, [searchTerm, groups]);
 
-        if (parentMatch) {
-          return { ...item };
-        } else if (subItems.length > 0) {
-          return { ...item, subItem: subItems };
-        }
-        return null;
-      })
-      .filter(Boolean);
-  }, [searchTerm, props.list]);
+  // Keep the group of the current page expanded as the route changes
+  let activeGroupLabel = "";
+  for (const group of groups) {
+    const match = group.items.find((item) => item.subItem && isItemActive(item));
+    if (match) {
+      activeGroupLabel = match.label;
+      break;
+    }
+  }
+  useEffect(() => {
+    if (activeGroupLabel) setOpenMenu(activeGroupLabel);
+  }, [activeGroupLabel]);
 
-  // Style definitions
-  const activeMenuStyle = {
-    color: defaultTheme.primary,
-    backgroundColor: defaultTheme.goldColorLogo,
+  // Header toggles this class too; deriving it here keeps it right on resize
+  useEffect(() => {
+    document.body.classList.toggle("vertical-collpsed", collapsed);
+  }, [collapsed]);
+
+  // Crossing the breakpoint always starts with the drawer closed
+  useEffect(() => {
+    document.body.classList.remove("sidebar-enable");
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!isMobile) return undefined;
+    const onKeyDown = (e) => {
+      // Old Edge reports "Esc"
+      if (e.key === "Escape" || e.key === "Esc") {
+        document.body.classList.remove("sidebar-enable");
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!collapsed && focusSearchOnExpand.current) {
+      focusSearchOnExpand.current = false;
+      searchInputRef.current?.focus();
+    }
+  }, [collapsed]);
+
+  const closeDrawer = () => document.body.classList.remove("sidebar-enable");
+
+  const handleLinkClick = () => {
+    if (isMobile) closeDrawer();
   };
 
-  const activeSubMenuStyle = {
-    color: defaultTheme.goldColorLogo,
-    backgroundColor: defaultTheme.primary,
-  };
-
-  const isMainMenuActive = (item) => {
-    return item.subItem
-      ? item.subItem.some((subItem) => pathname.includes(subItem.link))
-      : false;
-  };
-
-  function tToggle() {
-    var body = document.body;
+  const expandAndSearch = () => {
+    focusSearchOnExpand.current = true;
     changeSidebar();
-    if (window.screen.width <= 998) {
-      body.classList.toggle("sidebar-enable");
-    } else {
-      body.classList.toggle("vertical-collpsed");
-      body.classList.toggle("sidebar-enable");
-    }
-  }
+  };
 
-  function toogleOpen() {
-    if (window.innerWidth < 1024) {
-      tToggle();
-    }
-  }
+  const renderLink = (item) => {
+    const active = isItemActive(item);
+    return (
+      <MenuItem
+        key={item.label}
+        icon={item.icon}
+        active={active}
+        className={`mt-nav-top${active ? " is-active" : ""}`}
+        component={
+          <Link to={item.url} title={item.label} onClick={handleLinkClick} />
+        }
+      >
+        {item.label}
+      </MenuItem>
+    );
+  };
+
+  const renderGroup = (item) => {
+    const active = isItemActive(item);
+    return (
+      <SubMenu
+        key={item.label}
+        label={item.label}
+        icon={item.icon}
+        title={item.label}
+        className={`mt-nav-top mt-nav-group${active ? " has-active-child" : ""}`}
+        open={isSearching || openMenu === item.label}
+        onClick={() =>
+          setOpenMenu((prev) => (prev === item.label ? "" : item.label))
+        }
+      >
+        {item.subItem?.map((sItem) => {
+          const isSubMenuItemActive = isLinkActive(sItem.link, sItem.exact);
+          return (
+            <MenuItem
+              key={sItem.sublabel}
+              icon={sItem.icon}
+              active={isSubMenuItemActive}
+              className={`mt-nav-sub${isSubMenuItemActive ? " is-active" : ""}`}
+              component={
+                <Link
+                  to={sItem.link}
+                  title={sItem.sublabel}
+                  onClick={handleLinkClick}
+                />
+              }
+            >
+              {sItem.sublabel}
+            </MenuItem>
+          );
+        })}
+      </SubMenu>
+    );
+  };
 
   return (
-    <div className="vertical-menu">
+    <>
+      <div className="sidebar-backdrop" onClick={closeDrawer} />
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          width: "100%",
-          overflow: "auto",
-          marginTop: "5px",
-        }}
+        className={`vertical-menu mt-sidebar${collapsed ? " mt-sidebar--collapsed" : ""}`}
+        // menu / sub menu text colours come from constants/global.js
+        style={{ "--mt-sb-text": MENU_TEXT_COLOR, "--mt-sb-sub-text": SUB_MENU_TEXT_COLOR }}
       >
-        {/* 🔍 Search Bar (Second Last Section) */}
-        <div className="p-2 border-top border-bottom bg-light">
-          <InputGroup size="sm" style={{ borderRadius: "8px" }}>
-            <InputGroupText
-              style={{
-                backgroundColor: defaultTheme.primary,
-                color: "white",
-                border: "none",
-                borderRadius: "8px 0 0 8px",
-              }}
+        <div className="mt-sidebar__inner">
+          {/* 🔍 Search */}
+          <div className="mt-sidebar__search">
+            {collapsed ? (
+              <button
+                type="button"
+                className="mt-sidebar__search-btn"
+                title="Search menu"
+                aria-label="Search menu"
+                onClick={expandAndSearch}
+              >
+                <FaSearch size={14} />
+              </button>
+            ) : (
+              <label className="mt-sidebar__search-box">
+                <FaSearch size={14} className="mt-sidebar__search-icon" />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder="Search menu..."
+                  aria-label="Search menu"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                {searchTerm && (
+                  <button
+                    type="button"
+                    className="mt-sidebar__search-clear"
+                    aria-label="Clear search"
+                    onClick={() => setSearchTerm("")}
+                  >
+                    <MdClose size={14} />
+                  </button>
+                )}
+              </label>
+            )}
+          </div>
+
+          <div className="mt-sidebar__nav">
+            <SBar
+              collapsed={collapsed}
+              width="100%"
+              collapsedWidth="100%"
+              backgroundColor="transparent"
+              transitionDuration={250}
             >
-              <FaSearch size={13} />
-            </InputGroupText>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search menu or submenu..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{
-                backgroundColor: "#f9fafb",
-                fontSize: "13px",
-                borderRadius: "0 8px 8px 0",
-              }}
-            />
-          </InputGroup>
+              <Menu closeOnClick>
+                {filteredGroups.map((group) => [
+                  group.title && (
+                    <li
+                      key={`caption-${group.title}`}
+                      className="mt-sidebar__caption"
+                      role="presentation"
+                    >
+                      {group.title}
+                    </li>
+                  ),
+                  ...group.items.map((item) =>
+                    item.url ? renderLink(item) : renderGroup(item)
+                  ),
+                ])}
+
+                {filteredGroups.length === 0 && (
+                  <li className="mt-sidebar__empty" role="presentation">
+                    {`No menu found for "${searchTerm.trim()}"`}
+                  </li>
+                )}
+              </Menu>
+            </SBar>
+          </div>
         </div>
-        <SBar collapsed={isSidebarCollapsed} style={{ overflowX: "hidden" }}>
-          <Menu closeOnClick>
-            {/* 🏠 Dashboard */}
-            <MenuItem
-              icon={<MdDashboard color={defaultTheme.btnEnable} size={16} />}
-              component={
-                <Link
-                  to="/dashboard"
-                  style={{
-                    height: "40px",
-                    fontWeight: "bold",
-                    marginLeft: -15,
-                    fontSize: "14px",
-                    ...(pathname === "/dashboard" ? activeMenuStyle : {}),
-                  }}
-                  className={
-                    pathname === "/dashboard" ? "sidebarItemActive" : ""
-                  }
-                  onClick={toogleOpen}
-                />
-              }
-            >
-              Dashboard
-            </MenuItem>
-
-            {thinkItEnabled && (
-              <MenuItem
-                icon={<FaLaptopCode color={defaultTheme.btnEnable} size={16} />}
-                component={
-                  <Link
-                    to="/think-it-data"
-                    style={{
-                      height: "40px",
-                      fontWeight: "bold",
-                      marginLeft: -15,
-                      fontSize: "14px",
-                      ...(pathname === "/think-it-data" ? activeMenuStyle : {}),
-                    }}
-                    className={
-                      pathname === "/think-it-data" ? "sidebarItemActive" : ""
-                    }
-                    onClick={toogleOpen}
-                  />
-                }
-              >
-                Think IT
-              </MenuItem>
-            )}
-
-            {/* 🧭 Dynamic Menu Items (Filtered) */}
-            {filteredList?.map((item) => {
-              const menuItemActive =
-                pathname.includes(item.url) || isMainMenuActive(item);
-
-              return item?.url ? (
-                <MenuItem
-                  icon={item.icon}
-                  key={item.label}
-                  component={
-                    <Link
-                      to={item.url}
-                      style={{
-                        height: "40px",
-                        fontWeight: "bold",
-                        marginLeft: -15,
-                        fontSize: "14px",
-                        ...(menuItemActive ? activeMenuStyle : {}),
-                      }}
-                      onClick={toogleOpen}
-                      className={menuItemActive ? "sidebarItemActive" : ""}
-                    />
-                  }
-                >
-                  {item.label}
-                </MenuItem>
-              ) : (
-                <SubMenu
-                  key={item.label}
-                  label={item.label}
-                  icon={item.icon}
-                  open={openMenu === item.label}
-                  onClick={() =>
-                    setOpenMenu((prev) =>
-                      prev === item.label ? "" : item.label
-                    )
-                  }
-                  style={{
-                    height: "40px",
-                    fontWeight: "bold",
-                    marginLeft: -15,
-                    fontSize: "14px",
-                    ...(menuItemActive ? activeMenuStyle : {}),
-                  }}
-                >
-                  {item.subItem?.map((sItem) => {
-                    const isSubMenuItemActive = pathname.includes(sItem.link);
-                    return (
-                      <MenuItem
-                        style={{
-                          height: "35px",
-                          marginLeft: -30,
-                          fontSize: "13px",
-                          textDecoration: "underline",
-                          ...(isSubMenuItemActive ? activeSubMenuStyle : {}),
-                        }}
-                        active={isSubMenuItemActive}
-                        key={sItem.sublabel}
-                        icon={sItem.icon}
-                        component={
-                          <Link
-                            to={sItem.link}
-                            className={
-                              isSubMenuItemActive ? "sidebarItemActive" : ""
-                            }
-                            onClick={toogleOpen}
-                          />
-                        }
-                      >
-                        {sItem.sublabel}
-                      </MenuItem>
-                    );
-                  })}
-                </SubMenu>
-              );
-            })}
-
-            {/* 👥 My Attendance (Static) */}
-            {(role === USER_TYPE.ADMIN || role === USER_TYPE.OTHER) && (
-              <SubMenu
-                label="My Attendance"
-                icon={
-                  <FaClipboardCheck color={defaultTheme.btnEnable} size={16} />
-                }
-                open={openMenu === "My Attendance"}
-                onClick={() =>
-                  setOpenMenu((prev) =>
-                    prev === "My Attendance" ? "" : "My Attendance"
-                  )
-                }
-                style={{
-                  height: "40px",
-                  fontWeight: "bold",
-                  marginLeft: -15,
-                  fontSize: "14px",
-                  ...(pathname.includes("/my-attendance") ||
-                    pathname.includes("/apply-od") ||
-                    pathname.includes("/apply-attendance-regularization")
-                    ? activeMenuStyle
-                    : {}),
-                }}
-              >
-                <MenuItem
-                  icon={<FaCheckCircle color={defaultTheme.btnEnable} size={16} />}
-                  component={
-                    <Link
-                      to="/my-attendance"
-                      style={{
-                        height: "35px",
-                        fontWeight: "bold",
-                        marginLeft: -30,
-                        fontSize: "13px",
-                        ...(pathname === "/my-attendance"
-                          ? activeSubMenuStyle
-                          : {}),
-                      }}
-                      className={
-                        pathname === "/my-attendance" ? "sidebarItemActive" : ""
-                      }
-                      onClick={toogleOpen}
-                    />
-                  }
-                >
-                  My Attendance
-                </MenuItem>
-
-                <MenuItem
-                  icon={<FaClipboardCheck color={defaultTheme.btnEnable} size={16} />}
-                  component={
-                    <Link
-                      to="/apply-od"
-                      style={{
-                        height: "35px",
-                        fontWeight: "bold",
-                        marginLeft: -30,
-                        fontSize: "13px",
-                        ...(pathname === "/apply-od" ? activeSubMenuStyle : {}),
-                      }}
-                      className={
-                        pathname === "/apply-od" ? "sidebarItemActive" : ""
-                      }
-                      onClick={toogleOpen}
-                    />
-                  }
-                >
-                  Apply OD
-                </MenuItem>
-
-                <MenuItem
-                  icon={<FaClipboardCheck color={defaultTheme.btnEnable} size={16} />}
-                  component={
-                    <Link
-                      to="/apply-attendance-regularization"
-                      style={{
-                        height: "35px",
-                        fontWeight: "bold",
-                        marginLeft: -30,
-                        fontSize: "13px",
-                        ...(pathname === "/apply-attendance-regularization"
-                          ? activeSubMenuStyle
-                          : {}),
-                      }}
-                      className={
-                        pathname === "/apply-attendance-regularization"
-                          ? "sidebarItemActive"
-                          : ""
-                      }
-                      onClick={toogleOpen}
-                    />
-                  }
-                >
-                  Regularize Attendance
-                </MenuItem>
-              </SubMenu>
-            )}
-
-            {/* 📄 Policies */}
-            <MenuItem
-              icon={<RiFilePaper2Line color={defaultTheme.btnEnable} size={16} />}
-              component={
-                <Link
-                  to="/view-policies"
-                  style={{
-                    height: "40px",
-                    fontWeight: "bold",
-                    marginLeft: -15,
-                    fontSize: "14px",
-                    ...(pathname === "/view-policies" ? activeMenuStyle : {}),
-                  }}
-                  className={
-                    pathname === "/view-policies" ? "sidebarItemActive" : ""
-                  }
-                  onClick={toogleOpen}
-                />
-              }
-            >
-              Policies
-            </MenuItem>
-
-             {/* 📄 Policies */}
-            <MenuItem
-              icon={<RiHealthBookLine color={defaultTheme.btnEnable} size={16} />}
-              component={
-                <Link
-                  to="/insurance-card"
-                  style={{
-                    height: "40px",
-                    fontWeight: "bold",
-                    marginLeft: -15,
-                    fontSize: "14px",
-                    ...(pathname === "/insurance-card" ? activeMenuStyle : {}),
-                  }}
-                  className={
-                    pathname === "/insurance-card" ? "sidebarItemActive" : ""
-                  }
-                  onClick={toogleOpen}
-                />
-              }
-            >
-              Insurance Card
-            </MenuItem>
-
-            {/* 🎧 Support (Last Menu) */}
-            <SubMenu
-              label="Support (24x7)"
-              icon={<FaHeadset color={defaultTheme.btnEnable} size={16} />}
-              open={openMenu === "Support"}
-              onClick={() =>
-                setOpenMenu((prev) => (prev === "Support" ? "" : "Support"))
-              }
-              style={{
-                height: "40px",
-                fontWeight: "bold",
-                marginLeft: -15,
-                fontSize: "14px",
-                ...(pathname_ === "/live-support" ? activeMenuStyle : {}),
-              }}
-            >
-              <MenuItem
-                icon={<FaTools color={defaultTheme.btnEnable} size={16} />}
-                component={
-                  <Link
-                    to="/live-support?supportType=sap"
-                    style={{
-                      height: "35px",
-                      fontWeight: "bold",
-                      marginLeft: -30,
-                      fontSize: "13px",
-                      ...(search.includes("supportType=sap")
-                        ? activeSubMenuStyle
-                        : {}),
-                    }}
-                    className={
-                      search.includes("supportType=sap")
-                        ? "sidebarItemActive"
-                        : ""
-                    }
-                    onClick={toogleOpen}
-                  />
-                }
-              >
-                SAP Support
-              </MenuItem>
-
-              <MenuItem
-                icon={<FaUsers color={defaultTheme.btnEnable} size={16} />}
-                component={
-                  <Link
-                    to="/live-support?supportType=hr"
-                    style={{
-                      height: "35px",
-                      fontWeight: "bold",
-                      marginLeft: -30,
-                      fontSize: "13px",
-                      ...(search.includes("supportType=hr")
-                        ? activeSubMenuStyle
-                        : {}),
-                    }}
-                    className={
-                      search.includes("supportType=hr")
-                        ? "sidebarItemActive"
-                        : ""
-                    }
-                    onClick={toogleOpen}
-                  />
-                }
-              >
-                HR Support
-              </MenuItem>
-
-              <MenuItem
-                icon={<FaDesktop color={defaultTheme.btnEnable} size={16} />}
-                component={
-                  <Link
-                    to="/live-support?supportType=ops"
-                    style={{
-                      height: "35px",
-                      fontWeight: "bold",
-                      marginLeft: -30,
-                      fontSize: "13px",
-                      marginBottom: "10px",
-                      ...(search.includes("supportType=ops")
-                        ? activeSubMenuStyle
-                        : {}),
-                    }}
-                    className={
-                      search.includes("supportType=ops")
-                        ? "sidebarItemActive"
-                        : ""
-                    }
-                    onClick={toogleOpen}
-                  />
-                }
-              >
-                OPS Support
-              </MenuItem>
-            </SubMenu>
-          </Menu>
-        </SBar>
       </div>
-    </div>
+    </>
   );
 };
 

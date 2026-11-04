@@ -11,7 +11,7 @@ import CheckUserAccess from '../../components/Common/CheckUserAccess'
 import PermissionMissing from '../Utility/PermissonMissing'
 import { useUserStore } from '../../store/useUserStore'
 import { useGet } from '../../Hooks/useApi'
-import Select from 'react-select'
+import Select from '../../components/Common/AppSelect'
 
 // ── Styles ────────────────────────────────────────────────────────────────────
 if (document.getElementById("appc-s")) document.getElementById("appc-s").remove()
@@ -19,7 +19,7 @@ const _s = document.createElement("style")
 _s.id = "appc-s"
 _s.textContent = `
     .appc-hdr {
-        background: linear-gradient(135deg, #005B52 0%, #007A6E 60%, #00897B 100%);
+        background: linear-gradient(135deg, var(--mt-primary) 0%, var(--mt-primary-light) 60%, var(--mt-primary-light) 100%);
         border-radius: 16px; padding: 20px 26px; margin-bottom: 20px;
         position: relative; overflow: hidden;
         display: flex; align-items: center; gap: 16px;
@@ -31,8 +31,8 @@ _s.textContent = `
     .appc-hdr-sub   { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 3px; position: relative; }
 
     .appc-card { background: #fff; border: 1px solid #E8ECF2; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.05); overflow: hidden; }
-    .appc-card-head { background: linear-gradient(90deg, #f8fffe 0%, #f0fdf9 100%); border-bottom: 1px solid #E8ECF2; padding: 14px 24px; display: flex; align-items: center; gap: 10px; }
-    .appc-card-head-title { font-size: 14px; font-weight: 700; color: #005B52; }
+    .appc-card-head { background: linear-gradient(90deg, #f8fffe 0%, var(--mt-primary-50) 100%); border-bottom: 1px solid #E8ECF2; padding: 14px 24px; display: flex; align-items: center; gap: 10px; }
+    .appc-card-head-title { font-size: 14px; font-weight: 700; color: var(--mt-primary); }
     .appc-card-head-sub   { font-size: 11px; color: #94A3B8; margin-top: 1px; }
     .appc-card-body { padding: 24px; }
 
@@ -46,18 +46,18 @@ _s.textContent = `
 
     .appc-input-wrap { position: relative; }
     .appc-input-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94A3B8; pointer-events: none; display: flex; align-items: center; transition: color .2s; }
-    .appc-input-wrap:focus-within .appc-input-icon { color: #005B52; }
+    .appc-input-wrap:focus-within .appc-input-icon { color: var(--mt-primary); }
 
     .appc-input { height: 42px; width: 100%; padding: 0 14px 0 38px; border: 1.5px solid #E2E8F0; border-radius: 10px; font-size: 13px; font-weight: 500; color: #0F172A; background: #F8FAFC; outline: none; transition: border-color .2s, background .2s, box-shadow .2s; }
     .appc-input::placeholder { color: #CBD5E1; font-weight: 400; }
     .appc-input:hover:not(:focus) { border-color: #CBD5E1; background: #fff; }
-    .appc-input:focus { border-color: #005B52; background: #fff; box-shadow: 0 0 0 3px rgba(0,91,82,.09); }
+    .appc-input:focus { border-color: var(--mt-primary); background: #fff; box-shadow: 0 0 0 3px rgba(var(--mt-primary-rgb),.09); }
     .appc-input.err { border-color: #E53E3E !important; box-shadow: 0 0 0 3px rgba(229,62,62,.1) !important; background: #fff8f8; }
 
     .appc-hint { font-size: 11px; color: #E53E3E; font-weight: 600; display: none; margin-top: 2px; }
     .appc-hint.show { display: block; }
 
-    .appc-source-badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 20px; background: linear-gradient(135deg,#005B52,#007A6E); color: #fff; font-size: 12px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,91,82,.25); width: fit-content; }
+    .appc-source-badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 20px; background: linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color: #fff; font-size: 12px; font-weight: 700; box-shadow: 0 2px 8px rgba(var(--mt-primary-rgb),.25); width: fit-content; }
 
     .appc-divider { height: 1px; background: #F1F5F9; margin: 20px 0; }
 
@@ -65,9 +65,9 @@ _s.textContent = `
     .appc-btn { height: 42px; padding: 0 24px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; border: none; transition: all .2s; }
     .appc-btn-cancel { background: #F1F5F9; color: #475569; border: 1.5px solid #E2E8F0; }
     .appc-btn-cancel:hover { background: #E2E8F0; }
-    .appc-btn-save { background: linear-gradient(135deg, #005B52 0%, #007A6E 100%); color: #fff; box-shadow: 0 4px 14px rgba(0,91,82,.3); position: relative; overflow: hidden; }
+    .appc-btn-save { background: linear-gradient(135deg, var(--mt-primary) 0%, var(--mt-primary-light) 100%); color: #fff; box-shadow: 0 4px 14px rgba(var(--mt-primary-rgb),.3); position: relative; overflow: hidden; }
     .appc-btn-save::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent); transform: translateX(-100%); transition: transform .5s; }
-    .appc-btn-save:hover { box-shadow: 0 6px 20px rgba(0,91,82,.4); transform: translateY(-1px); }
+    .appc-btn-save:hover { box-shadow: 0 6px 20px rgba(var(--mt-primary-rgb),.4); transform: translateY(-1px); }
     .appc-btn-save:hover::before { transform: translateX(100%); }
     .appc-btn-save:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
 
@@ -81,10 +81,10 @@ const SEL_STYLES = {
     control: (b, st) => ({
         ...b,
         minHeight: 42, fontSize: 13, fontWeight: 500,
-        border: `1.5px solid ${st.isFocused ? '#005B52' : '#E2E8F0'}`,
+        border: `1.5px solid ${st.isFocused ? 'var(--mt-primary)' : '#E2E8F0'}`,
         borderRadius: 10,
         background: st.isFocused ? '#fff' : '#F8FAFC',
-        boxShadow: st.isFocused ? '0 0 0 3px rgba(0,91,82,.09)' : 'none',
+        boxShadow: st.isFocused ? '0 0 0 3px rgba(var(--mt-primary-rgb),.09)' : 'none',
         paddingLeft: 28,           // room for the icon
         cursor: 'pointer',
         transition: 'border-color .2s, box-shadow .2s',
@@ -92,7 +92,7 @@ const SEL_STYLES = {
     }),
     option: (b, st) => ({
         ...b, fontSize: 13,
-        background: st.isSelected ? '#005B52' : st.isFocused ? '#f0fdf9' : '#fff',
+        background: st.isSelected ? 'var(--mt-primary)' : st.isFocused ? 'var(--mt-primary-50)' : '#fff',
         color: st.isSelected ? '#fff' : '#0F172A',
         cursor: 'pointer',
     }),
@@ -298,7 +298,7 @@ export default function AddPPCLeads() {
                                 <label className="appc-label"><MdLocationOn size={13} /> Location <span className="appc-req">*</span></label>
                                 <div style={{ position: 'relative' }}>
                                     {/* icon sits on top of the select control */}
-                                    <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', zIndex: 1, color: form.location ? '#005B52' : '#94A3B8', pointerEvents: 'none', display: 'flex' }}>
+                                    <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', zIndex: 1, color: form.location ? 'var(--mt-primary)' : '#94A3B8', pointerEvents: 'none', display: 'flex' }}>
                                         <MdLocationOn size={15} />
                                     </span>
                                     <Select

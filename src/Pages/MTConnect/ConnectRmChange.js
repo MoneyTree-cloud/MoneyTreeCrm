@@ -24,7 +24,7 @@ import PageContent from "../../components/Common/PageContent";
 import { MdMobileFriendly } from "react-icons/md";
 import { useUserStore } from "../../store/useUserStore";
 import { FaEdit } from "react-icons/fa";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { toast } from "react-toastify";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";

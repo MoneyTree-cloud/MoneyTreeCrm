@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { Card, CardBody, Col, Container, Input, Label, Row } from "reactstrap";
 import AppTable from "../../components/Common/Table";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet } from "../../Hooks/useApi";
 import { GET_ALL_ASSOCIATE_MEETING_DETAILS, GET_MY_TEAM, PROJECT_ID_NAME_DROPDOWN } from "../../helpers/url_helper";
 import { useUserStore } from "../../store/useUserStore";

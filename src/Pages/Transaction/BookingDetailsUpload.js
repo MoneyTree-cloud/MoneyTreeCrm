@@ -44,7 +44,7 @@ function ExcelUploadZone({ file, onChange }) {
                 border: `1.5px dashed ${dragOver || file ? defaultTheme.primary : '#CBD5E1'}`,
                 borderRadius: 12,
                 padding: '28px 20px',
-                background: dragOver ? '#F0FDF9' : file ? '#F8FCFB' : '#FAFBFC',
+                background: dragOver ? 'var(--mt-primary-50)' : file ? '#F8FCFB' : '#FAFBFC',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
@@ -58,7 +58,7 @@ function ExcelUploadZone({ file, onChange }) {
             <div style={{
                 width: 54, height: 54,
                 borderRadius: 14,
-                background: `${defaultTheme.primary}15`,
+                background: `rgba(var(--mt-primary-rgb), 0.08)`,
                 color: defaultTheme.primary,
                 display: 'flex',
                 alignItems: 'center',
@@ -191,7 +191,7 @@ export default function BookingDetailsUpload() {
                                 <div style={{
                                     width: 40, height: 40,
                                     borderRadius: 10,
-                                    background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                    background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                     color: '#fff',
                                     display: 'flex',
                                     alignItems: 'center',

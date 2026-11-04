@@ -1,5 +1,5 @@
 import { Row, Col, Card, CardBody, FormGroup, Button, Container, Form, Input, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet, usePost } from "../../Hooks/useApi";
 import { GET_ALL_POLICY_DOCUMENT, ALL_LOCATION_DROPDOWN, UPLOAD_POLICY_DOCUMENT, STATUS_CHANGE_POLICY_DOCUMENT } from "../../helpers/url_helper";
 import { useUserStore } from "../../store/useUserStore";
@@ -291,7 +291,7 @@ const PolicyCreation = () => {
                 <Switch
                     checked={!row.disabled}
                     offColor={defaultTheme.goldColorLogo}
-                    onColor={defaultTheme.primary}
+                    onColor={defaultTheme.primaryHex}
                     height={20}
                     width={40}
                     onChange={() => handleSwitchChange(row)}

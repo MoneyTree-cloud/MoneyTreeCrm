@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PageContent from '../../components/Common/PageContent'
 import Breadcrumbs from '../../components/Common/Breadcrumb'
 import { Card, CardBody, Col, Container, Row, Button } from 'reactstrap'
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../store/useUserStore';

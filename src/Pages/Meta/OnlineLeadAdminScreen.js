@@ -12,7 +12,7 @@ import PageContent from "../../components/Common/PageContent";
 import ApiClient from "../../helpers/api_helper";
 import { MdMobileFriendly } from "react-icons/md";
 import { useGet } from "../../Hooks/useApi";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";

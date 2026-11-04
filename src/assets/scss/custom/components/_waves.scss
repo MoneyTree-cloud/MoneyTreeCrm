@@ -143,7 +143,7 @@
 
 .waves-effect.waves-primary {
     .waves-ripple {
-        background-color: rgba($primary, 0.4);
+        background-color: rgba(var(--mt-primary-rgb), 0.4);
     }
 }
 .waves-effect.waves-success {

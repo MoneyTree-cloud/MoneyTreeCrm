@@ -10,7 +10,7 @@ import AppTable from '../../components/Common/Table';
 import ScreenLoader from '../../constants/ScreenLoader';
 import ApiClient from '../../helpers/api_helper';
 import { defaultTheme } from '../../helpers/defaultTheme';
-import { formatDate, WordWrapCell } from '../../helpers/function_helper';
+import { formatActionType, formatDate, WordWrapCell } from '../../helpers/function_helper';
 import { GET_ALL_BOOKING_ANNEXURE } from '../../helpers/url_helper';
 import { useUserStore } from '../../store/useUserStore';
 import CheckUserAccess from '../../components/Common/CheckUserAccess';
@@ -156,6 +156,12 @@ export default function BookingDetails() {
             cell: (row) => <WordWrapCell>{row.area}</WordWrapCell>
         },
         {
+            name: <span className="font-weight-bold fs-13">Status</span>,
+            selector: (row) => row.crmSaleStatus,
+            sortable: true,
+            cell: (row) => <WordWrapCell>{formatActionType(row.crmSaleStatus)}</WordWrapCell>
+        },
+        {
             name: <span className="font-weight-bold fs-13">BBA Value</span>,
             selector: (row) => row.bbaValue,
             sortable: true,
@@ -200,7 +206,7 @@ export default function BookingDetails() {
                         <div style={{
                             width: 40, height: 40,
                             borderRadius: 10,
-                            background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                            background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                             color: '#fff',
                             display: 'flex',
                             alignItems: 'center',
@@ -239,7 +245,7 @@ export default function BookingDetails() {
                             style={{
                                 display: 'inline-flex', alignItems: 'center', gap: 7,
                                 padding: '9px 16px',
-                                background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                 color: '#fff', border: 'none', borderRadius: 8,
                                 fontSize: 12.5, fontWeight: 700, cursor: 'pointer',
                             }}

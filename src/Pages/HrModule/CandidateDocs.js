@@ -14,7 +14,7 @@ import { BiSend } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUserStore } from "../../store/useUserStore";
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { decryptData } from "../../components/Common/CryptoUtils";
@@ -32,26 +32,26 @@ _s.textContent = `
     .cd-filter-title { font-size:10px; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:.8px; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
     .cd-filter-label { font-size:11px; font-weight:600; color:#475569; margin-bottom:4px; display:block; }
     .cd-filter-input { width:100%; height:38px; padding:0 11px; border:1.5px solid #080808; border-radius:8px; font-size:13px; color:#0F172A; outline:none; transition:border-color .15s; background:#fff; }
-    .cd-filter-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .cd-filter-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
 
     .cd-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; white-space:nowrap; }
-    .cd-btn-primary  { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .cd-btn-primary  { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .cd-btn-primary:hover { opacity:.88; }
     .cd-btn-secondary { background:#F1F5F9; color:#475569; border:1.5px solid #E2E8F0; }
     .cd-btn-secondary:hover { background:#E2E8F0; }
-    .cd-btn-filter { border:1.5px solid #005B52; }
-    .cd-btn-filter.open { background:#005B52; color:#fff; }
+    .cd-btn-filter { border:1.5px solid var(--mt-primary); }
+    .cd-btn-filter.open { background:var(--mt-primary); color:#fff; }
 
     /* modal input */
     .cd-minput { width:100%; height:40px; padding:0 12px; border:1.5px solid #374151; border-radius:9px; font-size:13px; outline:none; transition:border-color .15s; }
-    .cd-minput:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .cd-minput:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     .cd-mlabel { font-size:11px; font-weight:700; color:#374151; text-transform:uppercase; letter-spacing:.4px; margin-bottom:5px; display:block; }
 `
 document.head.appendChild(_s)
 
 const SELECT_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "#005B52" : "#0b0b0b"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "#005B52" : st.isFocused ? "#090909" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
+    control: (b, st) => ({ ...b, minHeight: 38, fontSize: 13, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#0b0b0b"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "#090909" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
 
@@ -226,9 +226,9 @@ export default function CandidateDocs() {
                             display: "inline-flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            background: `${defaultTheme.primary}1A`,
+                            background: `rgba(var(--mt-primary-rgb), 0.1)`,
                             color: defaultTheme.primary,
-                            border: `1px solid ${defaultTheme.primary}40`,
+                            border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                             borderRadius: 8,
                             cursor: "pointer",
                         }}
@@ -398,7 +398,7 @@ export default function CandidateDocs() {
                 {/* ── Link SAP Modal ── */}
                 <Modal isOpen={confirmMLinkModalOpen} toggle={() => setConfirmMLinkodalOpen(p => !p)}>
                     <ModalHeader toggle={() => setConfirmMLinkodalOpen(false)}
-                        style={{ background: "linear-gradient(135deg,#005B52,#007A6E)", borderRadius: "8px 8px 0 0" }}>
+                        style={{ background: "linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))", borderRadius: "8px 8px 0 0" }}>
                         <span style={{ color: "#fff", fontWeight: 700, fontSize: 14 }}>🔗 Link Candidate to SAP</span>
                     </ModalHeader>
                     <ModalBody style={{ padding: "20px 24px" }}>

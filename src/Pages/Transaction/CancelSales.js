@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Card, CardBody, Col, Container, Row, Modal, ModalHeader, ModalBody, ModalFooter, Button, FormGroup, Input } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { toast } from "react-toastify";
 import { CANCEL_SALE, CANCEL_SALES_LIST } from "../../helpers/url_helper";

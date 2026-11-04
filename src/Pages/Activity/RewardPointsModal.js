@@ -32,7 +32,7 @@ const RewardPointsModal = ({ data = [], isOpen, onClose }) => {
                 toggle={onClose}
                 className="text-white"
                 style={{
-                    background: "linear-gradient(135deg,#0f766e,#22c55e)"
+                    background: "linear-gradient(135deg,var(--mt-primary),#22c55e)"
                 }}
             >
                 Sale, Earn Points, Drive ....  Join CAR Club 🚗
@@ -103,7 +103,7 @@ const styles = {
         padding: "6px 14px",
         borderRadius: 20,
         background: "#ecfdf5",
-        color: "#065f46",
+        color: "var(--mt-primary)",
         fontWeight: 700,
         fontSize: 14,
         border: "1px solid #a7f3d0"

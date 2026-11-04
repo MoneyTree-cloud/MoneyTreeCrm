@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Card, CardBody, Col, Container, Row } from 'reactstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { MdHistory } from 'react-icons/md';
 import * as XLSX from 'xlsx-js-style';
 import { toast } from 'react-toastify';

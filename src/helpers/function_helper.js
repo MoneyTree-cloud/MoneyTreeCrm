@@ -1,3 +1,5 @@
+import { defaultTheme } from "./defaultTheme";
+
 export const formatDate = (dateString) => {
   if (dateString === null) {
     return ""; // Return blank if the input is null
@@ -306,6 +308,65 @@ export function formatTimeTo12Hour(timeStr) {
 }
 
 export const RequiredStar = () => <span className="required-asterisk">*</span>;
+
+// Page notes — same look as MoneyTreeSAP.
+//   <Notes>
+//     <Note tone="red">Rows shown in red are marked Do Not Disturb (DND).</Note>
+//     <Note tone="gold">The maximum transfer limit is 200 by default.</Note>
+//   </Notes>
+// tone: "red" | "blue" → colour legend (dot), "gold" → rule / warning (⚠️), "theme" → general info
+const NOTE_TONES = {
+  red: { color: defaultTheme.redColor, bg: "rgba(255, 0, 0, 0.06)" },
+  blue: { color: defaultTheme.btnEnable, bg: "rgba(59, 130, 246, 0.06)" },
+  gold: { color: "#8A6D1A", bg: "#FFFBEB", border: "#C9A84C" },
+  theme: { color: defaultTheme.primary, bg: "rgba(var(--mt-primary-rgb), 0.06)" },
+};
+
+export const Note = ({ tone = "gold", children, style }) => {
+  const t = NOTE_TONES[tone] || NOTE_TONES.gold;
+  return (
+    <div
+      style={{
+        flex: tone === "gold" || tone === "theme" ? "1 1 320px" : "1 1 200px",
+        display: "flex",
+        alignItems: "center",
+        gap: 9,
+        padding: "10px 14px",
+        borderRadius: 8,
+        background: t.bg,
+        borderLeft: `4px solid ${t.border || t.color}`,
+        fontSize: 12.5,
+        fontWeight: 600,
+        color: t.color,
+        ...style,
+      }}
+    >
+      {tone === "gold" ? (
+        <span style={{ fontSize: 15, flexShrink: 0 }}>⚠️</span>
+      ) : tone === "theme" ? (
+        <i className="ri-information-line" style={{ fontSize: 16, flexShrink: 0 }} />
+      ) : (
+        <span style={{ width: 10, height: 10, borderRadius: "50%", background: t.color, flexShrink: 0 }} />
+      )}
+      <span>{children}</span>
+    </div>
+  );
+};
+
+export const Notes = ({ children, style }) => (
+  <div
+    style={{
+      display: "flex",
+      flexWrap: "wrap",
+      gap: 10,
+      margin: "14px 0 4px",
+      alignItems: "stretch",
+      ...style,
+    }}
+  >
+    {children}
+  </div>
+);
 
 export const getFileExtension = (imageSrc) => {
   if (imageSrc.includes("data:image/png")) {

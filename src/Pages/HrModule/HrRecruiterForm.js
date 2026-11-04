@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { Container, Form, FormGroup, Row, Col } from 'reactstrap';
 import PageContent from '../../components/Common/PageContent';
 import Breadcrumbs from '../../components/Common/Breadcrumb';
@@ -54,7 +54,7 @@ _s.id = "hrf-s"
 _s.textContent = `
     /* ── Card ── */
     .hrf-card { background:#fff; border:1px solid #D1D5DB; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.06); }
-    .hrf-card-hdr { background:linear-gradient(135deg,#005B52,#007A6E); padding:16px 24px; display:flex; align-items:center; gap:10px; }
+    .hrf-card-hdr { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); padding:16px 24px; display:flex; align-items:center; gap:10px; }
     .hrf-card-hdr-title { font-size:15px; font-weight:800; color:#fff; }
     .hrf-card-hdr-sub { font-size:11px; color:rgba(255,255,255,.65); margin-top:2px; }
     .hrf-card-body { padding:16px 20px; }
@@ -77,7 +77,7 @@ _s.textContent = `
         outline:none; transition:border-color .15s, box-shadow .15s;
         background:#fff;
     }
-    .hrf-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.1); }
+    .hrf-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.1); }
     .hrf-input.is-invalid { border-color:#EF4444 !important; }
     .hrf-input::placeholder { color:#9CA3AF; }
     textarea.hrf-input { height:auto; padding:8px 10px; resize:vertical; }
@@ -91,8 +91,8 @@ _s.textContent = `
         box-shadow:none !important;
     }
     .hrf-select-wrap .react-select__control--is-focused {
-        border-color:#005B52 !important;
-        box-shadow:0 0 0 3px rgba(0,91,82,.1) !important;
+        border-color:var(--mt-primary) !important;
+        box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.1) !important;
     }
     .hrf-select-wrap.is-invalid .react-select__control { border-color:#EF4444 !important; }
 
@@ -105,8 +105,8 @@ _s.textContent = `
         cursor:pointer; user-select:none; transition:all .14s;
     }
     .hrf-radio-pill input { display:none; }
-    .hrf-radio-pill:hover { border-color:#005B52; color:#005B52; background:#F0FDF4; }
-    .hrf-radio-pill.checked { border-color:#005B52; background:#005B52; color:#fff; }
+    .hrf-radio-pill:hover { border-color:var(--mt-primary); color:var(--mt-primary); background:#F0FDF4; }
+    .hrf-radio-pill.checked { border-color:var(--mt-primary); background:var(--mt-primary); color:#fff; }
     .hrf-radio-pill.checked-gold { border-color:#C9A84C; background:#C9A84C; color:#fff; }
     .hrf-radio-pill.checked-red { border-color:#EF4444; background:#FEF2F2; color:#EF4444; }
 
@@ -120,7 +120,7 @@ _s.textContent = `
 
     /* ── Action buttons ── */
     .hrf-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 20px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; }
-    .hrf-btn-primary { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; box-shadow:0 3px 10px rgba(0,91,82,.22); }
+    .hrf-btn-primary { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; box-shadow:0 3px 10px rgba(var(--mt-primary-rgb),.22); }
     .hrf-btn-primary:hover { opacity:.88; }
     .hrf-btn-primary:disabled { opacity:.5; cursor:not-allowed; }
     .hrf-btn-secondary { background:#F3F4F6; color:#374151; border:1.5px solid #D1D5DB; }
@@ -129,8 +129,8 @@ _s.textContent = `
 document.head.appendChild(_s)
 
 const SELECT_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 40, fontSize: 13, border: `1.5px solid ${st.isFocused ? "#005B52" : "#374151"}`, borderRadius: 9, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.1)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff", color: st.isSelected ? "#fff" : "#111827" }),
+    control: (b, st) => ({ ...b, minHeight: 40, fontSize: 13, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#374151"}`, borderRadius: 9, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.1)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 13, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff", color: st.isSelected ? "#fff" : "#111827" }),
     placeholder: b => ({ ...b, color: "#9CA3AF", fontSize: 13 }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
@@ -402,7 +402,7 @@ export default function HrRecruiterForm() {
 
                             {/* ── Section 1: Personal Info ── */}
                             <div className="hrf-sec">
-                                <span className="hrf-sec-dot" style={{ background: "#005B52" }} />
+                                <span className="hrf-sec-dot" style={{ background: "var(--mt-primary)" }} />
                                 <span className="hrf-sec-label">Personal Information</span>
                                 <span className="hrf-sec-line" />
                             </div>

@@ -29,11 +29,11 @@ _s.textContent = `
     .rpd-field { display:flex; flex-direction:column; gap:4px; flex:1; min-width:160px; }
     .rpd-label { font-size:10px; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:.5px; }
     .rpd-input { height:38px; padding:0 11px; border:1.5px solid #080808; border-radius:8px; font-size:13px; color:#0F172A; outline:none; transition:border-color .15s; background:#fff; width:100%; }
-    .rpd-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .rpd-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
 
     /* Buttons */
     .rpd-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; white-space:nowrap; flex-shrink:0; }
-    .rpd-btn-primary   { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .rpd-btn-primary   { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .rpd-btn-primary:hover { opacity:.88; }
     .rpd-btn-secondary { background:#F1F5F9; color:#475569; border:1.5px solid #E2E8F0; }
     .rpd-btn-secondary:hover { background:#E2E8F0; }

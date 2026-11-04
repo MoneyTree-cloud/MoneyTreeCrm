@@ -7,7 +7,7 @@ import { Card, CardBody, Col, Container, Row } from 'reactstrap';
 import PageContent from '../../components/Common/PageContent';
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 import ScreenLoader from '../../constants/ScreenLoader';
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useUserStore } from '../../store/useUserStore';
 import AppTable from '../../components/Common/Table';
 import { useGet } from '../../Hooks/useApi';

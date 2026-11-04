@@ -19,6 +19,7 @@ import LEAVE_GURUGRAM from '../../assets/docs/Leave Policy. - Gurugram.docx';
 import ZERO_TOLERANCE_POLICY_DOC from '../../assets/docs/Zero Tolerance Policy.docx';
 import PIP_POLICY_DOC from '../../assets/docs/PIP Policy.docx';
 import EXIT_POLICY_DOC from '../../assets/docs/Exit Policy.docx';
+import { withAlpha } from "../../helpers/defaultTheme";
 
 const LEAVE_POLICY_BY_LOCATION = {
     Ghaziabad: LEAVE_GZB,
@@ -96,7 +97,7 @@ function DocumentViewer({ title, subtitle, icon: Icon, accent, fileUrl }) {
             {/* Header strip */}
             <div
                 style={{
-                    background: `linear-gradient(135deg, ${accent} 0%, ${accent}dd 100%)`,
+                    background: `linear-gradient(135deg, ${accent} 0%, ${withAlpha(accent, 0.87)} 100%)`,
                     padding: '16px 24px',
                     color: '#fff',
                     display: 'flex',
@@ -158,7 +159,7 @@ function DocumentViewer({ title, subtitle, icon: Icon, accent, fileUrl }) {
                     style={{
                         position: 'relative',
                         zIndex: 1,
-                        color: '#1a2e2c',
+                        color: 'var(--mt-primary-900)',
                         fontSize: 14,
                         lineHeight: 1.75,
                         fontFamily: 'Georgia, "Times New Roman", serif',
@@ -190,7 +191,7 @@ function PolicyListItem({ icon: Icon, accent, title, subtitle, active, onClick }
             type="button"
             onClick={onClick}
             style={{
-                background: active ? `${accent}0f` : '#fff',
+                background: active ? `${withAlpha(accent, 0.06)}` : '#fff',
                 border: `1.5px solid ${active ? accent : '#E2E8F0'}`,
                 borderRadius: 12,
                 padding: '14px 18px',
@@ -201,13 +202,13 @@ function PolicyListItem({ icon: Icon, accent, title, subtitle, active, onClick }
                 textAlign: 'left',
                 transition: 'all .15s ease',
                 boxShadow: active
-                    ? `inset 0 0 0 1px ${accent}55`
+                    ? `inset 0 0 0 1px ${withAlpha(accent, 0.33)}`
                     : '0 1px 3px rgba(15,23,42,.04)',
             }}
             onMouseEnter={(e) => {
                 if (!active) {
                     e.currentTarget.style.borderColor = accent;
-                    e.currentTarget.style.background = `${accent}08`;
+                    e.currentTarget.style.background = `${withAlpha(accent, 0.03)}`;
                 }
             }}
             onMouseLeave={(e) => {
@@ -222,7 +223,7 @@ function PolicyListItem({ icon: Icon, accent, title, subtitle, active, onClick }
                     width: 42,
                     height: 42,
                     borderRadius: 11,
-                    background: active ? accent : `${accent}1a`,
+                    background: active ? accent : `${withAlpha(accent, 0.1)}`,
                     color: active ? '#fff' : accent,
                     display: 'grid',
                     placeItems: 'center',
@@ -277,7 +278,7 @@ export default function ShowPolicy() {
                 title: 'Code of Conduct (COC)',
                 subtitle: 'Moneytree Realty Services Limited',
                 icon: FaShieldAlt,
-                accent: '#005B52',
+                accent: 'var(--mt-primary)',
                 fileUrl: COC_DOC,
             },
             {
@@ -343,12 +344,12 @@ export default function ShowPolicy() {
                 {/* Hero banner */}
                 <div
                     style={{
-                        background: 'linear-gradient(135deg, #005B52 0%, #007A6E 100%)',
+                        background: 'linear-gradient(135deg, var(--mt-primary) 0%, var(--mt-primary-light) 100%)',
                         borderRadius: 16,
                         padding: '22px 28px',
                         marginBottom: 22,
                         color: '#fff',
-                        boxShadow: '0 6px 22px rgba(0,91,82,.22)',
+                        boxShadow: '0 6px 22px rgba(var(--mt-primary-rgb),.22)',
                         position: 'relative',
                         overflow: 'hidden',
                     }}
@@ -585,10 +586,10 @@ export default function ShowPolicy() {
                 .docx-render img { max-width: 100%; height: auto; border-radius: 6px; }
                 .docx-render a { color: #2563EB; text-decoration: underline; }
                 .docx-render blockquote {
-                    border-left: 4px solid #005B52;
+                    border-left: 4px solid var(--mt-primary);
                     padding: 8px 16px;
                     margin: 14px 0;
-                    background: #F0FDF9;
+                    background: var(--mt-primary-50);
                     color: #475569;
                     font-style: italic;
                 }

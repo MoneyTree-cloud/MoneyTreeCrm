@@ -4,7 +4,7 @@ import { Card, CardBody, Col, Container, Modal, ModalBody, ModalHeader, Row } fr
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { GET_KYC_TEAM_BOOKING, RECORDING_BOOKING } from "../../helpers/url_helper";
-import { formatDateForInput, formatDateTime, formatLabel, WordWrapCell } from "../../helpers/function_helper";
+import { formatDateForInput, formatDateTime, formatLabel, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import ApiClient, { imageBaseUrl } from "../../helpers/api_helper";
 import ScreenLoader from "../../constants/ScreenLoader";
 import AppTable from "../../components/Common/Table";
@@ -13,7 +13,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useUserStore } from "../../store/useUserStore";
 import { FaHeadphones } from "react-icons/fa";
 import PageContent from "../../components/Common/PageContent";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { MdEmail } from "react-icons/md";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
@@ -469,9 +469,9 @@ export default function KycTeamScreen() {
           </Card>
         </form>
 
-        <h3 style={{ fontSize: 12, fontWeight: 800, color: defaultTheme.redColor }}>
-          Note : This list displays only bookings with a status of "Ready to Dispatch," "Submit to Builder," or "Accepted by Builder."
-        </h3>
+        <Notes style={{ margin: "0 0 12px" }}>
+          <Note tone="gold">This list displays only bookings with a status of "Ready to Dispatch", "Submit to Builder" or "Accepted by Builder".</Note>
+        </Notes>
         <AppTable
           progressPending={isPending}
           columns={columns}

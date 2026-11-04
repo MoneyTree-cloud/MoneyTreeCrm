@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { Container } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -82,7 +82,7 @@ if (!document.getElementById("fbl1-styles")) {
             font-size: 13px; color: #0F172A; outline: none;
             transition: border-color .15s, box-shadow .15s;
         }
-        .fbl1-date-input:focus { border-color: #005B52; box-shadow: 0 0 0 3px rgba(0,91,82,.08); }
+        .fbl1-date-input:focus { border-color: var(--mt-primary); box-shadow: 0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
 
         /* ── Toolbar ── */
         .fbl1-toolbar {
@@ -99,9 +99,9 @@ if (!document.getElementById("fbl1-styles")) {
             justify-content: center; transition: all .15s; flex-shrink: 0;
             color: #64748B;
         }
-        .fbl1-tool-btn:hover { border-color: #005B52; background: #f0fdf9; color: #005B52; }
-        .fbl1-tool-btn.add { border-color: #005B52; background: #005B52; color: #fff; }
-        .fbl1-tool-btn.add:hover { background: #004a43; }
+        .fbl1-tool-btn:hover { border-color: var(--mt-primary); background: var(--mt-primary-50); color: var(--mt-primary); }
+        .fbl1-tool-btn.add { border-color: var(--mt-primary); background: var(--mt-primary); color: #fff; }
+        .fbl1-tool-btn.add:hover { background: var(--mt-primary-dark); }
 
         /* ── Tabs ── */
         .fbl1-tabs { display: flex; align-items: center; gap: 4px; }
@@ -121,7 +121,7 @@ if (!document.getElementById("fbl1-styles")) {
         /* ── Action buttons ── */
         .fbl1-show-btn {
             height: 36px; padding: 0 20px;
-            background: linear-gradient(135deg, #005B52, #007A6E);
+            background: linear-gradient(135deg, var(--mt-primary), var(--mt-primary-light));
             color: #fff; border: none; border-radius: 9px;
             font-size: 13px; font-weight: 700; cursor: pointer;
             transition: opacity .15s; white-space: nowrap;
@@ -161,8 +161,8 @@ if (!document.getElementById("fbl1-styles")) {
             font-size: 13px !important;
         }
         .fbl1-root .css-t3ipsp-control {
-            border-color: #005B52 !important;
-            box-shadow: 0 0 0 3px rgba(0,91,82,.08) !important;
+            border-color: var(--mt-primary) !important;
+            box-shadow: 0 0 0 3px rgba(var(--mt-primary-rgb),.08) !important;
         }
             
         /* ── Responsive ── */
@@ -220,12 +220,12 @@ const selectStyles = {
     control: (b, st) => ({
         ...b,
         borderRadius: 9, minHeight: 38, fontSize: 13,
-        border: `1.5px solid ${st.isFocused ? "#005B52" : "#070707"}`,
-        boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none",
+        border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#070707"}`,
+        boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none",
     }),
     option: (b, st) => ({
         ...b, fontSize: 13,
-        background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff",
+        background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff",
         color: st.isSelected ? "#fff" : "#0F172A",
     }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
@@ -482,7 +482,7 @@ export default function FreshBookingLevel2() {
                         borderRadius: 7, background: "#fff", cursor: "pointer",
                         display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = "#005B52"; e.currentTarget.style.background = "#f0fdf9" }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--mt-primary)"; e.currentTarget.style.background = "var(--mt-primary-50)" }}
                     onMouseLeave={e => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.background = "#fff" }}
                 >
                     <RiPencilFill size={16} color={defaultTheme.btnEnable} />

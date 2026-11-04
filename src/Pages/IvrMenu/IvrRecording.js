@@ -11,7 +11,7 @@ import PageContent from "../../components/Common/PageContent";
 import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { MdMobileFriendly, MdRefresh } from "react-icons/md";
 import { USER_TYPE } from "../../constants/global";
 import { decryptData } from "../../components/Common/CryptoUtils";

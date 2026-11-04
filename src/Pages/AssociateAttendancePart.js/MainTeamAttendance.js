@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import ApiClient from "../../helpers/api_helper";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import PageContent from "../../components/Common/PageContent";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet } from "../../Hooks/useApi";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { useUserStore } from "../../store/useUserStore";

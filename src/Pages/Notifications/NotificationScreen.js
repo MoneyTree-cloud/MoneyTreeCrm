@@ -6,7 +6,7 @@ import Switch from "react-switch";
 import ImageModal from "../../components/Common/ImageModal";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import "../CSS/styles.css";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { toast } from "react-toastify";
 import { useUserStore } from "../../store/useUserStore";
 import { useGet, usePost } from "../../Hooks/useApi";
@@ -245,7 +245,7 @@ const NotificationScreen = () => {
           onChange={() => handleSwitchChange(row.id)}
           checked={row.active === true}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
         />

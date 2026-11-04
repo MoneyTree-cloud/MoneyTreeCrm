@@ -14,7 +14,7 @@ import { defaultTheme } from "../../helpers/defaultTheme";
 import ImageModal from "../../components/Common/ImageModal";
 import { FaFilePdf } from "react-icons/fa";
 import { formatDateTime, RequiredStar, WordWrapCell } from "../../helpers/function_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { decryptData } from "../../components/Common/CryptoUtils";

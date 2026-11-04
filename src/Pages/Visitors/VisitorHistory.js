@@ -17,7 +17,7 @@ import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import ImageModal from "../../components/Common/ImageModal";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { GET_ALL_USERS_DROPDOWN } from "../../helpers/url_helper";
 
 const VISITOR_TYPE_OPTIONS = ['Client', 'Visitor', 'Interview', '1st Day Of Joining', 'Vendor']
@@ -263,15 +263,15 @@ const VisitorHistory = () => {
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: `${defaultTheme.primary}1A`,
+            background: `rgba(var(--mt-primary-rgb), 0.1)`,
             color: defaultTheme.primary,
-            border: `1px solid ${defaultTheme.primary}40`,
+            border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
             borderRadius: 7,
             cursor: 'pointer',
             transition: 'background .15s',
           }}
-          onMouseEnter={(e) => e.currentTarget.style.background = `${defaultTheme.primary}30`}
-          onMouseLeave={(e) => e.currentTarget.style.background = `${defaultTheme.primary}1A`}
+          onMouseEnter={(e) => e.currentTarget.style.background = `rgba(var(--mt-primary-rgb), 0.19)`}
+          onMouseLeave={(e) => e.currentTarget.style.background = `rgba(var(--mt-primary-rgb), 0.1)`}
         >
           <MdEdit size={15} />
         </button>

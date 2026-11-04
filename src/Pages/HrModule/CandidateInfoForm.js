@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Card, FormFeedback } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 import { CANDIDATE_FILL_MAIL_FORM, CANDIDATE_HISTORY_BY_ID, HR_LOCATION_DROPDOWN } from '../../helpers/url_helper';
 import { useGet, usePost } from '../../Hooks/useApi';

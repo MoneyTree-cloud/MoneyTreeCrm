@@ -7,7 +7,7 @@ import { useGet, usePost, usePut } from "../../Hooks/useApi";
 import { toast } from "react-toastify";
 import ScreenLoader from "../../constants/ScreenLoader";
 import { ADD_BUILDER, CHANGE_BUILDER_STATUS, GET_ALL_BUILDER } from "../../helpers/url_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Switch from "react-switch";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import PageContent from "../../components/Common/PageContent";
@@ -125,7 +125,7 @@ export default function Builder() {
         <Switch
           checked={row.isActive === "YES"}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
           onChange={() => handleSwitchChange(row)}

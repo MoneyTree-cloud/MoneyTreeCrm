@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, CardBody, Button, Label } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { toast } from 'react-toastify';
 import { FaUsers, FaSearch, FaInbox } from 'react-icons/fa';
 
@@ -240,7 +240,7 @@ export default function P100TeamLeadsViewer() {
                                     width: 55,
                                     height: 55,
                                     borderRadius: 14,
-                                    background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                    background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                     color: '#fff',
                                     display: 'flex',
                                     alignItems: 'center',

@@ -53,12 +53,12 @@ input[switch] {
   }
 
   &:checked + label {
-    background-color: $primary;
+    background-color: var(--mt-primary);
   }
 }
 
 input[switch]:checked + label {
-  background-color: $primary;
+  background-color: var(--mt-primary);
   &:before {
     color: $white;
     content: attr(data-on-label);
@@ -90,7 +90,7 @@ input[switch="default"]:checked + label {
 }
 
 input[switch="primary"]:checked + label {
-  background-color: $primary;
+  background-color: var(--mt-primary);
 }
 
 input[switch="success"]:checked + label {

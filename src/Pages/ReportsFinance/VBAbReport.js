@@ -14,7 +14,7 @@ import { useUserStore } from '../../store/useUserStore';
 import CheckUserAccess from '../../components/Common/CheckUserAccess';
 import PermissionMissing from '../Utility/PermissonMissing';
 import { decryptData } from '../../components/Common/CryptoUtils';
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { FaDownload, FaEdit, FaFilePdf } from 'react-icons/fa';
 import ImageModal from '../../components/Common/ImageModal';
 import { useGet } from '../../Hooks/useApi';

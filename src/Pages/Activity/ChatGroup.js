@@ -3,7 +3,7 @@ import {
   Row, Col, Card, CardBody, Button, Container, Form, Input,
   Modal, ModalHeader, ModalBody, ModalFooter,
 } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useGet, usePost } from "../../Hooks/useApi";
 import {
   CREATE_GROUP, GET_GROUP_MEMBERS, GET_ALL_GROUP, GET_ALL_USERS_DROPDOWN,
@@ -13,9 +13,7 @@ import { useUserStore } from "../../store/useUserStore";
 import { toast } from "react-toastify";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import AppTable from "../../components/Common/Table";
-import {
-  formatDateTime, generateTimestamp, RequiredStar, WordWrapCell,
-} from "../../helpers/function_helper";
+import { formatDateTime, generateTimestamp, RequiredStar, WordWrapCell, Notes, Note } from "../../helpers/function_helper";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import ScreenLoader from "../../constants/ScreenLoader";
@@ -53,7 +51,7 @@ if (!document.getElementById("chat-group-styles")) {
         .cg-members-modal .modal-body { padding: 0; background: #F8FAFC; }
 
         .cg-members-header {
-            background: linear-gradient(135deg, ${defaultTheme.primary}, #007A6E);
+            background: linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light));
             padding: 16px 22px;
             color: #fff;
             display:flex; align-items:center; justify-content:space-between;
@@ -101,7 +99,7 @@ if (!document.getElementById("chat-group-styles")) {
             margin-bottom: 8px;
             transition: border-color .15s, background .15s;
         }
-        .cg-member:hover { border-color: ${defaultTheme.primary}33; background: #FAFBFC; }
+        .cg-member:hover { border-color: rgba(var(--mt-primary-rgb), 0.2); background: #FAFBFC; }
         .cg-member.past { opacity: .65; background: #F8FAFC; }
 
         .cg-member-avatar {
@@ -953,9 +951,9 @@ const ChatGroup = () => {
               }
               onChange={handleModalSelectChange}
             />
-            <p style={{ fontSize: 11, color: "#64748B", marginTop: 8, marginBottom: 0 }}>
-              Note: Admins can be assigned individually from the View Members screen after adding.
-            </p>
+            <Notes style={{ margin: "10px 0 0" }}>
+              <Note tone="theme">Admins can be assigned individually from the View Members screen after adding.</Note>
+            </Notes>
           </ModalBody>
           <ModalFooter>
             <Button

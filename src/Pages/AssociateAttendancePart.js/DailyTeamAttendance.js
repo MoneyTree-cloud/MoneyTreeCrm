@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Container, Row, Col, Button, Card, CardBody } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import AppTable from "../../components/Common/Table";
 import { formatDateForInput, formatDateTime, RequiredStar, WordWrapCell } from "../../helpers/function_helper";

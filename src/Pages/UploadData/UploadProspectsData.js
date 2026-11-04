@@ -12,7 +12,7 @@ import {
 } from "../../helpers/url_helper";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import ScreenLoader from "../../constants/ScreenLoader";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useUserStore } from "../../store/useUserStore";
 import { MdMobileFriendly } from "react-icons/md";
 import "../CSS/styles.css";

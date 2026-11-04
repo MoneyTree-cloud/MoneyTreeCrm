@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { Button, Card, CardBody, Col, Container, Row, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { FiArrowLeft } from "react-icons/fi";
 import { FaEye } from "react-icons/fa";
 import Breadcrumbs from "../../components/Common/Breadcrumb";

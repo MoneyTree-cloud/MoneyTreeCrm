@@ -13,7 +13,7 @@ import { useUserStore } from "../../store/useUserStore";
 import { toast } from "react-toastify";
 import PageContent from "../../components/Common/PageContent";
 import * as XLSX from "xlsx";
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { decryptData } from "../../components/Common/CryptoUtils";

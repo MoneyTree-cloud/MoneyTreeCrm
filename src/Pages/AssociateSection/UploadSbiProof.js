@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import AppTable from "../../components/Common/Table";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { toast } from "react-toastify";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { useGet, usePost } from "../../Hooks/useApi";

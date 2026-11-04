@@ -205,6 +205,12 @@ export const UPDATE_BOOKING_ANNEXURE = "user/management/booking-annexure/update/
 export const GET_ALL_BOOKING_ANNEXURE = "user/management/booking-annexure/get/list";
 export const UPLOAD_BOOKING_ANNEXURE = "user/management/booking-annexure/upload";
 
+//NFA Master
+export const CREATE_NFA_MASTER = "user/management/nfa-master/create";
+export const UPDATE_NFA_MASTER = "user/management/nfa-master/update/";
+export const GET_ALL_NFA_MASTER = "user/management/nfa-master/get/list";
+export const GET_SLAB_BY_PROJECT = "user/management/nfa-master/slab/dropdown?projectId=";
+
 //Maps Master
 export const CREATE_MAPS_MASTER = "user/management/mapp/create";
 export const UPDATE_MAPS_MASTER = "user/management/mapp/update";

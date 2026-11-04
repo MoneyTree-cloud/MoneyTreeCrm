@@ -3,7 +3,7 @@ import moneyGif from '../../assets/images/money.gif'
 import PageContent from '../../components/Common/PageContent'
 import Breadcrumbs from '../../components/Common/Breadcrumb'
 import { Container } from 'reactstrap'
-import Select from 'react-select'
+import Select from '../../components/Common/AppSelect'
 import ApiClient from '../../helpers/api_helper'
 import { defaultTheme } from '../../helpers/defaultTheme'
 import { GET_DIY_DROPDOWN, GET_DIY_DROPDOWN_PUNE } from '../../helpers/url_helper'
@@ -40,8 +40,8 @@ if (!document.getElementById('diy-gif-keyframes')) {
 const S = {
     card: {
         background: '#fff', borderRadius: 16,
-        boxShadow: '0 2px 16px rgba(0,91,82,0.08)',
-        border: '1px solid rgba(0,91,82,0.10)',
+        boxShadow: '0 2px 16px rgba(var(--mt-primary-rgb),0.08)',
+        border: '1px solid rgba(var(--mt-primary-rgb),0.10)',
         padding: '28px 28px 24px', marginTop: 16,
     },
     regionTabsWrap: {
@@ -51,25 +51,25 @@ const S = {
     regionTab: (active) => ({
         padding: '12px 28px', cursor: 'pointer',
         fontSize: 15, fontWeight: active ? 700 : 600,
-        color: active ? (defaultTheme.primary || '#005B52') : '#667085',
+        color: active ? (defaultTheme.primary || 'var(--mt-primary)') : '#667085',
         background: 'transparent', border: 'none',
-        borderBottom: `3px solid ${active ? (defaultTheme.primary || '#005B52') : 'transparent'}`,
+        borderBottom: `3px solid ${active ? (defaultTheme.primary || 'var(--mt-primary)') : 'transparent'}`,
         marginBottom: -2, transition: 'all .18s', letterSpacing: '.3px', outline: 'none',
     }),
     radioGroup: { display: 'flex', gap: 16, marginBottom: 28 },
     radioLabel: (active) => ({
         display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer',
         padding: '10px 22px', borderRadius: 50,
-        border: `2px solid ${active ? defaultTheme.primary || '#005B52' : '#D0D5DD'}`,
-        background: active ? `${defaultTheme.primary || '#005B52'}12` : '#fff',
+        border: `2px solid ${active ? defaultTheme.primary || 'var(--mt-primary)' : '#D0D5DD'}`,
+        background: active ? `${defaultTheme.primary || 'var(--mt-primary)'}12` : '#fff',
         fontWeight: active ? 700 : 500, fontSize: 14,
-        color: active ? defaultTheme.primary || '#005B52' : '#667085',
+        color: active ? defaultTheme.primary || 'var(--mt-primary)' : '#667085',
         transition: 'all .18s', userSelect: 'none',
     }),
     radioDot: (active) => ({
         width: 18, height: 18, borderRadius: '50%',
-        border: `2px solid ${active ? defaultTheme.primary || '#005B52' : '#D0D5DD'}`,
-        background: active ? defaultTheme.primary || '#005B52' : '#fff',
+        border: `2px solid ${active ? defaultTheme.primary || 'var(--mt-primary)' : '#D0D5DD'}`,
+        background: active ? defaultTheme.primary || 'var(--mt-primary)' : '#fff',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexShrink: 0, transition: 'all .18s',
     }),
@@ -79,34 +79,34 @@ const S = {
     label: { fontSize: 12, fontWeight: 700, color: '#344054', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '.5px' },
     calcBtn: {
         height: 42, padding: '0 28px',
-        background: `linear-gradient(135deg, ${defaultTheme.primary || '#005B52'}, #007A6E)`,
+        background: `linear-gradient(135deg, ${defaultTheme.primary || 'var(--mt-primary)'}, var(--mt-primary-light))`,
         color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, fontSize: 14,
         cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8,
-        boxShadow: '0 4px 14px rgba(0,91,82,0.25)', transition: 'opacity .18s', whiteSpace: 'nowrap',
+        boxShadow: '0 4px 14px rgba(var(--mt-primary-rgb),0.25)', transition: 'opacity .18s', whiteSpace: 'nowrap',
     },
     resultBox: {
         marginTop: 24, padding: '20px 24px',
-        background: 'linear-gradient(135deg, #f0fdf9, #e8f4f2)',
-        border: `1.5px solid ${defaultTheme.primary || '#005B52'}30`,
+        background: 'linear-gradient(135deg, var(--mt-primary-50), var(--mt-primary-100))',
+        border: `1.5px solid ${defaultTheme.primary || 'var(--mt-primary)'}30`,
         borderRadius: 14, display: 'flex', alignItems: 'center',
         justifyContent: 'space-between', flexWrap: 'wrap', gap: 12,
     },
     resultLabel: { fontSize: 13, fontWeight: 600, color: '#4a6b67', marginBottom: 4 },
-    resultAmount: { fontSize: 28, fontWeight: 900, color: defaultTheme.primary || '#005B52', letterSpacing: '-0.5px' },
+    resultAmount: { fontSize: 28, fontWeight: 900, color: defaultTheme.primary || 'var(--mt-primary)', letterSpacing: '-0.5px' },
     breakdown: { display: 'flex', gap: 16, flexWrap: 'wrap' },
     breakdownItem: {
         background: '#fff', borderRadius: 10, padding: '10px 16px',
-        border: '1px solid rgba(0,91,82,0.12)', minWidth: 140,
+        border: '1px solid rgba(var(--mt-primary-rgb),0.12)', minWidth: 140,
     },
     breakdownLabel: { fontSize: 11, color: '#7a9b97', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 3 },
     breakdownName: { fontSize: 12, color: '#4a6b67', marginBottom: 4, fontWeight: 500 },
-    breakdownVal: { fontSize: 15, fontWeight: 800, color: '#1a2e2c' },
+    breakdownVal: { fontSize: 15, fontWeight: 800, color: 'var(--mt-primary-900)' },
     errMsg: { color: '#d32f2f', fontSize: 13, marginTop: 8, fontWeight: 600 },
-    sectionTitle: { fontSize: 15, fontWeight: 700, color: '#1a2e2c', marginBottom: 18, display: 'flex', alignItems: 'center', gap: 8 },
+    sectionTitle: { fontSize: 15, fontWeight: 700, color: 'var(--mt-primary-900)', marginBottom: 18, display: 'flex', alignItems: 'center', gap: 8 },
     gifWrap: { display: 'flex', justifyContent: 'center' },
     gifImg: {
         width: '100%', maxWidth: 355, borderRadius: 16,
-        boxShadow: '0 8px 32px rgba(0,91,82,0.15)',
+        boxShadow: '0 8px 32px rgba(var(--mt-primary-rgb),0.15)',
         objectFit: 'cover', display: 'block',
         animation: 'gifFadeIn .3s ease forwards',
     },
@@ -116,15 +116,15 @@ const S = {
 const selectStyles = {
     control: (base, state) => ({
         ...base, borderRadius: 10,
-        border: `1.5px solid ${state.isFocused ? defaultTheme.primary || '#005B52' : '#D0D5DD'}`,
-        boxShadow: state.isFocused ? `0 0 0 3px ${defaultTheme.primary || '#005B52'}18` : 'none',
+        border: `1.5px solid ${state.isFocused ? defaultTheme.primary || 'var(--mt-primary)' : '#D0D5DD'}`,
+        boxShadow: state.isFocused ? `0 0 0 3px ${defaultTheme.primary || 'var(--mt-primary)'}18` : 'none',
         minHeight: 42, fontSize: 14,
-        '&:hover': { borderColor: defaultTheme.primary || '#005B52' },
+        '&:hover': { borderColor: defaultTheme.primary || 'var(--mt-primary)' },
     }),
     option: (base, state) => ({
         ...base,
-        background: state.isSelected ? defaultTheme.primary || '#005B52' : state.isFocused ? '#f0fdf9' : '#fff',
-        color: state.isSelected ? '#fff' : '#1a2e2c',
+        background: state.isSelected ? defaultTheme.primary || 'var(--mt-primary)' : state.isFocused ? 'var(--mt-primary-50)' : '#fff',
+        color: state.isSelected ? '#fff' : 'var(--mt-primary-900)',
         fontWeight: state.isSelected ? 700 : 400, fontSize: 14,
     }),
     menuPortal: (base) => ({ ...base, zIndex: 9999 }),
@@ -142,7 +142,7 @@ const CalcIcon = () => (
 
 const StackIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-        stroke={defaultTheme.primary || '#005B52'} strokeWidth="2.5" strokeLinecap="round">
+        stroke={defaultTheme.primary || 'var(--mt-primary)'} strokeWidth="2.5" strokeLinecap="round">
         <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
     </svg>
 )
@@ -294,7 +294,7 @@ export default function DIYCalculator() {
                 </div>
             </div>
 
-            <h1 style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10, fontSize: 20, color: defaultTheme.primary || '#005B52' }}>
+            <h1 style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10, fontSize: 20, color: defaultTheme.primary || 'var(--mt-primary)' }}>
                 🎉 PAISA HI PAISA HOGA 🎉
             </h1>
             <div style={S.gifWrap}>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Container, Row, Col, Label, Card, CardBody } from 'reactstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Select from '../../components/Common/AppSelect';
 import { toast } from 'react-toastify';
 import { FaPlus, FaEdit, FaArrowLeft } from 'react-icons/fa';
 import PageContent from '../../components/Common/PageContent';
@@ -12,6 +13,26 @@ import { RequiredStar } from '../../helpers/function_helper';
 import { CREATE_BOOKING_ANNEXURE, UPDATE_BOOKING_ANNEXURE } from '../../helpers/url_helper';
 
 const inputStyle = { borderRadius: 8, fontSize: 13 };
+
+const selectStyles = {
+    control: (base) => ({ ...base, borderRadius: 8, fontSize: 13 }),
+    option: (base) => ({ ...base, fontSize: 13 }),
+    menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+};
+
+const statusOptions = [
+    { label: 'Open', value: 'open' },
+    { label: 'Closed', value: 'closed' },
+    { label: 'Partially Closed', value: 'partiallyclosed' },
+    { label: 'Cancel', value: 'cancel' }
+];
+
+// API may return e.g. "OPEN" / "Partially_Closed" — match ignoring case, spaces and underscores
+const normalizeStatus = (value) => {
+    if (!value) return '';
+    const key = String(value).toLowerCase().replace(/[\s_-]/g, '');
+    return statusOptions.find((opt) => opt.value === key)?.value ?? '';
+};
 
 const buildInitialForm = (rowData) => ({
     // srNo: rowData?.srNo ?? '',
@@ -31,6 +52,7 @@ const buildInitialForm = (rowData) => ({
     area: rowData?.area ?? '',
     bbaValue: rowData?.bbaValue ?? '',
     location: rowData?.location ?? '',
+    status: normalizeStatus(rowData?.crmSaleStatus),
 });
 
 // ── Section heading ─────────────────────────────────────────────────────────
@@ -101,8 +123,9 @@ export default function BookingDetailsForm() {
         area: form.area === '' ? 0 : Number(form.area),
         bbaValue: form.bbaValue === '' ? 0 : Number(form.bbaValue),
         location: form.location.trim(),
+        crmSaleStatus: form.status,
     });
-    console.log(form.mtrsId)
+
 
     const validateForm = () => {
         if (!form?.mtrsId.trim()) return 'Please enter MTRS ID';
@@ -117,6 +140,7 @@ export default function BookingDetailsForm() {
         if (!form?.clientName.trim()) return 'Please enter Client Name';
         if (!form?.unitNo.trim()) return 'Please enter Unit No';
         if (!form?.unitDetails.trim()) return 'Please enter Unit Details';
+        if (!form?.status) return 'Please select Status';
         if (!form?.bsp.toString().trim()) return 'Please enter BSP';
         if (!form?.area.toString().trim()) return 'Please enter Area';
         if (!form?.bbaValue.toString().trim()) return 'Please enter BBA Value';
@@ -175,7 +199,7 @@ export default function BookingDetailsForm() {
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                                     <div style={{
                                         width: 40, height: 40, borderRadius: 10,
-                                        background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                        background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                         color: '#fff', display: 'flex', alignItems: 'center',
                                         justifyContent: 'center', fontSize: 16,
                                     }}>
@@ -210,17 +234,12 @@ export default function BookingDetailsForm() {
                             {/* ── Identifiers ─────────────────────────────────────── */}
                             <SectionTitle>Identifiers</SectionTitle>
                             <Row className="g-3">
-                                {/* <Field label="Sr No." md={3} locked={isEdit}>
-                                    <input type="number" className="form-control" style={inputStyle}
-                                        value={form.srNo} onChange={handleFieldChange('srNo')}
-                                        placeholder="Sr No" disabled={isEdit} min={0} />
-                                </Field> */}
                                 <Field label="MTRS ID" md={3} required>
                                     <input type="number" className="form-control" style={inputStyle}
                                         value={form.mtrsId} onChange={handleFieldChange('mtrsId')}
                                         placeholder="MTRS ID" min={0} />
                                 </Field>
-                                  <Field label="Associate ID"  required>
+                                <Field label="Associate ID" required>
                                     <input type="text" className="form-control" style={inputStyle}
                                         value={form.associateId} onChange={handleFieldChange('associateId')} placeholder="Associate ID" />
                                 </Field>
@@ -241,12 +260,12 @@ export default function BookingDetailsForm() {
                             {/* ── Associate & Booking ─────────────────────────────── */}
                             <SectionTitle>Booking</SectionTitle>
                             <Row className="g-3">
-                              
+
                                 <Field label="Date of Booking" required>
                                     <input type="date" className="form-control" style={inputStyle}
                                         value={form.dateOfBooking} onChange={handleFieldChange('dateOfBooking')} />
                                 </Field>
-                                 <Field label="Builder Name" required>
+                                <Field label="Builder Name" required>
                                     <input type="text" className="form-control" style={inputStyle}
                                         value={form.builderName} onChange={handleFieldChange('builderName')} placeholder="Builder Name" />
                                 </Field>
@@ -271,8 +290,18 @@ export default function BookingDetailsForm() {
                                     <input type="text" className="form-control" style={inputStyle}
                                         value={form.unitDetails} onChange={handleFieldChange('unitDetails')} placeholder="Unit Details" />
                                 </Field>
+                                <Field label="Status" required>
+                                    <Select
+                                        options={statusOptions}
+                                        value={statusOptions.find((opt) => opt.value === form.status) || null}
+                                        onChange={(opt) => setForm((prev) => ({ ...prev, status: opt?.value ?? '' }))}
+                                        isClearable
+                                        placeholder="Select Status"
+                                        menuPortalTarget={document.body}
+                                        styles={selectStyles}
+                                    />
+                                </Field>
                             </Row>
-
 
                             {/* ── Pricing & Location ──────────────────────────────── */}
                             <SectionTitle>Pricing &amp; Location</SectionTitle>
@@ -306,7 +335,7 @@ export default function BookingDetailsForm() {
                                     style={{
                                         display: 'inline-flex', alignItems: 'center', gap: 7,
                                         padding: '10px 20px',
-                                        background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                        background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                         color: '#fff', border: 'none', borderRadius: 8,
                                         fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer',
                                         opacity: saving ? 0.7 : 1,

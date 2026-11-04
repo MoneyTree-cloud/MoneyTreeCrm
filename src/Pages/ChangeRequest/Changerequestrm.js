@@ -195,7 +195,7 @@ export default function ChangeRequestRM() {
                             cursor: long ? 'pointer' : 'default',
                             textDecoration: long ? 'underline' : 'none',
                             textDecorationStyle: 'dotted',
-                            textDecorationColor: 'rgba(0,91,82,.3)',
+                            textDecorationColor: 'rgba(var(--mt-primary-rgb),.3)',
                             textUnderlineOffset: 3
                         }}
                         title={long ? 'Click to view full description' : ''}

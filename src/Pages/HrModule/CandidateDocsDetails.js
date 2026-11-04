@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 import ScreenLoader from '../../constants/ScreenLoader';
 import { useUserStore } from '../../store/useUserStore';
 import { MdBloodtype, MdCake, MdCalendarToday, MdChurch, MdDateRange, MdDescription, MdEdit, MdEmail, MdEmergency, MdFamilyRestroom, MdLocationOn, MdMoney, MdPerson, MdPersonOutline, MdPhone } from 'react-icons/md';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import OfferLetterPDF from './OfferLetterPDF';
 
 // ── Styles ─────────────────────────────────────────────────────────────────────
@@ -23,7 +23,7 @@ const _s = document.createElement("style")
 _s.id = "cdd-s"
 _s.textContent = `
     /* ── Profile header ── */
-    .cdd-hdr { background:linear-gradient(135deg,#005B52,#007A6E); border-radius:14px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; gap:14px; position:relative; overflow:hidden; }
+    .cdd-hdr { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); border-radius:14px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; gap:14px; position:relative; overflow:hidden; }
     .cdd-hdr::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,255,255,.05); pointer-events:none; }
     .cdd-hdr-avatar { width:48px; height:48px; border-radius:12px; background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; border:2px solid rgba(255,255,255,.3); }
     .cdd-hdr-name { font-size:17px; font-weight:800; color:#fff; }
@@ -59,7 +59,7 @@ _s.textContent = `
     /* ── Upload cell ── */
     .cdd-upload-cell { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
     .cdd-upload-btn { display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border-radius:7px; font-size:11px; font-weight:700; cursor:pointer; border:1.5px solid #E2E8F0; background:#F8FAFC; color:#374151; transition:all .14s; }
-    .cdd-upload-btn:hover { border-color:#005B52; color:#005B52; background:#F0FDF4; }
+    .cdd-upload-btn:hover { border-color:var(--mt-primary); color:var(--mt-primary); background:#F0FDF4; }
     .cdd-save-btn { display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border-radius:7px; font-size:11px; font-weight:700; cursor:pointer; border:none; background:linear-gradient(135deg,#16A34A,#22C55E); color:#fff; transition:opacity .14s; }
     .cdd-save-btn:hover { opacity:.88; }
     .cdd-filename { font-size:11px; color:#64748B; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
@@ -68,7 +68,7 @@ _s.textContent = `
     .cdd-add-doc { background:#F8FAFC; border:1.5px dashed #CBD5E1; border-radius:10px; padding:14px 16px; margin-top:12px; }
     .cdd-add-doc-title { font-size:10px; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:.6px; margin-bottom:10px; }
     .cdd-add-input { width:100%; height:36px; padding:0 11px; border:1.5px solid #D1D5DB; border-radius:8px; font-size:12px; outline:none; transition:border-color .15s; }
-    .cdd-add-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .cdd-add-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
 
     /* ── Trial period ── */
     .cdd-trial-form { display:grid; grid-template-columns:1fr 1fr auto auto; gap:12px; align-items:end; }
@@ -81,7 +81,7 @@ _s.textContent = `
   gap: 10px;
 }
     .cdd-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:all .15s; }
-    .cdd-btn-primary   { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff;align-self: flex-start;  }
+    .cdd-btn-primary   { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff;align-self: flex-start;  }
     .cdd-btn-primary:hover { opacity:.88; }
     .cdd-btn-secondary { background:#F1F5F9; color:#374151; border:1.5px solid #E2E8F0; }
     .cdd-btn-secondary:hover { background:#E2E8F0; }
@@ -93,7 +93,7 @@ _s.textContent = `
 
     /* Select */
     .cdd-sec-body .react-select__control { min-height:36px; border:1.5px solid #D1D5DB; border-radius:8px; font-size:12px; }
-    .cdd-sec-body .react-select__control--is-focused { border-color:#005B52 !important; box-shadow:0 0 0 3px rgba(0,91,82,.08) !important; }
+    .cdd-sec-body .react-select__control--is-focused { border-color:var(--mt-primary) !important; box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08) !important; }
 
     /* ── Responsive ── */
 
@@ -165,8 +165,8 @@ _s.textContent = `
 document.head.appendChild(_s)
 
 const SEL_STYLES = {
-    control: (b, st) => ({ ...b, minHeight: 36, fontSize: 12, border: `1.5px solid ${st.isFocused ? "#005B52" : "#D1D5DB"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none" }),
-    option: (b, st) => ({ ...b, fontSize: 12, background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
+    control: (b, st) => ({ ...b, minHeight: 36, fontSize: 12, border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#D1D5DB"}`, borderRadius: 8, boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none" }),
+    option: (b, st) => ({ ...b, fontSize: 12, background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff", color: st.isSelected ? "#fff" : "#0F172A" }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
 }
 
@@ -179,7 +179,7 @@ const KV = ({ label, value, icon, span2 }) => (
 )
 
 // Collapsible section
-const Sec = ({ dot = "#005B52", label, children, defaultOpen = true }) => {
+const Sec = ({ dot = "var(--mt-primary)", label, children, defaultOpen = true }) => {
     const [open, setOpen] = useState(defaultOpen)
     return (
         <div className="cdd-sec">
@@ -308,7 +308,7 @@ export default function CandidateDocsDetails() {
                 </div>
 
                 {/* ── Section 1: Profile ── */}
-                <Sec dot="#005B52" label="Candidate Profile">
+                <Sec dot="var(--mt-primary)" label="Candidate Profile">
                     <div className="cdd-kv-grid">
                         <KV label="Name" value={rowData.firstName} icon={<MdPerson />} />
                         <KV label="Designation" value={rowData.designation} icon={<FaUserTie />} />

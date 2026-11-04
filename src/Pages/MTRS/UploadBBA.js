@@ -12,7 +12,7 @@ import { useGet } from "../../Hooks/useApi";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { FaCheck, FaClock, FaTimes } from "react-icons/fa";
 import { formatDateTime, WordWrapCell } from "../../helpers/function_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { MdRefresh } from "react-icons/md";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";

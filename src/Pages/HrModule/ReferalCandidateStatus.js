@@ -127,7 +127,7 @@ export default function ReferalCandidateStatus() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <div style={{
                             width: 32, height: 32, borderRadius: '50%',
-                            background: `${defaultTheme.primary}15`, color: defaultTheme.primary,
+                            background: `rgba(var(--mt-primary-rgb), 0.08)`, color: defaultTheme.primary,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             fontSize: 12, flexShrink: 0,
                         }}>
@@ -173,9 +173,9 @@ export default function ReferalCandidateStatus() {
                         style={{
                             display: 'inline-flex', alignItems: 'center', gap: 4,
                             padding: '5px 10px',
-                            background: `${defaultTheme.primary}15`,
+                            background: `rgba(var(--mt-primary-rgb), 0.08)`,
                             color: defaultTheme.primary,
-                            border: `1px solid ${defaultTheme.primary}40`,
+                            border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                             borderRadius: 6, fontSize: 10.5, fontWeight: 700,
                             textDecoration: 'none',
                         }}>
@@ -205,7 +205,7 @@ export default function ReferalCandidateStatus() {
                         }}>
                             <div style={{
                                 width: 38, height: 38, borderRadius: 10,
-                                background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                                background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                                 color: '#fff',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 fontSize: 14,

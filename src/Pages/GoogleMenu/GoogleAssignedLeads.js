@@ -22,7 +22,7 @@ import { MdEmail, MdMobileFriendly, MdOutlineFindInPage } from 'react-icons/md';
 import { defaultTheme } from '../../helpers/defaultTheme';
 import { FaCheck, FaEye, FaRegComment } from 'react-icons/fa';
 import { useUserStore } from '../../store/useUserStore';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { usePost } from '../../Hooks/useApi';
 import { decryptData } from '../../components/Common/CryptoUtils';
 

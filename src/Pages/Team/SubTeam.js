@@ -3,7 +3,7 @@ import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import AppTable from "../../components/Common/Table";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { defaultTheme } from "../../helpers/defaultTheme";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { toast } from "react-toastify";
 import { useGet, usePost, usePut } from "../../Hooks/useApi";
 import {
@@ -106,7 +106,7 @@ export default function SubTeam() {
         <Switch
           checked={row.isActive === "YES"}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
           onChange={() => handleSwitchChange(row)}

@@ -11,7 +11,7 @@ import PageContent from "../../components/Common/PageContent";
 import { formatDateTime, RequiredStar } from "../../helpers/function_helper";
 import { Button, Card, CardBody, Col, Modal, ModalBody, ModalFooter, ModalHeader, Row } from "reactstrap";
 import { toast } from "react-toastify";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useUserStore } from "../../store/useUserStore";
 import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";

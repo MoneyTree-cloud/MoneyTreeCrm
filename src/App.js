@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Routes from "./Routes/index";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./assets/scss/theme.scss";
+import "./Pages/CSS/styles.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserStore } from "./store/useUserStore";

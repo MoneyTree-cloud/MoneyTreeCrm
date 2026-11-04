@@ -12,7 +12,7 @@ import CheckUserAccess from "../../components/Common/CheckUserAccess";
 import PermissionMissing from "../Utility/PermissonMissing";
 import { ALL_LOCATION_DROPDOWN, CREATE_MT_PAY_SCHEME_BOOKING, GET_ALL_MT_PAY_SCHEME_DATA, UPLOAD_MT_PAY_SCHEME_DATA } from "../../helpers/url_helper";
 import { FaPlus } from "react-icons/fa";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from "../../helpers/defaultTheme";
 
 export default function MTPayScheme() {

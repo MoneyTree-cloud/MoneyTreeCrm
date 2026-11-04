@@ -6,7 +6,7 @@ import AppTable from '../../components/Common/Table';
 import { defaultTheme } from '../../helpers/defaultTheme';
 import { ASSIGN_FB_LEADS, GET_ALL_FB_LEADS, GET_ALL_USERS_DROPDOWN } from '../../helpers/url_helper';
 import { useGet } from '../../Hooks/useApi';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { toast } from 'react-toastify';
 import { WordWrapCell } from '../../helpers/function_helper';
 import { facebookApiClient } from '../../helpers/api_helper';

@@ -28,14 +28,14 @@ _s.textContent = `
         transition:border-color .15s;
         background:#fff;
     }
-    .rpf-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .rpf-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     .rpf-input:read-only { background:#F8FAFC; color:#94A3B8; cursor:not-allowed; }
     .rpf-input[type="file"] { padding-top:7px; }
 
     .rpf-hint { font-size:10px; color:#EF4444; font-weight:500; margin-top:4px; }
 
     .rpf-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 20px; border-radius:9px; font-size:13px; font-weight:700; cursor:pointer; border:none; transition:all .15s; }
-    .rpf-btn-primary  { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .rpf-btn-primary  { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .rpf-btn-primary:hover  { opacity:.88; }
     .rpf-btn-secondary { background:#F1F5F9; color:#475569; }
     .rpf-btn-secondary:hover { background:#E2E8F0; }
@@ -47,7 +47,7 @@ _s.textContent = `
     .rpf-file-info { flex:1; min-width:0; }
     .rpf-file-name { font-size:13px; font-weight:700; color:#0F172A; }
     .rpf-file-date { font-size:11px; color:#64748B; margin-top:2px; }
-    .rpf-view-btn  { display:flex; align-items:center; gap:5px; padding:7px 14px; border-radius:8px; background:#005B52; color:#fff; border:none; font-size:12px; font-weight:700; cursor:pointer; transition:opacity .15s; }
+    .rpf-view-btn  { display:flex; align-items:center; gap:5px; padding:7px 14px; border-radius:8px; background:var(--mt-primary); color:#fff; border:none; font-size:12px; font-weight:700; cursor:pointer; transition:opacity .15s; }
     .rpf-view-btn:hover { opacity:.88; }
 `
 document.head.appendChild(_s)

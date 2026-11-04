@@ -105,7 +105,7 @@ const ChatModal = ({ isOpen, onClose, candidateDetail }) => {
 /* Header */
 
 .chat-header{
-    background:#005b52;
+    background:var(--mt-primary);
     color:#fff;
     padding:12px 16px;
     display:flex;
@@ -413,9 +413,9 @@ const ChatModal = ({ isOpen, onClose, candidateDetail }) => {
                                 alignItems: 'center',
                                 height: '40px', width: '40px',
                                 justifyContent: 'center',
-                                background: `${defaultTheme.primary}1A`,
+                                background: `rgba(var(--mt-primary-rgb), 0.1)`,
                                 color: defaultTheme.primary,
-                                border: `1px solid ${defaultTheme.primary}40`,
+                                border: `1px solid rgba(var(--mt-primary-rgb), 0.25)`,
                                 borderRadius: 8,
                                 cursor: 'pointer',
                                 transition: 'background .15s, transform .1s',

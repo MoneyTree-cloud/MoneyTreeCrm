@@ -23,7 +23,7 @@ import {
 import { defaultTheme } from "../../helpers/defaultTheme";
 import { MdEmail, MdMobileFriendly, MdCloudUpload, MdAdd, MdRemove } from "react-icons/md";
 import { toast } from "react-toastify";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { indianStates } from "../../constants/global";
 import { FiPlus } from "react-icons/fi";
 
@@ -58,13 +58,13 @@ const BD_OPTIONS = [
 const RS_STYLES = {
     control: (b, st) => ({
         ...b, borderRadius: 9, minHeight: 40, fontSize: 13,
-        border: `1.5px solid ${st.isFocused ? "#005B52" : "#E2E8F0"}`,
-        boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.1)" : "none",
+        border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#E2E8F0"}`,
+        boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.1)" : "none",
         background: "#fff",
     }),
     option: (b, st) => ({
         ...b, fontSize: 13,
-        background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff",
+        background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff",
         color: st.isSelected ? "#fff" : "#0F172A",
     }),
     placeholder: (b) => ({ ...b, color: "#94A3B8", fontSize: 13 }),
@@ -89,9 +89,9 @@ _s.textContent = `
         border:none; white-space:nowrap;
     }
     .pr-action-btn.primary {
-        background:linear-gradient(135deg,#005B52,#007A6E);
+        background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light));
         color:#fff;
-        box-shadow:0 2px 6px rgba(0,91,82,.25);
+        box-shadow:0 2px 6px rgba(var(--mt-primary-rgb),.25);
     }
     .pr-action-btn.primary:hover { opacity:.92; transform:translateY(-1px); }
     .pr-action-btn.secondary {
@@ -118,26 +118,26 @@ _s.textContent = `
     .pr-pub-count.published   { background:#DCFCE7; color:#166534; }
 
     .pr-tab { padding:7px 16px; border-radius:8px; border:1.5px solid #E2E8F0; background:#fff; color:#64748B; font-size:12px; font-weight:700; cursor:pointer; transition:all .15s; white-space:nowrap; }
-    .pr-tab.active { background:#005B52; border-color:#005B52; color:#fff; }
+    .pr-tab.active { background:var(--mt-primary); border-color:var(--mt-primary); color:#fff; }
     .pr-field-group { margin-bottom:16px; }
     .pr-field-label { font-size:11px; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:.6px; margin-bottom:5px; display:block; }
     .pr-field-input { width:100%; padding:9px 12px; border:1.5px solid #E2E8F0; border-radius:9px; font-size:13px; color:#0F172A; outline:none; transition:border-color .15s; font-family:inherit; box-sizing:border-box; }
-    .pr-field-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.1); }
+    .pr-field-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.1); }
     .pr-field-input.is-error { border-color:#EF4444; }
     .pr-field-error { font-size:11px; color:#EF4444; margin-top:4px; }
     .pr-section-title { font-size:13px; font-weight:800; color:#0F172A; margin:18px 0 10px; padding-bottom:7px; border-bottom:2px solid #F1F5F9; display:flex; align-items:center; gap:8px; }
-    .pr-save-btn { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; border:none; border-radius:9px; padding:10px 24px; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:7px; }
+    .pr-save-btn { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; border:none; border-radius:9px; padding:10px 24px; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:7px; }
     .pr-save-btn:hover { opacity:.88; }
     .pr-save-btn:disabled { opacity:.5; cursor:not-allowed; }
     .pr-doc-card { background:#fff; border:1.5px solid #E2E8F0; border-radius:12px; padding:14px 16px; margin-bottom:10px; transition:border-color .15s; }
     .pr-doc-card:hover { border-color:#C9A84C30; }
-    .pr-doc-card.is-main { border-left:3px solid #005B52; }
+    .pr-doc-card.is-main { border-left:3px solid var(--mt-primary); }
     .pr-upload-zone { display:flex; align-items:center; gap:8px; padding:9px 12px; background:#F8FAFC; border:1.5px dashed #CBD5E1; border-radius:9px; cursor:pointer; transition:all .15s; }
-    .pr-upload-zone:hover { border-color:#005B52; background:#f0fdf9; }
+    .pr-upload-zone:hover { border-color:var(--mt-primary); background:var(--mt-primary-50); }
     .pr-dept-pill { display:inline-flex; align-items:center; gap:4px; padding:4px 11px; border-radius:20px; font-size:11px; font-weight:700; cursor:pointer; user-select:none; transition:all .15s; white-space:nowrap; border:1.5px solid #E2E8F0; background:#fff; color:#94A3B8; }
     .pr-dept-pill:hover { background:#F8FAFC; }
-    .pr-add-doc-btn { width:100%; padding:10px; border:1.5px dashed #005B52; border-radius:10px; background:transparent; color:#005B52; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px; transition:all .15s; }
-    .pr-add-doc-btn:hover { background:#f0fdf9; }
+    .pr-add-doc-btn { width:100%; padding:10px; border:1.5px dashed var(--mt-primary); border-radius:10px; background:transparent; color:var(--mt-primary); font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px; transition:all .15s; }
+    .pr-add-doc-btn:hover { background:var(--mt-primary-50); }
     .pr-icon-btn { border-radius:7px; cursor:pointer; display:flex; align-items:center; justify-content:center; outline:none; transition:all .15s; flex-shrink:0; }
 
     /* ── Publish action button in table ── */
@@ -323,7 +323,7 @@ function AddBuilderModal({ onClose, onSaved, createdBy }) {
         <Modal isOpen toggle={onClose} centered backdrop="static" keyboard={false}>
             <ModalHeader toggle={onClose} className="custom-modal-header"
                 style={{
-                    background: "linear-gradient(135deg,#005B52,#007A6E)",
+                    background: "linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))",
                     borderRadius: "12px 12px 0 0", padding: "16px 24px", color: "white",
                 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -459,7 +459,7 @@ function AddProjectModal({ onClose, onSaved, userId, createdBy }) {
         <Modal isOpen toggle={onClose} centered backdrop="static" keyboard={false}>
             <ModalHeader toggle={onClose} className="custom-modal-header"
                 style={{
-                    background: "linear-gradient(135deg,#005B52,#007A6E)",
+                    background: "linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))",
                     borderRadius: "12px 12px 0 0", padding: "16px 24px", color: "white",
                 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -739,7 +739,7 @@ function EditModal({ row, onClose, onSaved, updatedBy }) {
                         View
                     </a>
                 )}
-                <label style={{ background: "#F0FDF9", color: "#005B52", border: "1px solid #005B52", borderRadius: 7, padding: "6px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
+                <label style={{ background: "var(--mt-primary-50)", color: "var(--mt-primary)", border: "1px solid var(--mt-primary)", borderRadius: 7, padding: "6px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
                     Browse
                     <input type="file" hidden accept={accept}
                         onChange={(e) => onPick(e.target.files?.[0] || null)} />
@@ -752,7 +752,7 @@ function EditModal({ row, onClose, onSaved, updatedBy }) {
         <Modal isOpen toggle={onClose} size="xl" centered scrollable
             backdrop="static" className="project-edit-modal">
             <ModalHeader toggle={onClose} className="custom-modal-header"
-                style={{ background: "linear-gradient(135deg,#005B52,#007A6E)", borderRadius: "12px 12px 0 0", padding: "16px 24px", color: "white" }}>
+                style={{ background: "linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light))", borderRadius: "12px 12px 0 0", padding: "16px 24px", color: "white" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <FaEdit size={15} color="#fff" />
                     <span style={{ fontSize: 16, fontWeight: 800, color: "#fff" }}>
@@ -846,7 +846,7 @@ function EditModal({ row, onClose, onSaved, updatedBy }) {
                                                 }}
                                                 style={{
                                                     border: "none",
-                                                    background: reraRegistered === opt ? "#005B52" : "transparent",
+                                                    background: reraRegistered === opt ? "var(--mt-primary)" : "transparent",
                                                     color: reraRegistered === opt ? "#fff" : "#475569",
                                                     borderRadius: 999, padding: "7px 22px",
                                                     fontSize: 13, fontWeight: 700,
@@ -974,9 +974,9 @@ const ProjectRegistrationData = () => {
             name: <span className="font-weight-bold fs-13">Manage</span>, width: "5%",
             cell: (row) => (
                 <button onClick={() => handleEdit(row)} title="Edit Project"
-                    style={{ border: "none", borderRadius: 8, padding: "5px 7px", background: `${defaultTheme.primary || "#005B52"}15`, color: defaultTheme.primary || "#005B52", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .15s" }}
-                    onMouseEnter={e => { e.currentTarget.style.background = defaultTheme.primary || "#005B52"; e.currentTarget.style.color = "#fff"; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = `${defaultTheme.primary || "#005B52"}15`; e.currentTarget.style.color = defaultTheme.primary || "#005B52"; }}>
+                    style={{ border: "none", borderRadius: 8, padding: "5px 7px", background: `${defaultTheme.primary || "var(--mt-primary)"}15`, color: defaultTheme.primary || "var(--mt-primary)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .15s" }}
+                    onMouseEnter={e => { e.currentTarget.style.background = defaultTheme.primary || "var(--mt-primary)"; e.currentTarget.style.color = "#fff"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = `${defaultTheme.primary || "var(--mt-primary)"}15`; e.currentTarget.style.color = defaultTheme.primary || "var(--mt-primary)"; }}>
                     <FaEdit size={13} />
                 </button>
             ),

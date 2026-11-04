@@ -10,7 +10,7 @@ import ScreenLoader from '../../constants/ScreenLoader';
 import AppTable from '../../components/Common/Table';
 import { formatDateForInput, generateTimestamp, WordWrapCell } from '../../helpers/function_helper';
 import { useGet } from '../../Hooks/useApi';
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { defaultTheme } from '../../helpers/defaultTheme';
 import CheckUserAccess from '../../components/Common/CheckUserAccess';
 import { useUserStore } from '../../store/useUserStore';

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col, Card, CardBody, Label } from 'reactstrap';
-import Select from 'react-select';
+import Select from '../../components/Common/AppSelect';
 import { toast } from 'react-toastify';
 import { FaInbox, FaCalendarAlt } from 'react-icons/fa';
 
@@ -267,7 +267,7 @@ export default function P100Report() {
                         <div style={{
                             width: 48, height: 48,
                             borderRadius: 12,
-                            background: `linear-gradient(135deg, ${defaultTheme.primary}, #007A6E)`,
+                            background: `linear-gradient(135deg, ${defaultTheme.primary}, var(--mt-primary-light))`,
                             color: '#fff',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             fontSize: 18,

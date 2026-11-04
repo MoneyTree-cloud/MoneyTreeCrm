@@ -136,7 +136,7 @@ const AwardMaster = () => {
         <Switch
           checked={row.active}
           offColor={defaultTheme.goldColorLogo}
-          onColor={defaultTheme.primary}
+          onColor={defaultTheme.primaryHex}
           height={20}
           width={40}
           onChange={() => handleSwitchChange(row)}

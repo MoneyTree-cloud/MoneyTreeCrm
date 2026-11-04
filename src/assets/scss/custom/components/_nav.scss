@@ -34,7 +34,7 @@
     .nav-link {
       background-color: var(--#{$prefix}tertiary-bg);
       &.active {
-        color: $primary;
+        color: var(--mt-primary);
         &:after {
           transform: scale(1);
         }
@@ -42,7 +42,7 @@
 
       &:after {
         content: "";
-        background: $primary;
+        background: var(--mt-primary);
         height: 2px;
         position: absolute;
         width: 100%;

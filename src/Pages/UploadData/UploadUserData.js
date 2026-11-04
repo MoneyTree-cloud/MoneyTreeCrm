@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import PageContent from "../../components/Common/PageContent";
 

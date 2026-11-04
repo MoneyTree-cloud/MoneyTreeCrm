@@ -12,7 +12,7 @@ import {
     GET_UNIT_BY_BUILDER_PROJECT, PAYMENT_PLAN_DROPDOWN,
     PROSPECT_DROPDOWN, SAVE_FRESH_BOOKING_FORM, UPDATE_FRESH_BOOKING_FORM, UPDATE_FRESH_BOOKING_LEVEL
 } from "../../helpers/url_helper";
-import Select from "react-select";
+import Select from "../../components/Common/AppSelect";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useUserStore } from "../../store/useUserStore";
@@ -31,7 +31,7 @@ _s.id = "fbe-s"
 _s.textContent = `
 
     /* ── Header card ── */
-    .fbe-hdr { background: linear-gradient(135deg,#005B52 0%,#007A6E 60%,#00897B 100%); border-radius:16px; padding:20px 24px; margin-bottom:14px; position:relative; overflow:hidden; }
+    .fbe-hdr { background: linear-gradient(135deg,var(--mt-primary) 0%,var(--mt-primary-light) 60%,var(--mt-primary-light) 100%); border-radius:16px; padding:20px 24px; margin-bottom:14px; position:relative; overflow:hidden; }
     .fbe-hdr::before { content:''; position:absolute; top:-40px; right:-40px; width:180px; height:180px; border-radius:50%; background:rgba(255,255,255,.05); pointer-events:none; }
     .fbe-hdr::after  { content:''; position:absolute; bottom:-50px; right:60px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,.04); pointer-events:none; }
     .fbe-hdr-top { display:flex; align-items:center; justify-content:space-between; position:relative; }
@@ -55,7 +55,7 @@ _s.textContent = `
         font-size:13px; color:#0F172A; outline:none;
         transition:border-color .15s, box-shadow .15s; background:#fff;
     }
-    .fbe-input:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .fbe-input:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     .fbe-input:disabled { background:#F8FAFC; color:#94A3B8; cursor:not-allowed; }
     .fbe-input.is-invalid { border-color:#EF4444; }
     .fbe-textarea {
@@ -64,7 +64,7 @@ _s.textContent = `
         font-size:13px; color:#0F172A; outline:none; resize:vertical;
         transition:border-color .15s;
     }
-    .fbe-textarea:focus { border-color:#005B52; box-shadow:0 0 0 3px rgba(0,91,82,.08); }
+    .fbe-textarea:focus { border-color:var(--mt-primary); box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08); }
     .fbe-textarea.is-invalid { border-color:#EF4444; }
 
     /* ── Costing display (readonly) ── */
@@ -73,15 +73,15 @@ _s.textContent = `
     .fbe-cost-row:nth-child(odd) { padding-right:20px; }
     .fbe-cost-k { font-size:10px; font-weight:700; color:#94A3B8; text-transform:uppercase; letter-spacing:.4px; margin-bottom:3px; }
     .fbe-cost-v { font-size:13px; font-weight:600; color:#0F172A; }
-    .fbe-cost-v.hi { color:#005B52; font-weight:700; }
+    .fbe-cost-v.hi { color:var(--mt-primary); font-weight:700; }
     .fbe-cost-v.em { color:#CBD5E1; font-style:italic; font-weight:400; font-size:12px; }
     .fbe-total-cards { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
     .fbe-total-card { flex:1; min-width:150px; padding:14px 16px; border-radius:12px; }
-    .fbe-total-card.green { background:linear-gradient(135deg,#f0fdf9,#e8f4f2); border:1.5px solid #005B5225; }
+    .fbe-total-card.green { background:linear-gradient(135deg,var(--mt-primary-50),var(--mt-primary-100)); border:1.5px solid rgba(var(--mt-primary-rgb), 0.15); }
     .fbe-total-card.gold  { background:linear-gradient(135deg,#fffbeb,#fef3c7); border:1.5px solid #C9A84C30; }
     .fbe-total-card.blue  { background:linear-gradient(135deg,#EFF6FF,#DBEAFE); border:1.5px solid #BFDBFE; }
     .fbe-total-card .tc-k { font-size:10px; font-weight:700; color:#64748B; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
-    .fbe-total-card.green .tc-v { font-size:17px; font-weight:800; color:#005B52; }
+    .fbe-total-card.green .tc-v { font-size:17px; font-weight:800; color:var(--mt-primary); }
     .fbe-total-card.gold  .tc-v { font-size:17px; font-weight:800; color:#92400E; }
     .fbe-total-card.blue  .tc-v { font-size:17px; font-weight:800; color:#1E40AF; }
 
@@ -95,7 +95,7 @@ _s.textContent = `
     .fbe-tabs { display:flex; gap:3px; padding:4px; background:#F1F5F9; border-radius:12px; margin-bottom:20px; }
     .fbe-tab { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:9px 14px; font-size:12px; font-weight:600; color:#64748B; border:none; background:transparent; border-radius:9px; cursor:pointer; transition:all .15s; white-space:nowrap; }
     .fbe-tab:hover:not(.active) { background:rgba(255,255,255,.6); color:#334155; }
-    .fbe-tab.active { background:#fff; color:#005B52; font-weight:700; box-shadow:0 1px 4px rgba(0,0,0,.1); }
+    .fbe-tab.active { background:#fff; color:var(--mt-primary); font-weight:700; box-shadow:0 1px 4px rgba(0,0,0,.1); }
 
     /* ── Field grid ── */
     .fbe-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
@@ -108,22 +108,22 @@ _s.textContent = `
     .fbe-radio-group { display:flex; gap:8px; }
     .fbe-radio-pill { display:flex; align-items:center; gap:6px; padding:7px 14px; border-radius:20px; cursor:pointer; font-size:13px; font-weight:600; border:1.5px solid #E2E8F0; background:#F8FAFC; color:#64748B; transition:all .15s; user-select:none; }
     .fbe-radio-pill input { display:none; }
-    .fbe-radio-pill.active { border-color:#005B52; background:#f0fdf9; color:#005B52; }
-    .fbe-radio-pill.active::before { content:''; display:inline-block; width:8px; height:8px; border-radius:50%; background:#005B52; }
+    .fbe-radio-pill.active { border-color:var(--mt-primary); background:var(--mt-primary-50); color:var(--mt-primary); }
+    .fbe-radio-pill.active::before { content:''; display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--mt-primary); }
 
     /* ── Actions ── */
     .fbe-actions { display:flex; align-items:center; gap:10px; padding:14px 20px; background:#fff; border:1px solid #E8ECF2; border-radius:12px; flex-wrap:wrap; margin-top:4px; }
     .fbe-btn { display:flex; align-items:center; gap:6px; padding:9px 20px; border-radius:9px; font-size:13px; font-weight:700; cursor:pointer; border:none; transition:all .15s; white-space:nowrap; }
-    .fbe-btn-primary { background:linear-gradient(135deg,#005B52,#007A6E); color:#fff; }
+    .fbe-btn-primary { background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff; }
     .fbe-btn-primary:hover { opacity:.88; }
     .fbe-btn-primary:disabled { opacity:.5; cursor:not-allowed; }
     .fbe-btn-secondary { background:#F1F5F9; color:#475569; }
     .fbe-btn-secondary:hover { background:#E2E8F0; }
     .fbe-nav { display:flex; justify-content:flex-end; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid #F1F5F9; }
     .fbe-nav-btn { display:flex; align-items:center; gap:5px; padding:7px 16px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; border:1.5px solid #E2E8F0; background:#fff; color:#64748B; transition:all .15s; }
-    .fbe-nav-btn:hover:not(:disabled) { border-color:#005B52; color:#005B52; background:#f0fdf9; }
+    .fbe-nav-btn:hover:not(:disabled) { border-color:var(--mt-primary); color:var(--mt-primary); background:var(--mt-primary-50); }
     .fbe-nav-btn:disabled { opacity:.4; cursor:not-allowed; }
-    .fbe-nav-btn.p { background:#005B52; border-color:#005B52; color:#fff; }
+    .fbe-nav-btn.p { background:var(--mt-primary); border-color:var(--mt-primary); color:#fff; }
 
     /* Reject box */
     .fbe-reject-box { background:#FEF2F2; border:1.5px solid #FECACA; border-radius:12px; padding:16px 18px; margin-bottom:12px; }
@@ -132,12 +132,12 @@ _s.textContent = `
 
     /* react-select override */
     .fbe .select__control { border-radius:9px!important; min-height:38px!important; font-size:13px!important; border:1.5px solid #070707!important; }
-    .fbe .select__control--is-focused { border-color:#005B52!important; box-shadow:0 0 0 3px rgba(0,91,82,.08)!important; }
+    .fbe .select__control--is-focused { border-color:var(--mt-primary)!important; box-shadow:0 0 0 3px rgba(var(--mt-primary-rgb),.08)!important; }
 `
 document.head.appendChild(_s)
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-const Sec = ({ label, color = "#005B52" }) => (
+const Sec = ({ label, color = "var(--mt-primary)" }) => (
     <div className="fbe-sec">
         <span className="fbe-sec-dot" style={{ background: color }} />
         {label}
@@ -158,12 +158,12 @@ const CostVal = ({ label, value, hi }) => {
 const selectStyles = {
     control: (b, st) => ({
         ...b, borderRadius: 9, minHeight: 38, fontSize: 13,
-        border: `1.5px solid ${st.isFocused ? "#005B52" : "#E2E8F0"}`,
-        boxShadow: st.isFocused ? "0 0 0 3px rgba(0,91,82,.08)" : "none",
+        border: `1.5px solid ${st.isFocused ? "var(--mt-primary)" : "#E2E8F0"}`,
+        boxShadow: st.isFocused ? "0 0 0 3px rgba(var(--mt-primary-rgb),.08)" : "none",
     }),
     option: (b, st) => ({
         ...b, fontSize: 13,
-        background: st.isSelected ? "#005B52" : st.isFocused ? "#f0fdf9" : "#fff",
+        background: st.isSelected ? "var(--mt-primary)" : st.isFocused ? "var(--mt-primary-50)" : "#fff",
         color: st.isSelected ? "#fff" : "#0F172A",
     }),
     menuPortal: b => ({ ...b, zIndex: 9999 }),
@@ -666,7 +666,7 @@ const FreshBookingEntryLevel1 = () => {
 
                     {/* ── TOP FIELDS CARD ── */}
                     <div className="fbe-card">
-                        <Sec label="Booking Info" color="#005B52" />
+                        <Sec label="Booking Info" color="var(--mt-primary)" />
                         <div className="fbe-grid">
                             {/* Associate */}
                             <div>
@@ -830,7 +830,7 @@ const FreshBookingEntryLevel1 = () => {
                         {/* ── TAB 1: Basic Info ── */}
                         {activeTab === 1 && (
                             <>
-                                <Sec label="Applicant" color="#005B52" />
+                                <Sec label="Applicant" color="var(--mt-primary)" />
                                 <div className="fbe-grid">
                                     <div><label className="fbe-lbl">Name <RequiredStar /></label><input className={`fbe-input form-control${errors.applicantName ? " is-invalid" : ""}`} type="text" name="applicantName" value={formStateTab1.applicantName} onChange={handleChangeTab1} placeholder="Applicant name" /></div>
                                     <div><label className="fbe-lbl">Contact 1 <RequiredStar /></label><input className={`fbe-input form-control${errors.contactNum1 ? " is-invalid" : ""}`} type="text" name="contactNum1" value={formStateTab1.contactNum1} onChange={handleChangeTab1} placeholder="Contact 1" /></div>
@@ -922,7 +922,7 @@ const FreshBookingEntryLevel1 = () => {
                                     <div className="fbe-total-card green"><div className="tc-k">Total Unit Cost (With GST)</div><div className="tc-v">{tab2CostingData?.netCostWithGst || "—"}</div></div>
                                 </div>
 
-                                <Sec label="Payment Info" color="#005B52" />
+                                <Sec label="Payment Info" color="var(--mt-primary)" />
                                 <div className="fbe-grid-3">
                                     <div>
                                         <label className="fbe-lbl">Payment Plan <RequiredStar /></label>
@@ -947,7 +947,7 @@ const FreshBookingEntryLevel1 = () => {
                         {/* ── TAB 3: Other Details ── */}
                         {activeTab === 3 && (
                             <>
-                                <Sec label="Booking Details" color="#005B52" />
+                                <Sec label="Booking Details" color="var(--mt-primary)" />
                                 <div className="fbe-grid">
                                     <div>
                                         <label className="fbe-lbl">SO Received Date <RequiredStar /></label>

@@ -21,7 +21,7 @@ if (document.getElementById("mg-s")) document.getElementById("mg-s").remove()
 const _s = document.createElement("style")
 _s.id = "mg-s"
 _s.textContent = `
-    .mg-hdr { background:linear-gradient(135deg,#005B52 0%,#007A6E 55%,#00897B 100%); border-radius:14px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; position:relative; overflow:hidden; }
+    .mg-hdr { background:linear-gradient(135deg,var(--mt-primary) 0%,var(--mt-primary-light) 55%,var(--mt-primary-light) 100%); border-radius:14px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; position:relative; overflow:hidden; }
     .mg-hdr::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,255,255,.05); pointer-events:none; }
     .mg-hdr-title { font-size:18px; font-weight:800; color:#fff; position:relative; }
     .mg-hdr-sub   { font-size:12px; color:rgba(255,255,255,.65); margin-top:2px; position:relative; }
@@ -68,7 +68,7 @@ _s.textContent = `
     .mg-doc-badge { background:#FFFBEB; color:#92400E; border:1px solid #FDE68A; border-radius:20px; padding:3px 10px; font-size:11px; font-weight:700; }
     .mg-view-btn {
         display:flex; align-items:center; gap:5px; padding:6px 14px;
-        background:linear-gradient(135deg,#005B52,#007A6E); color:#fff;
+        background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light)); color:#fff;
         border:none; border-radius:8px; font-size:12px; font-weight:700;
         cursor:pointer;
     }
@@ -91,7 +91,7 @@ _s.textContent = `
     @keyframes mimg { from{opacity:0;transform:translateY(20px) scale(.97)} to{opacity:1;transform:none} }
 
     .mg-modal-hdr {
-        background:linear-gradient(135deg,#005B52,#007A6E);
+        background:linear-gradient(135deg,var(--mt-primary),var(--mt-primary-light));
         padding:16px 20px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
     }
     .mg-modal-title { font-size:15px; font-weight:800; color:#fff; display:flex; flex-direction:column; gap:2px; }
