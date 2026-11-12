@@ -11,24 +11,20 @@ export const getLoggedinUser = () => {
   }
 };
 
+export const imageBaseUrl = "https://assetstorage.moneytreerealty.com/media/";
+
+export const hrImageBaseUrl = 'https://assetstorage.moneytreerealty.com/hrfiles/';
+
+
 // *************UAT***************
-export const imageBaseUrl = "https://frontendcrmuat.moneytreerealty.com/attachment/";
+// const baseURL = "https://backendcrmuat.moneytreerealty.com/";
 
-export const hrImageBaseUrl = 'https://frontendcrmuat.moneytreerealty.com/hrattachment/';
-
-const baseURL = "https://backendcrmuat.moneytreerealty.com/";
-
-export const htmlBaseURL = "https://frontendcrmuat.moneytreerealty.com/events";
-
+// export const htmlBaseURL = "https://frontendcrmuat.moneytreerealty.com/events";
 
 // *************LIVE***************
-// export const imageBaseUrl = "https://assetstorage.moneytreerealty.com/media/";
+const baseURL = "https://backendcrm.moneytreerealty.com/";
 
-// export const hrImageBaseUrl = 'https://assetstorage.moneytreerealty.com/hrfiles/';
-
-// const baseURL = "https://backendcrm.moneytreerealty.com/";
-
-// export const htmlBaseURL = "https://assetstorage.moneytreerealty.com/media";
+export const htmlBaseURL = "https://assetstorage.moneytreerealty.com/media";
 
 export const assetImageBaseUrl = 'https://assetstorage.moneytreerealty.com/media/';
 

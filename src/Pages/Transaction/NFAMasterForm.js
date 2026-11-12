@@ -1,9 +1,10 @@
-import { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Container, Row, Col, Label, Card, CardBody } from 'reactstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Select from '../../components/Common/AppSelect';
 import { toast } from 'react-toastify';
-import { FaPlus, FaEdit, FaArrowLeft } from 'react-icons/fa';
+import { FaPlus, FaEdit, FaArrowLeft, FaEye, FaTimes } from 'react-icons/fa';
 import PageContent from '../../components/Common/PageContent';
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 import ScreenLoader from '../../constants/ScreenLoader';
@@ -18,34 +19,41 @@ import {
     GET_SLAB_BY_PROJECT,
     UPDATE_NFA_MASTER,
 } from '../../helpers/url_helper';
-import { isNfaEditable } from './NFAMaster';
+import { useUserStore } from '../../store/useUserStore';
+import { imageBaseUrl } from '../../helpers/api_helper';
+import { getFileIcon } from '../../constants/global';
+import { getNfaFile, isNfaEditable } from './NFAMaster';
 
 const inputStyle = { borderRadius: 8, fontSize: 13 };
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const FILE_ACCEPT = '.pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx';
 
 const selectStyles = {
     control: (base) => ({ ...base, borderRadius: 8, fontSize: 13 }),
     option: (base) => ({ ...base, fontSize: 13 }),
-    menuPortal: (base) => ({ ...base, zIndex: 9999 }),
 };
 
-const toOption = (label, value) => (value != null && value !== '' ? { label, value } : null);
-const toInput = (value) => (value != null ? String(value) : '');
-const toNumber = (value) => (value === '' ? 0 : Number(value));
+// API keeps every NFA value as text
+const TEXT_FIELDS = [
+    'masterPlan', 'totalSlab', 'sms', 'mtSlab', 'marketing',
+    'teamIncentive', 'incentiveStatus', 'incentiveBd', 'remarks',
+];
 
+const toOption = (label, value) => (value != null && value !== '' ? { label: label ?? String(value), value } : null);
+
+// slab dropdown rows -> { label, value }, whatever key names the API uses
+const toSlabOption = (o) => {
+    const value = o?.value ?? o?.slabId ?? o?.id;
+    return { label: o?.label ?? o?.slabName ?? o?.name ?? String(value), value };
+};
+
+// builder / project come nested in the list response ("bulderName" is the API's spelling)
 const buildInitialForm = (rowData) => ({
-    builder: toOption(rowData?.builderName, rowData?.builderId),
-    project: toOption(rowData?.projectName, rowData?.projectId),
-    slab: toOption(rowData?.slabName, rowData?.slabId),
-    masterPlan: rowData?.masterPlan ?? '',
-    totalSlabAgreement: toInput(rowData?.totalSlabAgreement),
-    smsCat1: toInput(rowData?.smsCat1),
-    mtSlab: toInput(rowData?.mtSlab),
-    marketing: toInput(rowData?.marketing),
-    teamIncentiveMt: toInput(rowData?.teamIncentiveMt),
-    incentiveStatusMt: rowData?.incentiveStatusMt ?? '',
-    incentiveBd: toInput(rowData?.incentiveBd),
-    incentiveStatus: rowData?.incentiveStatus ?? '',
-    remarks: rowData?.remarks ?? '',
+    builder: toOption(rowData?.builderMaster?.bulderName, rowData?.builderMaster?.builderId),
+    project: toOption(rowData?.projectMaster?.projectName, rowData?.projectMaster?.mappingId),
+    // the selected slab is saved as the NFA ID
+    slab: toOption(rowData?.nfaId, rowData?.nfaId),
+    ...Object.fromEntries(TEXT_FIELDS.map((f) => [f, rowData?.[f] != null ? String(rowData[f]) : ''])),
 });
 
 // ── Section heading ─────────────────────────────────────────────────────────
@@ -59,6 +67,32 @@ function SectionTitle({ children }) {
         }}>
             <span style={{ width: 4, height: 14, background: defaultTheme.primary, borderRadius: 2 }} />
             {children}
+        </div>
+    );
+}
+
+// file name + icon, opens the file in a new tab
+function FileChip({ name, href, tag, onRemove }) {
+    return (
+        <div style={{
+            display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px',
+            border: '1px solid #E2E8F0', borderRadius: 8, background: '#F8FAFC',
+        }}>
+            {getFileIcon(name)}
+            <a href={href} target="_blank" rel="noopener noreferrer"
+                style={{ flex: 1, minWidth: 0, fontSize: 12.5, fontWeight: 600, color: defaultTheme.primary, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                title={`Preview ${name}`}>
+                {name.split('/').pop()}
+            </a>
+            <span style={{ fontSize: 10.5, fontWeight: 700, color: '#64748B', background: '#E2E8F0', padding: '1px 8px', borderRadius: 20 }}>
+                {tag}
+            </span>
+            <a href={href} target="_blank" rel="noopener noreferrer" title="Preview" style={{ color: defaultTheme.primary, display: 'flex' }}>
+                <FaEye size={15} />
+            </a>
+            {onRemove && (
+                <FaTimes size={13} style={{ cursor: 'pointer', color: defaultTheme.redColor }} onClick={onRemove} title="Remove" />
+            )}
         </div>
     );
 }
@@ -77,12 +111,20 @@ function Field({ label, required, md = 4, children }) {
 export default function NFAMasterForm() {
     const navigate = useNavigate();
     const location = useLocation();
+    const { userId, userName, empCode } = useUserStore((state) => state.user);
     const { rowData } = location.state || {};
     const isEdit = Boolean(rowData?.id);
     const editExpired = isEdit && !isNfaEditable(rowData);
 
     const [form, setForm] = useState(buildInitialForm(rowData));
     const [saving, setSaving] = useState(false);
+    const [file, setFile] = useState(null);
+    const fileInputRef = useRef(null);
+    const existingFile = getNfaFile(rowData);
+
+    // local preview link for the newly picked file
+    const pickedFileUrl = useMemo(() => (file ? URL.createObjectURL(file) : null), [file]);
+    useEffect(() => () => { if (pickedFileUrl) URL.revokeObjectURL(pickedFileUrl); }, [pickedFileUrl]);
 
     const { data: builderList, isLoading: buildersLoading } = useGet(GET_DROPDOWN_BUILDER_);
     const { data: projectList, isLoading: projectsLoading } = useGet(
@@ -93,6 +135,23 @@ export default function NFAMasterForm() {
         `${GET_SLAB_BY_PROJECT}${form.project?.value}`,
         { enabled: Boolean(form.project?.value) }
     );
+    const slabOptions = (Array.isArray(slabList?.data?.data) ? slabList.data.data : []).map(toSlabOption);
+
+    // Edit: the list may only send ids — show the dropdown labels once options load
+    useEffect(() => {
+        const match = builderList?.data?.data?.find((o) => o.value === form.builder?.value);
+        if (match && match.label !== form.builder?.label) setForm((prev) => ({ ...prev, builder: match }));
+    }, [builderList]);
+
+    useEffect(() => {
+        const match = projectList?.data?.data?.find((o) => o.value === form.project?.value);
+        if (match && match.label !== form.project?.label) setForm((prev) => ({ ...prev, project: match }));
+    }, [projectList]);
+
+    useEffect(() => {
+        const match = slabOptions.find((o) => String(o.value) === String(form.slab?.value));
+        if (match && match.label !== form.slab?.label) setForm((prev) => ({ ...prev, slab: match }));
+    }, [slabList]);
 
     const handleFieldChange = (field) => (e) => {
         setForm((prev) => ({ ...prev, [field]: e.target.value }));
@@ -107,39 +166,52 @@ export default function NFAMasterForm() {
         setForm((prev) => ({ ...prev, project: opt, slab: null }));
     };
 
-    const buildPayload = () => ({
-        builderId: form.builder?.value,
-        builderName: form.builder?.label,
-        projectId: form.project?.value,
-        projectName: form.project?.label,
-        slabId: form.slab?.value,
-        slabName: form.slab?.label,
-        masterPlan: form.masterPlan.trim(),
-        totalSlabAgreement: toNumber(form.totalSlabAgreement),
-        smsCat1: toNumber(form.smsCat1),
-        mtSlab: toNumber(form.mtSlab),
-        marketing: toNumber(form.marketing),
-        teamIncentiveMt: toNumber(form.teamIncentiveMt),
-        incentiveStatusMt: form.incentiveStatusMt.trim(),
-        incentiveBd: toNumber(form.incentiveBd),
-        incentiveStatus: form.incentiveStatus.trim(),
-        remarks: form.remarks.trim(),
-    });
+    // multipart: every field as its own part, the attachment under "file"
+    const buildPayload = () => {
+        const fields = {
+            id: isEdit ? rowData.id : 0,
+            builderId: form.builder?.value,
+            projectId: form.project?.value,
+            nfaId: String(form.slab?.value ?? ''),
+            ...Object.fromEntries(TEXT_FIELDS.map((f) => [f, form[f].trim()])),
+            status: rowData?.status || 'YES',
+            createdBy: isEdit && rowData?.createdBy ? rowData.createdBy : `${userName} (${empCode})`,
+        };
+        const payload = new FormData();
+        Object.entries(fields).forEach(([key, value]) => payload.append(key, value ?? ''));
+        // on update the current file is kept unless a new one is picked
+        if (file) payload.append('file', file);
+        return payload;
+    };
+
+    const handleFileChange = (e) => {
+        const picked = e.target.files?.[0];
+        if (!picked) return;
+        if (picked.size > MAX_FILE_SIZE) {
+            toast.error('File size should be less than 10 MB');
+            e.target.value = '';
+            return;
+        }
+        setFile(picked);
+    };
+
+    const removePickedFile = () => {
+        setFile(null);
+        if (fileInputRef.current) fileInputRef.current.value = '';
+    };
 
     const validateForm = () => {
         if (!form.builder) return 'Please select Builder';
         if (!form.project) return 'Please select Project';
         if (!form.slab) return 'Please select Slab';
         if (!form.masterPlan.trim()) return 'Please enter Master Plan';
-        if (form.totalSlabAgreement === '') return 'Please enter Total Slab (Agreement %)';
-        if (Number(form.totalSlabAgreement) > 100) return 'Total Slab (Agreement %) cannot exceed 100';
-        if (form.smsCat1 === '') return 'Please enter SMS (CAT 1)';
-        if (form.mtSlab === '') return 'Please enter MT Slab';
-        if (form.marketing === '') return 'Please enter Marketing';
-        if (form.teamIncentiveMt === '') return 'Please enter Team Incentive MT';
-        if (!form.incentiveStatusMt.trim()) return 'Please enter Incentive Status MT';
-        if (form.incentiveBd === '') return 'Please enter Incentive BD';
+        if (!form.totalSlab.trim()) return 'Please enter Total Slab (Agreement %)';
+        if (!form.sms.trim()) return 'Please enter SMS (CAT 1)';
+        if (!form.mtSlab.trim()) return 'Please enter MT Slab';
+        if (!form.marketing.trim()) return 'Please enter Marketing';
+        if (!form.teamIncentive.trim()) return 'Please enter Team Incentive MT';
         if (!form.incentiveStatus.trim()) return 'Please enter Incentive Status';
+        if (!form.incentiveBd.trim()) return 'Please enter Incentive BD';
         return null;
     };
 
@@ -156,7 +228,7 @@ export default function NFAMasterForm() {
 
         const request = isEdit
             ? ApiClient.put(`${UPDATE_NFA_MASTER}${rowData.id}`, payload)
-            : ApiClient.post(CREATE_NFA_MASTER, payload);
+            : ApiClient.post(`${CREATE_NFA_MASTER}${userId}`, payload);
 
         request
             .then((response) => {
@@ -176,12 +248,6 @@ export default function NFAMasterForm() {
                 toast.error(error.message || 'Network error');
             });
     };
-
-    const numberInput = (field, placeholder) => (
-        <input type="number" className="form-control" style={inputStyle}
-            value={form[field]} onChange={handleFieldChange(field)}
-            placeholder={placeholder} min={0} step="any" disabled={editExpired} />
-    );
 
     const textInput = (field, placeholder) => (
         <input type="text" className="form-control" style={inputStyle}
@@ -220,7 +286,7 @@ export default function NFAMasterForm() {
                                         <div style={{ fontSize: 11.5, color: editExpired ? '#DC2626' : '#64748B', marginTop: 2 }}>
                                             {editExpired
                                                 ? 'This record is older than 72 hours and can no longer be edited'
-                                                : 'Select builder, project and slab, then fill in the slab details'}
+                                                : 'Select builder, project and slab, then fill in the NFA details'}
                                         </div>
                                     </div>
                                 </div>
@@ -239,8 +305,8 @@ export default function NFAMasterForm() {
                                 </button>
                             </div>
 
-                            {/* ── Builder / Project / Slab ────────────────────────── */}
-                            <SectionTitle>Slab Selection</SectionTitle>
+                            {/* ── Builder / Project ───────────────────────────────── */}
+                            <SectionTitle>Project</SectionTitle>
                             <Row className="g-3">
                                 <Field label="Builder" required>
                                     <Select
@@ -251,7 +317,6 @@ export default function NFAMasterForm() {
                                         isDisabled={editExpired}
                                         isClearable
                                         placeholder="Select Builder"
-                                        menuPortalTarget={document.body}
                                         styles={selectStyles}
                                     />
                                 </Field>
@@ -264,69 +329,94 @@ export default function NFAMasterForm() {
                                         isDisabled={!form.builder || editExpired}
                                         isClearable
                                         placeholder={form.builder ? 'Select Project' : 'Select Builder first'}
-                                        menuPortalTarget={document.body}
                                         styles={selectStyles}
                                     />
                                 </Field>
                                 <Field label="Slab" required>
                                     <Select
-                                        options={slabList?.data?.data || []}
+                                        options={slabOptions}
                                         value={form.slab}
                                         onChange={(opt) => setForm((prev) => ({ ...prev, slab: opt }))}
                                         isLoading={Boolean(form.project) && slabsLoading}
                                         isDisabled={!form.project || editExpired}
                                         isClearable
                                         placeholder={form.project ? 'Select Slab' : 'Select Project first'}
-                                        menuPortalTarget={document.body}
                                         styles={selectStyles}
                                     />
                                 </Field>
                             </Row>
 
                             {/* ── Slab Details ────────────────────────────────────── */}
-                            {form.slab && (
-                                <>
-                                    <SectionTitle>Slab Details</SectionTitle>
-                                    <Row className="g-3">
-                                        <Field label="Master Plan" required>
-                                            {textInput('masterPlan', 'Master Plan')}
-                                        </Field>
-                                        <Field label="Total Slab (Agreement %)" required>
-                                            {numberInput('totalSlabAgreement', 'Total Slab %')}
-                                        </Field>
-                                        <Field label="SMS (CAT 1)" required>
-                                            {numberInput('smsCat1', 'SMS (CAT 1)')}
-                                        </Field>
-                                        <Field label="MT Slab" required>
-                                            {numberInput('mtSlab', 'MT Slab')}
-                                        </Field>
-                                        <Field label="Marketing" required>
-                                            {numberInput('marketing', 'Marketing')}
-                                        </Field>
-                                    </Row>
+                            <SectionTitle>Slab Details</SectionTitle>
+                            <Row className="g-3">
+                                <Field label="Master Plan" required>
+                                    {textInput('masterPlan', 'Master Plan')}
+                                </Field>
+                                <Field label="Total Slab (Agreement %)" required>
+                                    {textInput('totalSlab', 'Total Slab %')}
+                                </Field>
+                                <Field label="SMS (CAT 1)" required>
+                                    {textInput('sms', 'SMS (CAT 1)')}
+                                </Field>
+                                <Field label="MT Slab" required>
+                                    {textInput('mtSlab', 'MT Slab')}
+                                </Field>
+                                <Field label="Marketing" required>
+                                    {textInput('marketing', 'Marketing')}
+                                </Field>
+                            </Row>
 
-                                    <SectionTitle>Incentives</SectionTitle>
-                                    <Row className="g-3">
-                                        <Field label="Team Incentive MT" required md={3}>
-                                            {numberInput('teamIncentiveMt', 'Team Incentive MT')}
-                                        </Field>
-                                        <Field label="Incentive Status MT" required md={3}>
-                                            {textInput('incentiveStatusMt', 'Incentive Status MT')}
-                                        </Field>
-                                        <Field label="Incentive BD" required md={3}>
-                                            {numberInput('incentiveBd', 'Incentive BD')}
-                                        </Field>
-                                        <Field label="Incentive Status" required md={3}>
-                                            {textInput('incentiveStatus', 'Incentive Status')}
-                                        </Field>
-                                        <Field label="Remarks" md={12}>
-                                            <textarea className="form-control" style={inputStyle} rows={3}
-                                                value={form.remarks} onChange={handleFieldChange('remarks')}
-                                                placeholder="Remarks" disabled={editExpired} />
-                                        </Field>
-                                    </Row>
-                                </>
-                            )}
+                            <SectionTitle>Incentives</SectionTitle>
+                            <Row className="g-3">
+                                <Field label="Team Incentive MT" required>
+                                    {textInput('teamIncentive', 'Team Incentive MT')}
+                                </Field>
+                                <Field label="Incentive Status" required>
+                                    {textInput('incentiveStatus', 'Incentive Status')}
+                                </Field>
+                                <Field label="Incentive BD" required>
+                                    {textInput('incentiveBd', 'Incentive BD')}
+                                </Field>
+                                <Field label="Remarks" md={12}>
+                                    <textarea className="form-control" style={inputStyle} rows={3}
+                                        value={form.remarks} onChange={handleFieldChange('remarks')}
+                                        placeholder="Remarks" disabled={editExpired} />
+                                </Field>
+                            </Row>
+
+                            {/* ── Attachment ──────────────────────────────────────── */}
+                            <SectionTitle>Attachment</SectionTitle>
+                            <Row className="g-3">
+                                <Field label={existingFile ? 'Change File' : 'Upload File'} md={6}>
+                                    <input
+                                        ref={fileInputRef}
+                                        type="file"
+                                        className="form-control"
+                                        style={inputStyle}
+                                        accept={FILE_ACCEPT}
+                                        onChange={handleFileChange}
+                                        disabled={editExpired}
+                                    />
+                                    <div style={{ fontSize: 11, color: '#64748B', marginTop: 4 }}>
+                                        PDF, image, Word or Excel · max 10 MB
+                                        {existingFile && ' · picking a new file replaces the current one'}
+                                    </div>
+                                </Field>
+                                <Field label="Preview" md={6}>
+                                    {file ? (
+                                        <FileChip
+                                            name={file.name}
+                                            href={pickedFileUrl}
+                                            tag="New"
+                                            onRemove={editExpired ? null : removePickedFile}
+                                        />
+                                    ) : existingFile ? (
+                                        <FileChip name={existingFile} href={`${imageBaseUrl}${existingFile}`} tag="Current" />
+                                    ) : (
+                                        <div style={{ fontSize: 12.5, color: '#94A3B8', paddingTop: 8 }}>No file selected</div>
+                                    )}
+                                </Field>
+                            </Row>
 
                             {/* ── Actions ──────────────────────────────────────────── */}
                             <div style={{

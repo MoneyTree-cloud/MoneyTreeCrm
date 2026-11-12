@@ -206,9 +206,11 @@ export const GET_ALL_BOOKING_ANNEXURE = "user/management/booking-annexure/get/li
 export const UPLOAD_BOOKING_ANNEXURE = "user/management/booking-annexure/upload";
 
 //NFA Master
-export const CREATE_NFA_MASTER = "user/management/nfa-master/create";
-export const UPDATE_NFA_MASTER = "user/management/nfa-master/update/";
-export const GET_ALL_NFA_MASTER = "user/management/nfa-master/get/list";
+export const CREATE_NFA_MASTER = "user/management/nfa/create?loginId=";
+export const UPDATE_NFA_MASTER = "user/management/nfa/update/";
+export const GET_ALL_NFA_MASTER = "user/management/nfa/get/list";
+export const CHANGE_NFA_STATUS = "user/management/nfa/status/";
+export const DOWNLOAD_NFA_EXCEL = "user/management/nfa/download/excel";
 export const GET_SLAB_BY_PROJECT = "user/management/nfa-master/slab/dropdown?projectId=";
 
 //Maps Master

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Card, CardBody, Col, Container, Row, Button, Input, FormGroup, Label, } from "reactstrap";
 import { AiFillCamera } from "react-icons/ai";
-import { FaEdit } from "react-icons/fa";
 import moneyTreeLogo from "../../assets/images/profile-user.png";
 import { defaultTheme } from "../../helpers/defaultTheme";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
@@ -111,9 +110,6 @@ const UserProfile = () => {
     },
   });
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
